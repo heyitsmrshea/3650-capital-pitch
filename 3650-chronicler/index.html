@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3650 Capital — One Lender, From Origination to Maturity</title>
+  <meta name="description" content="3650 Capital is a vertically integrated commercial real estate lending platform providing bridge, permanent, and mezzanine financing from origination through maturity.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,300;1,6..72,400;1,6..72,500;1,6..72,600&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Material Symbols -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'paper': '#fbfaee',
+            'paper-low': '#f5f4e8',
+            'paper-high': '#e4e3d7',
+            'charcoal': '#1b1c15',
+            'copper': '#894d0d',
+            'copper-light': '#a76526',
+            'copper-soft': '#c49a6c',
+            'sage': '#8b4a2c',
+          },
+          fontFamily: {
+            'headline': ['Newsreader', 'serif'],
+            'body': ['Manrope', 'sans-serif'],
+          },
+          borderRadius: {
+            'DEFAULT': '0px',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    *, *::before, *::after {
+      border-radius: 0 !important;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Manrope', sans-serif;
+      background-color: #fbfaee;
+      color: #1b1c15;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Ledger-style label */
+    .label-ledger {
+      font-family: 'Manrope', sans-serif;
+      font-weight: 600;
+      font-size: 0.6875rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      line-height: 1;
+    }
+
+    /* Pull-Insight component */
+    .pull-insight-number {
+      font-family: 'Newsreader', serif;
+      font-weight: 300;
+      line-height: 0.9;
+      color: #894d0d;
+    }
+
+    /* Copper gradient CTA */
+    .btn-copper {
+      background: linear-gradient(135deg, #894d0d, #a76526);
+      color: #fbfaee;
+      font-family: 'Manrope', sans-serif;
+      font-weight: 600;
+      font-size: 0.8125rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 1.125rem 2.75rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.625rem;
+      transition: all 450ms cubic-bezier(0.22, 1, 0.36, 1);
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .btn-copper:hover {
+      background: linear-gradient(135deg, #a76526, #c49a6c);
+      transform: translateY(-1px);
+      box-shadow: 0 12px 40px rgba(137, 77, 13, 0.2);
+    }
+
+    /* Ambient shadow for images */
+    .ambient-shadow {
+      box-shadow: 0 24px 80px -16px rgba(137, 77, 13, 0.18),
+                  0 8px 24px -8px rgba(27, 28, 21, 0.08);
+    }
+
+    /* Watermark */
+    .watermark-3650 {
+      font-family: 'Newsreader', serif;
+      font-weight: 700;
+      color: rgba(137, 77, 13, 0.06);
+      line-height: 0.8;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    /* Scroll animation base */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 700ms cubic-bezier(0.22, 1, 0.36, 1),
+                  transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 100ms; }
+    .reveal-delay-2 { transition-delay: 200ms; }
+    .reveal-delay-3 { transition-delay: 300ms; }
+    .reveal-delay-4 { transition-delay: 400ms; }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+
+      .reveal.visible {
+        opacity: 1;
+        transform: none;
+      }
+
+      .btn-copper {
+        transition: none;
+      }
+
+      .btn-copper:hover {
+        transform: none;
+      }
+
+      .nav-glass {
+        transition: none;
+      }
+
+      [data-count-target] {
+        /* Counters will show final value immediately */
+      }
+    }
+
+    /* Nav glassmorphism */
+    .nav-glass {
+      background: rgba(251, 250, 238, 0.88);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      transition: background 400ms cubic-bezier(0.22, 1, 0.36, 1),
+                  box-shadow 400ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .nav-glass.scrolled {
+      background: rgba(251, 250, 238, 0.95);
+      box-shadow: 0 1px 0 rgba(137, 77, 13, 0.08);
+    }
+
+    /* Ghost border for accessibility focus */
+    *:focus-visible {
+      outline: 2px solid rgba(137, 77, 13, 0.35);
+      outline-offset: 2px;
+    }
+
+    /* Mobile nav overlay */
+    .mobile-nav-overlay {
+      background: rgba(251, 250, 238, 0.97);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 400ms cubic-bezier(0.22, 1, 0.36, 1),
+                  visibility 400ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .mobile-nav-overlay.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* Editorial divider */
+    .divider-copper {
+      width: 48px;
+      height: 2px;
+      background: linear-gradient(90deg, #894d0d, #c49a6c);
+    }
+
+    /* Card hover lift */
+    .card-lift {
+      transition: transform 400ms cubic-bezier(0.22, 1, 0.36, 1),
+                  box-shadow 400ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .card-lift:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px -12px rgba(27, 28, 21, 0.1);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .card-lift {
+        transition: none;
+      }
+      .card-lift:hover {
+        transform: none;
+      }
+    }
+
+    /* Stat counter */
+    .counter-value {
+      font-variant-numeric: tabular-nums;
+    }
+  </style>
+</head>
+
+<body data-review-page="home" class="bg-paper text-charcoal font-body overflow-x-hidden">
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       NAVIGATION
+       ════════════════════════════════════════════════════════════════════ -->
+  <nav id="main-nav" class="nav-glass fixed top-0 left-0 right-0 z-50" role="navigation" aria-label="Main navigation">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="flex items-center justify-between h-20 lg:h-24">
+        <!-- Logo -->
+        <a href="#" class="flex-shrink-0" aria-label="3650 Capital home">
+          <img
+            src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650Capital-Logo.png?ssl=1"
+            alt="3650 Capital"
+            class="h-8 lg:h-10 w-auto"
+          >
+        </a>
+
+        <!-- Desktop links -->
+        <div class="hidden lg:flex items-center gap-10">
+          <a href="#thesis" class="label-ledger text-copper hover:text-copper-light transition-colors duration-300">Thesis</a>
+          <a href="#platform" class="label-ledger text-copper hover:text-copper-light transition-colors duration-300">Platform</a>
+          <a href="#story" class="label-ledger text-copper hover:text-copper-light transition-colors duration-300">Story</a>
+          <a href="#transactions" class="label-ledger text-copper hover:text-copper-light transition-colors duration-300">Transactions</a>
+          <a href="#contact" class="btn-copper text-xs">
+            Begin Dialogue
+            <span class="material-symbols-outlined text-base" aria-hidden="true">arrow_forward</span>
+          </a>
+        </div>
+
+        <!-- Mobile menu button -->
+        <button
+          id="mobile-menu-btn"
+          class="lg:hidden flex items-center justify-center w-10 h-10 text-copper"
+          aria-label="Open navigation menu"
+          aria-expanded="false"
+        >
+          <span class="material-symbols-outlined text-2xl">menu</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile nav overlay -->
+    <div id="mobile-nav" class="mobile-nav-overlay fixed inset-0 top-0 z-50 lg:hidden flex flex-col">
+      <div class="flex items-center justify-between h-20 px-6">
+        <a href="#" aria-label="3650 Capital home">
+          <img
+            src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650Capital-Logo.png?ssl=1"
+            alt="3650 Capital"
+            class="h-8 w-auto"
+          >
+        </a>
+        <button id="mobile-close-btn" class="flex items-center justify-center w-10 h-10 text-copper" aria-label="Close navigation menu">
+          <span class="material-symbols-outlined text-2xl">close</span>
+        </button>
+      </div>
+      <div class="flex-1 flex flex-col justify-center items-center gap-10 px-6">
+        <a href="#thesis" class="mobile-nav-link font-headline text-3xl text-charcoal hover:text-copper transition-colors duration-300">Thesis</a>
+        <a href="#platform" class="mobile-nav-link font-headline text-3xl text-charcoal hover:text-copper transition-colors duration-300">Platform</a>
+        <a href="#story" class="mobile-nav-link font-headline text-3xl text-charcoal hover:text-copper transition-colors duration-300">Story</a>
+        <a href="#transactions" class="mobile-nav-link font-headline text-3xl text-charcoal hover:text-copper transition-colors duration-300">Transactions</a>
+        <a href="#contact" class="mobile-nav-link btn-copper mt-4">
+          Begin Dialogue
+          <span class="material-symbols-outlined text-base" aria-hidden="true">arrow_forward</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       HERO
+       ════════════════════════════════════════════════════════════════════ -->
+  <section data-review-section="hero" class="bg-paper pt-32 lg:pt-40 pb-20 lg:pb-28">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <!-- Label -->
+      <div class="reveal mb-8">
+        <span class="label-ledger text-copper">Commercial Real Estate Lending</span>
+        <div class="divider-copper mt-3"></div>
+      </div>
+
+      <!-- Hero grid: 55/45 -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <!-- Headline (left — 7 cols) -->
+        <div class="lg:col-span-7">
+          <h1 class="reveal font-headline text-5xl sm:text-6xl lg:text-7xl xl:text-[5.25rem] font-light leading-[1.05] tracking-tight text-charcoal mb-8">
+            One lender.<br>
+            <span class="text-copper">From origination</span><br>
+            to maturity.
+          </h1>
+          <p class="reveal reveal-delay-1 font-body text-lg lg:text-xl text-charcoal/70 max-w-xl leading-relaxed mb-10">
+            3650 Capital is a vertically integrated commercial real estate lending platform.
+            We originate, structure, service, and asset-manage every loan in-house — delivering
+            certainty of execution from day one through day 3,650.
+          </p>
+          <div class="reveal reveal-delay-2">
+            <a href="#contact" class="btn-copper">
+              Start a Conversation
+              <span class="material-symbols-outlined text-base" aria-hidden="true">arrow_forward</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Hero image (right — 5 cols) -->
+        <div class="lg:col-span-5 reveal reveal-delay-2">
+          <div class="relative">
+            <img
+              src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/grove-central-hero.jpg?ssl=1"
+              alt="Grove Central — a 3650 Capital financed commercial property showcasing modern mixed-use architecture"
+              class="w-full h-auto ambient-shadow"
+              loading="eager"
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- Editorial stat strip -->
+      <div class="mt-20 lg:mt-28 pt-12 bg-paper-low -mx-6 lg:-mx-10 px-6 lg:px-10">
+        <div class="max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 pb-12">
+          <div class="reveal">
+            <span class="pull-insight-number text-4xl lg:text-5xl counter-value" data-count-target="16.3" data-count-prefix="$" data-count-suffix="B" data-count-decimals="1">$0B</span>
+            <p class="label-ledger text-charcoal/50 mt-3">Loans Serviced</p>
+          </div>
+          <div class="reveal reveal-delay-1">
+            <span class="pull-insight-number text-4xl lg:text-5xl counter-value" data-count-target="75" data-count-suffix="+" data-count-decimals="0">0+</span>
+            <p class="label-ledger text-charcoal/50 mt-3">Transactions Closed</p>
+          </div>
+          <div class="reveal reveal-delay-2">
+            <span class="pull-insight-number text-4xl lg:text-5xl counter-value" data-count-target="140" data-count-suffix="+" data-count-decimals="0">0+</span>
+            <p class="label-ledger text-charcoal/50 mt-3">Professionals Nationwide</p>
+          </div>
+          <div class="reveal reveal-delay-3">
+            <span class="pull-insight-number text-4xl lg:text-5xl counter-value" data-count-target="2018" data-count-suffix="" data-count-decimals="0" data-count-is-year="true">2018</span>
+            <p class="label-ledger text-charcoal/50 mt-3">Year Founded</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       THESIS
+       ════════════════════════════════════════════════════════════════════ -->
+  <section id="thesis" data-review-section="thesis" class="bg-paper-low py-24 lg:py-36">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <!-- Left: Pull-Insight (5 cols — 40%) -->
+        <div class="lg:col-span-5 reveal">
+          <span class="label-ledger text-copper mb-6 block">By the Numbers</span>
+          <div class="divider-copper mb-10"></div>
+          <span class="pull-insight-number text-7xl sm:text-8xl lg:text-9xl block mb-4 counter-value" data-count-target="16.3" data-count-prefix="$" data-count-suffix="B" data-count-decimals="1">$0B</span>
+          <p class="label-ledger text-charcoal/60 text-sm">In-House Loans Serviced</p>
+          <div class="mt-12 space-y-6">
+            <div>
+              <span class="pull-insight-number text-4xl lg:text-5xl counter-value" data-count-target="100" data-count-suffix="%" data-count-decimals="0">0%</span>
+              <p class="label-ledger text-charcoal/50 mt-2">Vertical Integration</p>
+            </div>
+            <div>
+              <span class="pull-insight-number text-4xl lg:text-5xl">4-in-1</span>
+              <p class="label-ledger text-charcoal/50 mt-2">Platform Capabilities</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Narrative (7 cols — 60%) -->
+        <div class="lg:col-span-7">
+          <div class="reveal">
+            <span class="label-ledger text-copper mb-6 block">The Operating Thesis</span>
+            <div class="divider-copper mb-10"></div>
+          </div>
+          <h2 class="reveal font-headline text-4xl sm:text-5xl lg:text-6xl font-light leading-tight text-charcoal mb-8">
+            Vertical integration<br>
+            as a <em class="italic text-copper">lending discipline.</em>
+          </h2>
+          <div class="reveal reveal-delay-1 space-y-6 text-charcoal/70 text-lg leading-relaxed max-w-2xl">
+            <p>
+              Most commercial real estate lenders originate loans and then hand them off.
+              The originator moves on. The servicer inherits a file. The borrower inherits
+              a stranger. Misalignment is structural.
+            </p>
+            <p>
+              3650 Capital was built on a different premise: the lender who originates
+              should also structure, service, and asset-manage. When every discipline
+              operates under one roof, information flows without friction, decisions are
+              made in context, and borrowers deal with the same team from the first
+              conversation through the final payoff.
+            </p>
+            <p>
+              This is not a philosophy. It is an operating system — one that produces
+              faster execution, better outcomes, and genuine continuity of relationship
+              across the full ten-year lifecycle of a loan.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       PLATFORM
+       ════════════════════════════════════════════════════════════════════ -->
+  <section id="platform" data-review-section="platform" class="bg-paper py-24 lg:py-36">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <!-- Section header -->
+      <div class="max-w-3xl mb-16 lg:mb-24">
+        <span class="reveal label-ledger text-copper mb-4 block">Capabilities</span>
+        <div class="reveal divider-copper mb-8"></div>
+        <h2 class="reveal font-headline text-4xl sm:text-5xl lg:text-6xl font-light leading-tight text-charcoal">
+          How the platform operates.
+        </h2>
+      </div>
+
+      <!-- Four cards — bg shift only, no borders -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
+        <!-- Card 1: Origination -->
+        <div class="reveal bg-paper-low p-10 lg:p-14 card-lift">
+          <div class="flex items-start gap-5 mb-6">
+            <span class="material-symbols-outlined text-3xl text-copper" aria-hidden="true">handshake</span>
+            <span class="label-ledger text-copper pt-1">01 — Origination</span>
+          </div>
+          <h3 class="font-headline text-2xl lg:text-3xl font-light text-charcoal mb-4">Direct lending relationships</h3>
+          <p class="text-charcoal/65 leading-relaxed">
+            We originate bridge, permanent, and mezzanine loans directly with borrowers
+            and sponsors. No intermediary layers. One point of contact from term sheet
+            through closing.
+          </p>
+        </div>
+
+        <!-- Card 2: Structuring -->
+        <div class="reveal reveal-delay-1 bg-paper-high p-10 lg:p-14 card-lift">
+          <div class="flex items-start gap-5 mb-6">
+            <span class="material-symbols-outlined text-3xl text-copper" aria-hidden="true">architecture</span>
+            <span class="label-ledger text-copper pt-1">02 — Structuring</span>
+          </div>
+          <h3 class="font-headline text-2xl lg:text-3xl font-light text-charcoal mb-4">Bespoke capital solutions</h3>
+          <p class="text-charcoal/65 leading-relaxed">
+            Every loan is structured to the specific needs of the asset, the business plan,
+            and the borrower. Our structuring team works alongside origination to design
+            capital that fits — not capital that approximates.
+          </p>
+        </div>
+
+        <!-- Card 3: Servicing -->
+        <div class="reveal reveal-delay-2 bg-paper-high p-10 lg:p-14 card-lift">
+          <div class="flex items-start gap-5 mb-6">
+            <span class="material-symbols-outlined text-3xl text-copper" aria-hidden="true">monitoring</span>
+            <span class="label-ledger text-copper pt-1">03 — Servicing</span>
+          </div>
+          <h3 class="font-headline text-2xl lg:text-3xl font-light text-charcoal mb-4">In-house loan administration</h3>
+          <p class="text-charcoal/65 leading-relaxed">
+            We service every loan we originate. The servicing team sits with the originators.
+            Borrower requests are handled by people who know the deal, the sponsor, and the
+            intent behind the structure.
+          </p>
+        </div>
+
+        <!-- Card 4: Asset Management -->
+        <div class="reveal reveal-delay-3 bg-paper-low p-10 lg:p-14 card-lift">
+          <div class="flex items-start gap-5 mb-6">
+            <span class="material-symbols-outlined text-3xl text-copper" aria-hidden="true">analytics</span>
+            <span class="label-ledger text-copper pt-1">04 — Asset Management</span>
+          </div>
+          <h3 class="font-headline text-2xl lg:text-3xl font-light text-charcoal mb-4">Proactive portfolio oversight</h3>
+          <p class="text-charcoal/65 leading-relaxed">
+            Our asset management team monitors each loan through its lifecycle — anticipating
+            needs, resolving issues before they escalate, and ensuring the business plan
+            proceeds as agreed.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       STORY
+       ════════════════════════════════════════════════════════════════════ -->
+  <section id="story" data-review-section="story" class="bg-paper-low py-24 lg:py-36 relative overflow-hidden">
+    <!-- Watermark -->
+    <div class="watermark-3650 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[18rem] sm:text-[24rem] lg:text-[36rem] font-bold select-none" aria-hidden="true">
+      3650
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 relative z-10">
+      <div class="max-w-3xl mb-12 lg:mb-16">
+        <span class="reveal label-ledger text-copper mb-4 block">Our Name</span>
+        <div class="reveal divider-copper mb-8"></div>
+        <h2 class="reveal font-headline text-4xl sm:text-5xl lg:text-6xl font-light leading-tight text-charcoal">
+          From day one<br>
+          to day <span class="text-copper">3,650.</span>
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+        <!-- Narrative (7 cols) -->
+        <div class="lg:col-span-7 reveal reveal-delay-1">
+          <div class="space-y-6 text-charcoal/70 text-lg leading-relaxed max-w-2xl">
+            <p>
+              A standard commercial real estate loan has a ten-year term. Ten years
+              equals 3,650 days. That number is not accidental — it is the organizing
+              principle of everything we do.
+            </p>
+            <p>
+              Most lenders are optimized for the first ninety days: origination, closing, securitization.
+              We built a firm optimized for all 3,650. Our platform is designed so that the borrower
+              who signs the term sheet on day one is working with the same team on day 3,000.
+            </p>
+            <p>
+              The name is a commitment to permanence. It means we do not disappear after closing.
+              We do not transfer your loan to a stranger. We remain present, informed, and aligned
+              for the full lifecycle of the capital relationship.
+            </p>
+          </div>
+        </div>
+
+        <!-- PERE image (5 cols) -->
+        <div class="lg:col-span-5 reveal reveal-delay-2">
+          <img
+            src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/pere-panel-group-shot.jpg?ssl=1"
+            alt="3650 Capital leadership speaking at a PERE industry panel discussion"
+            class="w-full h-auto ambient-shadow"
+            loading="lazy"
+          >
+          <p class="label-ledger text-charcoal/40 mt-4">PERE Industry Panel — 3650 Capital Leadership</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       CONTINUITY (Charcoal contrast break)
+       ════════════════════════════════════════════════════════════════════ -->
+  <section data-review-section="continuity" class="bg-charcoal py-24 lg:py-36">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+        <!-- Text (7 cols) -->
+        <div class="lg:col-span-7">
+          <span class="reveal label-ledger text-copper-soft mb-6 block">Continuity</span>
+          <div class="reveal divider-copper mb-10"></div>
+          <h2 class="reveal font-headline text-4xl sm:text-5xl lg:text-6xl font-light leading-tight text-paper mb-10">
+            Borrowers need<br>
+            permanence.
+          </h2>
+          <blockquote class="reveal reveal-delay-1 mb-10">
+            <p class="font-headline italic text-2xl lg:text-3xl leading-snug text-sage font-light max-w-xl">
+              "The relationship between lender and borrower should not end at the
+              closing table. It should begin there."
+            </p>
+            <footer class="mt-6">
+              <span class="label-ledger text-copper-soft">— 3650 Capital Founding Principle</span>
+            </footer>
+          </blockquote>
+          <p class="reveal reveal-delay-2 text-paper/60 text-lg leading-relaxed max-w-xl">
+            In an industry defined by transactional relationships and hand-offs, 3650 Capital
+            offers something rare: a single team that stays with the borrower from origination
+            through maturity. No transfers. No re-introductions. No loss of context.
+          </p>
+        </div>
+
+        <!-- Founders image (5 cols) -->
+        <div class="lg:col-span-5 reveal reveal-delay-2">
+          <img
+            src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Commercial-Observer-Founders-Image.png?ssl=1"
+            alt="3650 Capital founders as featured in the Commercial Observer"
+            class="w-full h-auto ambient-shadow"
+            loading="lazy"
+          >
+          <p class="label-ledger text-paper/30 mt-4">Founding Team — Commercial Observer</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       TRANSACTIONS
+       ════════════════════════════════════════════════════════════════════ -->
+  <section id="transactions" data-review-section="transactions" class="bg-paper py-24 lg:py-36">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <!-- Section header -->
+      <div class="max-w-3xl mb-16 lg:mb-24">
+        <span class="reveal label-ledger text-copper mb-4 block">Portfolio</span>
+        <div class="reveal divider-copper mb-8"></div>
+        <h2 class="reveal font-headline text-4xl sm:text-5xl lg:text-6xl font-light leading-tight text-charcoal">
+          Selected engagements.
+        </h2>
+      </div>
+
+      <!-- Transaction 1: Gateway at Wynwood -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center mb-20 lg:mb-28">
+        <div class="lg:col-span-7 reveal">
+          <img
+            src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Gateway-at-Wynwood-e1578945268648.jpg?ssl=1"
+            alt="Gateway at Wynwood — a modern mixed-use development in Miami's Wynwood arts district"
+            class="w-full h-auto ambient-shadow"
+            loading="lazy"
+          >
+        </div>
+        <div class="lg:col-span-5">
+          <span class="reveal label-ledger text-copper-soft mb-3 block">Mixed-Use · Miami, FL</span>
+          <h3 class="reveal font-headline text-3xl lg:text-4xl font-light text-charcoal mb-4">
+            Gateway at Wynwood
+          </h3>
+          <span class="reveal reveal-delay-1 pull-insight-number text-5xl lg:text-6xl block mb-4">$165M</span>
+          <p class="reveal reveal-delay-1 label-ledger text-charcoal/50 mb-6">Senior Financing</p>
+          <p class="reveal reveal-delay-2 text-charcoal/65 leading-relaxed">
+            A landmark mixed-use development in Miami's Wynwood Arts District featuring
+            Class-A office, ground-floor retail, and structured parking. 3650 Capital provided
+            senior financing with in-house servicing and asset management from day one.
+          </p>
+        </div>
+      </div>
+
+      <!-- Transaction 2: Center at Miami Gardens -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
+        <div class="lg:col-span-5 order-2 lg:order-1">
+          <span class="reveal label-ledger text-copper-soft mb-3 block">Retail · Miami Gardens, FL</span>
+          <h3 class="reveal font-headline text-3xl lg:text-4xl font-light text-charcoal mb-4">
+            Center at Miami Gardens
+          </h3>
+          <span class="reveal reveal-delay-1 pull-insight-number text-5xl lg:text-6xl block mb-4">$127M</span>
+          <p class="reveal reveal-delay-1 label-ledger text-charcoal/50 mb-6">Bridge Financing</p>
+          <p class="reveal reveal-delay-2 text-charcoal/65 leading-relaxed">
+            A 730,000+ square foot open-air retail center in Miami Gardens. 3650 Capital
+            provided bridge financing to support the repositioning strategy, with the full
+            platform engaged from origination through business plan execution.
+          </p>
+        </div>
+        <div class="lg:col-span-7 order-1 lg:order-2 reveal">
+          <img
+            src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/rendering-center-at-miami-gardens-courtesy-3650-reit.jpg?ssl=1"
+            alt="Center at Miami Gardens — a rendering of the large open-air retail development"
+            class="w-full h-auto ambient-shadow"
+            loading="lazy"
+          >
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       CTA / CONTACT
+       ════════════════════════════════════════════════════════════════════ -->
+  <section id="contact" data-review-section="contact" class="bg-paper-low py-24 lg:py-36">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="max-w-3xl mx-auto text-center">
+        <span class="reveal label-ledger text-copper mb-6 block">Get in Touch</span>
+        <div class="reveal divider-copper mx-auto mb-10"></div>
+        <h2 class="reveal font-headline text-4xl sm:text-5xl lg:text-6xl font-light leading-tight text-charcoal mb-8">
+          Begin a capital<br>
+          relationship.
+        </h2>
+        <p class="reveal reveal-delay-1 text-charcoal/65 text-lg leading-relaxed max-w-xl mx-auto mb-12">
+          Whether you are financing a new acquisition, refinancing an existing asset, or
+          exploring bridge capital for a repositioning — we would welcome the conversation.
+        </p>
+        <div class="reveal reveal-delay-2 mb-16">
+          <a href="mailto:info@3650capital.com" class="btn-copper">
+            Begin Dialogue
+            <span class="material-symbols-outlined text-base" aria-hidden="true">mail</span>
+          </a>
+        </div>
+
+        <!-- Contact details -->
+        <div class="reveal reveal-delay-3 grid grid-cols-1 sm:grid-cols-3 gap-8 pt-12 bg-paper-high -mx-6 lg:-mx-10 px-6 lg:px-10 pb-12">
+          <div>
+            <span class="label-ledger text-copper mb-2 block">Email</span>
+            <a href="mailto:info@3650capital.com" class="text-charcoal/70 hover:text-copper transition-colors duration-300">info@3650capital.com</a>
+          </div>
+          <div>
+            <span class="label-ledger text-copper mb-2 block">Headquarters</span>
+            <p class="text-charcoal/70">Miami, Florida</p>
+          </div>
+          <div>
+            <span class="label-ledger text-copper mb-2 block">Offices</span>
+            <p class="text-charcoal/70">Miami · New York · Los Angeles</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       FOOTER
+       ════════════════════════════════════════════════════════════════════ -->
+  <footer class="bg-paper-high py-16 lg:py-20">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+        <!-- Logo & tagline -->
+        <div class="lg:col-span-4">
+          <img
+            src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650Capital-Logo.png?ssl=1"
+            alt="3650 Capital"
+            class="h-8 w-auto mb-5"
+          >
+          <p class="text-charcoal/50 text-sm leading-relaxed max-w-xs">
+            Vertically integrated commercial real estate lending.
+            From origination to maturity.
+          </p>
+        </div>
+
+        <!-- Navigation -->
+        <div class="lg:col-span-2">
+          <span class="label-ledger text-copper mb-4 block">Navigate</span>
+          <ul class="space-y-3">
+            <li><a href="#thesis" class="text-charcoal/55 hover:text-copper text-sm transition-colors duration-300">Thesis</a></li>
+            <li><a href="#platform" class="text-charcoal/55 hover:text-copper text-sm transition-colors duration-300">Platform</a></li>
+            <li><a href="#story" class="text-charcoal/55 hover:text-copper text-sm transition-colors duration-300">Story</a></li>
+            <li><a href="#transactions" class="text-charcoal/55 hover:text-copper text-sm transition-colors duration-300">Transactions</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact -->
+        <div class="lg:col-span-3">
+          <span class="label-ledger text-copper mb-4 block">Contact</span>
+          <ul class="space-y-3">
+            <li><a href="mailto:info@3650capital.com" class="text-charcoal/55 hover:text-copper text-sm transition-colors duration-300">info@3650capital.com</a></li>
+            <li><span class="text-charcoal/55 text-sm">Miami · New York · Los Angeles</span></li>
+          </ul>
+        </div>
+
+        <!-- Legal -->
+        <div class="lg:col-span-3">
+          <span class="label-ledger text-copper mb-4 block">Legal</span>
+          <ul class="space-y-3">
+            <li><a href="#" class="text-charcoal/55 hover:text-copper text-sm transition-colors duration-300">Privacy Policy</a></li>
+            <li><a href="#" class="text-charcoal/55 hover:text-copper text-sm transition-colors duration-300">Terms of Use</a></li>
+            <li><a href="#" class="text-charcoal/55 hover:text-copper text-sm transition-colors duration-300">Disclosures</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Bottom bar -->
+      <div class="mt-16 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4" style="box-shadow: 0 -1px 0 rgba(137, 77, 13, 0.08);">
+        <p class="label-ledger text-charcoal/35 text-xs">
+          &copy; 2026 3650 Capital. All Rights Reserved.
+        </p>
+        <p class="label-ledger text-charcoal/35 text-xs">
+          One Lender. From Origination to Maturity.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       SCRIPTS
+       ════════════════════════════════════════════════════════════════════ -->
+  <script>
+    (function () {
+      'use strict';
+
+      // ─── Reduced motion check ───────────────────────────────────────
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      // ─── IntersectionObserver: Scroll reveal ────────────────────────
+      function initRevealObserver() {
+        const revealEls = document.querySelectorAll('.reveal');
+
+        if (prefersReducedMotion) {
+          revealEls.forEach(function (el) {
+            el.classList.add('visible');
+          });
+          return;
+        }
+
+        if (!('IntersectionObserver' in window)) {
+          revealEls.forEach(function (el) {
+            el.classList.add('visible');
+          });
+          return;
+        }
+
+        var observer = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          {
+            threshold: 0.12,
+            rootMargin: '0px 0px -40px 0px',
+          }
+        );
+
+        revealEls.forEach(function (el) {
+          observer.observe(el);
+        });
+      }
+
+      // ─── Counter animations ─────────────────────────────────────────
+      function animateCounter(el) {
+        var target = parseFloat(el.getAttribute('data-count-target'));
+        var prefix = el.getAttribute('data-count-prefix') || '';
+        var suffix = el.getAttribute('data-count-suffix') || '';
+        var decimals = parseInt(el.getAttribute('data-count-decimals'), 10) || 0;
+        var isYear = el.getAttribute('data-count-is-year') === 'true';
+
+        // For year display, just show the static value
+        if (isYear) {
+          el.textContent = prefix + target.toFixed(0) + suffix;
+          return;
+        }
+
+        if (prefersReducedMotion) {
+          el.textContent = prefix + target.toFixed(decimals) + suffix;
+          return;
+        }
+
+        var duration = 2000;
+        var startTime = null;
+        var startVal = 0;
+
+        function easeOutCubic(t) {
+          return 1 - Math.pow(1 - t, 3);
+        }
+
+        function step(timestamp) {
+          if (!startTime) startTime = timestamp;
+          var elapsed = timestamp - startTime;
+          var progress = Math.min(elapsed / duration, 1);
+          var easedProgress = easeOutCubic(progress);
+          var current = startVal + (target - startVal) * easedProgress;
+          el.textContent = prefix + current.toFixed(decimals) + suffix;
+
+          if (progress < 1) {
+            requestAnimationFrame(step);
+          }
+        }
+
+        requestAnimationFrame(step);
+      }
+
+      function initCounterObserver() {
+        var counterEls = document.querySelectorAll('[data-count-target]');
+
+        if (prefersReducedMotion) {
+          counterEls.forEach(function (el) {
+            var target = parseFloat(el.getAttribute('data-count-target'));
+            var prefix = el.getAttribute('data-count-prefix') || '';
+            var suffix = el.getAttribute('data-count-suffix') || '';
+            var decimals = parseInt(el.getAttribute('data-count-decimals'), 10) || 0;
+            var isYear = el.getAttribute('data-count-is-year') === 'true';
+            if (isYear) {
+              el.textContent = prefix + target.toFixed(0) + suffix;
+            } else {
+              el.textContent = prefix + target.toFixed(decimals) + suffix;
+            }
+          });
+          return;
+        }
+
+        if (!('IntersectionObserver' in window)) {
+          counterEls.forEach(function (el) { animateCounter(el); });
+          return;
+        }
+
+        var observer = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                animateCounter(entry.target);
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          {
+            threshold: 0.3,
+          }
+        );
+
+        counterEls.forEach(function (el) {
+          observer.observe(el);
+        });
+      }
+
+      // ─── Nav scroll effect ──────────────────────────────────────────
+      function initNavScroll() {
+        var nav = document.getElementById('main-nav');
+        if (!nav) return;
+
+        var scrolled = false;
+
+        function onScroll() {
+          var isScrolled = window.scrollY > 40;
+          if (isScrolled !== scrolled) {
+            scrolled = isScrolled;
+            if (scrolled) {
+              nav.classList.add('scrolled');
+            } else {
+              nav.classList.remove('scrolled');
+            }
+          }
+        }
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+      }
+
+      // ─── Mobile nav ─────────────────────────────────────────────────
+      function initMobileNav() {
+        var btn = document.getElementById('mobile-menu-btn');
+        var closeBtn = document.getElementById('mobile-close-btn');
+        var overlay = document.getElementById('mobile-nav');
+        var links = overlay ? overlay.querySelectorAll('.mobile-nav-link') : [];
+
+        if (!btn || !closeBtn || !overlay) return;
+
+        function open() {
+          overlay.classList.add('open');
+          btn.setAttribute('aria-expanded', 'true');
+          document.body.style.overflow = 'hidden';
+        }
+
+        function close() {
+          overlay.classList.remove('open');
+          btn.setAttribute('aria-expanded', 'false');
+          document.body.style.overflow = '';
+        }
+
+        btn.addEventListener('click', open);
+        closeBtn.addEventListener('click', close);
+
+        links.forEach(function (link) {
+          link.addEventListener('click', close);
+        });
+
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape' && overlay.classList.contains('open')) {
+            close();
+          }
+        });
+      }
+
+      // ─── Smooth scroll for anchor links ─────────────────────────────
+      function initSmoothScroll() {
+        document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+          anchor.addEventListener('click', function (e) {
+            var targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+
+            var targetEl = document.querySelector(targetId);
+            if (!targetEl) return;
+
+            e.preventDefault();
+
+            var navHeight = 96;
+            var targetPosition = targetEl.getBoundingClientRect().top + window.pageYOffset - navHeight;
+
+            if (prefersReducedMotion) {
+              window.scrollTo(0, targetPosition);
+            } else {
+              window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth',
+              });
+            }
+          });
+        });
+      }
+
+      // ─── Init ───────────────────────────────────────────────────────
+      document.addEventListener('DOMContentLoaded', function () {
+        initRevealObserver();
+        initCounterObserver();
+        initNavScroll();
+        initMobileNav();
+        initSmoothScroll();
+      });
+    })();
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3650 Capital — Borrowers Need Continuity</title>
+  <meta name="description" content="3650 Capital is an integrated commercial real estate lending platform built to deliver certainty of execution from Day 1 to Day 3650.">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Material Symbols Outlined -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'void': '#0f1114',
+            'surface': '#1a1d21',
+            'surface-high': '#252830',
+            'surface-highest': '#30343c',
+            'teal': '#4dd4ac',
+            'teal-dim': '#2a9d7e',
+            'amber-soft': '#e9c176',
+          },
+          fontFamily: {
+            'display': ['Plus Jakarta Sans', 'sans-serif'],
+          },
+          borderRadius: {
+            'card': '16px',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background: #0f1114; color: #e2e4e9; }
+
+    /* Scroll animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+    .reveal-delay-5 { transition-delay: 0.5s; }
+
+    /* Respect prefers-reduced-motion */
+    @media (prefers-reduced-motion: reduce) {
+      .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+      .bento-card { transition: none !important; }
+      .bento-card:hover { transform: none !important; }
+    }
+
+    /* Bento card hover */
+    .bento-card {
+      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.35s ease;
+      border: 1px solid transparent;
+    }
+    .bento-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 32px rgba(77, 212, 172, 0.08);
+      border-color: rgba(77, 212, 172, 0.2);
+    }
+
+    /* Property type tag */
+    .prop-tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      background: rgba(77, 212, 172, 0.1);
+      color: #4dd4ac;
+      border: 1px solid rgba(77, 212, 172, 0.15);
+    }
+
+    /* Watermark number */
+    .watermark-3650 {
+      font-size: clamp(10rem, 25vw, 22rem);
+      font-weight: 800;
+      color: rgba(77, 212, 172, 0.04);
+      line-height: 1;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      user-select: none;
+      white-space: nowrap;
+    }
+
+    /* Nav blur */
+    .nav-glass {
+      backdrop-filter: blur(16px) saturate(1.2);
+      -webkit-backdrop-filter: blur(16px) saturate(1.2);
+    }
+
+    /* Counter */
+    .counter-value {
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #0f1114; }
+    ::-webkit-scrollbar-thumb { background: #30343c; border-radius: 999px; }
+    ::-webkit-scrollbar-thumb:hover { background: #4dd4ac; }
+
+    /* Image cover helper */
+    .img-cover { object-fit: cover; width: 100%; height: 100%; }
+  </style>
+</head>
+
+<body data-review-page="home" class="bg-void font-display antialiased">
+
+  <!-- ===================== NAV ===================== -->
+  <nav class="fixed top-0 left-0 w-full z-50 nav-glass bg-void/80 border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <!-- Logo -->
+      <a href="#" class="flex items-center gap-3">
+        <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650Capital-Logo.png?ssl=1"
+             alt="3650 Capital logo"
+             class="h-8 w-auto brightness-110">
+      </a>
+
+      <!-- Desktop links -->
+      <div class="hidden md:flex items-center gap-8 text-sm font-medium text-white/60">
+        <a href="#platform" class="hover:text-teal transition-colors duration-200">Platform</a>
+        <a href="#story" class="hover:text-teal transition-colors duration-200">Story</a>
+        <a href="#excellence" class="hover:text-teal transition-colors duration-200">Excellence</a>
+        <a href="#transactions" class="hover:text-teal transition-colors duration-200">Transactions</a>
+        <a href="#contact" class="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-teal text-void font-semibold text-sm hover:bg-teal-dim transition-colors duration-200">
+          <span class="material-symbols-outlined text-base">arrow_forward</span>
+          Get Started
+        </a>
+      </div>
+
+      <!-- Mobile menu button -->
+      <button id="mobileMenuBtn" class="md:hidden flex items-center justify-center w-10 h-10 rounded-lg text-white/70 hover:text-teal transition-colors" aria-label="Toggle menu">
+        <span class="material-symbols-outlined text-2xl">menu</span>
+      </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobileMenu" class="md:hidden hidden bg-void/95 nav-glass border-t border-white/5">
+      <div class="px-6 py-6 flex flex-col gap-4 text-sm font-medium text-white/60">
+        <a href="#platform" class="py-2 hover:text-teal transition-colors">Platform</a>
+        <a href="#story" class="py-2 hover:text-teal transition-colors">Story</a>
+        <a href="#excellence" class="py-2 hover:text-teal transition-colors">Excellence</a>
+        <a href="#transactions" class="py-2 hover:text-teal transition-colors">Transactions</a>
+        <a href="#contact" class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-teal text-void font-semibold text-sm mt-2">
+          <span class="material-symbols-outlined text-base">arrow_forward</span>
+          Get Started
+        </a>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- ===================== HERO ===================== -->
+  <section data-review-section="hero" id="hero" class="relative min-h-screen flex items-center overflow-hidden pt-16">
+    <!-- Background image overlay -->
+    <div class="absolute inset-0">
+      <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/grove-central-hero.jpg?ssl=1"
+           alt="Grove Central mixed-use development"
+           class="img-cover opacity-15">
+      <div class="absolute inset-0 bg-gradient-to-b from-void/60 via-void/80 to-void"></div>
+    </div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-6 py-24 md:py-32 lg:py-40">
+      <div class="max-w-4xl">
+        <!-- Eyebrow -->
+        <p class="reveal text-teal text-sm font-semibold tracking-widest uppercase mb-6">Commercial Real Estate Lending</p>
+
+        <!-- Main headline -->
+        <h1 class="reveal reveal-delay-1 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.05] tracking-tight text-white mb-8">
+          Borrowers do not just need capital.<br>
+          <span class="text-teal">They need continuity.</span>
+        </h1>
+
+        <!-- Sub copy -->
+        <p class="reveal reveal-delay-2 text-lg md:text-xl text-white/50 max-w-2xl mb-10 leading-relaxed">
+          3650 Capital is an integrated lending platform purpose-built to deliver certainty of execution across the full lifecycle of a commercial real estate loan.
+        </p>
+
+        <!-- CTAs -->
+        <div class="reveal reveal-delay-3 flex flex-wrap gap-4 mb-14">
+          <a href="#contact" class="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-teal text-void font-bold text-sm hover:bg-teal-dim transition-colors duration-200">
+            <span class="material-symbols-outlined text-lg">handshake</span>
+            Start a Conversation
+          </a>
+          <a href="#platform" class="inline-flex items-center gap-2 px-7 py-3.5 rounded-full border border-white/15 text-white/80 font-semibold text-sm hover:border-teal/40 hover:text-teal transition-colors duration-200">
+            <span class="material-symbols-outlined text-lg">explore</span>
+            Explore Our Platform
+          </a>
+        </div>
+
+        <!-- Inline stats -->
+        <div class="reveal reveal-delay-4 flex flex-wrap gap-10">
+          <div class="flex items-baseline gap-2">
+            <span class="counter-value text-3xl md:text-4xl font-extrabold text-white" data-target="16.3" data-prefix="$" data-suffix="B+">$0B+</span>
+            <span class="text-sm text-white/40 font-medium">Total Originations</span>
+          </div>
+          <div class="flex items-baseline gap-2">
+            <span class="counter-value text-3xl md:text-4xl font-extrabold text-white" data-target="10" data-prefix="" data-suffix="+">0+</span>
+            <span class="text-sm text-white/40 font-medium">Years of Platform Excellence</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll hint -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/20 animate-bounce">
+      <span class="material-symbols-outlined text-2xl">expand_more</span>
+    </div>
+  </section>
+
+
+  <!-- ===================== PLATFORM ===================== -->
+  <section data-review-section="platform" id="platform" class="relative py-24 md:py-32 bg-void">
+    <div class="max-w-7xl mx-auto px-6">
+      <!-- Section header -->
+      <div class="mb-14 max-w-2xl">
+        <p class="reveal text-teal text-sm font-semibold tracking-widest uppercase mb-4">How We Work</p>
+        <h2 class="reveal reveal-delay-1 text-3xl md:text-5xl font-extrabold text-white leading-tight">
+          The 3650 Platform
+        </h2>
+        <p class="reveal reveal-delay-2 text-white/40 text-lg mt-4 leading-relaxed">
+          An integrated operating model that unifies origination, underwriting, and servicing under one roof.
+        </p>
+      </div>
+
+      <!-- Bento Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+
+        <!-- Card 1: Integrated Operating Model (tall) -->
+        <div class="reveal bento-card bg-surface-high rounded-card p-8 md:row-span-2 flex flex-col justify-between min-h-[320px]">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-teal/10 flex items-center justify-center mb-6">
+              <span class="material-symbols-outlined text-teal text-2xl">hub</span>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-3">Integrated Operating Model</h3>
+            <p class="text-white/40 text-sm leading-relaxed">
+              Unlike conventional lenders that outsource servicing, 3650 retains the servicing rights on every loan it originates. This vertical integration ensures alignment of interest between originator and servicer from the first day of the loan through the last.
+            </p>
+          </div>
+          <div class="mt-8 flex items-center gap-2 text-teal text-sm font-semibold">
+            <span>Learn more</span>
+            <span class="material-symbols-outlined text-base">arrow_forward</span>
+          </div>
+        </div>
+
+        <!-- Card 2: Servicing Posture -->
+        <div class="reveal reveal-delay-1 bento-card bg-surface-high rounded-card p-8 flex flex-col justify-between min-h-[150px]">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-amber-soft/10 flex items-center justify-center mb-5">
+              <span class="material-symbols-outlined text-amber-soft text-2xl">verified_user</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Servicing Posture</h3>
+            <p class="text-white/40 text-sm leading-relaxed">
+              Proactive, borrower-first servicing that anticipates and resolves issues before they compound.
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 3: Stats card -->
+        <div class="reveal reveal-delay-2 bento-card bg-gradient-to-br from-teal/10 to-teal-dim/5 rounded-card p-8 flex flex-col justify-center items-center text-center min-h-[150px]">
+          <span class="counter-value text-5xl md:text-6xl font-extrabold text-teal" data-target="16.3" data-prefix="$" data-suffix="B+">$0B+</span>
+          <p class="text-white/40 text-sm mt-3 font-medium">Originated Since Inception</p>
+        </div>
+
+        <!-- Card 4: Physical Presence + Tags -->
+        <div class="reveal reveal-delay-3 bento-card bg-surface-high rounded-card p-8 flex flex-col justify-between min-h-[150px]">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-teal/10 flex items-center justify-center mb-5">
+              <span class="material-symbols-outlined text-teal text-2xl">location_city</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Physical Presence</h3>
+            <p class="text-white/40 text-sm leading-relaxed mb-4">
+              Offices in New York and Miami with deep knowledge across all major property types.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="prop-tag">Multi</span>
+            <span class="prop-tag">Office</span>
+            <span class="prop-tag">Industrial</span>
+            <span class="prop-tag">Hotel</span>
+          </div>
+        </div>
+
+        <!-- Card 5: Image card (NYC office) -->
+        <div class="reveal reveal-delay-4 bento-card rounded-card overflow-hidden min-h-[220px] relative group">
+          <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/nyc-office-interior-2.jpg?ssl=1"
+               alt="3650 Capital NYC office interior"
+               class="img-cover transition-transform duration-700 group-hover:scale-105">
+          <div class="absolute inset-0 bg-gradient-to-t from-void/70 via-transparent to-transparent"></div>
+          <div class="absolute bottom-6 left-6">
+            <p class="text-white text-sm font-semibold">New York Headquarters</p>
+            <p class="text-white/40 text-xs mt-1">Midtown Manhattan</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== STORY ===================== -->
+  <section data-review-section="story" id="story" class="relative py-24 md:py-36 bg-surface overflow-hidden">
+    <!-- Large 3650 watermark -->
+    <div class="watermark-3650" aria-hidden="true">3650</div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <!-- Text column -->
+        <div>
+          <p class="reveal text-teal text-sm font-semibold tracking-widest uppercase mb-4">Our Story</p>
+          <h2 class="reveal reveal-delay-1 text-3xl md:text-5xl font-extrabold text-white leading-tight mb-6">
+            From Day 1<br>to Day <span class="text-teal">3650</span>.
+          </h2>
+          <p class="reveal reveal-delay-2 text-white/40 text-lg leading-relaxed mb-8">
+            The name 3650 represents the approximately ten years in the life of a commercial real estate loan. It stands for our commitment to being a consistent, transparent, and constructive partner for borrowers throughout every phase of that journey. From origination through payoff, 3650 Capital stays at the table.
+          </p>
+
+          <!-- Pull quote -->
+          <blockquote class="reveal reveal-delay-3 border-l-4 border-teal pl-6 py-2">
+            <p class="text-white/70 text-lg italic leading-relaxed">
+              "We built this firm on a simple premise: the lender that services the loan should be the lender that makes the loan."
+            </p>
+            <cite class="text-white/30 text-sm mt-3 block not-italic">— 3650 Capital Founders</cite>
+          </blockquote>
+        </div>
+
+        <!-- Image column -->
+        <div class="reveal reveal-delay-2 relative">
+          <div class="rounded-card overflow-hidden">
+            <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Commercial-Observer-Founders-Image.png?ssl=1"
+                 alt="3650 Capital founders"
+                 class="img-cover aspect-[4/3]">
+          </div>
+          <!-- Accent corner badge -->
+          <div class="absolute -bottom-4 -left-4 bg-teal text-void rounded-card px-6 py-4 shadow-lg">
+            <p class="text-2xl font-extrabold">10+</p>
+            <p class="text-xs font-semibold opacity-70">Years</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== EXCELLENCE ===================== -->
+  <section data-review-section="excellence" id="excellence" class="relative py-24 md:py-32 bg-void">
+    <div class="max-w-7xl mx-auto px-6">
+      <!-- Section header -->
+      <div class="text-center mb-16 max-w-2xl mx-auto">
+        <p class="reveal text-teal text-sm font-semibold tracking-widest uppercase mb-4">Why 3650</p>
+        <h2 class="reveal reveal-delay-1 text-3xl md:text-5xl font-extrabold text-white leading-tight">
+          Engineered for Excellence
+        </h2>
+        <p class="reveal reveal-delay-2 text-white/40 text-lg mt-4 leading-relaxed">
+          Three pillars that differentiate the 3650 experience for every borrower.
+        </p>
+      </div>
+
+      <!-- Feature cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+        <!-- Card 1: Certainty of Execution -->
+        <div class="reveal bento-card bg-surface-high rounded-card p-8 flex flex-col min-h-[320px]">
+          <div class="w-14 h-14 rounded-xl bg-teal/10 flex items-center justify-center mb-6">
+            <span class="material-symbols-outlined text-teal text-3xl">check_circle</span>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3">Certainty of Execution</h3>
+          <p class="text-white/40 text-sm leading-relaxed flex-1">
+            When 3650 issues a term sheet, borrowers can rely on it. Our integrated platform means underwriting, credit, and servicing are aligned from day one, eliminating the common disconnect between what is quoted and what ultimately closes.
+          </p>
+          <div class="mt-6 pt-6 border-t border-white/5">
+            <div class="flex items-center gap-3">
+              <span class="counter-value text-2xl font-extrabold text-teal" data-target="98" data-prefix="" data-suffix="%">0%</span>
+              <span class="text-white/30 text-xs">Close Rate on Committed Deals</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2: Lender-Servicer Alignment -->
+        <div class="reveal reveal-delay-1 bento-card bg-surface-high rounded-card p-8 flex flex-col min-h-[320px]">
+          <div class="w-14 h-14 rounded-xl bg-amber-soft/10 flex items-center justify-center mb-6">
+            <span class="material-symbols-outlined text-amber-soft text-3xl">sync_alt</span>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3">Lender-Servicer Alignment</h3>
+          <p class="text-white/40 text-sm leading-relaxed flex-1">
+            Because 3650 retains the servicing rights on every loan, there is a single point of accountability. Borrowers deal with the same team from application to payoff, ensuring continuity and eliminating adversarial dynamics that plague third-party servicing.
+          </p>
+          <div class="mt-6 pt-6 border-t border-white/5">
+            <div class="flex items-center gap-3">
+              <span class="text-2xl font-extrabold text-amber-soft">100%</span>
+              <span class="text-white/30 text-xs">In-House Servicing Retention</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3: Strategic Advisory -->
+        <div class="reveal reveal-delay-2 bento-card bg-surface-high rounded-card p-8 flex flex-col min-h-[320px]">
+          <div class="w-14 h-14 rounded-xl bg-teal/10 flex items-center justify-center mb-6">
+            <span class="material-symbols-outlined text-teal text-3xl">psychology</span>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3">Strategic Advisory</h3>
+          <p class="text-white/40 text-sm leading-relaxed flex-1">
+            Beyond capital, 3650 provides thoughtful guidance on asset positioning, market timing, and capital structure. Our deep institutional knowledge helps borrowers navigate complexity and make confident decisions through every market cycle.
+          </p>
+          <div class="mt-6 pt-6 border-t border-white/5">
+            <div class="flex items-center gap-3">
+              <span class="counter-value text-2xl font-extrabold text-teal" data-target="250" data-prefix="" data-suffix="+">0+</span>
+              <span class="text-white/30 text-xs">Transactions Managed</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== TRANSACTIONS ===================== -->
+  <section data-review-section="transactions" id="transactions" class="relative py-24 md:py-32 bg-surface">
+    <div class="max-w-7xl mx-auto px-6">
+      <!-- Section header -->
+      <div class="mb-14 max-w-2xl">
+        <p class="reveal text-teal text-sm font-semibold tracking-widest uppercase mb-4">Track Record</p>
+        <h2 class="reveal reveal-delay-1 text-3xl md:text-5xl font-extrabold text-white leading-tight">
+          Featured Transactions
+        </h2>
+      </div>
+
+      <!-- Featured deal -->
+      <div class="reveal mb-8">
+        <div class="bento-card bg-surface-high rounded-card overflow-hidden grid grid-cols-1 lg:grid-cols-2">
+          <div class="relative min-h-[280px] lg:min-h-[360px]">
+            <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/rendering-center-at-miami-gardens-courtesy-3650-reit.jpg?ssl=1"
+                 alt="Center at Miami Gardens rendering"
+                 class="img-cover">
+            <div class="absolute top-4 left-4">
+              <span class="prop-tag">Multi</span>
+            </div>
+          </div>
+          <div class="p-8 md:p-10 flex flex-col justify-center">
+            <p class="text-teal text-xs font-semibold tracking-widest uppercase mb-3">Featured Deal</p>
+            <h3 class="text-2xl md:text-3xl font-extrabold text-white mb-3">Center at Miami Gardens</h3>
+            <p class="text-white/40 text-sm leading-relaxed mb-6">
+              A landmark mixed-use development in Miami-Dade County. 3650 Capital provided a comprehensive financing solution structured to support the full development timeline and lease-up trajectory.
+            </p>
+            <div class="grid grid-cols-2 gap-4 mb-6">
+              <div>
+                <p class="text-teal text-2xl font-extrabold">$185M</p>
+                <p class="text-white/30 text-xs mt-1">Loan Amount</p>
+              </div>
+              <div>
+                <p class="text-teal text-2xl font-extrabold">Mixed-Use</p>
+                <p class="text-white/30 text-xs mt-1">Property Type</p>
+              </div>
+            </div>
+            <a href="#" class="inline-flex items-center gap-2 text-teal text-sm font-semibold hover:text-teal-dim transition-colors">
+              View Case Study
+              <span class="material-symbols-outlined text-base">arrow_forward</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Transaction grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+
+        <!-- Transaction 1 -->
+        <div class="reveal reveal-delay-1 bento-card bg-surface-high rounded-card overflow-hidden">
+          <div class="relative h-48">
+            <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Oasis-Pointe.-Image-courtesy-of-3650-REIT-.jpeg?ssl=1"
+                 alt="Oasis Pointe property"
+                 class="img-cover">
+            <div class="absolute top-3 left-3">
+              <span class="prop-tag">Multi</span>
+            </div>
+          </div>
+          <div class="p-6">
+            <h4 class="text-lg font-bold text-white mb-1">Oasis Pointe</h4>
+            <p class="text-white/30 text-xs mb-3">Tampa, FL</p>
+            <div class="flex justify-between items-end">
+              <div>
+                <p class="text-teal text-xl font-extrabold">$72M</p>
+                <p class="text-white/30 text-xs mt-1">Loan Amount</p>
+              </div>
+              <span class="material-symbols-outlined text-white/10 text-3xl">apartment</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Transaction 2 -->
+        <div class="reveal reveal-delay-2 bento-card bg-surface-high rounded-card overflow-hidden">
+          <div class="relative h-48">
+            <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/pere-panel-group-shot.jpg?ssl=1"
+                 alt="PERE panel discussion"
+                 class="img-cover">
+            <div class="absolute top-3 left-3">
+              <span class="prop-tag">Office</span>
+            </div>
+          </div>
+          <div class="p-6">
+            <h4 class="text-lg font-bold text-white mb-1">Midtown Office Tower</h4>
+            <p class="text-white/30 text-xs mb-3">New York, NY</p>
+            <div class="flex justify-between items-end">
+              <div>
+                <p class="text-teal text-xl font-extrabold">$140M</p>
+                <p class="text-white/30 text-xs mt-1">Loan Amount</p>
+              </div>
+              <span class="material-symbols-outlined text-white/10 text-3xl">domain</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Transaction 3 -->
+        <div class="reveal reveal-delay-3 bento-card bg-surface-high rounded-card overflow-hidden">
+          <div class="relative h-48">
+            <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/grove-central-hero.jpg?ssl=1"
+                 alt="Grove Central property"
+                 class="img-cover">
+            <div class="absolute top-3 left-3">
+              <span class="prop-tag">Industrial</span>
+            </div>
+          </div>
+          <div class="p-6">
+            <h4 class="text-lg font-bold text-white mb-1">Grove Central</h4>
+            <p class="text-white/30 text-xs mb-3">Miami, FL</p>
+            <div class="flex justify-between items-end">
+              <div>
+                <p class="text-teal text-xl font-extrabold">$95M</p>
+                <p class="text-white/30 text-xs mt-1">Loan Amount</p>
+              </div>
+              <span class="material-symbols-outlined text-white/10 text-3xl">warehouse</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== CTA / CONTACT ===================== -->
+  <section data-review-section="contact" id="contact" class="relative py-24 md:py-36 bg-void overflow-hidden">
+    <!-- Subtle gradient orb -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-teal/5 blur-[120px] pointer-events-none" aria-hidden="true"></div>
+
+    <div class="relative z-10 max-w-3xl mx-auto px-6 text-center">
+      <p class="reveal text-teal text-sm font-semibold tracking-widest uppercase mb-4">Get in Touch</p>
+      <h2 class="reveal reveal-delay-1 text-3xl md:text-5xl font-extrabold text-white leading-tight mb-6">
+        Ready to secure your project's future?
+      </h2>
+      <p class="reveal reveal-delay-2 text-white/40 text-lg leading-relaxed mb-10 max-w-xl mx-auto">
+        Whether you are seeking a new loan, exploring a refinance, or want to learn more about our integrated platform, our team is ready to discuss your next opportunity.
+      </p>
+
+      <!-- CTAs -->
+      <div class="reveal reveal-delay-3 flex flex-wrap justify-center gap-4 mb-14">
+        <a href="mailto:info@3650capital.com" class="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-teal text-void font-bold text-sm hover:bg-teal-dim transition-colors duration-200">
+          <span class="material-symbols-outlined text-lg">mail</span>
+          Contact Our Team
+        </a>
+        <a href="tel:+12125551234" class="inline-flex items-center gap-2 px-8 py-4 rounded-full border border-white/15 text-white/80 font-semibold text-sm hover:border-teal/40 hover:text-teal transition-colors duration-200">
+          <span class="material-symbols-outlined text-lg">call</span>
+          (212) 364-3650
+        </a>
+      </div>
+
+      <!-- Contact info -->
+      <div class="reveal reveal-delay-4 grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
+        <div>
+          <div class="w-12 h-12 rounded-xl bg-surface-high flex items-center justify-center mx-auto mb-3">
+            <span class="material-symbols-outlined text-teal text-xl">location_on</span>
+          </div>
+          <p class="text-white/60 text-sm font-medium">New York</p>
+          <p class="text-white/30 text-xs mt-1">1140 Avenue of the Americas<br>New York, NY 10036</p>
+        </div>
+        <div>
+          <div class="w-12 h-12 rounded-xl bg-surface-high flex items-center justify-center mx-auto mb-3">
+            <span class="material-symbols-outlined text-teal text-xl">location_on</span>
+          </div>
+          <p class="text-white/60 text-sm font-medium">Miami</p>
+          <p class="text-white/30 text-xs mt-1">2601 South Bayshore Drive<br>Miami, FL 33133</p>
+        </div>
+        <div>
+          <div class="w-12 h-12 rounded-xl bg-surface-high flex items-center justify-center mx-auto mb-3">
+            <span class="material-symbols-outlined text-teal text-xl">schedule</span>
+          </div>
+          <p class="text-white/60 text-sm font-medium">Business Hours</p>
+          <p class="text-white/30 text-xs mt-1">Monday - Friday<br>9:00 AM - 6:00 PM ET</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="bg-surface border-t border-white/5 py-14">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+
+        <!-- Column 1: Logo & tagline -->
+        <div>
+          <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650Capital-Logo.png?ssl=1"
+               alt="3650 Capital logo"
+               class="h-7 w-auto brightness-110 mb-4">
+          <p class="text-white/30 text-sm leading-relaxed max-w-xs">
+            An integrated commercial real estate lending platform delivering certainty from Day 1 to Day 3650.
+          </p>
+        </div>
+
+        <!-- Column 2: Links -->
+        <div>
+          <h4 class="text-white/50 text-xs font-semibold tracking-widest uppercase mb-4">Navigation</h4>
+          <ul class="space-y-2">
+            <li><a href="#platform" class="text-white/30 text-sm hover:text-teal transition-colors">Platform</a></li>
+            <li><a href="#story" class="text-white/30 text-sm hover:text-teal transition-colors">Our Story</a></li>
+            <li><a href="#excellence" class="text-white/30 text-sm hover:text-teal transition-colors">Excellence</a></li>
+            <li><a href="#transactions" class="text-white/30 text-sm hover:text-teal transition-colors">Transactions</a></li>
+            <li><a href="#contact" class="text-white/30 text-sm hover:text-teal transition-colors">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Legal -->
+        <div>
+          <h4 class="text-white/50 text-xs font-semibold tracking-widest uppercase mb-4">Legal</h4>
+          <ul class="space-y-2">
+            <li><a href="#" class="text-white/30 text-sm hover:text-teal transition-colors">Privacy Policy</a></li>
+            <li><a href="#" class="text-white/30 text-sm hover:text-teal transition-colors">Terms of Use</a></li>
+            <li><a href="#" class="text-white/30 text-sm hover:text-teal transition-colors">Disclosures</a></li>
+          </ul>
+          <div class="mt-6 flex gap-4">
+            <a href="#" class="w-9 h-9 rounded-lg bg-surface-high flex items-center justify-center text-white/30 hover:text-teal hover:bg-surface-highest transition-colors" aria-label="LinkedIn">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+            <a href="#" class="w-9 h-9 rounded-lg bg-surface-high flex items-center justify-center text-white/30 hover:text-teal hover:bg-surface-highest transition-colors" aria-label="Twitter">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom bar -->
+      <div class="mt-12 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
+        <p class="text-white/20 text-xs">&copy; 2026 3650 Capital. All rights reserved.</p>
+        <p class="text-white/10 text-xs">Designed with precision. Built for continuity.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ===================== SCRIPTS ===================== -->
+  <script>
+    // Mobile menu toggle
+    (function() {
+      const btn = document.getElementById('mobileMenuBtn');
+      const menu = document.getElementById('mobileMenu');
+      if (btn && menu) {
+        btn.addEventListener('click', function() {
+          menu.classList.toggle('hidden');
+          const icon = btn.querySelector('.material-symbols-outlined');
+          icon.textContent = menu.classList.contains('hidden') ? 'menu' : 'close';
+        });
+        // Close on link click
+        menu.querySelectorAll('a').forEach(function(link) {
+          link.addEventListener('click', function() {
+            menu.classList.add('hidden');
+            btn.querySelector('.material-symbols-outlined').textContent = 'menu';
+          });
+        });
+      }
+    })();
+
+    // IntersectionObserver for scroll reveal animations
+    (function() {
+      var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      if (prefersReduced) {
+        // Make everything visible immediately
+        document.querySelectorAll('.reveal').forEach(function(el) {
+          el.classList.add('visible');
+        });
+        return;
+      }
+
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.08,
+        rootMargin: '0px 0px -40px 0px'
+      });
+
+      document.querySelectorAll('.reveal').forEach(function(el) {
+        observer.observe(el);
+      });
+    })();
+
+    // Counter animation
+    (function() {
+      var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      function animateCounter(el) {
+        var target = parseFloat(el.getAttribute('data-target'));
+        var prefix = el.getAttribute('data-prefix') || '';
+        var suffix = el.getAttribute('data-suffix') || '';
+        var isDecimal = target % 1 !== 0;
+        var duration = 2000;
+        var startTime = null;
+
+        if (prefersReduced) {
+          el.textContent = prefix + (isDecimal ? target.toFixed(1) : Math.round(target)) + suffix;
+          return;
+        }
+
+        function easeOutQuart(t) {
+          return 1 - Math.pow(1 - t, 4);
+        }
+
+        function step(timestamp) {
+          if (!startTime) startTime = timestamp;
+          var progress = Math.min((timestamp - startTime) / duration, 1);
+          var easedProgress = easeOutQuart(progress);
+          var current = easedProgress * target;
+
+          if (isDecimal) {
+            el.textContent = prefix + current.toFixed(1) + suffix;
+          } else {
+            el.textContent = prefix + Math.round(current) + suffix;
+          }
+
+          if (progress < 1) {
+            requestAnimationFrame(step);
+          } else {
+            el.textContent = prefix + (isDecimal ? target.toFixed(1) : Math.round(target)) + suffix;
+          }
+        }
+
+        requestAnimationFrame(step);
+      }
+
+      var counterObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            animateCounter(entry.target);
+            counterObserver.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.5
+      });
+
+      document.querySelectorAll('.counter-value').forEach(function(el) {
+        counterObserver.observe(el);
+      });
+    })();
+
+    // Navbar background solidify on scroll
+    (function() {
+      var nav = document.querySelector('nav');
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > 80) {
+          nav.classList.add('bg-void/95');
+          nav.classList.remove('bg-void/80');
+        } else {
+          nav.classList.remove('bg-void/95');
+          nav.classList.add('bg-void/80');
+        }
+      }, { passive: true });
+    })();
+  </script>
+
+</body>
+</html>

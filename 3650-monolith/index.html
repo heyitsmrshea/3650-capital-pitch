@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3650 Capital — One Platform. Total Continuity.</title>
+  <meta name="description" content="3650 Capital is an integrated commercial real estate lending platform providing origination, servicing, asset management, and capital markets execution.">
+
+  <!-- Google Fonts: Manrope + Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Material Symbols Outlined -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'void': '#131313',
+            'void-light': '#1c1b1b',
+            'void-high': '#2a2a2a',
+            'void-bright': '#393939',
+            'electric': '#a7c8ff',
+            'electric-dim': '#3291ff',
+            'silver': '#c8cad0',
+          },
+          fontFamily: {
+            'headline': ['Manrope', 'sans-serif'],
+            'body': ['Inter', 'sans-serif'],
+          },
+          borderRadius: {
+            'DEFAULT': '4px',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* ── Base resets ── */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #131313;
+      color: #c8cad0;
+      overflow-x: hidden;
+    }
+
+    /* ── Scrollbar ── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #131313; }
+    ::-webkit-scrollbar-thumb { background: #2a2a2a; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #393939; }
+
+    /* ── Electric gradient utility ── */
+    .electric-gradient {
+      background: linear-gradient(135deg, #a7c8ff 0%, #3291ff 100%);
+    }
+
+    .electric-gradient-text {
+      background: linear-gradient(135deg, #a7c8ff 0%, #3291ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ── Ghost outline utility ── */
+    .ghost-outline {
+      outline: 1px solid rgba(167, 200, 255, 0.15);
+      outline-offset: -1px;
+    }
+
+    /* ── Glassmorphism nav ── */
+    .glass-nav {
+      background: rgba(19, 19, 19, 0.70);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+
+    /* ── Ambient depth shadow ── */
+    .ambient-shadow {
+      box-shadow: 0 8px 24px rgba(50, 145, 255, 0.08);
+    }
+
+    .ambient-shadow-lg {
+      box-shadow: 0 12px 40px rgba(50, 145, 255, 0.12);
+    }
+
+    /* ── Transition easing ── */
+    .ease-power4 {
+      transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* ── Scroll animations ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ── Reduced motion ── */
+    @media (prefers-reduced-motion: reduce) {
+      .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    /* ── Hero background overlay ── */
+    .hero-bg-overlay {
+      background: linear-gradient(
+        180deg,
+        rgba(19, 19, 19, 0.82) 0%,
+        rgba(19, 19, 19, 0.90) 50%,
+        #131313 100%
+      );
+    }
+
+    .hero-bg-tint {
+      mix-blend-mode: overlay;
+      background: linear-gradient(135deg, rgba(50, 145, 255, 0.15) 0%, transparent 60%);
+    }
+
+    /* ── Metric card hover ── */
+    .metric-card {
+      transition: background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                  box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .metric-card:hover {
+      background-color: #2a2a2a;
+      box-shadow: 0 8px 24px rgba(50, 145, 255, 0.08);
+    }
+
+    /* ── Platform card hover ── */
+    .platform-card {
+      transition: background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                  box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .platform-card:hover {
+      background-color: #393939;
+      box-shadow: 0 12px 40px rgba(50, 145, 255, 0.10);
+      transform: translateY(-4px);
+    }
+
+    /* ── CTA button styles ── */
+    .btn-electric {
+      background: linear-gradient(135deg, #a7c8ff 0%, #3291ff 100%);
+      color: #131313;
+      font-weight: 600;
+      transition: box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .btn-electric:hover {
+      box-shadow: 0 8px 32px rgba(50, 145, 255, 0.30);
+      transform: translateY(-2px);
+    }
+
+    .btn-ghost {
+      outline: 1px solid rgba(167, 200, 255, 0.15);
+      outline-offset: -1px;
+      color: #c8cad0;
+      font-weight: 500;
+      transition: outline-color 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                  color 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                  background-color 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .btn-ghost:hover {
+      outline-color: rgba(167, 200, 255, 0.35);
+      color: #a7c8ff;
+      background-color: rgba(167, 200, 255, 0.05);
+    }
+
+    /* ── Transaction card gradient overlay ── */
+    .deal-overlay {
+      background: linear-gradient(
+        0deg,
+        rgba(19, 19, 19, 0.95) 0%,
+        rgba(19, 19, 19, 0.60) 40%,
+        rgba(19, 19, 19, 0.20) 100%
+      );
+    }
+
+    /* ── Featured deal overlay ── */
+    .featured-deal-overlay {
+      background: linear-gradient(
+        0deg,
+        rgba(19, 19, 19, 0.92) 0%,
+        rgba(19, 19, 19, 0.50) 50%,
+        rgba(19, 19, 19, 0.15) 100%
+      );
+    }
+
+    /* ── Nav link hover ── */
+    .nav-link {
+      position: relative;
+      transition: color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: linear-gradient(135deg, #a7c8ff, #3291ff);
+      transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .nav-link:hover {
+      color: #a7c8ff;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    /* ── Accent line ── */
+    .accent-line {
+      width: 56px;
+      height: 3px;
+      background: linear-gradient(135deg, #a7c8ff 0%, #3291ff 100%);
+      border-radius: 4px;
+    }
+
+    /* ── Mobile menu ── */
+    .mobile-menu {
+      transform: translateX(100%);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .mobile-menu.is-open {
+      transform: translateX(0);
+    }
+
+    /* ── Feature point icon container ── */
+    .feature-icon-wrap {
+      background: rgba(50, 145, 255, 0.08);
+      transition: background-color 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .feature-icon-wrap:hover {
+      background: rgba(50, 145, 255, 0.14);
+    }
+
+    /* ── Image ambient wrapper ── */
+    .image-ambient {
+      position: relative;
+    }
+
+    .image-ambient::before {
+      content: '';
+      position: absolute;
+      inset: 12px;
+      background: rgba(50, 145, 255, 0.06);
+      border-radius: 4px;
+      filter: blur(32px);
+      z-index: -1;
+    }
+  </style>
+</head>
+
+<body data-review-page="home" class="font-body bg-void text-silver antialiased">
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       NAVIGATION
+       ════════════════════════════════════════════════════════════════════ -->
+  <nav class="glass-nav fixed top-0 left-0 right-0 z-50" data-review-section="nav">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="flex items-center justify-between h-[72px]">
+
+        <!-- Logo -->
+        <a href="#" class="flex-shrink-0">
+          <img
+            src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650Capital-Logo.png?ssl=1"
+            alt="3650 Capital"
+            class="h-8 w-auto"
+            loading="eager"
+          >
+        </a>
+
+        <!-- Desktop Links -->
+        <div class="hidden md:flex items-center gap-10">
+          <a href="#platform" class="nav-link text-sm tracking-wide text-silver/80">Platform</a>
+          <a href="#story" class="nav-link text-sm tracking-wide text-silver/80">Story</a>
+          <a href="#transactions" class="nav-link text-sm tracking-wide text-silver/80">Transactions</a>
+          <a href="#contact" class="btn-electric px-5 py-2.5 rounded text-sm font-headline font-semibold tracking-wide">
+            Contact Us
+          </a>
+        </div>
+
+        <!-- Mobile Hamburger -->
+        <button
+          id="menuToggle"
+          class="md:hidden flex flex-col justify-center items-center w-10 h-10 gap-1.5"
+          aria-label="Toggle navigation menu"
+        >
+          <span class="block w-6 h-[2px] bg-silver/80 transition-all duration-300 ease-power4" id="bar1"></span>
+          <span class="block w-6 h-[2px] bg-silver/80 transition-all duration-300 ease-power4" id="bar2"></span>
+          <span class="block w-4 h-[2px] bg-silver/80 transition-all duration-300 ease-power4 ml-auto" id="bar3"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="mobile-menu fixed top-0 right-0 w-72 h-screen bg-void-light z-50 flex flex-col pt-24 px-8 gap-8 md:hidden">
+      <button id="menuClose" class="absolute top-6 right-6 text-silver/60" aria-label="Close menu">
+        <span class="material-symbols-outlined text-2xl">close</span>
+      </button>
+      <a href="#platform" class="text-lg font-headline font-medium text-silver/80 hover:text-electric transition-colors duration-300 mobile-menu-link">Platform</a>
+      <a href="#story" class="text-lg font-headline font-medium text-silver/80 hover:text-electric transition-colors duration-300 mobile-menu-link">Story</a>
+      <a href="#transactions" class="text-lg font-headline font-medium text-silver/80 hover:text-electric transition-colors duration-300 mobile-menu-link">Transactions</a>
+      <a href="#contact" class="btn-electric px-5 py-3 rounded text-center text-sm font-headline font-semibold tracking-wide mt-4 mobile-menu-link">
+        Contact Us
+      </a>
+    </div>
+  </nav>
+
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       HERO
+       ════════════════════════════════════════════════════════════════════ -->
+  <section data-review-section="hero" class="relative min-h-screen flex items-center overflow-hidden bg-void">
+
+    <!-- Background Image -->
+    <div class="absolute inset-0 z-0">
+      <img
+        src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/grove-central-hero.jpg?ssl=1"
+        alt=""
+        class="w-full h-full object-cover opacity-20"
+        loading="eager"
+        aria-hidden="true"
+      >
+      <div class="hero-bg-tint absolute inset-0"></div>
+      <div class="hero-bg-overlay absolute inset-0"></div>
+    </div>
+
+    <!-- Content -->
+    <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 w-full pt-32 pb-24 lg:pt-40 lg:pb-32">
+      <div class="max-w-3xl">
+
+        <!-- Accent Line -->
+        <div class="accent-line mb-10 reveal"></div>
+
+        <!-- Headline -->
+        <h1 class="font-headline font-bold text-4xl sm:text-5xl lg:text-6xl xl:text-7xl text-white leading-[1.08] tracking-tight mb-8 reveal reveal-delay-1">
+          One platform.<br>
+          <span class="electric-gradient-text">Total continuity.</span>
+        </h1>
+
+        <!-- Description -->
+        <p class="text-lg sm:text-xl text-silver/70 leading-relaxed max-w-xl mb-12 reveal reveal-delay-2">
+          3650 Capital originates, services, and asset-manages every loan it makes — maintaining alignment from day one through the life of the investment.
+        </p>
+
+        <!-- CTA Row -->
+        <div class="flex flex-wrap gap-4 reveal reveal-delay-3">
+          <a href="#contact" class="btn-electric px-8 py-3.5 rounded text-sm font-headline font-semibold tracking-wide inline-flex items-center gap-2">
+            Start a Conversation
+            <span class="material-symbols-outlined text-lg">arrow_forward</span>
+          </a>
+          <a href="#platform" class="btn-ghost px-8 py-3.5 rounded text-sm font-headline font-medium tracking-wide inline-flex items-center gap-2">
+            Explore Platform
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 reveal reveal-delay-4">
+      <span class="text-xs text-silver/30 tracking-widest uppercase font-headline">Scroll</span>
+      <div class="w-[1px] h-8 bg-gradient-to-b from-electric/40 to-transparent"></div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       METRICS
+       ════════════════════════════════════════════════════════════════════ -->
+  <section data-review-section="metrics" class="bg-void-light py-28 lg:py-36">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+
+      <!-- Section Label -->
+      <div class="text-center mb-20 reveal">
+        <span class="text-xs tracking-[0.2em] uppercase text-electric/60 font-headline font-medium">By the Numbers</span>
+      </div>
+
+      <!-- Metric Cards Grid -->
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+
+        <!-- Metric 1 -->
+        <div class="metric-card bg-void-high rounded p-8 lg:p-10 text-center reveal">
+          <div class="font-headline font-bold text-4xl sm:text-5xl lg:text-[3.5rem] text-white leading-none mb-4">
+            $<span class="counter" data-target="16.3" data-decimals="1">0</span>B
+          </div>
+          <p class="text-sm text-silver/50 font-body tracking-wide">Loans Originated</p>
+        </div>
+
+        <!-- Metric 2 -->
+        <div class="metric-card bg-void-high rounded p-8 lg:p-10 text-center reveal reveal-delay-1">
+          <div class="font-headline font-bold text-4xl sm:text-5xl lg:text-[3.5rem] text-white leading-none mb-4">
+            <span class="counter" data-target="1300" data-decimals="0">0</span>+
+          </div>
+          <p class="text-sm text-silver/50 font-body tracking-wide">Properties Financed</p>
+        </div>
+
+        <!-- Metric 3 -->
+        <div class="metric-card bg-void-high rounded p-8 lg:p-10 text-center reveal reveal-delay-2">
+          <div class="font-headline font-bold text-4xl sm:text-5xl lg:text-[3.5rem] text-white leading-none mb-4">
+            $<span class="counter" data-target="11.5" data-decimals="1">0</span>B
+          </div>
+          <p class="text-sm text-silver/50 font-body tracking-wide">Securitized Volume</p>
+        </div>
+
+        <!-- Metric 4 -->
+        <div class="metric-card bg-void-high rounded p-8 lg:p-10 text-center reveal reveal-delay-3">
+          <div class="font-headline font-bold text-4xl sm:text-5xl lg:text-[3.5rem] electric-gradient-text leading-none mb-4">
+            10<span class="text-3xl sm:text-4xl lg:text-5xl">yr</span>
+          </div>
+          <p class="text-sm text-silver/50 font-body tracking-wide">Investment Horizon</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       PLATFORM
+       ════════════════════════════════════════════════════════════════════ -->
+  <section id="platform" data-review-section="platform" class="bg-void py-28 lg:py-36">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+
+      <!-- Section Header -->
+      <div class="max-w-2xl mb-20">
+        <span class="text-xs tracking-[0.2em] uppercase text-electric/60 font-headline font-medium mb-4 block reveal">Our Capabilities</span>
+        <h2 class="font-headline font-bold text-3xl sm:text-4xl lg:text-5xl text-white leading-tight mb-6 reveal reveal-delay-1">
+          The Integrated<br>Architecture
+        </h2>
+        <p class="text-base text-silver/60 leading-relaxed reveal reveal-delay-2">
+          Every function under one roof. No handoffs, no misaligned incentives — a single platform engineered for certainty of execution.
+        </p>
+      </div>
+
+      <!-- 2x2 Grid -->
+      <div class="grid sm:grid-cols-2 gap-4 lg:gap-6">
+
+        <!-- Card: Origination -->
+        <div class="platform-card bg-void-high rounded p-10 lg:p-12 reveal">
+          <div class="feature-icon-wrap w-14 h-14 rounded flex items-center justify-center mb-8">
+            <span class="material-symbols-outlined text-electric text-2xl">account_balance</span>
+          </div>
+          <h3 class="font-headline font-bold text-xl text-white mb-4">Origination</h3>
+          <p class="text-sm text-silver/55 leading-relaxed">
+            Direct lending across all commercial real estate property types. Bridge, transitional, and permanent financing with certainty of close and speed of execution that institutional borrowers require.
+          </p>
+        </div>
+
+        <!-- Card: Servicing -->
+        <div class="platform-card bg-void-high rounded p-10 lg:p-12 reveal reveal-delay-1">
+          <div class="feature-icon-wrap w-14 h-14 rounded flex items-center justify-center mb-8">
+            <span class="material-symbols-outlined text-electric text-2xl">settings</span>
+          </div>
+          <h3 class="font-headline font-bold text-xl text-white mb-4">Servicing</h3>
+          <p class="text-sm text-silver/55 leading-relaxed">
+            In-house primary, master, and special servicing. Retaining servicing means retaining knowledge — every decision informed by first-hand origination context and ongoing asset intelligence.
+          </p>
+        </div>
+
+        <!-- Card: Asset Management -->
+        <div class="platform-card bg-void-high rounded p-10 lg:p-12 reveal reveal-delay-2">
+          <div class="feature-icon-wrap w-14 h-14 rounded flex items-center justify-center mb-8">
+            <span class="material-symbols-outlined text-electric text-2xl">monitoring</span>
+          </div>
+          <h3 class="font-headline font-bold text-xl text-white mb-4">Asset Management</h3>
+          <p class="text-sm text-silver/55 leading-relaxed">
+            Proactive portfolio surveillance from origination through maturity. Dedicated asset managers who understand the business plan from day one, protecting investor capital through every market cycle.
+          </p>
+        </div>
+
+        <!-- Card: Capital Markets -->
+        <div class="platform-card bg-void-high rounded p-10 lg:p-12 reveal reveal-delay-3">
+          <div class="feature-icon-wrap w-14 h-14 rounded flex items-center justify-center mb-8">
+            <span class="material-symbols-outlined text-electric text-2xl">trending_up</span>
+          </div>
+          <h3 class="font-headline font-bold text-xl text-white mb-4">Capital Markets</h3>
+          <p class="text-sm text-silver/55 leading-relaxed">
+            Securitization and structured finance execution. Proprietary CRE CLO and SASB programs with deep investor relationships, delivering competitive cost of capital back to borrowers.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       STORY
+       ════════════════════════════════════════════════════════════════════ -->
+  <section id="story" data-review-section="story" class="bg-void-light py-28 lg:py-36">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
+
+        <!-- Text Column -->
+        <div class="order-2 lg:order-1">
+          <span class="text-xs tracking-[0.2em] uppercase text-electric/60 font-headline font-medium mb-4 block reveal">Our Story</span>
+          <h2 class="font-headline font-bold text-3xl sm:text-4xl lg:text-5xl text-white leading-tight mb-8 reveal reveal-delay-1">
+            3,650 days.<br>
+            <span class="electric-gradient-text">One commitment.</span>
+          </h2>
+          <div class="space-y-6 reveal reveal-delay-2">
+            <p class="text-base text-silver/60 leading-relaxed">
+              Our name is our thesis. 3,650 days — ten years — represents the lifecycle of our investment philosophy. We don't originate loans to transfer risk. We originate to hold, service, and manage.
+            </p>
+            <p class="text-base text-silver/60 leading-relaxed">
+              Founded by industry veterans who understood that the traditional model — where originators, servicers, and asset managers operate in silos — creates misalignment. We built a single entity that keeps every function, and every incentive, under one roof.
+            </p>
+            <p class="text-base text-silver/60 leading-relaxed">
+              Headquartered in Miami with offices in New York, our team of 150+ professionals manages the full lifecycle of commercial real estate debt.
+            </p>
+          </div>
+        </div>
+
+        <!-- Image Column -->
+        <div class="order-1 lg:order-2 reveal reveal-delay-1">
+          <div class="image-ambient relative">
+            <img
+              src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/nyc-office-interior-2.jpg?ssl=1"
+              alt="3650 Capital New York City office interior"
+              class="w-full rounded object-cover aspect-[4/3] ambient-shadow-lg"
+              loading="lazy"
+            >
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       CONTINUITY
+       ════════════════════════════════════════════════════════════════════ -->
+  <section data-review-section="continuity" class="bg-void py-28 lg:py-36">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
+
+        <!-- Image Column -->
+        <div class="reveal">
+          <div class="relative image-ambient">
+            <img
+              src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Commercial-Observer-Founders-Image.png?ssl=1"
+              alt="3650 Capital founding partners"
+              class="w-full rounded object-cover aspect-[4/3]"
+              loading="lazy"
+            >
+            <!-- Electric tint overlay -->
+            <div class="absolute inset-0 bg-gradient-to-br from-electric-dim/10 to-transparent rounded pointer-events-none"></div>
+          </div>
+        </div>
+
+        <!-- Features Column -->
+        <div>
+          <span class="text-xs tracking-[0.2em] uppercase text-electric/60 font-headline font-medium mb-4 block reveal">Continuity Model</span>
+          <h2 class="font-headline font-bold text-3xl sm:text-4xl lg:text-5xl text-white leading-tight mb-12 reveal reveal-delay-1">
+            Capital that doesn't<br>transfer.
+          </h2>
+
+          <!-- Feature Points -->
+          <div class="space-y-10">
+
+            <!-- Feature 1 -->
+            <div class="flex gap-6 reveal reveal-delay-1">
+              <div class="feature-icon-wrap w-12 h-12 rounded flex items-center justify-center flex-shrink-0 mt-1">
+                <span class="material-symbols-outlined text-electric text-xl">lock</span>
+              </div>
+              <div>
+                <h4 class="font-headline font-semibold text-white text-base mb-2">Retained Servicing</h4>
+                <p class="text-sm text-silver/55 leading-relaxed">
+                  We service every loan we originate. Borrowers deal with the same team from term sheet to maturity — no transfers, no surprises, no gaps in institutional knowledge.
+                </p>
+              </div>
+            </div>
+
+            <!-- Feature 2 -->
+            <div class="flex gap-6 reveal reveal-delay-2">
+              <div class="feature-icon-wrap w-12 h-12 rounded flex items-center justify-center flex-shrink-0 mt-1">
+                <span class="material-symbols-outlined text-electric text-xl">handshake</span>
+              </div>
+              <div>
+                <h4 class="font-headline font-semibold text-white text-base mb-2">Aligned Incentives</h4>
+                <p class="text-sm text-silver/55 leading-relaxed">
+                  When origination, servicing, and asset management sit in the same entity, conflicts vanish. Our economic interest is identical to our investors' and borrowers' success.
+                </p>
+              </div>
+            </div>
+
+            <!-- Feature 3 -->
+            <div class="flex gap-6 reveal reveal-delay-3">
+              <div class="feature-icon-wrap w-12 h-12 rounded flex items-center justify-center flex-shrink-0 mt-1">
+                <span class="material-symbols-outlined text-electric text-xl">shield</span>
+              </div>
+              <div>
+                <h4 class="font-headline font-semibold text-white text-base mb-2">Cycle-Tested Conviction</h4>
+                <p class="text-sm text-silver/55 leading-relaxed">
+                  Through every rate environment and market dislocation, our integrated model delivers consistency. We underwrote through COVID, through rising rates, through regional banking stress — with zero losses to investors.
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       TRANSACTIONS
+       ════════════════════════════════════════════════════════════════════ -->
+  <section id="transactions" data-review-section="transactions" class="bg-void-light py-28 lg:py-36">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+
+      <!-- Section Header -->
+      <div class="max-w-2xl mb-16">
+        <span class="text-xs tracking-[0.2em] uppercase text-electric/60 font-headline font-medium mb-4 block reveal">Selected Transactions</span>
+        <h2 class="font-headline font-bold text-3xl sm:text-4xl lg:text-5xl text-white leading-tight reveal reveal-delay-1">
+          Deals that define<br>the platform.
+        </h2>
+      </div>
+
+      <!-- Featured Deal -->
+      <div class="mb-6 reveal reveal-delay-1">
+        <div class="relative rounded overflow-hidden group">
+          <img
+            src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/rendering-center-at-miami-gardens-courtesy-3650-reit.jpg?ssl=1"
+            alt="Center at Miami Gardens — mixed-use development rendering"
+            class="w-full aspect-[21/9] object-cover transition-transform duration-700 ease-power4 group-hover:scale-[1.03]"
+            loading="lazy"
+          >
+          <div class="featured-deal-overlay absolute inset-0"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-8 lg:p-12">
+            <div class="flex flex-wrap items-end justify-between gap-6">
+              <div>
+                <span class="text-xs tracking-[0.15em] uppercase text-electric/70 font-headline font-medium mb-3 block">Featured Transaction</span>
+                <h3 class="font-headline font-bold text-2xl sm:text-3xl text-white mb-2">Center at Miami Gardens</h3>
+                <p class="text-sm text-silver/60">Mixed-Use Development &middot; Miami-Dade County, FL</p>
+              </div>
+              <div class="text-right">
+                <div class="font-headline font-bold text-3xl sm:text-4xl electric-gradient-text">$178M</div>
+                <p class="text-xs text-silver/50 mt-1">Senior Construction Loan</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Two Deal Cards -->
+      <div class="grid sm:grid-cols-2 gap-4 lg:gap-6">
+
+        <!-- Deal 2 -->
+        <div class="relative rounded overflow-hidden group reveal reveal-delay-2">
+          <img
+            src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/grove-central-hero.jpg?ssl=1"
+            alt="Grove Central mixed-use transit-oriented development"
+            class="w-full aspect-[16/10] object-cover transition-transform duration-700 ease-power4 group-hover:scale-[1.03]"
+            loading="lazy"
+          >
+          <div class="deal-overlay absolute inset-0"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-6 lg:p-8">
+            <h3 class="font-headline font-bold text-lg sm:text-xl text-white mb-1">Grove Central</h3>
+            <p class="text-xs text-silver/55 mb-3">Mixed-Use TOD &middot; Coconut Grove, FL</p>
+            <div class="font-headline font-bold text-2xl electric-gradient-text">$92M</div>
+          </div>
+        </div>
+
+        <!-- Deal 3 -->
+        <div class="relative rounded overflow-hidden group reveal reveal-delay-3">
+          <img
+            src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/pere-panel-group-shot.jpg?ssl=1"
+            alt="3650 Capital PERE industry panel"
+            class="w-full aspect-[16/10] object-cover transition-transform duration-700 ease-power4 group-hover:scale-[1.03]"
+            loading="lazy"
+          >
+          <div class="deal-overlay absolute inset-0"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-6 lg:p-8">
+            <h3 class="font-headline font-bold text-lg sm:text-xl text-white mb-1">National Industrial Portfolio</h3>
+            <p class="text-xs text-silver/55 mb-3">Industrial &middot; Multi-State</p>
+            <div class="font-headline font-bold text-2xl electric-gradient-text">$215M</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       CTA / CONTACT
+       ════════════════════════════════════════════════════════════════════ -->
+  <section id="contact" data-review-section="contact" class="bg-void py-32 lg:py-44">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="max-w-2xl mx-auto text-center">
+
+        <!-- Accent Line Centered -->
+        <div class="flex justify-center mb-10 reveal">
+          <div class="accent-line"></div>
+        </div>
+
+        <h2 class="font-headline font-bold text-3xl sm:text-4xl lg:text-5xl text-white leading-tight mb-6 reveal reveal-delay-1">
+          Begin a conversation.
+        </h2>
+
+        <p class="text-base text-silver/55 leading-relaxed mb-12 reveal reveal-delay-2">
+          Whether you're exploring a new financing structure, refinancing existing debt, or evaluating a capital partner — our team is ready to discuss your objectives.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-wrap justify-center gap-4 reveal reveal-delay-3">
+          <a href="mailto:info@3650capital.com" class="btn-electric px-10 py-4 rounded text-sm font-headline font-semibold tracking-wide inline-flex items-center gap-2">
+            Get in Touch
+            <span class="material-symbols-outlined text-lg">arrow_forward</span>
+          </a>
+          <a href="#platform" class="btn-ghost px-10 py-4 rounded text-sm font-headline font-medium tracking-wide inline-flex items-center gap-2">
+            View Platform
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       FOOTER
+       ════════════════════════════════════════════════════════════════════ -->
+  <footer data-review-section="footer" class="bg-void py-16">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+
+      <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-10">
+
+        <!-- Logo + Tagline -->
+        <div>
+          <img
+            src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650Capital-Logo.png?ssl=1"
+            alt="3650 Capital"
+            class="h-7 w-auto mb-4"
+            loading="lazy"
+          >
+          <p class="text-xs text-silver/35">One platform. Total continuity.</p>
+        </div>
+
+        <!-- Footer Links -->
+        <div class="flex flex-wrap gap-8 lg:gap-12">
+          <a href="#platform" class="text-xs text-silver/40 hover:text-silver/70 transition-colors duration-300 font-headline tracking-wide">Platform</a>
+          <a href="#story" class="text-xs text-silver/40 hover:text-silver/70 transition-colors duration-300 font-headline tracking-wide">Story</a>
+          <a href="#transactions" class="text-xs text-silver/40 hover:text-silver/70 transition-colors duration-300 font-headline tracking-wide">Transactions</a>
+          <a href="#contact" class="text-xs text-silver/40 hover:text-silver/70 transition-colors duration-300 font-headline tracking-wide">Contact</a>
+        </div>
+
+      </div>
+
+      <!-- Divider — done via bg shift, not border -->
+      <div class="h-[1px] bg-void-high mt-12 mb-8"></div>
+
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+        <p class="text-xs text-silver/25">
+          &copy; 2026 3650 Capital LLC. All rights reserved.
+        </p>
+        <div class="flex gap-6">
+          <a href="#" class="text-xs text-silver/25 hover:text-silver/50 transition-colors duration-300">Privacy Policy</a>
+          <a href="#" class="text-xs text-silver/25 hover:text-silver/50 transition-colors duration-300">Terms of Use</a>
+          <a href="#" class="text-xs text-silver/25 hover:text-silver/50 transition-colors duration-300">Disclosures</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       SCRIPTS
+       ════════════════════════════════════════════════════════════════════ -->
+  <script>
+    (function () {
+      'use strict';
+
+      /* ── Reduced Motion Check ── */
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      /* ─────────────────────────────────────────────
+         IntersectionObserver — Scroll Reveal
+         ───────────────────────────────────────────── */
+      function initScrollReveal() {
+        const reveals = document.querySelectorAll('.reveal');
+
+        if (prefersReducedMotion) {
+          reveals.forEach(function (el) {
+            el.classList.add('is-visible');
+          });
+          return;
+        }
+
+        const observer = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          {
+            threshold: 0.12,
+            rootMargin: '0px 0px -40px 0px',
+          }
+        );
+
+        reveals.forEach(function (el) {
+          observer.observe(el);
+        });
+      }
+
+      /* ─────────────────────────────────────────────
+         Counter Animation
+         ───────────────────────────────────────────── */
+      function initCounterAnimation() {
+        const counters = document.querySelectorAll('.counter');
+
+        if (prefersReducedMotion) {
+          counters.forEach(function (counter) {
+            var target = parseFloat(counter.getAttribute('data-target'));
+            var decimals = parseInt(counter.getAttribute('data-decimals'), 10) || 0;
+            counter.textContent = target.toLocaleString('en-US', {
+              minimumFractionDigits: decimals,
+              maximumFractionDigits: decimals,
+            });
+          });
+          return;
+        }
+
+        var counterObserver = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                animateCounter(entry.target);
+                counterObserver.unobserve(entry.target);
+              }
+            });
+          },
+          {
+            threshold: 0.5,
+          }
+        );
+
+        counters.forEach(function (counter) {
+          counterObserver.observe(counter);
+        });
+      }
+
+      function animateCounter(el) {
+        var target = parseFloat(el.getAttribute('data-target'));
+        var decimals = parseInt(el.getAttribute('data-decimals'), 10) || 0;
+        var duration = 2000;
+        var startTime = null;
+
+        function easeOutQuart(t) {
+          return 1 - Math.pow(1 - t, 4);
+        }
+
+        function step(timestamp) {
+          if (!startTime) startTime = timestamp;
+          var progress = Math.min((timestamp - startTime) / duration, 1);
+          var easedProgress = easeOutQuart(progress);
+          var current = easedProgress * target;
+
+          if (decimals > 0) {
+            el.textContent = current.toLocaleString('en-US', {
+              minimumFractionDigits: decimals,
+              maximumFractionDigits: decimals,
+            });
+          } else {
+            el.textContent = Math.floor(current).toLocaleString('en-US');
+          }
+
+          if (progress < 1) {
+            requestAnimationFrame(step);
+          } else {
+            el.textContent = target.toLocaleString('en-US', {
+              minimumFractionDigits: decimals,
+              maximumFractionDigits: decimals,
+            });
+          }
+        }
+
+        requestAnimationFrame(step);
+      }
+
+      /* ─────────────────────────────────────────────
+         Mobile Menu Toggle
+         ───────────────────────────────────────────── */
+      function initMobileMenu() {
+        var toggle = document.getElementById('menuToggle');
+        var closeBtn = document.getElementById('menuClose');
+        var mobileMenu = document.getElementById('mobileMenu');
+        var menuLinks = document.querySelectorAll('.mobile-menu-link');
+
+        if (!toggle || !mobileMenu) return;
+
+        function openMenu() {
+          mobileMenu.classList.add('is-open');
+          document.body.style.overflow = 'hidden';
+        }
+
+        function closeMenu() {
+          mobileMenu.classList.remove('is-open');
+          document.body.style.overflow = '';
+        }
+
+        toggle.addEventListener('click', openMenu);
+
+        if (closeBtn) {
+          closeBtn.addEventListener('click', closeMenu);
+        }
+
+        menuLinks.forEach(function (link) {
+          link.addEventListener('click', closeMenu);
+        });
+
+        // Close on ESC
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape' && mobileMenu.classList.contains('is-open')) {
+            closeMenu();
+          }
+        });
+      }
+
+      /* ─────────────────────────────────────────────
+         Nav Background Opacity on Scroll
+         ───────────────────────────────────────────── */
+      function initNavScroll() {
+        var nav = document.querySelector('.glass-nav');
+        if (!nav) return;
+
+        var ticking = false;
+
+        window.addEventListener('scroll', function () {
+          if (!ticking) {
+            requestAnimationFrame(function () {
+              if (window.scrollY > 80) {
+                nav.style.background = 'rgba(19, 19, 19, 0.88)';
+              } else {
+                nav.style.background = 'rgba(19, 19, 19, 0.70)';
+              }
+              ticking = false;
+            });
+            ticking = true;
+          }
+        });
+      }
+
+      /* ─────────────────────────────────────────────
+         Smooth Scroll for Anchor Links
+         ───────────────────────────────────────────── */
+      function initSmoothScroll() {
+        document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+          anchor.addEventListener('click', function (e) {
+            var targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+
+            var targetEl = document.querySelector(targetId);
+            if (targetEl) {
+              e.preventDefault();
+              var navHeight = 72;
+              var targetPosition = targetEl.getBoundingClientRect().top + window.pageYOffset - navHeight;
+              window.scrollTo({
+                top: targetPosition,
+                behavior: prefersReducedMotion ? 'auto' : 'smooth',
+              });
+            }
+          });
+        });
+      }
+
+      /* ─────────────────────────────────────────────
+         Initialize Everything
+         ───────────────────────────────────────────── */
+      document.addEventListener('DOMContentLoaded', function () {
+        initScrollReveal();
+        initCounterAnimation();
+        initMobileMenu();
+        initNavScroll();
+        initSmoothScroll();
+      });
+    })();
+  </script>
+
+</body>
+</html>
