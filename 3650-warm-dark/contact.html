@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3650 Capital — Contact</title>
+  <meta name="description" content="Contact 3650 Capital. Direct channels, real offices across Miami, New York, Los Angeles, Dallas, Atlanta, Nashville, and Washington DC.">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Material Symbols Outlined -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'void': '#0f1114',
+            'surface': '#1a1d21',
+            'surface-high': '#252830',
+            'surface-highest': '#30343c',
+            'teal': '#4dd4ac',
+            'teal-dim': '#2a9d7e',
+            'amber-soft': '#e9c176',
+          },
+          fontFamily: {
+            'display': ['Plus Jakarta Sans', 'sans-serif'],
+          },
+          borderRadius: {
+            'card': '16px',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background: #0f1114; color: #e2e4e9; }
+
+    /* Scroll animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+    .reveal-delay-5 { transition-delay: 0.5s; }
+
+    /* Respect prefers-reduced-motion */
+    @media (prefers-reduced-motion: reduce) {
+      .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+      .bento-card { transition: none !important; }
+      .bento-card:hover { transform: none !important; }
+    }
+
+    /* Bento card hover */
+    .bento-card {
+      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.35s ease;
+      border: 1px solid transparent;
+    }
+    .bento-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 32px rgba(77, 212, 172, 0.08);
+      border-color: rgba(77, 212, 172, 0.2);
+    }
+
+    /* Prop tag */
+    .prop-tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      background: rgba(77, 212, 172, 0.1);
+      color: #4dd4ac;
+      border: 1px solid rgba(77, 212, 172, 0.15);
+    }
+
+    /* Nav blur */
+    .nav-glass {
+      backdrop-filter: blur(16px) saturate(1.2);
+      -webkit-backdrop-filter: blur(16px) saturate(1.2);
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #0f1114; }
+    ::-webkit-scrollbar-thumb { background: #30343c; border-radius: 999px; }
+    ::-webkit-scrollbar-thumb:hover { background: #4dd4ac; }
+
+    /* Image cover helper */
+    .img-cover { object-fit: cover; width: 100%; height: 100%; }
+
+    /* Form focus states */
+    .form-input {
+      background: #1a1d21;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 14px 18px;
+      font-size: 0.9375rem;
+      color: #e2e4e9;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      width: 100%;
+      outline: none;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .form-input:focus {
+      border-color: #4dd4ac;
+      box-shadow: 0 0 0 3px rgba(77, 212, 172, 0.12);
+    }
+    .form-input::placeholder {
+      color: rgba(255, 255, 255, 0.25);
+    }
+
+    /* Select styling */
+    .form-select {
+      background: #1a1d21;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 14px 18px;
+      font-size: 0.9375rem;
+      color: #e2e4e9;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      width: 100%;
+      outline: none;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%234dd4ac' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      background-size: 18px;
+      padding-right: 44px;
+    }
+    .form-select:focus {
+      border-color: #4dd4ac;
+      box-shadow: 0 0 0 3px rgba(77, 212, 172, 0.12);
+    }
+
+    /* Textarea */
+    .form-textarea {
+      background: #1a1d21;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 14px 18px;
+      font-size: 0.9375rem;
+      color: #e2e4e9;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      width: 100%;
+      outline: none;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      resize: vertical;
+      min-height: 140px;
+    }
+    .form-textarea:focus {
+      border-color: #4dd4ac;
+      box-shadow: 0 0 0 3px rgba(77, 212, 172, 0.12);
+    }
+    .form-textarea::placeholder {
+      color: rgba(255, 255, 255, 0.25);
+    }
+  </style>
+</head>
+
+<body class="bg-void font-display antialiased">
+
+  <!-- ===================== NAV ===================== -->
+  <nav class="fixed top-0 left-0 w-full z-50 nav-glass bg-void/80 border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <!-- Logo -->
+      <a href="./index.html" class="flex items-center gap-3">
+        <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650Capital-Logo.png?ssl=1"
+             alt="3650 Capital logo"
+             class="h-8 w-auto brightness-110">
+      </a>
+
+      <!-- Desktop links -->
+      <div class="hidden md:flex items-center gap-8 text-sm font-medium text-white/60">
+        <a href="./index.html" class="hover:text-teal transition-colors duration-200">Home</a>
+        <a href="./firm.html" class="hover:text-teal transition-colors duration-200">Firm</a>
+        <a href="./solutions.html" class="hover:text-teal transition-colors duration-200">Solutions</a>
+        <a href="./transactions.html" class="hover:text-teal transition-colors duration-200">Transactions</a>
+        <a href="./leadership.html" class="hover:text-teal transition-colors duration-200">Leadership</a>
+        <a href="./contact.html" class="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-teal text-void font-semibold text-sm hover:bg-teal-dim transition-colors duration-200">
+          <span class="material-symbols-outlined text-base">arrow_forward</span>
+          Contact
+        </a>
+      </div>
+
+      <!-- Mobile menu button -->
+      <button id="mobileMenuBtn" class="md:hidden flex items-center justify-center w-10 h-10 rounded-lg text-white/70 hover:text-teal transition-colors" aria-label="Toggle menu">
+        <span class="material-symbols-outlined text-2xl">menu</span>
+      </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobileMenu" class="md:hidden hidden bg-void/95 nav-glass border-t border-white/5">
+      <div class="px-6 py-6 flex flex-col gap-4 text-sm font-medium text-white/60">
+        <a href="./index.html" class="py-2 hover:text-teal transition-colors">Home</a>
+        <a href="./firm.html" class="py-2 hover:text-teal transition-colors">Firm</a>
+        <a href="./solutions.html" class="py-2 hover:text-teal transition-colors">Solutions</a>
+        <a href="./transactions.html" class="py-2 hover:text-teal transition-colors">Transactions</a>
+        <a href="./leadership.html" class="py-2 hover:text-teal transition-colors">Leadership</a>
+        <a href="./contact.html" class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-teal text-void font-semibold text-sm mt-2">
+          <span class="material-symbols-outlined text-base">arrow_forward</span>
+          Contact
+        </a>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- ===================== HERO ===================== -->
+  <section id="hero" class="relative min-h-[70vh] flex items-center overflow-hidden pt-16">
+    <!-- Background image -->
+    <div class="absolute inset-0">
+      <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/commercial-observer-power-finance.jpg?ssl=1"
+           alt="3650 Capital at Commercial Observer Power Finance"
+           class="img-cover opacity-15">
+      <div class="absolute inset-0 bg-gradient-to-b from-void/60 via-void/80 to-void"></div>
+    </div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-6 py-24 md:py-32 lg:py-40">
+      <div class="max-w-4xl">
+        <!-- Eyebrow -->
+        <p class="reveal text-teal text-sm font-semibold tracking-widest uppercase mb-6">Contact Us</p>
+
+        <!-- Headline -->
+        <h1 class="reveal reveal-delay-1 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.05] tracking-tight text-white mb-8">
+          Direct channels.<br>
+          <span class="text-teal">Real offices.</span>
+        </h1>
+
+        <!-- Sub copy -->
+        <p class="reveal reveal-delay-2 text-lg md:text-xl text-white/50 max-w-2xl leading-relaxed">
+          Whether you are exploring new financing, managing an existing loan, or covering our platform, there is a direct line to the right person.
+        </p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== DIRECT CONTACTS ===================== -->
+  <section id="direct" class="py-20 md:py-28 bg-void">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="mb-14">
+        <p class="reveal text-teal text-sm font-semibold tracking-widest uppercase mb-4">Direct Lines</p>
+        <h2 class="reveal reveal-delay-1 text-3xl md:text-5xl font-extrabold text-white leading-tight">
+          Reach the Right Team
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <!-- General -->
+        <div class="reveal bento-card bg-surface-high rounded-card p-8 flex flex-col gap-4">
+          <div class="w-12 h-12 rounded-xl bg-teal/10 flex items-center justify-center">
+            <span class="material-symbols-outlined text-teal text-2xl">call</span>
+          </div>
+          <h3 class="text-lg font-bold text-white">General Inquiries</h3>
+          <div class="space-y-2">
+            <a href="tel:305-901-1010" class="text-white/50 text-sm hover:text-teal transition-colors flex items-center gap-2">
+              <span class="material-symbols-outlined text-base text-teal/60">phone</span>
+              305-901-1010
+            </a>
+            <a href="mailto:info@3650capital.com" class="text-white/50 text-sm hover:text-teal transition-colors flex items-center gap-2">
+              <span class="material-symbols-outlined text-base text-teal/60">mail</span>
+              info@3650capital.com
+            </a>
+          </div>
+        </div>
+
+        <!-- Servicing -->
+        <div class="reveal reveal-delay-1 bento-card bg-surface-high rounded-card p-8 flex flex-col gap-4">
+          <div class="w-12 h-12 rounded-xl bg-amber-soft/10 flex items-center justify-center">
+            <span class="material-symbols-outlined text-amber-soft text-2xl">support_agent</span>
+          </div>
+          <h3 class="text-lg font-bold text-white">Loan Servicing</h3>
+          <div class="space-y-2">
+            <a href="mailto:servicing@3650capital.com" class="text-white/50 text-sm hover:text-teal transition-colors flex items-center gap-2">
+              <span class="material-symbols-outlined text-base text-amber-soft/60">mail</span>
+              servicing@3650capital.com
+            </a>
+            <p class="text-white/30 text-xs leading-relaxed mt-2">For existing borrowers with active loan inquiries, payoff requests, and servicing matters.</p>
+          </div>
+        </div>
+
+        <!-- Media -->
+        <div class="reveal reveal-delay-2 bento-card bg-surface-high rounded-card p-8 flex flex-col gap-4">
+          <div class="w-12 h-12 rounded-xl bg-teal/10 flex items-center justify-center">
+            <span class="material-symbols-outlined text-teal text-2xl">newspaper</span>
+          </div>
+          <h3 class="text-lg font-bold text-white">Media &amp; Press</h3>
+          <div class="space-y-2">
+            <a href="mailto:info@3650capital.com" class="text-white/50 text-sm hover:text-teal transition-colors flex items-center gap-2">
+              <span class="material-symbols-outlined text-base text-teal/60">mail</span>
+              info@3650capital.com
+            </a>
+            <p class="text-white/30 text-xs leading-relaxed mt-2">For media inquiries, speaking engagements, and press requests.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== OFFICES ===================== -->
+  <section id="offices" class="py-20 md:py-28 bg-void">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="mb-14">
+        <p class="reveal text-teal text-sm font-semibold tracking-widest uppercase mb-4">Our Offices</p>
+        <h2 class="reveal reveal-delay-1 text-3xl md:text-5xl font-extrabold text-white leading-tight">
+          7 Offices Nationwide
+        </h2>
+        <p class="reveal reveal-delay-2 text-white/40 text-lg mt-4 leading-relaxed max-w-2xl">
+          Presence in every major commercial real estate market.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+        <!-- Miami HQ -->
+        <div class="reveal bento-card bg-surface-high rounded-card p-6 flex flex-col gap-3">
+          <div class="flex items-center gap-2 mb-1">
+            <span class="material-symbols-outlined text-teal text-xl">apartment</span>
+            <h3 class="text-base font-bold text-white">Miami</h3>
+            <span class="prop-tag ml-auto text-[0.625rem]">HQ</span>
+          </div>
+          <p class="text-white/40 text-sm leading-relaxed">
+            2977 McFarlane Rd<br>
+            Ste 300<br>
+            Miami, FL 33133
+          </p>
+        </div>
+
+        <!-- New York -->
+        <div class="reveal reveal-delay-1 bento-card bg-surface-high rounded-card p-6 flex flex-col gap-3">
+          <div class="flex items-center gap-2 mb-1">
+            <span class="material-symbols-outlined text-teal text-xl">apartment</span>
+            <h3 class="text-base font-bold text-white">New York</h3>
+          </div>
+          <p class="text-white/40 text-sm leading-relaxed">
+            410 Park Ave<br>
+            Ste 720<br>
+            New York, NY 10022
+          </p>
+        </div>
+
+        <!-- Los Angeles -->
+        <div class="reveal reveal-delay-2 bento-card bg-surface-high rounded-card p-6 flex flex-col gap-3">
+          <div class="flex items-center gap-2 mb-1">
+            <span class="material-symbols-outlined text-teal text-xl">apartment</span>
+            <h3 class="text-base font-bold text-white">Los Angeles</h3>
+          </div>
+          <p class="text-white/40 text-sm leading-relaxed">
+            9595 Wilshire Blvd<br>
+            Ste 611<br>
+            Beverly Hills, CA 90212
+          </p>
+        </div>
+
+        <!-- Dallas -->
+        <div class="reveal reveal-delay-3 bento-card bg-surface-high rounded-card p-6 flex flex-col gap-3">
+          <div class="flex items-center gap-2 mb-1">
+            <span class="material-symbols-outlined text-teal text-xl">apartment</span>
+            <h3 class="text-base font-bold text-white">Dallas</h3>
+          </div>
+          <p class="text-white/40 text-sm leading-relaxed">
+            4143 Maple Ave<br>
+            Ste 220<br>
+            Dallas, TX 75219
+          </p>
+        </div>
+
+        <!-- Atlanta -->
+        <div class="reveal bento-card bg-surface-high rounded-card p-6 flex flex-col gap-3">
+          <div class="flex items-center gap-2 mb-1">
+            <span class="material-symbols-outlined text-teal text-xl">apartment</span>
+            <h3 class="text-base font-bold text-white">Atlanta</h3>
+          </div>
+          <p class="text-white/40 text-sm leading-relaxed">
+            3050 Peachtree Rd NW<br>
+            Ste 320<br>
+            Atlanta, GA 30305
+          </p>
+        </div>
+
+        <!-- Nashville -->
+        <div class="reveal reveal-delay-1 bento-card bg-surface-high rounded-card p-6 flex flex-col gap-3">
+          <div class="flex items-center gap-2 mb-1">
+            <span class="material-symbols-outlined text-teal text-xl">apartment</span>
+            <h3 class="text-base font-bold text-white">Nashville</h3>
+          </div>
+          <p class="text-white/40 text-sm leading-relaxed">
+            Nashville, TN
+          </p>
+        </div>
+
+        <!-- Washington DC -->
+        <div class="reveal reveal-delay-2 bento-card bg-surface-high rounded-card p-6 flex flex-col gap-3">
+          <div class="flex items-center gap-2 mb-1">
+            <span class="material-symbols-outlined text-teal text-xl">apartment</span>
+            <h3 class="text-base font-bold text-white">Washington DC</h3>
+          </div>
+          <p class="text-white/40 text-sm leading-relaxed">
+            Washington, DC Area
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== OFFICE IMAGES ===================== -->
+  <section class="py-16 md:py-24 bg-void">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div class="reveal rounded-card overflow-hidden aspect-[4/3]">
+          <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/nyc-office-interior-1.jpg?ssl=1"
+               alt="3650 Capital NYC office interior"
+               class="img-cover" loading="lazy">
+        </div>
+        <div class="reveal reveal-delay-1 rounded-card overflow-hidden aspect-[4/3]">
+          <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/nyc-office-interior-2.jpg?ssl=1"
+               alt="3650 Capital NYC office workspace"
+               class="img-cover" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== CONTACT FORM ===================== -->
+  <section id="form" class="py-20 md:py-28 bg-void">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+
+        <!-- Left: Context -->
+        <div>
+          <p class="reveal text-teal text-sm font-semibold tracking-widest uppercase mb-4">Send a Message</p>
+          <h2 class="reveal reveal-delay-1 text-3xl md:text-4xl font-extrabold text-white leading-tight mb-6">
+            Start a Conversation
+          </h2>
+          <p class="reveal reveal-delay-2 text-white/40 text-lg leading-relaxed mb-10">
+            Whether you are a borrower exploring financing, a servicer managing an active loan, or a member of the press, we respond to every inquiry directly.
+          </p>
+
+          <!-- Quick contact cards -->
+          <div class="reveal reveal-delay-3 space-y-4">
+            <div class="bento-card bg-surface-high rounded-card p-5 flex items-center gap-4">
+              <div class="w-10 h-10 rounded-xl bg-teal/10 flex items-center justify-center flex-shrink-0">
+                <span class="material-symbols-outlined text-teal">call</span>
+              </div>
+              <div>
+                <p class="text-white text-sm font-semibold">Call Us</p>
+                <a href="tel:305-901-1010" class="text-white/40 text-sm hover:text-teal transition-colors">305-901-1010</a>
+              </div>
+            </div>
+            <div class="bento-card bg-surface-high rounded-card p-5 flex items-center gap-4">
+              <div class="w-10 h-10 rounded-xl bg-teal/10 flex items-center justify-center flex-shrink-0">
+                <span class="material-symbols-outlined text-teal">mail</span>
+              </div>
+              <div>
+                <p class="text-white text-sm font-semibold">Email Us</p>
+                <a href="mailto:info@3650capital.com" class="text-white/40 text-sm hover:text-teal transition-colors">info@3650capital.com</a>
+              </div>
+            </div>
+            <div class="bento-card bg-surface-high rounded-card p-5 flex items-center gap-4">
+              <div class="w-10 h-10 rounded-xl bg-amber-soft/10 flex items-center justify-center flex-shrink-0">
+                <span class="material-symbols-outlined text-amber-soft">support_agent</span>
+              </div>
+              <div>
+                <p class="text-white text-sm font-semibold">Servicing</p>
+                <a href="mailto:servicing@3650capital.com" class="text-white/40 text-sm hover:text-teal transition-colors">servicing@3650capital.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Form -->
+        <div class="reveal reveal-delay-2">
+          <div class="bento-card bg-surface-high rounded-card p-8 md:p-10">
+            <form id="contactForm" class="space-y-5">
+              <!-- Name -->
+              <div>
+                <label for="name" class="block text-white/50 text-xs font-semibold tracking-widest uppercase mb-2">Full Name</label>
+                <input type="text" id="name" name="name" required placeholder="Your full name" class="form-input">
+              </div>
+
+              <!-- Email -->
+              <div>
+                <label for="email" class="block text-white/50 text-xs font-semibold tracking-widest uppercase mb-2">Email Address</label>
+                <input type="email" id="email" name="email" required placeholder="you@company.com" class="form-input">
+              </div>
+
+              <!-- Company -->
+              <div>
+                <label for="company" class="block text-white/50 text-xs font-semibold tracking-widest uppercase mb-2">Company</label>
+                <input type="text" id="company" name="company" placeholder="Your company" class="form-input">
+              </div>
+
+              <!-- Topic -->
+              <div>
+                <label for="topic" class="block text-white/50 text-xs font-semibold tracking-widest uppercase mb-2">Topic</label>
+                <select id="topic" name="topic" required class="form-select">
+                  <option value="" disabled selected>Select a topic</option>
+                  <option value="new-financing">New financing</option>
+                  <option value="loan-servicing">Loan servicing</option>
+                  <option value="media">Media</option>
+                </select>
+              </div>
+
+              <!-- Message -->
+              <div>
+                <label for="message" class="block text-white/50 text-xs font-semibold tracking-widest uppercase mb-2">Message</label>
+                <textarea id="message" name="message" required placeholder="Tell us about your inquiry..." class="form-textarea"></textarea>
+              </div>
+
+              <!-- Submit -->
+              <button type="submit" class="w-full inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full bg-teal text-void font-bold text-sm hover:bg-teal-dim transition-colors duration-200 mt-2">
+                <span class="material-symbols-outlined text-lg">send</span>
+                Submit Inquiry
+              </button>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="bg-surface border-t border-white/5 py-14">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+
+        <!-- Column 1: Logo & tagline -->
+        <div>
+          <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650Capital-Logo.png?ssl=1"
+               alt="3650 Capital logo"
+               class="h-7 w-auto brightness-110 mb-4">
+          <p class="text-white/30 text-sm leading-relaxed max-w-xs">
+            An integrated commercial real estate lending platform delivering certainty from Day 1 to Day 3650.
+          </p>
+        </div>
+
+        <!-- Column 2: Links -->
+        <div>
+          <h4 class="text-white/50 text-xs font-semibold tracking-widest uppercase mb-4">Navigation</h4>
+          <ul class="space-y-2">
+            <li><a href="./index.html" class="text-white/30 text-sm hover:text-teal transition-colors">Home</a></li>
+            <li><a href="./firm.html" class="text-white/30 text-sm hover:text-teal transition-colors">Firm</a></li>
+            <li><a href="./solutions.html" class="text-white/30 text-sm hover:text-teal transition-colors">Solutions</a></li>
+            <li><a href="./transactions.html" class="text-white/30 text-sm hover:text-teal transition-colors">Transactions</a></li>
+            <li><a href="./leadership.html" class="text-white/30 text-sm hover:text-teal transition-colors">Leadership</a></li>
+            <li><a href="./contact.html" class="text-white/30 text-sm hover:text-teal transition-colors">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Legal -->
+        <div>
+          <h4 class="text-white/50 text-xs font-semibold tracking-widest uppercase mb-4">Legal</h4>
+          <ul class="space-y-2">
+            <li><a href="#" class="text-white/30 text-sm hover:text-teal transition-colors">Privacy Policy</a></li>
+            <li><a href="#" class="text-white/30 text-sm hover:text-teal transition-colors">Terms of Use</a></li>
+            <li><a href="#" class="text-white/30 text-sm hover:text-teal transition-colors">Disclosures</a></li>
+          </ul>
+          <div class="mt-6 flex gap-4">
+            <a href="#" class="w-9 h-9 rounded-lg bg-surface-high flex items-center justify-center text-white/30 hover:text-teal hover:bg-surface-highest transition-colors" aria-label="LinkedIn">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+            <a href="#" class="w-9 h-9 rounded-lg bg-surface-high flex items-center justify-center text-white/30 hover:text-teal hover:bg-surface-highest transition-colors" aria-label="Twitter">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom bar -->
+      <div class="mt-12 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
+        <p class="text-white/20 text-xs">&copy; 2026 3650 Capital. All rights reserved.</p>
+        <p class="text-white/10 text-xs">Designed with precision. Built for continuity.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ===================== SCRIPTS ===================== -->
+  <script>
+    // Mobile menu toggle
+    (function() {
+      var btn = document.getElementById('mobileMenuBtn');
+      var menu = document.getElementById('mobileMenu');
+      if (btn && menu) {
+        btn.addEventListener('click', function() {
+          menu.classList.toggle('hidden');
+          var icon = btn.querySelector('.material-symbols-outlined');
+          icon.textContent = menu.classList.contains('hidden') ? 'menu' : 'close';
+        });
+        menu.querySelectorAll('a').forEach(function(link) {
+          link.addEventListener('click', function() {
+            menu.classList.add('hidden');
+            btn.querySelector('.material-symbols-outlined').textContent = 'menu';
+          });
+        });
+      }
+    })();
+
+    // IntersectionObserver for scroll reveal animations
+    (function() {
+      var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      if (prefersReduced) {
+        document.querySelectorAll('.reveal').forEach(function(el) {
+          el.classList.add('visible');
+        });
+        return;
+      }
+
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.08,
+        rootMargin: '0px 0px -40px 0px'
+      });
+
+      document.querySelectorAll('.reveal').forEach(function(el) {
+        observer.observe(el);
+      });
+    })();
+
+    // Navbar background solidify on scroll
+    (function() {
+      var nav = document.querySelector('nav');
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > 80) {
+          nav.classList.add('bg-void/95');
+          nav.classList.remove('bg-void/80');
+        } else {
+          nav.classList.remove('bg-void/95');
+          nav.classList.add('bg-void/80');
+        }
+      }, { passive: true });
+    })();
+
+    // Form submission handler
+    (function() {
+      var form = document.getElementById('contactForm');
+      if (form) {
+        form.addEventListener('submit', function(e) {
+          e.preventDefault();
+          var btn = form.querySelector('button[type="submit"]');
+          var span = btn.querySelector('.material-symbols-outlined');
+          var textNode = btn.childNodes[btn.childNodes.length - 1];
+          span.textContent = 'check_circle';
+          textNode.textContent = ' Inquiry Sent';
+          btn.disabled = true;
+          btn.classList.remove('bg-teal', 'hover:bg-teal-dim');
+          btn.classList.add('bg-teal-dim');
+          setTimeout(function() {
+            span.textContent = 'send';
+            textNode.textContent = '\n                Submit Inquiry\n              ';
+            btn.disabled = false;
+            btn.classList.add('bg-teal', 'hover:bg-teal-dim');
+            btn.classList.remove('bg-teal-dim');
+            form.reset();
+          }, 3000);
+        });
+      }
+    })();
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3650 Capital — Leadership</title>
+  <meta name="description" content="Meet the leadership team behind 3650 Capital — lifetime CRE professionals with cross-discipline experience across origination, credit, capital markets, and servicing.">
+
+  <!-- Google Fonts: Manrope + Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Material Symbols Outlined -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'void': '#131313',
+            'void-light': '#1c1b1b',
+            'void-high': '#2a2a2a',
+            'void-bright': '#393939',
+            'electric': '#a7c8ff',
+            'electric-dim': '#3291ff',
+            'silver': '#c8cad0',
+          },
+          fontFamily: {
+            'headline': ['Manrope', 'sans-serif'],
+            'body': ['Inter', 'sans-serif'],
+          },
+          borderRadius: {
+            'DEFAULT': '4px',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* ── Base resets ── */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #131313;
+      color: #c8cad0;
+      overflow-x: hidden;
+    }
+
+    /* ── Scrollbar ── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #131313; }
+    ::-webkit-scrollbar-thumb { background: #2a2a2a; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #393939; }
+
+    /* ── Electric gradient utility ── */
+    .electric-gradient {
+      background: linear-gradient(135deg, #a7c8ff 0%, #3291ff 100%);
+    }
+
+    .electric-gradient-text {
+      background: linear-gradient(135deg, #a7c8ff 0%, #3291ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ── Ghost outline utility ── */
+    .ghost-outline {
+      outline: 1px solid rgba(167, 200, 255, 0.15);
+      outline-offset: -1px;
+    }
+
+    /* ── Glassmorphism nav ── */
+    .glass-nav {
+      background: rgba(19, 19, 19, 0.70);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+
+    /* ── Ambient depth shadow ── */
+    .ambient-shadow {
+      box-shadow: 0 8px 24px rgba(50, 145, 255, 0.08);
+    }
+
+    .ambient-shadow-lg {
+      box-shadow: 0 12px 40px rgba(50, 145, 255, 0.12);
+    }
+
+    /* ── Transition easing ── */
+    .ease-power4 {
+      transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* ── Scroll animations ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ── Reduced motion ── */
+    @media (prefers-reduced-motion: reduce) {
+      .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    /* ── Hero background overlay ── */
+    .hero-bg-overlay {
+      background: linear-gradient(
+        180deg,
+        rgba(19, 19, 19, 0.82) 0%,
+        rgba(19, 19, 19, 0.90) 50%,
+        #131313 100%
+      );
+    }
+
+    .hero-bg-tint {
+      mix-blend-mode: overlay;
+      background: linear-gradient(135deg, rgba(50, 145, 255, 0.15) 0%, transparent 60%);
+    }
+
+    /* ── CTA button styles ── */
+    .btn-electric {
+      background: linear-gradient(135deg, #a7c8ff 0%, #3291ff 100%);
+      color: #131313;
+      font-weight: 600;
+      transition: box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .btn-electric:hover {
+      box-shadow: 0 8px 32px rgba(50, 145, 255, 0.30);
+      transform: translateY(-2px);
+    }
+
+    /* ── Nav link hover ── */
+    .nav-link {
+      position: relative;
+      transition: color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: linear-gradient(135deg, #a7c8ff, #3291ff);
+      transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .nav-link:hover {
+      color: #a7c8ff;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .nav-link.active {
+      color: #a7c8ff;
+    }
+
+    .nav-link.active::after {
+      width: 100%;
+    }
+
+    /* ── Accent line ── */
+    .accent-line {
+      width: 56px;
+      height: 3px;
+      background: linear-gradient(135deg, #a7c8ff 0%, #3291ff 100%);
+      border-radius: 4px;
+    }
+
+    /* ── Mobile menu ── */
+    .mobile-menu {
+      transform: translateX(100%);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .mobile-menu.is-open {
+      transform: translateX(0);
+    }
+
+    /* ── Founder card hover ── */
+    .founder-card {
+      transition: background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                  box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .founder-card:hover {
+      background-color: #2a2a2a;
+      box-shadow: 0 12px 40px rgba(50, 145, 255, 0.10);
+      transform: translateY(-4px);
+    }
+
+    /* ── Team card hover ── */
+    .team-card {
+      transition: background-color 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                  box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .team-card:hover {
+      background-color: #2a2a2a;
+      box-shadow: 0 8px 24px rgba(50, 145, 255, 0.08);
+      transform: translateY(-2px);
+    }
+
+    /* ── Image ambient wrapper ── */
+    .image-ambient {
+      position: relative;
+    }
+
+    .image-ambient::before {
+      content: '';
+      position: absolute;
+      inset: 12px;
+      background: rgba(50, 145, 255, 0.06);
+      border-radius: 4px;
+      filter: blur(32px);
+      z-index: -1;
+    }
+  </style>
+</head>
+
+<body class="font-body bg-void text-silver antialiased">
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       NAVIGATION
+       ════════════════════════════════════════════════════════════════════ -->
+  <nav class="glass-nav fixed top-0 left-0 right-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="flex items-center justify-between h-[72px]">
+
+        <!-- Logo -->
+        <a href="./index.html" class="flex-shrink-0">
+          <img
+            src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650Capital-Logo.png?ssl=1"
+            alt="3650 Capital"
+            class="h-8 w-auto"
+            loading="eager"
+          >
+        </a>
+
+        <!-- Desktop Links -->
+        <div class="hidden md:flex items-center gap-10">
+          <a href="./index.html" class="nav-link text-sm tracking-wide text-silver/80">Home</a>
+          <a href="./firm.html" class="nav-link text-sm tracking-wide text-silver/80">Firm</a>
+          <a href="./solutions.html" class="nav-link text-sm tracking-wide text-silver/80">Solutions</a>
+          <a href="./transactions.html" class="nav-link text-sm tracking-wide text-silver/80">Transactions</a>
+          <a href="./leadership.html" class="nav-link active text-sm tracking-wide text-silver/80">Leadership</a>
+          <a href="./contact.html" class="btn-electric px-5 py-2.5 rounded text-sm font-headline font-semibold tracking-wide">
+            Contact Us
+          </a>
+        </div>
+
+        <!-- Mobile Hamburger -->
+        <button
+          id="menuToggle"
+          class="md:hidden flex flex-col justify-center items-center w-10 h-10 gap-1.5"
+          aria-label="Toggle navigation menu"
+        >
+          <span class="block w-6 h-[2px] bg-silver/80 transition-all duration-300 ease-power4" id="bar1"></span>
+          <span class="block w-6 h-[2px] bg-silver/80 transition-all duration-300 ease-power4" id="bar2"></span>
+          <span class="block w-4 h-[2px] bg-silver/80 transition-all duration-300 ease-power4 ml-auto" id="bar3"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="mobile-menu fixed top-0 right-0 w-72 h-screen bg-void-light z-50 flex flex-col pt-24 px-8 gap-8 md:hidden">
+      <button id="menuClose" class="absolute top-6 right-6 text-silver/60" aria-label="Close menu">
+        <span class="material-symbols-outlined text-2xl">close</span>
+      </button>
+      <a href="./index.html" class="text-lg font-headline font-medium text-silver/80 hover:text-electric transition-colors duration-300 mobile-menu-link">Home</a>
+      <a href="./firm.html" class="text-lg font-headline font-medium text-silver/80 hover:text-electric transition-colors duration-300 mobile-menu-link">Firm</a>
+      <a href="./solutions.html" class="text-lg font-headline font-medium text-silver/80 hover:text-electric transition-colors duration-300 mobile-menu-link">Solutions</a>
+      <a href="./transactions.html" class="text-lg font-headline font-medium text-silver/80 hover:text-electric transition-colors duration-300 mobile-menu-link">Transactions</a>
+      <a href="./leadership.html" class="text-lg font-headline font-medium text-electric transition-colors duration-300 mobile-menu-link">Leadership</a>
+      <a href="./contact.html" class="btn-electric px-5 py-3 rounded text-center text-sm font-headline font-semibold tracking-wide mt-4 mobile-menu-link">
+        Contact Us
+      </a>
+    </div>
+  </nav>
+
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       HERO
+       ════════════════════════════════════════════════════════════════════ -->
+  <section class="relative min-h-[85vh] flex items-center overflow-hidden bg-void">
+
+    <!-- Background Image -->
+    <div class="absolute inset-0 z-0">
+      <img
+        src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Founders-Profile-.png?ssl=1"
+        alt=""
+        class="w-full h-full object-cover opacity-20"
+        loading="eager"
+        aria-hidden="true"
+      >
+      <div class="hero-bg-tint absolute inset-0"></div>
+      <div class="hero-bg-overlay absolute inset-0"></div>
+    </div>
+
+    <!-- Content -->
+    <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 w-full pt-32 pb-24 lg:pt-40 lg:pb-32">
+      <div class="max-w-3xl">
+
+        <!-- Accent Line -->
+        <div class="accent-line mb-10 reveal"></div>
+
+        <!-- Headline -->
+        <h1 class="font-headline font-bold text-4xl sm:text-5xl lg:text-6xl xl:text-7xl text-white leading-[1.08] tracking-tight mb-8 reveal reveal-delay-1">
+          An established<br>
+          <span class="electric-gradient-text">industry force.</span>
+        </h1>
+
+        <!-- Description -->
+        <p class="text-lg sm:text-xl text-silver/70 leading-relaxed max-w-xl mb-12 reveal reveal-delay-2">
+          Lifetime CRE professionals with cross-discipline experience across origination, credit, capital markets, and servicing.
+        </p>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       CO-FOUNDERS
+       ════════════════════════════════════════════════════════════════════ -->
+  <section class="bg-void py-24 lg:py-32">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+
+      <!-- Section Label -->
+      <div class="accent-line mb-6 reveal"></div>
+      <p class="text-xs tracking-[0.2em] uppercase text-electric font-headline font-semibold mb-3 reveal reveal-delay-1">Founders</p>
+      <h2 class="font-headline font-bold text-3xl sm:text-4xl lg:text-5xl text-white leading-tight mb-6 reveal reveal-delay-2">
+        Co-Founders
+      </h2>
+      <p class="text-silver/50 text-lg max-w-xl mb-16 reveal reveal-delay-3">
+        The founding partners who built 3650 Capital from the ground up.
+      </p>
+
+      <!-- Founders Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+        <!-- Justin Kennedy -->
+        <div class="reveal founder-card bg-void-light rounded overflow-hidden">
+          <div class="aspect-[3/4] overflow-hidden">
+            <img
+              src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-Headshots-A1067.jpg?ssl=1"
+              alt="Justin Kennedy"
+              class="w-full h-full object-cover"
+              loading="lazy"
+            >
+          </div>
+          <div class="p-6">
+            <h3 class="font-headline font-bold text-xl text-white mb-1">Justin Kennedy</h3>
+            <p class="electric-gradient-text text-sm font-semibold">Co-Founder, Managing Partner</p>
+          </div>
+        </div>
+
+        <!-- Jonathan Roth -->
+        <div class="reveal reveal-delay-1 founder-card bg-void-light rounded overflow-hidden">
+          <div class="aspect-[3/4] overflow-hidden">
+            <img
+              src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-Headshots-A0857.jpg?ssl=1"
+              alt="Jonathan Roth"
+              class="w-full h-full object-cover"
+              loading="lazy"
+            >
+          </div>
+          <div class="p-6">
+            <h3 class="font-headline font-bold text-xl text-white mb-1">Jonathan Roth</h3>
+            <p class="electric-gradient-text text-sm font-semibold">Co-Founder, Managing Partner</p>
+          </div>
+        </div>
+
+        <!-- Toby Cobb -->
+        <div class="reveal reveal-delay-2 founder-card bg-void-light rounded overflow-hidden">
+          <div class="aspect-[3/4] overflow-hidden">
+            <img
+              src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-Headshots-A0746.jpg?ssl=1"
+              alt="Toby Cobb"
+              class="w-full h-full object-cover"
+              loading="lazy"
+            >
+          </div>
+          <div class="p-6">
+            <h3 class="font-headline font-bold text-xl text-white mb-1">Toby Cobb</h3>
+            <p class="electric-gradient-text text-sm font-semibold">Co-Founder, Managing Partner</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       TEAM
+       ════════════════════════════════════════════════════════════════════ -->
+  <section class="bg-void py-24 lg:py-32">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+
+      <!-- Section Label -->
+      <div class="accent-line mb-6 reveal"></div>
+      <p class="text-xs tracking-[0.2em] uppercase text-electric font-headline font-semibold mb-3 reveal reveal-delay-1">Our People</p>
+      <h2 class="font-headline font-bold text-3xl sm:text-4xl lg:text-5xl text-white leading-tight mb-6 reveal reveal-delay-2">
+        The Team
+      </h2>
+      <p class="text-silver/50 text-lg max-w-xl mb-16 reveal reveal-delay-3">
+        Senior professionals driving execution across every discipline.
+      </p>
+
+      <!-- Team Grid -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+
+        <!-- Andrew Parower -->
+        <div class="reveal team-card bg-void-light rounded overflow-hidden">
+          <div class="aspect-square overflow-hidden">
+            <img src="https://raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-Headshots-Oct-2023-Miami-A0562-scaled.jpg"
+                 alt="Andrew Parower" class="w-full h-full object-cover object-top" loading="lazy">
+          </div>
+          <div class="p-4">
+            <h4 class="font-headline font-semibold text-sm text-white mb-0.5">Andrew Parower</h4>
+            <p class="text-silver/40 text-xs">Chief Credit Officer</p>
+          </div>
+        </div>
+
+        <!-- Peter LaPointe -->
+        <div class="reveal reveal-delay-1 team-card bg-void-light rounded overflow-hidden">
+          <div class="aspect-square overflow-hidden">
+            <img src="https://raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Peter-3650-A013.jpg"
+                 alt="Peter LaPointe" class="w-full h-full object-cover object-top" loading="lazy">
+          </div>
+          <div class="p-4">
+            <h4 class="font-headline font-semibold text-sm text-white mb-0.5">Peter LaPointe</h4>
+            <p class="text-silver/40 text-xs">COO</p>
+          </div>
+        </div>
+
+        <!-- Mark Jefferis -->
+        <div class="reveal reveal-delay-2 team-card bg-void-light rounded overflow-hidden">
+          <div class="aspect-square overflow-hidden">
+            <img src="https://raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Mark-Jefferis-scaled.jpg"
+                 alt="Mark Jefferis" class="w-full h-full object-cover object-top" loading="lazy">
+          </div>
+          <div class="p-4">
+            <h4 class="font-headline font-semibold text-sm text-white mb-0.5">Mark Jefferis</h4>
+            <p class="text-silver/40 text-xs">General Counsel</p>
+          </div>
+        </div>
+
+        <!-- John Wright -->
+        <div class="reveal reveal-delay-3 team-card bg-void-light rounded overflow-hidden">
+          <div class="aspect-square overflow-hidden">
+            <img src="https://raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/john-wright-headshot.jpg"
+                 alt="John Wright" class="w-full h-full object-cover object-top" loading="lazy">
+          </div>
+          <div class="p-4">
+            <h4 class="font-headline font-semibold text-sm text-white mb-0.5">John Wright</h4>
+            <p class="text-silver/40 text-xs">Head of Capital Formation</p>
+          </div>
+        </div>
+
+        <!-- Malay Bansal -->
+        <div class="reveal reveal-delay-4 team-card bg-void-light rounded overflow-hidden">
+          <div class="aspect-square overflow-hidden">
+            <img src="https://raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-Headshots-A0385.jpg"
+                 alt="Malay Bansal" class="w-full h-full object-cover object-top" loading="lazy">
+          </div>
+          <div class="p-4">
+            <h4 class="font-headline font-semibold text-sm text-white mb-0.5">Malay Bansal</h4>
+            <p class="text-silver/40 text-xs">Managing Director</p>
+          </div>
+        </div>
+
+        <!-- Ken Dickey -->
+        <div class="reveal team-card bg-void-light rounded overflow-hidden">
+          <div class="aspect-square overflow-hidden">
+            <img src="https://raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-Headshots-A0088-2.jpg"
+                 alt="Ken Dickey" class="w-full h-full object-cover object-top" loading="lazy">
+          </div>
+          <div class="p-4">
+            <h4 class="font-headline font-semibold text-sm text-white mb-0.5">Ken Dickey</h4>
+            <p class="text-silver/40 text-xs">Director, Originations</p>
+          </div>
+        </div>
+
+        <!-- Michael Fleischer -->
+        <div class="reveal reveal-delay-1 team-card bg-void-light rounded overflow-hidden">
+          <div class="aspect-square overflow-hidden">
+            <img src="https://raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/MichaelF-04688A3.jpg"
+                 alt="Michael Fleischer" class="w-full h-full object-cover object-top" loading="lazy">
+          </div>
+          <div class="p-4">
+            <h4 class="font-headline font-semibold text-sm text-white mb-0.5">Michael Fleischer</h4>
+            <p class="text-silver/40 text-xs">Managing Director</p>
+          </div>
+        </div>
+
+        <!-- Jake Stahler -->
+        <div class="reveal reveal-delay-2 team-card bg-void-light rounded overflow-hidden">
+          <div class="aspect-square overflow-hidden">
+            <img src="https://raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-Headshots-A0720-min.jpg"
+                 alt="Jake Stahler" class="w-full h-full object-cover object-top" loading="lazy">
+          </div>
+          <div class="p-4">
+            <h4 class="font-headline font-semibold text-sm text-white mb-0.5">Jake Stahler</h4>
+            <p class="text-silver/40 text-xs">Director</p>
+          </div>
+        </div>
+
+        <!-- Evan Guttman -->
+        <div class="reveal reveal-delay-3 team-card bg-void-light rounded overflow-hidden">
+          <div class="aspect-square overflow-hidden">
+            <img src="https://raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-Headshots-Oct-2023-NYC-B1181-3-scaled.jpg"
+                 alt="Evan Guttman" class="w-full h-full object-cover object-top" loading="lazy">
+          </div>
+          <div class="p-4">
+            <h4 class="font-headline font-semibold text-sm text-white mb-0.5">Evan Guttman</h4>
+            <p class="text-silver/40 text-xs">Vice President</p>
+          </div>
+        </div>
+
+        <!-- Michael McCabe -->
+        <div class="reveal reveal-delay-4 team-card bg-void-light rounded overflow-hidden">
+          <div class="aspect-square overflow-hidden">
+            <img src="https://raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-Headshots-Oct-2023-NYC-B1078-scaled.jpg"
+                 alt="Michael McCabe" class="w-full h-full object-cover object-top" loading="lazy">
+          </div>
+          <div class="p-4">
+            <h4 class="font-headline font-semibold text-sm text-white mb-0.5">Michael McCabe</h4>
+            <p class="text-silver/40 text-xs">Vice President</p>
+          </div>
+        </div>
+
+        <!-- Stephanie Sabellico -->
+        <div class="reveal team-card bg-void-light rounded overflow-hidden">
+          <div class="aspect-square overflow-hidden">
+            <img src="https://raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/EVN0949-Edit-scaled.jpg"
+                 alt="Stephanie Sabellico" class="w-full h-full object-cover object-top" loading="lazy">
+          </div>
+          <div class="p-4">
+            <h4 class="font-headline font-semibold text-sm text-white mb-0.5">Stephanie Sabellico</h4>
+            <p class="text-silver/40 text-xs">Director</p>
+          </div>
+        </div>
+
+        <!-- Barrett Graham -->
+        <div class="reveal reveal-delay-1 team-card bg-void-light rounded overflow-hidden">
+          <div class="aspect-square overflow-hidden">
+            <img src="https://raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/MGM_2579-scaled.jpg"
+                 alt="Barrett Graham" class="w-full h-full object-cover object-top" loading="lazy">
+          </div>
+          <div class="p-4">
+            <h4 class="font-headline font-semibold text-sm text-white mb-0.5">Barrett Graham</h4>
+            <p class="text-silver/40 text-xs">Vice President</p>
+          </div>
+        </div>
+
+        <!-- Brent Thurn -->
+        <div class="reveal reveal-delay-2 team-card bg-void-light rounded overflow-hidden">
+          <div class="aspect-square overflow-hidden">
+            <img src="https://raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-2564-scaled.jpg"
+                 alt="Brent Thurn" class="w-full h-full object-cover object-top" loading="lazy">
+          </div>
+          <div class="p-4">
+            <h4 class="font-headline font-semibold text-sm text-white mb-0.5">Brent Thurn</h4>
+            <p class="text-silver/40 text-xs">Vice President</p>
+          </div>
+        </div>
+
+        <!-- Daniel Vaknin -->
+        <div class="reveal reveal-delay-3 team-card bg-void-light rounded overflow-hidden">
+          <div class="aspect-square overflow-hidden">
+            <img src="https://raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-1192-Edit.jpg"
+                 alt="Daniel Vaknin" class="w-full h-full object-cover object-top" loading="lazy">
+          </div>
+          <div class="p-4">
+            <h4 class="font-headline font-semibold text-sm text-white mb-0.5">Daniel Vaknin</h4>
+            <p class="text-silver/40 text-xs">Vice President</p>
+          </div>
+        </div>
+
+        <!-- Eric Kraft -->
+        <div class="reveal reveal-delay-4 team-card bg-void-light rounded overflow-hidden">
+          <div class="aspect-square overflow-hidden">
+            <img src="https://raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/eric-kraft-headshot.jpeg"
+                 alt="Eric Kraft" class="w-full h-full object-cover object-top" loading="lazy">
+          </div>
+          <div class="p-4">
+            <h4 class="font-headline font-semibold text-sm text-white mb-0.5">Eric Kraft</h4>
+            <p class="text-silver/40 text-xs">Director</p>
+          </div>
+        </div>
+
+        <!-- Noah Moghavem -->
+        <div class="reveal team-card bg-void-light rounded overflow-hidden">
+          <div class="aspect-square overflow-hidden">
+            <img src="https://raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Noah-Moghavem-scaled.jpg"
+                 alt="Noah Moghavem" class="w-full h-full object-cover object-top" loading="lazy">
+          </div>
+          <div class="p-4">
+            <h4 class="font-headline font-semibold text-sm text-white mb-0.5">Noah Moghavem</h4>
+            <p class="text-silver/40 text-xs">Associate</p>
+          </div>
+        </div>
+
+        <!-- Will Pierce -->
+        <div class="reveal reveal-delay-1 team-card bg-void-light rounded overflow-hidden">
+          <div class="aspect-square overflow-hidden">
+            <img src="https://raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/151A8204.jpg"
+                 alt="Will Pierce" class="w-full h-full object-cover object-top" loading="lazy">
+          </div>
+          <div class="p-4">
+            <h4 class="font-headline font-semibold text-sm text-white mb-0.5">Will Pierce</h4>
+            <p class="text-silver/40 text-xs">Vice President</p>
+          </div>
+        </div>
+
+        <!-- Jeremiah Sharf -->
+        <div class="reveal reveal-delay-2 team-card bg-void-light rounded overflow-hidden">
+          <div class="aspect-square overflow-hidden">
+            <img src="https://raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Jeremiah-Sharf_1-scaled.jpg"
+                 alt="Jeremiah Sharf" class="w-full h-full object-cover object-top" loading="lazy">
+          </div>
+          <div class="p-4">
+            <h4 class="font-headline font-semibold text-sm text-white mb-0.5">Jeremiah Sharf</h4>
+            <p class="text-silver/40 text-xs">Director</p>
+          </div>
+        </div>
+
+        <!-- Katie Spillman -->
+        <div class="reveal reveal-delay-3 team-card bg-void-light rounded overflow-hidden">
+          <div class="aspect-square overflow-hidden">
+            <img src="https://raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Katie-Spillman-1-scaled.jpg"
+                 alt="Katie Spillman" class="w-full h-full object-cover object-top" loading="lazy">
+          </div>
+          <div class="p-4">
+            <h4 class="font-headline font-semibold text-sm text-white mb-0.5">Katie Spillman</h4>
+            <p class="text-silver/40 text-xs">Director</p>
+          </div>
+        </div>
+
+        <!-- Corey Altman -->
+        <div class="reveal reveal-delay-4 team-card bg-void-light rounded overflow-hidden">
+          <div class="aspect-square overflow-hidden">
+            <img src="https://raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-0608-Edit-scaled.jpg"
+                 alt="Corey Altman" class="w-full h-full object-cover object-top" loading="lazy">
+          </div>
+          <div class="p-4">
+            <h4 class="font-headline font-semibold text-sm text-white mb-0.5">Corey Altman</h4>
+            <p class="text-silver/40 text-xs">Director</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       FOOTER
+       ════════════════════════════════════════════════════════════════════ -->
+  <footer class="bg-void py-16">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+
+      <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-10">
+
+        <!-- Logo + Tagline -->
+        <div>
+          <img
+            src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650Capital-Logo.png?ssl=1"
+            alt="3650 Capital"
+            class="h-7 w-auto mb-4"
+            loading="lazy"
+          >
+          <p class="text-xs text-silver/35">One lender. Wholly committed.</p>
+        </div>
+
+        <!-- Footer Links -->
+        <div class="flex flex-wrap gap-8 lg:gap-12">
+          <a href="./index.html" class="text-xs text-silver/40 hover:text-silver/70 transition-colors duration-300 font-headline tracking-wide">Home</a>
+          <a href="./firm.html" class="text-xs text-silver/40 hover:text-silver/70 transition-colors duration-300 font-headline tracking-wide">Firm</a>
+          <a href="./solutions.html" class="text-xs text-silver/40 hover:text-silver/70 transition-colors duration-300 font-headline tracking-wide">Solutions</a>
+          <a href="./transactions.html" class="text-xs text-silver/40 hover:text-silver/70 transition-colors duration-300 font-headline tracking-wide">Transactions</a>
+          <a href="./leadership.html" class="text-xs text-silver/40 hover:text-silver/70 transition-colors duration-300 font-headline tracking-wide">Leadership</a>
+          <a href="./contact.html" class="text-xs text-silver/40 hover:text-silver/70 transition-colors duration-300 font-headline tracking-wide">Contact</a>
+        </div>
+
+      </div>
+
+      <!-- Divider — done via bg shift, not border -->
+      <div class="h-[1px] bg-void-high mt-12 mb-8"></div>
+
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+        <p class="text-xs text-silver/25">
+          &copy; 2026 3650 Capital LLC. All rights reserved.
+        </p>
+        <div class="flex gap-6">
+          <a href="#" class="text-xs text-silver/25 hover:text-silver/50 transition-colors duration-300">Privacy Policy</a>
+          <a href="#" class="text-xs text-silver/25 hover:text-silver/50 transition-colors duration-300">Terms of Use</a>
+          <a href="#" class="text-xs text-silver/25 hover:text-silver/50 transition-colors duration-300">Disclosures</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       SCRIPTS
+       ════════════════════════════════════════════════════════════════════ -->
+  <script>
+    (function () {
+      'use strict';
+
+      /* ── Reduced Motion Check ── */
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      /* ─────────────────────────────────────────────
+         IntersectionObserver — Scroll Reveal
+         ───────────────────────────────────────────── */
+      function initScrollReveal() {
+        const reveals = document.querySelectorAll('.reveal');
+
+        if (prefersReducedMotion) {
+          reveals.forEach(function (el) {
+            el.classList.add('is-visible');
+          });
+          return;
+        }
+
+        const observer = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          {
+            threshold: 0.12,
+            rootMargin: '0px 0px -40px 0px',
+          }
+        );
+
+        reveals.forEach(function (el) {
+          observer.observe(el);
+        });
+      }
+
+      /* ─────────────────────────────────────────────
+         Mobile Menu Toggle
+         ───────────────────────────────────────────── */
+      function initMobileMenu() {
+        var toggle = document.getElementById('menuToggle');
+        var closeBtn = document.getElementById('menuClose');
+        var mobileMenu = document.getElementById('mobileMenu');
+        var menuLinks = document.querySelectorAll('.mobile-menu-link');
+
+        if (!toggle || !mobileMenu) return;
+
+        function openMenu() {
+          mobileMenu.classList.add('is-open');
+          document.body.style.overflow = 'hidden';
+        }
+
+        function closeMenu() {
+          mobileMenu.classList.remove('is-open');
+          document.body.style.overflow = '';
+        }
+
+        toggle.addEventListener('click', openMenu);
+
+        if (closeBtn) {
+          closeBtn.addEventListener('click', closeMenu);
+        }
+
+        menuLinks.forEach(function (link) {
+          link.addEventListener('click', closeMenu);
+        });
+
+        // Close on ESC
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape' && mobileMenu.classList.contains('is-open')) {
+            closeMenu();
+          }
+        });
+      }
+
+      /* ─────────────────────────────────────────────
+         Nav Background Opacity on Scroll
+         ───────────────────────────────────────────── */
+      function initNavScroll() {
+        var nav = document.querySelector('.glass-nav');
+        if (!nav) return;
+
+        var ticking = false;
+
+        window.addEventListener('scroll', function () {
+          if (!ticking) {
+            requestAnimationFrame(function () {
+              if (window.scrollY > 80) {
+                nav.style.background = 'rgba(19, 19, 19, 0.88)';
+              } else {
+                nav.style.background = 'rgba(19, 19, 19, 0.70)';
+              }
+              ticking = false;
+            });
+            ticking = true;
+          }
+        });
+      }
+
+      /* ─────────────────────────────────────────────
+         Smooth Scroll for Anchor Links
+         ───────────────────────────────────────────── */
+      function initSmoothScroll() {
+        document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+          anchor.addEventListener('click', function (e) {
+            var targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+
+            var targetEl = document.querySelector(targetId);
+            if (targetEl) {
+              e.preventDefault();
+              var navHeight = 72;
+              var targetPosition = targetEl.getBoundingClientRect().top + window.pageYOffset - navHeight;
+              window.scrollTo({
+                top: targetPosition,
+                behavior: prefersReducedMotion ? 'auto' : 'smooth',
+              });
+            }
+          });
+        });
+      }
+
+      /* ─────────────────────────────────────────────
+         Initialize Everything
+         ───────────────────────────────────────────── */
+      document.addEventListener('DOMContentLoaded', function () {
+        initScrollReveal();
+        initMobileMenu();
+        initNavScroll();
+        initSmoothScroll();
+      });
+    })();
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3650 Capital — Solutions</title>
+  <meta name="description" content="3650 Capital delivers diverse financing products across the property life cycle — RECS, Stable Cash Flow, and Special Situations — with in-house servicing continuity.">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Material Symbols Outlined -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap">
+
+  <!-- Tailwind Config -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'charcoal': '#1a1a1a',
+            'warm': '#f5efe6',
+            'warm-dark': '#e8ddd0',
+            'copper': '#8b5e34',
+            'copper-light': '#a67c52',
+            'slate-dark': '#2d2d2d',
+          },
+          fontFamily: {
+            'headline': ['DM Serif Display', 'serif'],
+            'body': ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Base resets */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; color: #1a1a1a; background: #f5efe6; }
+
+    /* Scroll animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-40px);
+      transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .reveal-left.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(40px);
+      transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .reveal-right.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .reveal-scale {
+      opacity: 0;
+      transform: scale(0.92);
+      transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .reveal-scale.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* Stagger delays */
+    .delay-1 { transition-delay: 0.1s; }
+    .delay-2 { transition-delay: 0.2s; }
+    .delay-3 { transition-delay: 0.3s; }
+    .delay-4 { transition-delay: 0.4s; }
+    .delay-5 { transition-delay: 0.5s; }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      .reveal, .reveal-left, .reveal-right, .reveal-scale {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+    }
+
+    /* Copper accent line */
+    .copper-line {
+      width: 48px;
+      height: 3px;
+      background: #8b5e34;
+    }
+
+    /* Card hover */
+    .feature-card {
+      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease;
+    }
+    .feature-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    }
+
+    /* Check circle */
+    .check-circle {
+      width: 28px;
+      height: 28px;
+      min-width: 28px;
+      border-radius: 50%;
+      background: #8b5e34;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .check-circle .material-symbols-outlined {
+      font-size: 16px;
+      color: white;
+    }
+
+    /* Image overlay gradient */
+    .img-overlay {
+      position: relative;
+      overflow: hidden;
+    }
+    .img-overlay::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(139,94,52,0.15) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    /* Nav backdrop */
+    .nav-scrolled {
+      background: rgba(245,239,230,0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 1px 12px rgba(0,0,0,0.06);
+    }
+
+    /* Mobile menu */
+    .mobile-menu {
+      transform: translateX(100%);
+      transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .mobile-menu.open {
+      transform: translateX(0);
+    }
+
+    /* Pull quote */
+    .pull-quote {
+      position: relative;
+      padding-left: 24px;
+      border-left: 3px solid #8b5e34;
+    }
+
+    /* Stat number */
+    .stat-number {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      color: #8b5e34;
+      line-height: 1;
+    }
+
+    /* Scrollbar styling */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #f5efe6; }
+    ::-webkit-scrollbar-thumb { background: #8b5e34; border-radius: 4px; }
+
+    /* Large background number */
+    .section-number {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(8rem, 16vw, 14rem);
+      line-height: 0.8;
+      color: rgba(139,94,52,0.08);
+      position: absolute;
+      top: -2rem;
+      right: -1rem;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    /* Table styles */
+    .comparison-table th {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+  </style>
+</head>
+
+<body class="bg-warm font-body antialiased overflow-x-hidden">
+
+  <!-- ==================== NAV ==================== -->
+  <nav id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <!-- Logo -->
+        <a href="./index.html" class="flex-shrink-0">
+          <img
+            src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650Capital-Logo.png?ssl=1"
+            alt="3650 Capital"
+            class="h-10 w-auto"
+          >
+        </a>
+
+        <!-- Desktop Links -->
+        <div class="hidden md:flex items-center gap-8">
+          <a href="./index.html" class="text-sm font-medium text-charcoal/70 hover:text-copper transition-colors duration-200">Home</a>
+          <a href="./firm.html" class="text-sm font-medium text-charcoal/70 hover:text-copper transition-colors duration-200">Firm</a>
+          <a href="./solutions.html" class="text-sm font-medium text-copper transition-colors duration-200">Solutions</a>
+          <a href="./transactions.html" class="text-sm font-medium text-charcoal/70 hover:text-copper transition-colors duration-200">Transactions</a>
+          <a href="./leadership.html" class="text-sm font-medium text-charcoal/70 hover:text-copper transition-colors duration-200">Leadership</a>
+          <a href="./contact.html" class="inline-flex items-center gap-2 bg-copper text-white text-sm font-semibold px-5 py-2.5 rounded-md hover:bg-copper-light transition-colors duration-200">
+            Contact Us
+            <span class="material-symbols-outlined text-base">arrow_forward</span>
+          </a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button id="menuToggle" class="md:hidden flex items-center justify-center w-10 h-10 text-charcoal" aria-label="Toggle menu">
+          <span class="material-symbols-outlined text-2xl">menu</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu Panel -->
+    <div id="mobileMenu" class="mobile-menu fixed top-0 right-0 w-72 h-full bg-warm shadow-2xl z-50 md:hidden">
+      <div class="flex items-center justify-between px-6 h-20 border-b border-warm-dark">
+        <span class="font-headline text-lg text-charcoal">Menu</span>
+        <button id="menuClose" class="flex items-center justify-center w-10 h-10 text-charcoal" aria-label="Close menu">
+          <span class="material-symbols-outlined text-2xl">close</span>
+        </button>
+      </div>
+      <div class="flex flex-col px-6 py-8 gap-6">
+        <a href="./index.html" class="text-base font-medium text-charcoal/80 hover:text-copper transition-colors">Home</a>
+        <a href="./firm.html" class="text-base font-medium text-charcoal/80 hover:text-copper transition-colors">Firm</a>
+        <a href="./solutions.html" class="text-base font-medium text-copper transition-colors">Solutions</a>
+        <a href="./transactions.html" class="text-base font-medium text-charcoal/80 hover:text-copper transition-colors">Transactions</a>
+        <a href="./leadership.html" class="text-base font-medium text-charcoal/80 hover:text-copper transition-colors">Leadership</a>
+        <div class="pt-4 border-t border-warm-dark">
+          <a href="./contact.html" class="inline-flex items-center gap-2 bg-copper text-white text-sm font-semibold px-5 py-2.5 rounded-md hover:bg-copper-light transition-colors w-full justify-center">
+            Contact Us
+            <span class="material-symbols-outlined text-base">arrow_forward</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <!-- Mobile Menu Overlay -->
+  <div id="menuOverlay" class="fixed inset-0 bg-charcoal/30 z-40 hidden md:hidden"></div>
+
+
+  <!-- ==================== HERO ==================== -->
+  <section class="relative bg-warm pt-28 pb-16 md:pt-32 md:pb-24 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+
+        <!-- Left: Content -->
+        <div class="relative z-10">
+          <!-- Label Tags -->
+          <div class="reveal flex flex-wrap items-center gap-3 mb-8">
+            <span class="inline-flex items-center px-4 py-1.5 bg-copper/10 text-copper text-xs font-semibold tracking-widest uppercase rounded-full">RECS</span>
+            <span class="text-copper/40 text-xs">&middot;</span>
+            <span class="inline-flex items-center px-4 py-1.5 bg-copper/10 text-copper text-xs font-semibold tracking-widest uppercase rounded-full">Stable Cash Flow</span>
+            <span class="text-copper/40 text-xs">&middot;</span>
+            <span class="inline-flex items-center px-4 py-1.5 bg-copper/10 text-copper text-xs font-semibold tracking-widest uppercase rounded-full">Special Sits</span>
+          </div>
+
+          <!-- Tagline -->
+          <h1 class="reveal delay-1 font-headline text-3xl md:text-4xl lg:text-5xl text-charcoal mb-6 leading-tight">
+            Short-term capital.<br>
+            <span class="text-copper">Long-term solutions.</span>
+          </h1>
+
+          <!-- Description -->
+          <p class="reveal delay-2 text-charcoal/60 text-base md:text-lg max-w-md leading-relaxed mb-8">
+            3650 Capital delivers diverse financing products across the property life cycle with in-house servicing continuity.
+          </p>
+
+          <!-- CTAs -->
+          <div class="reveal delay-3 flex flex-wrap items-center gap-4">
+            <a href="./contact.html" class="inline-flex items-center gap-2 bg-copper text-white font-semibold px-7 py-3.5 rounded-md hover:bg-copper-light transition-colors duration-200 text-sm">
+              Discuss a financing opportunity
+              <span class="material-symbols-outlined text-lg">arrow_forward</span>
+            </a>
+            <a href="#products" class="inline-flex items-center gap-2 border-2 border-charcoal/20 text-charcoal font-semibold px-7 py-3.5 rounded-md hover:border-copper hover:text-copper transition-colors duration-200 text-sm">
+              View Products
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: Building Image -->
+        <div class="reveal-right delay-2 relative">
+          <div class="relative rounded-2xl overflow-hidden shadow-2xl">
+            <img
+              src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/rendering-center-at-miami-gardens-courtesy-3650-reit.jpg?ssl=1"
+              alt="Center at Miami Gardens — 3650 Capital financing"
+              class="w-full h-[400px] md:h-[520px] object-cover"
+              loading="eager"
+            >
+            <!-- Overlay gradient -->
+            <div class="absolute inset-0 bg-gradient-to-t from-charcoal/30 via-transparent to-transparent"></div>
+            <!-- Caption -->
+            <div class="absolute bottom-6 left-6 right-6">
+              <span class="inline-flex items-center gap-1.5 bg-white/90 backdrop-blur-sm text-charcoal text-xs font-medium px-3 py-1.5 rounded-md">
+                <span class="material-symbols-outlined text-copper text-sm">location_on</span>
+                Center at Miami Gardens, FL
+              </span>
+            </div>
+          </div>
+          <!-- Decorative element -->
+          <div class="absolute -bottom-4 -right-4 w-32 h-32 border-2 border-copper/20 rounded-2xl -z-10 hidden lg:block"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Subtle background accent -->
+    <div class="absolute top-0 right-0 w-1/3 h-full bg-warm-dark/30 -skew-x-12 origin-top-right hidden lg:block"></div>
+  </section>
+
+
+  <!-- ==================== OPERATING PLATFORM ==================== -->
+  <section id="platform" class="py-20 md:py-28 bg-white">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+
+      <!-- Section Header -->
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 mb-16">
+        <div>
+          <div class="reveal copper-line mb-6"></div>
+          <h2 class="reveal delay-1 font-headline text-3xl md:text-4xl lg:text-5xl text-charcoal mb-4 leading-tight">
+            Vertical Integration.<br>Retained Servicing.
+          </h2>
+          <p class="reveal delay-2 text-charcoal/60 text-base md:text-lg leading-relaxed">
+            Vertical integration and retained servicing are part of the product. Material credit decisions stay in-house at every stage.
+          </p>
+        </div>
+        <div class="reveal-right delay-2 relative">
+          <div class="relative rounded-2xl overflow-hidden shadow-xl img-overlay">
+            <img
+              src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Gateway-at-Wynwood-e1578945268648.jpg?ssl=1"
+              alt="Gateway at Wynwood — 3650 Capital platform"
+              class="w-full h-[300px] md:h-[360px] object-cover"
+              loading="lazy"
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- Four Feature Cards -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+        <!-- Card 1: Vertical Integration -->
+        <div class="reveal delay-1 feature-card bg-warm rounded-xl p-8">
+          <div class="w-14 h-14 rounded-xl bg-copper/10 flex items-center justify-center mb-6">
+            <span class="material-symbols-outlined text-copper text-2xl">hub</span>
+          </div>
+          <h3 class="font-headline text-xl text-charcoal mb-3">Vertical Integration</h3>
+          <p class="text-charcoal/60 text-sm leading-relaxed">
+            Material credit decisions stay in-house. Every function under one roof ensures alignment and accountability.
+          </p>
+        </div>
+
+        <!-- Card 2: Loan Servicing -->
+        <div class="reveal delay-2 feature-card bg-warm rounded-xl p-8">
+          <div class="w-14 h-14 rounded-xl bg-copper/10 flex items-center justify-center mb-6">
+            <span class="material-symbols-outlined text-copper text-2xl">support_agent</span>
+          </div>
+          <h3 class="font-headline text-xl text-charcoal mb-3">Loan Servicing</h3>
+          <p class="text-charcoal/60 text-sm leading-relaxed">
+            Responsiveness and transparency after close. Your contact on day one is the same on day 3,650.
+          </p>
+        </div>
+
+        <!-- Card 3: Credit Solutions -->
+        <div class="reveal delay-3 feature-card bg-warm rounded-xl p-8">
+          <div class="w-14 h-14 rounded-xl bg-copper/10 flex items-center justify-center mb-6">
+            <span class="material-symbols-outlined text-copper text-2xl">account_balance</span>
+          </div>
+          <h3 class="font-headline text-xl text-charcoal mb-3">Credit Solutions</h3>
+          <p class="text-charcoal/60 text-sm leading-relaxed">
+            Acquisition through recapitalization. Tailored structures across the entire property life cycle.
+          </p>
+        </div>
+
+        <!-- Card 4: Relationship Model -->
+        <div class="reveal delay-4 feature-card bg-warm rounded-xl p-8">
+          <div class="w-14 h-14 rounded-xl bg-copper/10 flex items-center justify-center mb-6">
+            <span class="material-symbols-outlined text-copper text-2xl">handshake</span>
+          </div>
+          <h3 class="font-headline text-xl text-charcoal mb-3">Relationship Model</h3>
+          <p class="text-charcoal/60 text-sm leading-relaxed">
+            One team from origination to asset outcome. No hand-offs, no third-party transfers.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==================== PRODUCTS ==================== -->
+  <section id="products" class="py-20 md:py-28 bg-warm overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+
+      <!-- Section Header -->
+      <div class="max-w-2xl mb-16">
+        <div class="reveal copper-line mb-6"></div>
+        <h2 class="reveal delay-1 font-headline text-3xl md:text-4xl lg:text-5xl text-charcoal mb-4 leading-tight">
+          RECS, Stable Cash Flow,<br>and Special Situations.
+        </h2>
+        <p class="reveal delay-2 text-charcoal/60 text-base md:text-lg leading-relaxed">
+          Three core lending products designed to meet borrowers at every stage of the property life cycle.
+        </p>
+      </div>
+
+      <!-- Product Image -->
+      <div class="reveal delay-2 mb-16 relative rounded-2xl overflow-hidden shadow-xl img-overlay">
+        <img
+          src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Unknown-1.png?ssl=1"
+          alt="3650 Capital financing products"
+          class="w-full max-h-[400px] object-cover"
+          loading="lazy"
+        >
+      </div>
+
+      <!-- Product 1: RECS — Split Layout Left -->
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center mb-20 md:mb-28">
+        <div class="reveal-left relative">
+          <span class="section-number">01</span>
+          <div class="relative z-10">
+            <span class="inline-flex items-center px-4 py-1.5 bg-copper/10 text-copper text-xs font-semibold tracking-widest uppercase rounded-full mb-6">Product 01</span>
+            <h3 class="font-headline text-3xl md:text-4xl text-charcoal mb-4">RECS</h3>
+            <p class="text-charcoal/60 text-base md:text-lg leading-relaxed mb-8">
+              Credit solutions across the property life cycle. Senior, mezzanine, and preferred equity structures for transitional and stabilized assets.
+            </p>
+          </div>
+        </div>
+        <div class="reveal-right delay-2">
+          <div class="bg-white rounded-xl p-8 md:p-10 shadow-lg">
+            <div class="space-y-6">
+              <div class="flex items-start gap-4">
+                <div class="check-circle"><span class="material-symbols-outlined">check</span></div>
+                <div>
+                  <span class="text-charcoal font-semibold text-sm block mb-1">Capital Stack</span>
+                  <span class="text-charcoal/60 text-sm">Senior, Mezzanine, Preferred Equity</span>
+                </div>
+              </div>
+              <div class="flex items-start gap-4">
+                <div class="check-circle"><span class="material-symbols-outlined">check</span></div>
+                <div>
+                  <span class="text-charcoal font-semibold text-sm block mb-1">Deal Size</span>
+                  <span class="text-copper text-sm font-semibold">$10M &ndash; $250M</span>
+                </div>
+              </div>
+              <div class="flex items-start gap-4">
+                <div class="check-circle"><span class="material-symbols-outlined">check</span></div>
+                <div>
+                  <span class="text-charcoal font-semibold text-sm block mb-1">Asset Profile</span>
+                  <span class="text-charcoal/60 text-sm">Transitional &amp; Stabilized</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 2: Stable Cash Flow — Split Layout Right -->
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center mb-20 md:mb-28">
+        <div class="reveal-right delay-2 lg:order-2 relative">
+          <span class="section-number" style="left: -1rem; right: auto;">02</span>
+          <div class="relative z-10">
+            <span class="inline-flex items-center px-4 py-1.5 bg-copper/10 text-copper text-xs font-semibold tracking-widest uppercase rounded-full mb-6">Product 02</span>
+            <h3 class="font-headline text-3xl md:text-4xl text-charcoal mb-4">Stable Cash Flow</h3>
+            <p class="text-charcoal/60 text-base md:text-lg leading-relaxed mb-8">
+              Fixed-rate programs for stabilized assets. DSCR-based underwriting with long-term certainty for institutional and private borrowers.
+            </p>
+          </div>
+        </div>
+        <div class="reveal-left delay-2 lg:order-1">
+          <div class="bg-white rounded-xl p-8 md:p-10 shadow-lg">
+            <div class="space-y-6">
+              <div class="flex items-start gap-4">
+                <div class="check-circle"><span class="material-symbols-outlined">check</span></div>
+                <div>
+                  <span class="text-charcoal font-semibold text-sm block mb-1">Structure</span>
+                  <span class="text-charcoal/60 text-sm">Long-term Fixed-rate</span>
+                </div>
+              </div>
+              <div class="flex items-start gap-4">
+                <div class="check-circle"><span class="material-symbols-outlined">check</span></div>
+                <div>
+                  <span class="text-charcoal font-semibold text-sm block mb-1">Deal Size</span>
+                  <span class="text-copper text-sm font-semibold">$5M &ndash; $100M</span>
+                </div>
+              </div>
+              <div class="flex items-start gap-4">
+                <div class="check-circle"><span class="material-symbols-outlined">check</span></div>
+                <div>
+                  <span class="text-charcoal font-semibold text-sm block mb-1">Underwriting</span>
+                  <span class="text-charcoal/60 text-sm">DSCR-based</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 3: Special Situations — Split Layout Left -->
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div class="reveal-left relative">
+          <span class="section-number">03</span>
+          <div class="relative z-10">
+            <span class="inline-flex items-center px-4 py-1.5 bg-copper/10 text-copper text-xs font-semibold tracking-widest uppercase rounded-full mb-6">Product 03</span>
+            <h3 class="font-headline text-3xl md:text-4xl text-charcoal mb-4">Special Situations</h3>
+            <p class="text-charcoal/60 text-base md:text-lg leading-relaxed mb-8">
+              Structured capital for complexity. Broken capital structures, loan purchases, and value-add opportunities with flexible terms.
+            </p>
+          </div>
+        </div>
+        <div class="reveal-right delay-2">
+          <div class="bg-white rounded-xl p-8 md:p-10 shadow-lg">
+            <div class="space-y-6">
+              <div class="flex items-start gap-4">
+                <div class="check-circle"><span class="material-symbols-outlined">check</span></div>
+                <div>
+                  <span class="text-charcoal font-semibold text-sm block mb-1">Focus</span>
+                  <span class="text-charcoal/60 text-sm">Broken structures, Value-add</span>
+                </div>
+              </div>
+              <div class="flex items-start gap-4">
+                <div class="check-circle"><span class="material-symbols-outlined">check</span></div>
+                <div>
+                  <span class="text-charcoal font-semibold text-sm block mb-1">Approach</span>
+                  <span class="text-copper text-sm font-semibold">Flexible Terms</span>
+                </div>
+              </div>
+              <div class="flex items-start gap-4">
+                <div class="check-circle"><span class="material-symbols-outlined">check</span></div>
+                <div>
+                  <span class="text-charcoal font-semibold text-sm block mb-1">Includes</span>
+                  <span class="text-charcoal/60 text-sm">Loan Purchases</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==================== COMPARISON TABLE ==================== -->
+  <section id="comparison" class="py-20 md:py-28 bg-white">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+
+      <!-- Section Header -->
+      <div class="max-w-2xl mb-14">
+        <div class="reveal copper-line mb-6"></div>
+        <h2 class="reveal delay-1 font-headline text-3xl md:text-4xl lg:text-5xl text-charcoal mb-4 leading-tight">
+          Three Core Structures.<br>One Platform.
+        </h2>
+      </div>
+
+      <!-- Table -->
+      <div class="reveal delay-2 overflow-x-auto">
+        <table class="comparison-table w-full border-collapse min-w-[640px]">
+          <thead>
+            <tr class="border-b-2 border-charcoal">
+              <th class="text-left text-charcoal/40 py-5 pr-6 w-[160px]"></th>
+              <th class="text-left text-charcoal py-5 px-6">
+                <span class="inline-flex items-center gap-2">
+                  <span class="w-8 h-8 rounded-md bg-copper/10 flex items-center justify-center">
+                    <span class="material-symbols-outlined text-copper text-base">trending_up</span>
+                  </span>
+                  Senior Construction
+                </span>
+              </th>
+              <th class="text-left text-charcoal py-5 px-6">
+                <span class="inline-flex items-center gap-2">
+                  <span class="w-8 h-8 rounded-md bg-copper/10 flex items-center justify-center">
+                    <span class="material-symbols-outlined text-copper text-base">lock</span>
+                  </span>
+                  Fixed-Rate Senior
+                </span>
+              </th>
+              <th class="text-left text-charcoal py-5 px-6">
+                <span class="inline-flex items-center gap-2">
+                  <span class="w-8 h-8 rounded-md bg-copper/10 flex items-center justify-center">
+                    <span class="material-symbols-outlined text-copper text-base">layers</span>
+                  </span>
+                  Preferred Equity
+                </span>
+              </th>
+            </tr>
+          </thead>
+          <tbody class="text-charcoal/70 text-sm">
+            <tr class="border-b border-charcoal/10">
+              <td class="py-5 pr-6 comparison-table font-bold text-charcoal text-xs tracking-[0.15em] uppercase">Use Case</td>
+              <td class="py-5 px-6">Development, repositioning</td>
+              <td class="py-5 px-6">Stabilized assets</td>
+              <td class="py-5 px-6">Recapitalization</td>
+            </tr>
+            <tr class="border-b border-charcoal/10 bg-warm/60">
+              <td class="py-5 pr-6 comparison-table font-bold text-charcoal text-xs tracking-[0.15em] uppercase">Deal Size</td>
+              <td class="py-5 px-6 font-semibold text-charcoal">$10M &ndash; $250M</td>
+              <td class="py-5 px-6 font-semibold text-charcoal">$5M &ndash; $100M</td>
+              <td class="py-5 px-6 font-semibold text-charcoal">$10M &ndash; $75M</td>
+            </tr>
+            <tr class="border-b border-charcoal/10">
+              <td class="py-5 pr-6 comparison-table font-bold text-charcoal text-xs tracking-[0.15em] uppercase">Leverage</td>
+              <td class="py-5 px-6">Up to 75% LTC</td>
+              <td class="py-5 px-6">Up to 70% LTV</td>
+              <td class="py-5 px-6">Mezzanine position</td>
+            </tr>
+            <tr class="bg-warm/60">
+              <td class="py-5 pr-6 comparison-table font-bold text-charcoal text-xs tracking-[0.15em] uppercase">Servicing</td>
+              <td class="py-5 px-6">
+                <span class="inline-flex items-center gap-1.5 text-copper font-semibold">
+                  <span class="material-symbols-outlined text-sm">check_circle</span>
+                  Retained in-house
+                </span>
+              </td>
+              <td class="py-5 px-6">
+                <span class="inline-flex items-center gap-1.5 text-copper font-semibold">
+                  <span class="material-symbols-outlined text-sm">check_circle</span>
+                  Retained in-house
+                </span>
+              </td>
+              <td class="py-5 px-6">
+                <span class="inline-flex items-center gap-1.5 text-copper font-semibold">
+                  <span class="material-symbols-outlined text-sm">check_circle</span>
+                  Active asset mgmt
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==================== APPROACH / CTA ==================== -->
+  <section id="approach" class="py-20 md:py-28 bg-warm overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+
+        <!-- Left: Image Stack -->
+        <div class="reveal-left relative">
+          <!-- Primary Image -->
+          <div class="relative z-10 rounded-2xl overflow-hidden shadow-xl">
+            <img
+              src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/DJI_0135-HDR-scaled.jpg?ssl=1"
+              alt="3650 Capital approach — aerial view"
+              class="w-full h-[340px] md:h-[420px] object-cover"
+              loading="lazy"
+            >
+          </div>
+          <!-- Decorative element -->
+          <div class="absolute -bottom-4 -left-4 w-32 h-32 border-2 border-copper/20 rounded-2xl -z-10 hidden lg:block"></div>
+        </div>
+
+        <!-- Right: Content -->
+        <div class="reveal-right delay-2">
+          <div class="copper-line mb-6"></div>
+          <h2 class="font-headline text-3xl md:text-4xl lg:text-5xl text-charcoal mb-6 leading-tight">
+            Structured for<br>Permanence.
+          </h2>
+          <p class="text-charcoal/60 text-base md:text-lg leading-relaxed mb-8">
+            Every financing solution is underwritten with the same discipline: understand the asset, structure the capital, and service the relationship through maturity.
+          </p>
+
+          <div class="pull-quote mb-8">
+            <p class="font-headline text-lg md:text-xl text-charcoal/80 italic">
+              "Our vertical integration ensures that credit decisions, servicing, and asset management are aligned from day one."
+            </p>
+          </div>
+
+          <!-- Checklist -->
+          <ul class="space-y-4 mb-10">
+            <li class="flex items-start gap-3">
+              <div class="check-circle mt-0.5"><span class="material-symbols-outlined">check</span></div>
+              <span class="text-charcoal/70 text-sm leading-relaxed">In-house credit decisions with institutional rigor</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <div class="check-circle mt-0.5"><span class="material-symbols-outlined">check</span></div>
+              <span class="text-charcoal/70 text-sm leading-relaxed">Retained servicing for every loan originated</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <div class="check-circle mt-0.5"><span class="material-symbols-outlined">check</span></div>
+              <span class="text-charcoal/70 text-sm leading-relaxed">Flexible structures across the entire capital stack</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <div class="check-circle mt-0.5"><span class="material-symbols-outlined">check</span></div>
+              <span class="text-charcoal/70 text-sm leading-relaxed">One team, one relationship, from close to maturity</span>
+            </li>
+          </ul>
+
+          <a href="./contact.html" class="inline-flex items-center gap-2 bg-copper text-white font-semibold px-7 py-3.5 rounded-md hover:bg-copper-light transition-colors duration-200 text-sm">
+            Discuss a Financing Opportunity
+            <span class="material-symbols-outlined text-lg">arrow_forward</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer data-review-section="footer" id="footer" class="bg-charcoal text-white py-20 md:py-28">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 mb-16">
+
+        <!-- Left: CTA -->
+        <div>
+          <div class="reveal w-12 h-[3px] bg-copper mb-8"></div>
+          <h2 class="reveal delay-1 font-headline text-3xl md:text-4xl lg:text-5xl text-white mb-6 leading-tight">
+            Building for the<br>Next Decade.
+          </h2>
+          <p class="reveal delay-2 text-white/50 text-base md:text-lg leading-relaxed max-w-md mb-8">
+            If you're looking for a lending partner with permanence, patience, and presence &mdash; we should talk.
+          </p>
+          <a href="./contact.html" class="reveal delay-3 inline-flex items-center gap-2 bg-copper text-white font-semibold px-7 py-3.5 rounded-md hover:bg-copper-light transition-colors duration-200 text-sm">
+            Get in Touch
+            <span class="material-symbols-outlined text-lg">mail</span>
+          </a>
+        </div>
+
+        <!-- Right: Contact Details -->
+        <div class="reveal-right delay-2 flex flex-col justify-end">
+          <div class="space-y-6">
+
+            <div class="flex items-start gap-4">
+              <span class="material-symbols-outlined text-copper text-xl mt-0.5">location_on</span>
+              <div>
+                <span class="text-white/80 text-sm font-semibold block mb-1">Headquarters</span>
+                <span class="text-white/50 text-sm">1450 Brickell Avenue, Suite 2600<br>Miami, FL 33131</span>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <span class="material-symbols-outlined text-copper text-xl mt-0.5">apartment</span>
+              <div>
+                <span class="text-white/80 text-sm font-semibold block mb-1">New York Office</span>
+                <span class="text-white/50 text-sm">590 Madison Avenue, 21st Floor<br>New York, NY 10022</span>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <span class="material-symbols-outlined text-copper text-xl mt-0.5">mail</span>
+              <div>
+                <span class="text-white/80 text-sm font-semibold block mb-1">Email</span>
+                <a href="mailto:info@3650capital.com" class="text-copper text-sm hover:text-copper-light transition-colors">info@3650capital.com</a>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <span class="material-symbols-outlined text-copper text-xl mt-0.5">call</span>
+              <div>
+                <span class="text-white/80 text-sm font-semibold block mb-1">Phone</span>
+                <a href="tel:+13054105001" class="text-copper text-sm hover:text-copper-light transition-colors">(305) 410-5001</a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom bar -->
+      <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-4">
+          <img
+            src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650Capital-Logo.png?ssl=1"
+            alt="3650 Capital"
+            class="h-8 w-auto brightness-0 invert opacity-60"
+          >
+        </div>
+        <p class="text-white/30 text-xs">
+          &copy; 2026 3650 Capital LLC. All rights reserved.
+        </p>
+        <div class="flex items-center gap-6">
+          <a href="#" class="text-white/40 text-xs hover:text-white/60 transition-colors">Privacy Policy</a>
+          <a href="#" class="text-white/40 text-xs hover:text-white/60 transition-colors">Terms</a>
+          <a href="#" class="text-white/40 text-xs hover:text-white/60 transition-colors">Disclosures</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+
+  <!-- ==================== SCRIPTS ==================== -->
+  <script>
+    // ---- Mobile Menu ----
+    const menuToggle = document.getElementById('menuToggle');
+    const menuClose = document.getElementById('menuClose');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuOverlay = document.getElementById('menuOverlay');
+
+    function openMenu() {
+      mobileMenu.classList.add('open');
+      menuOverlay.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeMenu() {
+      mobileMenu.classList.remove('open');
+      menuOverlay.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+
+    menuToggle.addEventListener('click', openMenu);
+    menuClose.addEventListener('click', closeMenu);
+    menuOverlay.addEventListener('click', closeMenu);
+
+    // Close on link click
+    mobileMenu.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', closeMenu);
+    });
+
+    // ---- Nav Scroll ----
+    const navbar = document.getElementById('navbar');
+    function handleNavScroll() {
+      if (window.scrollY > 40) {
+        navbar.classList.add('nav-scrolled');
+      } else {
+        navbar.classList.remove('nav-scrolled');
+      }
+    }
+    window.addEventListener('scroll', handleNavScroll, { passive: true });
+    handleNavScroll();
+
+    // ---- Intersection Observer for reveal animations ----
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (!prefersReducedMotion) {
+      const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+
+      const revealObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.12,
+        rootMargin: '0px 0px -40px 0px'
+      });
+
+      revealElements.forEach(function(el) {
+        revealObserver.observe(el);
+      });
+    } else {
+      // If reduced motion, make everything visible immediately
+      document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(function(el) {
+        el.classList.add('visible');
+      });
+    }
+
+    // ---- Smooth scroll for anchor links ----
+    document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+      anchor.addEventListener('click', function(e) {
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        const targetEl = document.querySelector(targetId);
+        if (targetEl) {
+          e.preventDefault();
+          const navHeight = navbar.offsetHeight;
+          const targetPosition = targetEl.getBoundingClientRect().top + window.scrollY - navHeight;
+          window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

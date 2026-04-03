@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3650 Capital — Featured Transactions</title>
+  <meta name="description" content="Explore 3650 Capital's featured transactions across senior construction loans and private equity investments in commercial real estate.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,300;1,6..72,400;1,6..72,500;1,6..72,600&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Material Symbols -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'paper': '#fbfaee',
+            'paper-low': '#f5f4e8',
+            'paper-high': '#e4e3d7',
+            'charcoal': '#1b1c15',
+            'copper': '#894d0d',
+            'copper-light': '#a76526',
+            'copper-soft': '#c49a6c',
+            'sage': '#8b4a2c',
+          },
+          fontFamily: {
+            'headline': ['Newsreader', 'serif'],
+            'body': ['Manrope', 'sans-serif'],
+          },
+          borderRadius: {
+            'DEFAULT': '0px',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    *, *::before, *::after {
+      border-radius: 0 !important;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Manrope', sans-serif;
+      background-color: #fbfaee;
+      color: #1b1c15;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Ledger-style label */
+    .label-ledger {
+      font-family: 'Manrope', sans-serif;
+      font-weight: 600;
+      font-size: 0.6875rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      line-height: 1;
+    }
+
+    /* Pull-Insight component */
+    .pull-insight-number {
+      font-family: 'Newsreader', serif;
+      font-weight: 300;
+      line-height: 0.9;
+      color: #894d0d;
+    }
+
+    /* Copper gradient CTA */
+    .btn-copper {
+      background: linear-gradient(135deg, #894d0d, #a76526);
+      color: #fbfaee;
+      font-family: 'Manrope', sans-serif;
+      font-weight: 600;
+      font-size: 0.8125rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 1.125rem 2.75rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.625rem;
+      transition: all 450ms cubic-bezier(0.22, 1, 0.36, 1);
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .btn-copper:hover {
+      background: linear-gradient(135deg, #a76526, #c49a6c);
+      transform: translateY(-1px);
+      box-shadow: 0 12px 40px rgba(137, 77, 13, 0.2);
+    }
+
+    /* Ambient shadow for images */
+    .ambient-shadow {
+      box-shadow: 0 24px 80px -16px rgba(137, 77, 13, 0.18),
+                  0 8px 24px -8px rgba(27, 28, 21, 0.08);
+    }
+
+    /* Watermark */
+    .watermark-3650 {
+      font-family: 'Newsreader', serif;
+      font-weight: 700;
+      color: rgba(137, 77, 13, 0.06);
+      line-height: 0.8;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    /* Scroll animation base */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 700ms cubic-bezier(0.22, 1, 0.36, 1),
+                  transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 100ms; }
+    .reveal-delay-2 { transition-delay: 200ms; }
+    .reveal-delay-3 { transition-delay: 300ms; }
+    .reveal-delay-4 { transition-delay: 400ms; }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+
+      .reveal.visible {
+        opacity: 1;
+        transform: none;
+      }
+
+      .btn-copper {
+        transition: none;
+      }
+
+      .btn-copper:hover {
+        transform: none;
+      }
+
+      .nav-glass {
+        transition: none;
+      }
+
+      .card-lift {
+        transition: none;
+      }
+
+      .card-lift:hover {
+        transform: none;
+      }
+    }
+
+    /* Nav glassmorphism */
+    .nav-glass {
+      background: rgba(251, 250, 238, 0.88);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      transition: background 400ms cubic-bezier(0.22, 1, 0.36, 1),
+                  box-shadow 400ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .nav-glass.scrolled {
+      background: rgba(251, 250, 238, 0.95);
+      box-shadow: 0 1px 0 rgba(137, 77, 13, 0.08);
+    }
+
+    /* Ghost border for accessibility focus */
+    *:focus-visible {
+      outline: 2px solid rgba(137, 77, 13, 0.35);
+      outline-offset: 2px;
+    }
+
+    /* Mobile nav overlay */
+    .mobile-nav-overlay {
+      background: rgba(251, 250, 238, 0.97);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 400ms cubic-bezier(0.22, 1, 0.36, 1),
+                  visibility 400ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .mobile-nav-overlay.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* Editorial divider */
+    .divider-copper {
+      width: 48px;
+      height: 2px;
+      background: linear-gradient(90deg, #894d0d, #c49a6c);
+    }
+
+    /* Card hover lift */
+    .card-lift {
+      transition: transform 400ms cubic-bezier(0.22, 1, 0.36, 1),
+                  box-shadow 400ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .card-lift:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px -12px rgba(27, 28, 21, 0.1);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .card-lift {
+        transition: none;
+      }
+      .card-lift:hover {
+        transform: none;
+      }
+    }
+
+    /* Editorial case study image overlay */
+    .case-study-overlay {
+      background: linear-gradient(0deg,
+        rgba(251, 250, 238, 1) 0%,
+        rgba(251, 250, 238, 0.3) 50%,
+        rgba(251, 250, 238, 0) 100%);
+    }
+
+    /* Ledger table */
+    .ledger-row {
+      transition: background-color 300ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .ledger-row:hover {
+      background-color: rgba(228, 227, 215, 0.4);
+    }
+  </style>
+</head>
+
+<body class="bg-paper text-charcoal font-body overflow-x-hidden">
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       NAVIGATION
+       ════════════════════════════════════════════════════════════════════ -->
+  <nav id="main-nav" class="nav-glass fixed top-0 left-0 right-0 z-50" role="navigation" aria-label="Main navigation">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="flex items-center justify-between h-20 lg:h-24">
+        <!-- Logo -->
+        <a href="./index.html" class="flex-shrink-0" aria-label="3650 Capital home">
+          <img
+            src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650Capital-Logo.png?ssl=1"
+            alt="3650 Capital"
+            class="h-8 lg:h-10 w-auto"
+          >
+        </a>
+
+        <!-- Desktop links -->
+        <div class="hidden lg:flex items-center gap-10">
+          <a href="./index.html" class="label-ledger text-copper hover:text-copper-light transition-colors duration-300">Home</a>
+          <a href="./firm.html" class="label-ledger text-copper hover:text-copper-light transition-colors duration-300">Firm</a>
+          <a href="./solutions.html" class="label-ledger text-copper hover:text-copper-light transition-colors duration-300">Solutions</a>
+          <a href="./transactions.html" class="label-ledger text-copper-light transition-colors duration-300" style="border-bottom: 2px solid #894d0d; padding-bottom: 2px;">Transactions</a>
+          <a href="./leadership.html" class="label-ledger text-copper hover:text-copper-light transition-colors duration-300">Leadership</a>
+          <a href="./contact.html" class="btn-copper text-xs">
+            Begin Dialogue
+            <span class="material-symbols-outlined text-base" aria-hidden="true">arrow_forward</span>
+          </a>
+        </div>
+
+        <!-- Mobile menu button -->
+        <button
+          id="mobile-menu-btn"
+          class="lg:hidden flex items-center justify-center w-10 h-10 text-copper"
+          aria-label="Open navigation menu"
+          aria-expanded="false"
+        >
+          <span class="material-symbols-outlined text-2xl">menu</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile nav overlay -->
+    <div id="mobile-nav" class="mobile-nav-overlay fixed inset-0 top-0 z-50 lg:hidden flex flex-col">
+      <div class="flex items-center justify-between h-20 px-6">
+        <a href="./index.html" aria-label="3650 Capital home">
+          <img
+            src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650Capital-Logo.png?ssl=1"
+            alt="3650 Capital"
+            class="h-8 w-auto"
+          >
+        </a>
+        <button id="mobile-close-btn" class="flex items-center justify-center w-10 h-10 text-copper" aria-label="Close navigation menu">
+          <span class="material-symbols-outlined text-2xl">close</span>
+        </button>
+      </div>
+      <div class="flex-1 flex flex-col justify-center items-center gap-10 px-6">
+        <a href="./index.html" class="mobile-nav-link font-headline text-3xl text-charcoal hover:text-copper transition-colors duration-300">Home</a>
+        <a href="./firm.html" class="mobile-nav-link font-headline text-3xl text-charcoal hover:text-copper transition-colors duration-300">Firm</a>
+        <a href="./solutions.html" class="mobile-nav-link font-headline text-3xl text-charcoal hover:text-copper transition-colors duration-300">Solutions</a>
+        <a href="./transactions.html" class="mobile-nav-link font-headline text-3xl text-copper">Transactions</a>
+        <a href="./leadership.html" class="mobile-nav-link font-headline text-3xl text-charcoal hover:text-copper transition-colors duration-300">Leadership</a>
+        <a href="./contact.html" class="mobile-nav-link btn-copper mt-4">
+          Begin Dialogue
+          <span class="material-symbols-outlined text-base" aria-hidden="true">arrow_forward</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       HERO
+       ════════════════════════════════════════════════════════════════════ -->
+  <section class="bg-paper pt-32 lg:pt-44 pb-16 lg:pb-24">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <!-- Label -->
+      <div class="reveal mb-8">
+        <span class="label-ledger text-copper">Transaction Record</span>
+        <div class="divider-copper mt-3"></div>
+      </div>
+
+      <!-- Headline -->
+      <h1 class="reveal reveal-delay-1 font-headline text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-300 text-charcoal leading-[1.05] mb-8" style="font-weight: 300;">
+        Featured<br>
+        <em class="text-copper" style="font-style: italic;">transactions.</em>
+      </h1>
+
+      <!-- Subhead -->
+      <p class="reveal reveal-delay-2 text-charcoal/55 text-lg lg:text-xl max-w-2xl leading-relaxed">
+        A curated record of senior construction loans, permanent financings, and private equity investments across the 3650 Capital platform.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       FEATURED TRANSACTION — EDITORIAL CASE STUDY
+       ════════════════════════════════════════════════════════════════════ -->
+  <section class="bg-paper-low py-16 lg:py-24">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="reveal">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+          <!-- Image -->
+          <div class="lg:col-span-7">
+            <div class="relative overflow-hidden ambient-shadow">
+              <img
+                src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Oasis-Pointe.-Image-courtesy-of-3650-REIT-.jpeg?ssl=1"
+                alt="Oasis at Dania Pointe"
+                class="w-full h-auto object-cover aspect-[4/3]"
+              >
+            </div>
+            <p class="text-charcoal/35 text-xs mt-3 italic font-headline">Image courtesy of 3650 REIT</p>
+          </div>
+
+          <!-- Details -->
+          <div class="lg:col-span-5 lg:pt-8">
+            <span class="label-ledger text-copper mb-6 block">Featured Transaction</span>
+            <h2 class="font-headline text-3xl lg:text-4xl text-charcoal mb-4 leading-tight" style="font-weight: 400;">
+              Oasis at Dania Pointe
+            </h2>
+            <div class="divider-copper mb-6"></div>
+            <p class="text-charcoal/60 text-base leading-relaxed mb-8">
+              A $64.3 million senior construction loan for a Class A multifamily development in Dania Beach, Florida. This transaction exemplifies 3650 Capital's commitment to providing certainty of execution for ground-up construction projects in high-growth Florida markets.
+            </p>
+
+            <!-- Stat pairs -->
+            <div class="space-y-6 mb-8">
+              <div class="flex items-baseline justify-between" style="box-shadow: 0 1px 0 rgba(137, 77, 13, 0.08); padding-bottom: 0.75rem;">
+                <span class="label-ledger text-copper">Loan Amount</span>
+                <span class="pull-insight-number text-3xl">$64.3M</span>
+              </div>
+              <div class="flex items-baseline justify-between" style="box-shadow: 0 1px 0 rgba(137, 77, 13, 0.08); padding-bottom: 0.75rem;">
+                <span class="label-ledger text-copper">Structure</span>
+                <span class="text-charcoal font-headline text-lg">Senior Construction</span>
+              </div>
+              <div class="flex items-baseline justify-between" style="box-shadow: 0 1px 0 rgba(137, 77, 13, 0.08); padding-bottom: 0.75rem;">
+                <span class="label-ledger text-copper">Location</span>
+                <span class="text-charcoal font-headline text-lg">Dania Beach, FL</span>
+              </div>
+              <div class="flex items-baseline justify-between">
+                <span class="label-ledger text-copper">Sector</span>
+                <span class="text-charcoal font-headline text-lg">Multifamily</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       SENIOR CONSTRUCTION LOANS
+       ════════════════════════════════════════════════════════════════════ -->
+  <section class="bg-paper py-16 lg:py-24">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <!-- Section header -->
+      <div class="reveal mb-14">
+        <span class="label-ledger text-copper mb-3 block">Senior Construction Loans</span>
+        <div class="divider-copper mb-6"></div>
+        <h2 class="font-headline text-3xl lg:text-4xl text-charcoal leading-tight" style="font-weight: 400;">
+          Ground-up development financing
+        </h2>
+        <p class="text-charcoal/50 text-base mt-4 max-w-lg leading-relaxed">
+          Certainty of execution from origination through construction completion and stabilization.
+        </p>
+      </div>
+
+      <!-- Editorial case study cards — no borders, 0px radius -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-14">
+
+        <!-- Deal 1: Oasis -->
+        <div class="reveal card-lift group">
+          <div class="relative overflow-hidden mb-5 ambient-shadow">
+            <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Oasis-Pointe.-Image-courtesy-of-3650-REIT-.jpeg?ssl=1"
+                 alt="Oasis at Dania Pointe"
+                 class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105">
+          </div>
+          <span class="label-ledger text-copper mb-2 block">Multifamily</span>
+          <h3 class="font-headline text-xl text-charcoal mb-1" style="font-weight: 500;">Oasis at Dania Pointe</h3>
+          <p class="text-charcoal/45 text-sm mb-3">Dania Beach, FL</p>
+          <div class="flex items-baseline justify-between">
+            <span class="pull-insight-number text-2xl">$64.3M</span>
+            <span class="label-ledger text-charcoal/35">Senior Construction</span>
+          </div>
+        </div>
+
+        <!-- Deal 2: Gateway at Wynwood -->
+        <div class="reveal reveal-delay-1 card-lift group">
+          <div class="relative overflow-hidden mb-5 ambient-shadow">
+            <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Gateway-at-Wynwood-e1578945268648.jpg?ssl=1"
+                 alt="Gateway at Wynwood"
+                 class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105">
+          </div>
+          <span class="label-ledger text-copper mb-2 block">Mixed-Use</span>
+          <h3 class="font-headline text-xl text-charcoal mb-1" style="font-weight: 500;">Gateway at Wynwood</h3>
+          <p class="text-charcoal/45 text-sm mb-3">Miami, FL</p>
+          <div class="flex items-baseline justify-between">
+            <span class="pull-insight-number text-2xl">$79.0M</span>
+            <span class="label-ledger text-charcoal/35">Senior Construction</span>
+          </div>
+        </div>
+
+        <!-- Deal 3: 48 East -->
+        <div class="reveal card-lift group">
+          <div class="relative overflow-hidden mb-5 ambient-shadow">
+            <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/aus_48EastAve_austin.jpg?ssl=1"
+                 alt="48 East"
+                 class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105">
+          </div>
+          <span class="label-ledger text-copper mb-2 block">Multifamily</span>
+          <h3 class="font-headline text-xl text-charcoal mb-1" style="font-weight: 500;">48 East</h3>
+          <p class="text-charcoal/45 text-sm mb-3">Austin, TX</p>
+          <div class="flex items-baseline justify-between">
+            <span class="pull-insight-number text-2xl">$90.9M</span>
+            <span class="label-ledger text-charcoal/35">Senior Construction</span>
+          </div>
+        </div>
+
+        <!-- Deal 4: Tacoma Marriott -->
+        <div class="reveal reveal-delay-1 card-lift group">
+          <div class="relative overflow-hidden mb-5 ambient-shadow">
+            <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Tacoma-Marriott-Rendering_web-feature.jpg?ssl=1"
+                 alt="Tacoma Marriott"
+                 class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105">
+          </div>
+          <span class="label-ledger text-copper mb-2 block">Hospitality</span>
+          <h3 class="font-headline text-xl text-charcoal mb-1" style="font-weight: 500;">Tacoma Marriott</h3>
+          <p class="text-charcoal/45 text-sm mb-3">Tacoma, WA</p>
+          <div class="flex items-baseline justify-between">
+            <span class="pull-insight-number text-2xl">$82.0M</span>
+            <span class="label-ledger text-charcoal/35">Senior Construction</span>
+          </div>
+        </div>
+
+        <!-- Deal 5: Renaissance Dallas -->
+        <div class="reveal card-lift group">
+          <div class="relative overflow-hidden mb-5 ambient-shadow">
+            <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/RENAISSANCE.png?ssl=1"
+                 alt="Renaissance Dallas"
+                 class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105">
+          </div>
+          <span class="label-ledger text-copper mb-2 block">Hospitality</span>
+          <h3 class="font-headline text-xl text-charcoal mb-1" style="font-weight: 500;">Renaissance Dallas</h3>
+          <p class="text-charcoal/45 text-sm mb-3">Dallas, TX</p>
+          <div class="flex items-baseline justify-between">
+            <span class="pull-insight-number text-2xl">$90.0M</span>
+            <span class="label-ledger text-charcoal/35">Senior Construction</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       AGGREGATE STATS — PULL INSIGHT STYLE
+       ════════════════════════════════════════════════════════════════════ -->
+  <section class="bg-paper-low py-16 lg:py-20">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="reveal grid grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-16">
+        <div class="text-center">
+          <p class="pull-insight-number text-4xl lg:text-5xl mb-2">10</p>
+          <p class="label-ledger text-copper">Featured Deals</p>
+        </div>
+        <div class="text-center">
+          <p class="pull-insight-number text-4xl lg:text-5xl mb-2">$777M+</p>
+          <p class="label-ledger text-copper">Total Volume</p>
+        </div>
+        <div class="text-center">
+          <p class="pull-insight-number text-4xl lg:text-5xl mb-2">8</p>
+          <p class="label-ledger text-copper">Markets</p>
+        </div>
+        <div class="text-center">
+          <p class="pull-insight-number text-4xl lg:text-5xl mb-2">5</p>
+          <p class="label-ledger text-copper">Asset Classes</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       SENIOR + PE TRANSACTIONS
+       ════════════════════════════════════════════════════════════════════ -->
+  <section class="bg-paper py-16 lg:py-24">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <!-- Section header -->
+      <div class="reveal mb-14">
+        <span class="label-ledger text-copper mb-3 block">Senior + Private Equity</span>
+        <div class="divider-copper mb-6"></div>
+        <h2 class="font-headline text-3xl lg:text-4xl text-charcoal leading-tight" style="font-weight: 400;">
+          Capital solutions beyond traditional lending
+        </h2>
+        <p class="text-charcoal/50 text-base mt-4 max-w-lg leading-relaxed">
+          Flexible structures combining senior debt with private equity participation for complex capital stacks.
+        </p>
+      </div>
+
+      <!-- Featured PE deal — ICP/IRG editorial layout -->
+      <div class="reveal mb-16">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+          <!-- Image -->
+          <div class="lg:col-span-7">
+            <div class="relative overflow-hidden ambient-shadow">
+              <img
+                src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/IPC-.png?ssl=1"
+                alt="ICP/IRG"
+                class="w-full h-auto object-cover aspect-[4/3]"
+              >
+            </div>
+          </div>
+
+          <!-- Details -->
+          <div class="lg:col-span-5 lg:pt-4">
+            <span class="label-ledger text-copper mb-4 block">Largest Transaction</span>
+            <h3 class="font-headline text-3xl text-charcoal mb-3 leading-tight" style="font-weight: 400;">ICP/IRG</h3>
+            <div class="divider-copper mb-5"></div>
+            <p class="text-charcoal/60 text-base leading-relaxed mb-8">
+              A landmark $180.0 million senior construction loan for a transformative mixed-use development in South Florida, representing one of 3650 Capital's largest single-asset transactions.
+            </p>
+            <div class="space-y-5">
+              <div class="flex items-baseline justify-between" style="box-shadow: 0 1px 0 rgba(137, 77, 13, 0.08); padding-bottom: 0.75rem;">
+                <span class="label-ledger text-copper">Amount</span>
+                <span class="pull-insight-number text-3xl">$180.0M</span>
+              </div>
+              <div class="flex items-baseline justify-between" style="box-shadow: 0 1px 0 rgba(137, 77, 13, 0.08); padding-bottom: 0.75rem;">
+                <span class="label-ledger text-copper">Structure</span>
+                <span class="text-charcoal font-headline text-lg">Senior + PE</span>
+              </div>
+              <div class="flex items-baseline justify-between">
+                <span class="label-ledger text-copper">Location</span>
+                <span class="text-charcoal font-headline text-lg">South Florida</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Remaining PE deals -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-14">
+
+        <!-- Deal 7: Aventura Self Storage -->
+        <div class="reveal card-lift group">
+          <div class="relative overflow-hidden mb-5 ambient-shadow">
+            <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/DJI_0135-HDR-scaled.jpg?ssl=1"
+                 alt="Aventura Self Storage"
+                 class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105">
+          </div>
+          <span class="label-ledger text-copper mb-2 block">Self Storage</span>
+          <h3 class="font-headline text-xl text-charcoal mb-1" style="font-weight: 500;">Aventura Self Storage</h3>
+          <p class="text-charcoal/45 text-sm mb-3">Aventura, FL</p>
+          <div class="flex items-baseline justify-between">
+            <span class="pull-insight-number text-2xl">$23.0M</span>
+            <span class="label-ledger text-charcoal/35">Senior + PE</span>
+          </div>
+        </div>
+
+        <!-- Deal 8: Waterfront Corporate Center I -->
+        <div class="reveal reveal-delay-1 card-lift group">
+          <div class="relative overflow-hidden mb-5 ambient-shadow">
+            <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Unknown-1.png?ssl=1"
+                 alt="Waterfront Corporate Center I"
+                 class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105">
+          </div>
+          <span class="label-ledger text-copper mb-2 block">Office</span>
+          <h3 class="font-headline text-xl text-charcoal mb-1" style="font-weight: 500;">Waterfront Corporate Center I</h3>
+          <p class="text-charcoal/45 text-sm mb-3">Hoboken, NJ</p>
+          <div class="flex items-baseline justify-between">
+            <span class="pull-insight-number text-2xl">$30.0M</span>
+            <span class="label-ledger text-charcoal/35">Private Equity</span>
+          </div>
+        </div>
+
+        <!-- Deal 9: Transcoastal Portfolio -->
+        <div class="reveal card-lift group">
+          <div class="relative overflow-hidden mb-5 ambient-shadow">
+            <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Transcoastal.jpeg?ssl=1"
+                 alt="Transcoastal Portfolio"
+                 class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105">
+          </div>
+          <span class="label-ledger text-copper mb-2 block">Portfolio</span>
+          <h3 class="font-headline text-xl text-charcoal mb-1" style="font-weight: 500;">Transcoastal Portfolio</h3>
+          <p class="text-charcoal/45 text-sm mb-3">Multi-Market</p>
+          <div class="flex items-baseline justify-between">
+            <span class="pull-insight-number text-2xl">$89.0M</span>
+            <span class="label-ledger text-charcoal/35">Private Equity</span>
+          </div>
+        </div>
+
+        <!-- Deal 10: Center at Miami Gardens -->
+        <div class="reveal reveal-delay-1 card-lift group">
+          <div class="relative overflow-hidden mb-5 ambient-shadow">
+            <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/rendering-center-at-miami-gardens-courtesy-3650-reit.jpg?ssl=1"
+                 alt="Center at Miami Gardens"
+                 class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105">
+          </div>
+          <span class="label-ledger text-copper mb-2 block">Mixed-Use</span>
+          <h3 class="font-headline text-xl text-charcoal mb-1" style="font-weight: 500;">Center at Miami Gardens</h3>
+          <p class="text-charcoal/45 text-sm mb-3">Miami Gardens, FL</p>
+          <div class="flex items-baseline justify-between">
+            <span class="pull-insight-number text-2xl">$49.3M</span>
+            <span class="label-ledger text-charcoal/35">Senior + PE</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       LEDGER TABLE
+       ════════════════════════════════════════════════════════════════════ -->
+  <section class="bg-paper-low py-16 lg:py-24">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="reveal mb-10">
+        <span class="label-ledger text-copper mb-3 block">Complete Record</span>
+        <div class="divider-copper mb-6"></div>
+        <h2 class="font-headline text-2xl lg:text-3xl text-charcoal" style="font-weight: 400;">Transaction summary</h2>
+      </div>
+
+      <div class="reveal overflow-x-auto">
+        <table class="w-full text-left">
+          <thead>
+            <tr style="box-shadow: 0 1px 0 rgba(137, 77, 13, 0.15);">
+              <th class="label-ledger text-copper py-4 pr-6">Transaction</th>
+              <th class="label-ledger text-copper py-4 pr-6">Location</th>
+              <th class="label-ledger text-copper py-4 pr-6">Amount</th>
+              <th class="label-ledger text-copper py-4 pr-6">Structure</th>
+            </tr>
+          </thead>
+          <tbody class="text-sm">
+            <tr class="ledger-row" style="box-shadow: 0 1px 0 rgba(137, 77, 13, 0.06);">
+              <td class="py-4 pr-6 font-headline text-charcoal" style="font-weight: 500;">Oasis at Dania Pointe</td>
+              <td class="py-4 pr-6 text-charcoal/55">Dania Beach, FL</td>
+              <td class="py-4 pr-6 pull-insight-number text-lg">$64.3M</td>
+              <td class="py-4 pr-6"><span class="label-ledger text-copper">Senior Construction</span></td>
+            </tr>
+            <tr class="ledger-row" style="box-shadow: 0 1px 0 rgba(137, 77, 13, 0.06);">
+              <td class="py-4 pr-6 font-headline text-charcoal" style="font-weight: 500;">Gateway at Wynwood</td>
+              <td class="py-4 pr-6 text-charcoal/55">Miami, FL</td>
+              <td class="py-4 pr-6 pull-insight-number text-lg">$79.0M</td>
+              <td class="py-4 pr-6"><span class="label-ledger text-copper">Senior Construction</span></td>
+            </tr>
+            <tr class="ledger-row" style="box-shadow: 0 1px 0 rgba(137, 77, 13, 0.06);">
+              <td class="py-4 pr-6 font-headline text-charcoal" style="font-weight: 500;">48 East</td>
+              <td class="py-4 pr-6 text-charcoal/55">Austin, TX</td>
+              <td class="py-4 pr-6 pull-insight-number text-lg">$90.9M</td>
+              <td class="py-4 pr-6"><span class="label-ledger text-copper">Senior Construction</span></td>
+            </tr>
+            <tr class="ledger-row" style="box-shadow: 0 1px 0 rgba(137, 77, 13, 0.06);">
+              <td class="py-4 pr-6 font-headline text-charcoal" style="font-weight: 500;">Tacoma Marriott</td>
+              <td class="py-4 pr-6 text-charcoal/55">Tacoma, WA</td>
+              <td class="py-4 pr-6 pull-insight-number text-lg">$82.0M</td>
+              <td class="py-4 pr-6"><span class="label-ledger text-copper">Senior Construction</span></td>
+            </tr>
+            <tr class="ledger-row" style="box-shadow: 0 1px 0 rgba(137, 77, 13, 0.06);">
+              <td class="py-4 pr-6 font-headline text-charcoal" style="font-weight: 500;">Renaissance Dallas</td>
+              <td class="py-4 pr-6 text-charcoal/55">Dallas, TX</td>
+              <td class="py-4 pr-6 pull-insight-number text-lg">$90.0M</td>
+              <td class="py-4 pr-6"><span class="label-ledger text-copper">Senior Construction</span></td>
+            </tr>
+            <tr class="ledger-row" style="box-shadow: 0 1px 0 rgba(137, 77, 13, 0.06);">
+              <td class="py-4 pr-6 font-headline text-charcoal" style="font-weight: 500;">ICP/IRG</td>
+              <td class="py-4 pr-6 text-charcoal/55">South Florida</td>
+              <td class="py-4 pr-6 pull-insight-number text-lg">$180.0M</td>
+              <td class="py-4 pr-6"><span class="label-ledger text-copper">Senior + PE</span></td>
+            </tr>
+            <tr class="ledger-row" style="box-shadow: 0 1px 0 rgba(137, 77, 13, 0.06);">
+              <td class="py-4 pr-6 font-headline text-charcoal" style="font-weight: 500;">Aventura Self Storage</td>
+              <td class="py-4 pr-6 text-charcoal/55">Aventura, FL</td>
+              <td class="py-4 pr-6 pull-insight-number text-lg">$23.0M</td>
+              <td class="py-4 pr-6"><span class="label-ledger text-copper">Senior + PE</span></td>
+            </tr>
+            <tr class="ledger-row" style="box-shadow: 0 1px 0 rgba(137, 77, 13, 0.06);">
+              <td class="py-4 pr-6 font-headline text-charcoal" style="font-weight: 500;">Waterfront Corporate Center I</td>
+              <td class="py-4 pr-6 text-charcoal/55">Hoboken, NJ</td>
+              <td class="py-4 pr-6 pull-insight-number text-lg">$30.0M</td>
+              <td class="py-4 pr-6"><span class="label-ledger text-copper">Private Equity</span></td>
+            </tr>
+            <tr class="ledger-row" style="box-shadow: 0 1px 0 rgba(137, 77, 13, 0.06);">
+              <td class="py-4 pr-6 font-headline text-charcoal" style="font-weight: 500;">Transcoastal Portfolio</td>
+              <td class="py-4 pr-6 text-charcoal/55">Multi-Market</td>
+              <td class="py-4 pr-6 pull-insight-number text-lg">$89.0M</td>
+              <td class="py-4 pr-6"><span class="label-ledger text-copper">Private Equity</span></td>
+            </tr>
+            <tr class="ledger-row">
+              <td class="py-4 pr-6 font-headline text-charcoal" style="font-weight: 500;">Center at Miami Gardens</td>
+              <td class="py-4 pr-6 text-charcoal/55">Miami Gardens, FL</td>
+              <td class="py-4 pr-6 pull-insight-number text-lg">$49.3M</td>
+              <td class="py-4 pr-6"><span class="label-ledger text-copper">Senior + PE</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       CTA
+       ════════════════════════════════════════════════════════════════════ -->
+  <section class="bg-paper py-20 lg:py-28">
+    <div class="max-w-3xl mx-auto px-6 lg:px-10 text-center">
+      <div class="reveal">
+        <span class="label-ledger text-copper mb-4 block">Begin a Dialogue</span>
+        <div class="divider-copper mx-auto mb-8"></div>
+      </div>
+
+      <h2 class="reveal reveal-delay-1 font-headline text-3xl lg:text-4xl xl:text-5xl text-charcoal leading-tight mb-6" style="font-weight: 300;">
+        Let's discuss your<br>
+        <em class="text-copper" style="font-style: italic;">next transaction.</em>
+      </h2>
+
+      <p class="reveal reveal-delay-2 text-charcoal/50 text-base leading-relaxed mb-10 max-w-lg mx-auto">
+        Whether you are financing construction, repositioning an asset, or exploring a capital partnership, our team is ready to discuss your objectives.
+      </p>
+
+      <div class="reveal reveal-delay-3 flex flex-wrap justify-center gap-5">
+        <a href="./contact.html" class="btn-copper">
+          Begin Dialogue
+          <span class="material-symbols-outlined text-base" aria-hidden="true">arrow_forward</span>
+        </a>
+        <a href="./solutions.html" class="inline-flex items-center gap-2 text-copper font-semibold text-sm tracking-wide uppercase hover:text-copper-light transition-colors duration-300" style="padding: 1.125rem 0;">
+          View Solutions
+          <span class="material-symbols-outlined text-base" aria-hidden="true">arrow_forward</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       FOOTER
+       ════════════════════════════════════════════════════════════════════ -->
+  <footer class="bg-paper-high py-16 lg:py-20">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+        <!-- Logo & tagline -->
+        <div class="lg:col-span-4">
+          <img
+            src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650Capital-Logo.png?ssl=1"
+            alt="3650 Capital"
+            class="h-8 w-auto mb-5"
+          >
+          <p class="text-charcoal/50 text-sm leading-relaxed max-w-xs">
+            Vertically integrated commercial real estate lending.
+            From origination to maturity.
+          </p>
+        </div>
+
+        <!-- Navigation -->
+        <div class="lg:col-span-2">
+          <span class="label-ledger text-copper mb-4 block">Navigate</span>
+          <ul class="space-y-3">
+            <li><a href="./index.html" class="text-charcoal/55 hover:text-copper text-sm transition-colors duration-300">Home</a></li>
+            <li><a href="./firm.html" class="text-charcoal/55 hover:text-copper text-sm transition-colors duration-300">Firm</a></li>
+            <li><a href="./solutions.html" class="text-charcoal/55 hover:text-copper text-sm transition-colors duration-300">Solutions</a></li>
+            <li><a href="./transactions.html" class="text-charcoal/55 hover:text-copper text-sm transition-colors duration-300">Transactions</a></li>
+            <li><a href="./leadership.html" class="text-charcoal/55 hover:text-copper text-sm transition-colors duration-300">Leadership</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact -->
+        <div class="lg:col-span-3">
+          <span class="label-ledger text-copper mb-4 block">Contact</span>
+          <ul class="space-y-3">
+            <li><a href="mailto:info@3650capital.com" class="text-charcoal/55 hover:text-copper text-sm transition-colors duration-300">info@3650capital.com</a></li>
+            <li><span class="text-charcoal/55 text-sm">Miami · New York · Los Angeles</span></li>
+          </ul>
+        </div>
+
+        <!-- Legal -->
+        <div class="lg:col-span-3">
+          <span class="label-ledger text-copper mb-4 block">Legal</span>
+          <ul class="space-y-3">
+            <li><a href="#" class="text-charcoal/55 hover:text-copper text-sm transition-colors duration-300">Privacy Policy</a></li>
+            <li><a href="#" class="text-charcoal/55 hover:text-copper text-sm transition-colors duration-300">Terms of Use</a></li>
+            <li><a href="#" class="text-charcoal/55 hover:text-copper text-sm transition-colors duration-300">Disclosures</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Bottom bar -->
+      <div class="mt-16 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4" style="box-shadow: 0 -1px 0 rgba(137, 77, 13, 0.08);">
+        <p class="label-ledger text-charcoal/35 text-xs">
+          &copy; 2026 3650 Capital. All Rights Reserved.
+        </p>
+        <p class="label-ledger text-charcoal/35 text-xs">
+          One Lender. From Origination to Maturity.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       SCRIPTS
+       ════════════════════════════════════════════════════════════════════ -->
+  <script>
+    (function () {
+      'use strict';
+
+      // ─── Reduced motion check ───────────────────────────────────────
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      // ─── IntersectionObserver: Scroll reveal ────────────────────────
+      function initRevealObserver() {
+        const revealEls = document.querySelectorAll('.reveal');
+
+        if (prefersReducedMotion) {
+          revealEls.forEach(function (el) {
+            el.classList.add('visible');
+          });
+          return;
+        }
+
+        if (!('IntersectionObserver' in window)) {
+          revealEls.forEach(function (el) {
+            el.classList.add('visible');
+          });
+          return;
+        }
+
+        var observer = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          {
+            threshold: 0.12,
+            rootMargin: '0px 0px -40px 0px',
+          }
+        );
+
+        revealEls.forEach(function (el) {
+          observer.observe(el);
+        });
+      }
+
+      // ─── Nav scroll effect ──────────────────────────────────────────
+      function initNavScroll() {
+        var nav = document.getElementById('main-nav');
+        if (!nav) return;
+
+        var scrolled = false;
+
+        function onScroll() {
+          var isScrolled = window.scrollY > 40;
+          if (isScrolled !== scrolled) {
+            scrolled = isScrolled;
+            if (scrolled) {
+              nav.classList.add('scrolled');
+            } else {
+              nav.classList.remove('scrolled');
+            }
+          }
+        }
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+      }
+
+      // ─── Mobile nav ─────────────────────────────────────────────────
+      function initMobileNav() {
+        var btn = document.getElementById('mobile-menu-btn');
+        var closeBtn = document.getElementById('mobile-close-btn');
+        var overlay = document.getElementById('mobile-nav');
+        var links = overlay ? overlay.querySelectorAll('.mobile-nav-link') : [];
+
+        if (!btn || !closeBtn || !overlay) return;
+
+        function open() {
+          overlay.classList.add('open');
+          btn.setAttribute('aria-expanded', 'true');
+          document.body.style.overflow = 'hidden';
+        }
+
+        function close() {
+          overlay.classList.remove('open');
+          btn.setAttribute('aria-expanded', 'false');
+          document.body.style.overflow = '';
+        }
+
+        btn.addEventListener('click', open);
+        closeBtn.addEventListener('click', close);
+
+        links.forEach(function (link) {
+          link.addEventListener('click', close);
+        });
+
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape' && overlay.classList.contains('open')) {
+            close();
+          }
+        });
+      }
+
+      // ─── Init ───────────────────────────────────────────────────────
+      document.addEventListener('DOMContentLoaded', function () {
+        initRevealObserver();
+        initNavScroll();
+        initMobileNav();
+      });
+    })();
+  </script>
+
+</body>
+</html>

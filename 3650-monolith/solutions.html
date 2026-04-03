@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3650 Capital — Solutions</title>
+  <meta name="description" content="3650 Capital delivers diverse financing products across the property life cycle with in-house servicing continuity.">
+
+  <!-- Google Fonts: Manrope + Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Material Symbols Outlined -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'void': '#131313',
+            'void-light': '#1c1b1b',
+            'void-high': '#2a2a2a',
+            'void-bright': '#393939',
+            'electric': '#a7c8ff',
+            'electric-dim': '#3291ff',
+            'silver': '#c8cad0',
+          },
+          fontFamily: {
+            'headline': ['Manrope', 'sans-serif'],
+            'body': ['Inter', 'sans-serif'],
+          },
+          borderRadius: {
+            'DEFAULT': '4px',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* ── Base resets ── */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #131313;
+      color: #c8cad0;
+      overflow-x: hidden;
+    }
+
+    /* ── Scrollbar ── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #131313; }
+    ::-webkit-scrollbar-thumb { background: #2a2a2a; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #393939; }
+
+    /* ── Electric gradient utility ── */
+    .electric-gradient {
+      background: linear-gradient(135deg, #a7c8ff 0%, #3291ff 100%);
+    }
+
+    .electric-gradient-text {
+      background: linear-gradient(135deg, #a7c8ff 0%, #3291ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ── Ghost outline utility ── */
+    .ghost-outline {
+      outline: 1px solid rgba(167, 200, 255, 0.15);
+      outline-offset: -1px;
+    }
+
+    /* ── Glassmorphism nav ── */
+    .glass-nav {
+      background: rgba(19, 19, 19, 0.70);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+
+    /* ── Ambient depth shadow ── */
+    .ambient-shadow {
+      box-shadow: 0 8px 24px rgba(50, 145, 255, 0.08);
+    }
+
+    .ambient-shadow-lg {
+      box-shadow: 0 12px 40px rgba(50, 145, 255, 0.12);
+    }
+
+    /* ── Transition easing ── */
+    .ease-power4 {
+      transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* ── Scroll animations ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ── Reduced motion ── */
+    @media (prefers-reduced-motion: reduce) {
+      .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    /* ── Hero background overlay ── */
+    .hero-bg-overlay {
+      background: linear-gradient(
+        180deg,
+        rgba(19, 19, 19, 0.82) 0%,
+        rgba(19, 19, 19, 0.90) 50%,
+        #131313 100%
+      );
+    }
+
+    .hero-bg-tint {
+      mix-blend-mode: overlay;
+      background: linear-gradient(135deg, rgba(50, 145, 255, 0.15) 0%, transparent 60%);
+    }
+
+    /* ── Metric card hover ── */
+    .metric-card {
+      transition: background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                  box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .metric-card:hover {
+      background-color: #2a2a2a;
+      box-shadow: 0 8px 24px rgba(50, 145, 255, 0.08);
+    }
+
+    /* ── Platform card hover ── */
+    .platform-card {
+      transition: background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                  box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .platform-card:hover {
+      background-color: #393939;
+      box-shadow: 0 12px 40px rgba(50, 145, 255, 0.10);
+      transform: translateY(-4px);
+    }
+
+    /* ── CTA button styles ── */
+    .btn-electric {
+      background: linear-gradient(135deg, #a7c8ff 0%, #3291ff 100%);
+      color: #131313;
+      font-weight: 600;
+      transition: box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .btn-electric:hover {
+      box-shadow: 0 8px 32px rgba(50, 145, 255, 0.30);
+      transform: translateY(-2px);
+    }
+
+    .btn-ghost {
+      outline: 1px solid rgba(167, 200, 255, 0.15);
+      outline-offset: -1px;
+      color: #c8cad0;
+      font-weight: 500;
+      transition: outline-color 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                  color 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                  background-color 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .btn-ghost:hover {
+      outline-color: rgba(167, 200, 255, 0.35);
+      color: #a7c8ff;
+      background-color: rgba(167, 200, 255, 0.05);
+    }
+
+    /* ── Nav link hover ── */
+    .nav-link {
+      position: relative;
+      transition: color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: linear-gradient(135deg, #a7c8ff, #3291ff);
+      transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .nav-link:hover {
+      color: #a7c8ff;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .nav-link.active::after {
+      width: 100%;
+    }
+
+    .nav-link.active {
+      color: #a7c8ff;
+    }
+
+    /* ── Accent line ── */
+    .accent-line {
+      width: 56px;
+      height: 3px;
+      background: linear-gradient(135deg, #a7c8ff 0%, #3291ff 100%);
+      border-radius: 4px;
+    }
+
+    /* ── Mobile menu ── */
+    .mobile-menu {
+      transform: translateX(100%);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .mobile-menu.is-open {
+      transform: translateX(0);
+    }
+
+    /* ── Feature point icon container ── */
+    .feature-icon-wrap {
+      background: rgba(50, 145, 255, 0.08);
+      transition: background-color 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .feature-icon-wrap:hover {
+      background: rgba(50, 145, 255, 0.14);
+    }
+
+    /* ── Image ambient wrapper ── */
+    .image-ambient {
+      position: relative;
+    }
+
+    .image-ambient::before {
+      content: '';
+      position: absolute;
+      inset: 12px;
+      background: rgba(50, 145, 255, 0.06);
+      border-radius: 4px;
+      filter: blur(32px);
+      z-index: -1;
+    }
+  </style>
+</head>
+
+<body class="font-body bg-void text-silver antialiased">
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       NAVIGATION
+       ════════════════════════════════════════════════════════════════════ -->
+  <nav class="glass-nav fixed top-0 left-0 right-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="flex items-center justify-between h-[72px]">
+
+        <!-- Logo -->
+        <a href="./index.html" class="flex-shrink-0">
+          <img
+            src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650Capital-Logo.png?ssl=1"
+            alt="3650 Capital"
+            class="h-8 w-auto"
+            loading="eager"
+          >
+        </a>
+
+        <!-- Desktop Links -->
+        <div class="hidden md:flex items-center gap-10">
+          <a href="./index.html" class="nav-link text-sm tracking-wide text-silver/80">Home</a>
+          <a href="./firm.html" class="nav-link text-sm tracking-wide text-silver/80">Firm</a>
+          <a href="./solutions.html" class="nav-link active text-sm tracking-wide text-silver/80">Solutions</a>
+          <a href="./transactions.html" class="nav-link text-sm tracking-wide text-silver/80">Transactions</a>
+          <a href="./leadership.html" class="nav-link text-sm tracking-wide text-silver/80">Leadership</a>
+          <a href="./contact.html" class="btn-electric px-5 py-2.5 rounded text-sm font-headline font-semibold tracking-wide">
+            Contact Us
+          </a>
+        </div>
+
+        <!-- Mobile Hamburger -->
+        <button
+          id="menuToggle"
+          class="md:hidden flex flex-col justify-center items-center w-10 h-10 gap-1.5"
+          aria-label="Toggle navigation menu"
+        >
+          <span class="block w-6 h-[2px] bg-silver/80 transition-all duration-300 ease-power4" id="bar1"></span>
+          <span class="block w-6 h-[2px] bg-silver/80 transition-all duration-300 ease-power4" id="bar2"></span>
+          <span class="block w-4 h-[2px] bg-silver/80 transition-all duration-300 ease-power4 ml-auto" id="bar3"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="mobile-menu fixed top-0 right-0 w-72 h-screen bg-void-light z-50 flex flex-col pt-24 px-8 gap-8 md:hidden">
+      <button id="menuClose" class="absolute top-6 right-6 text-silver/60" aria-label="Close menu">
+        <span class="material-symbols-outlined text-2xl">close</span>
+      </button>
+      <a href="./index.html" class="text-lg font-headline font-medium text-silver/80 hover:text-electric transition-colors duration-300 mobile-menu-link">Home</a>
+      <a href="./firm.html" class="text-lg font-headline font-medium text-silver/80 hover:text-electric transition-colors duration-300 mobile-menu-link">Firm</a>
+      <a href="./solutions.html" class="text-lg font-headline font-medium text-electric transition-colors duration-300 mobile-menu-link">Solutions</a>
+      <a href="./transactions.html" class="text-lg font-headline font-medium text-silver/80 hover:text-electric transition-colors duration-300 mobile-menu-link">Transactions</a>
+      <a href="./leadership.html" class="text-lg font-headline font-medium text-silver/80 hover:text-electric transition-colors duration-300 mobile-menu-link">Leadership</a>
+      <a href="./contact.html" class="btn-electric px-5 py-3 rounded text-center text-sm font-headline font-semibold tracking-wide mt-4 mobile-menu-link">
+        Contact Us
+      </a>
+    </div>
+  </nav>
+
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       HERO
+       ════════════════════════════════════════════════════════════════════ -->
+  <section id="hero" class="relative min-h-[85vh] flex items-center pt-[72px] overflow-hidden">
+    <!-- Background Image -->
+    <div class="absolute inset-0">
+      <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/rendering-center-at-miami-gardens-courtesy-3650-reit.jpg?ssl=1"
+           alt="Center at Miami Gardens rendering"
+           class="w-full h-full object-cover opacity-20">
+      <div class="absolute inset-0 hero-bg-overlay"></div>
+      <div class="absolute inset-0 hero-bg-tint"></div>
+    </div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-24 lg:py-32">
+      <div class="max-w-3xl">
+        <!-- Accent line -->
+        <div class="accent-line mb-8 reveal"></div>
+
+        <!-- Eyebrow -->
+        <p class="reveal text-xs font-headline font-semibold tracking-[0.2em] uppercase text-electric mb-5">Financing Solutions</p>
+
+        <!-- Headline -->
+        <h1 class="reveal reveal-delay-1 font-headline font-bold text-4xl sm:text-5xl lg:text-6xl xl:text-7xl leading-[1.08] tracking-tight text-white mb-6">
+          Short-term capital.<br>
+          <span class="electric-gradient-text">Long-term solutions.</span>
+        </h1>
+
+        <!-- Subhead -->
+        <p class="reveal reveal-delay-2 text-base lg:text-lg text-silver/55 max-w-xl leading-relaxed mb-10">
+          3650 Capital delivers diverse financing products across the property life cycle with in-house servicing continuity.
+        </p>
+
+        <!-- CTAs -->
+        <div class="reveal reveal-delay-3 flex flex-wrap gap-4">
+          <a href="./contact.html" class="btn-electric px-8 py-3.5 rounded text-sm font-headline font-semibold tracking-wide inline-flex items-center gap-2">
+            Start a Conversation
+            <span class="material-symbols-outlined text-lg">arrow_forward</span>
+          </a>
+          <a href="#products" class="btn-ghost px-8 py-3.5 rounded text-sm font-headline font-medium tracking-wide inline-flex items-center gap-2">
+            Explore Products
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       OPERATING PLATFORM
+       ════════════════════════════════════════════════════════════════════ -->
+  <section id="platform" class="py-24 lg:py-32 bg-void">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+
+      <!-- Section header -->
+      <div class="max-w-2xl mb-16">
+        <div class="accent-line mb-6 reveal"></div>
+        <p class="reveal text-xs font-headline font-semibold tracking-[0.2em] uppercase text-electric mb-4">Operating Platform</p>
+        <h2 class="reveal reveal-delay-1 font-headline font-bold text-3xl lg:text-5xl text-white leading-tight mb-4">
+          Vertical integration and retained servicing are part of the product.
+        </h2>
+        <p class="reveal reveal-delay-2 text-silver/50 text-base leading-relaxed">
+          Our operating platform is purpose-built for continuity across the full property life cycle.
+        </p>
+      </div>
+
+      <!-- Platform grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+        <!-- Image card -->
+        <div class="reveal rounded overflow-hidden image-ambient">
+          <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Gateway-at-Wynwood-e1578945268648.jpg?ssl=1"
+               alt="Gateway at Wynwood property"
+               class="w-full h-full object-cover min-h-[320px] rounded">
+        </div>
+
+        <!-- Metrics 2x2 -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+          <!-- Metric 1 -->
+          <div class="reveal reveal-delay-1 metric-card bg-void-light rounded p-6">
+            <div class="feature-icon-wrap w-11 h-11 rounded flex items-center justify-center mb-5">
+              <span class="material-symbols-outlined text-electric text-xl">hub</span>
+            </div>
+            <h3 class="font-headline font-bold text-white text-lg mb-2">Vertical Integration</h3>
+            <p class="text-silver/45 text-sm leading-relaxed">
+              Origination, structuring, servicing, and asset management all under one roof for seamless execution.
+            </p>
+          </div>
+
+          <!-- Metric 2 -->
+          <div class="reveal reveal-delay-2 metric-card bg-void-light rounded p-6">
+            <div class="feature-icon-wrap w-11 h-11 rounded flex items-center justify-center mb-5">
+              <span class="material-symbols-outlined text-electric text-xl">account_balance</span>
+            </div>
+            <h3 class="font-headline font-bold text-white text-lg mb-2">Loan Servicing</h3>
+            <p class="text-silver/45 text-sm leading-relaxed">
+              Retained servicing from Day 1 ensures borrowers work with the same team from closing through maturity.
+            </p>
+          </div>
+
+          <!-- Metric 3 -->
+          <div class="reveal reveal-delay-3 metric-card bg-void-light rounded p-6">
+            <div class="feature-icon-wrap w-11 h-11 rounded flex items-center justify-center mb-5">
+              <span class="material-symbols-outlined text-electric text-xl">trending_up</span>
+            </div>
+            <h3 class="font-headline font-bold text-white text-lg mb-2">Credit Solutions</h3>
+            <p class="text-silver/45 text-sm leading-relaxed">
+              Tailored capital structures across the risk spectrum, from senior construction loans to preferred equity.
+            </p>
+          </div>
+
+          <!-- Metric 4 -->
+          <div class="reveal reveal-delay-4 metric-card bg-void-light rounded p-6">
+            <div class="feature-icon-wrap w-11 h-11 rounded flex items-center justify-center mb-5">
+              <span class="material-symbols-outlined text-electric text-xl">handshake</span>
+            </div>
+            <h3 class="font-headline font-bold text-white text-lg mb-2">Relationship Model</h3>
+            <p class="text-silver/45 text-sm leading-relaxed">
+              Direct lender relationships mean faster execution, flexible structures, and consistent accountability.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       PRODUCTS
+       ════════════════════════════════════════════════════════════════════ -->
+  <section id="products" class="py-24 lg:py-32 bg-void-light">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+
+      <!-- Section header -->
+      <div class="max-w-2xl mb-16">
+        <div class="accent-line mb-6 reveal"></div>
+        <p class="reveal text-xs font-headline font-semibold tracking-[0.2em] uppercase text-electric mb-4">Product Suite</p>
+        <h2 class="reveal reveal-delay-1 font-headline font-bold text-3xl lg:text-5xl text-white leading-tight mb-4">
+          Capital solutions across the property life cycle.
+        </h2>
+        <p class="reveal reveal-delay-2 text-silver/50 text-base leading-relaxed">
+          Three distinct product lines engineered to address every stage of commercial real estate ownership and development.
+        </p>
+      </div>
+
+      <!-- Product cards -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+        <!-- RECS -->
+        <div class="reveal reveal-delay-1 platform-card bg-void rounded overflow-hidden flex flex-col">
+          <div class="relative h-52">
+            <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Unknown-1.png?ssl=1"
+                 alt="RECS product imagery"
+                 class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-void via-void/50 to-transparent"></div>
+            <div class="absolute top-4 left-4">
+              <span class="text-xs font-headline font-semibold tracking-wider uppercase text-electric bg-void/60 px-3 py-1.5 rounded">RECS</span>
+            </div>
+          </div>
+          <div class="p-7 flex flex-col flex-1">
+            <h3 class="font-headline font-bold text-xl text-white mb-2">Real Estate Credit Solutions</h3>
+            <p class="text-electric text-sm font-semibold font-headline mb-3">$10M - $250M</p>
+            <p class="text-silver/45 text-sm leading-relaxed mb-6 flex-1">
+              Senior construction, mezzanine, and preferred equity products for complex projects requiring tailored capital stacks and hands-on asset management.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="text-xs text-electric/80 bg-electric/5 px-3 py-1 rounded font-medium">Senior</span>
+              <span class="text-xs text-electric/80 bg-electric/5 px-3 py-1 rounded font-medium">Mezzanine</span>
+              <span class="text-xs text-electric/80 bg-electric/5 px-3 py-1 rounded font-medium">Pref. Equity</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stable Cash Flow -->
+        <div class="reveal reveal-delay-2 platform-card bg-void rounded overflow-hidden flex flex-col">
+          <div class="relative h-52">
+            <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/DJI_0135-HDR-scaled.jpg?ssl=1"
+                 alt="Stable Cash Flow property aerial"
+                 class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-void via-void/50 to-transparent"></div>
+            <div class="absolute top-4 left-4">
+              <span class="text-xs font-headline font-semibold tracking-wider uppercase text-electric bg-void/60 px-3 py-1.5 rounded">Stable</span>
+            </div>
+          </div>
+          <div class="p-7 flex flex-col flex-1">
+            <h3 class="font-headline font-bold text-xl text-white mb-2">Stable Cash Flow</h3>
+            <p class="text-electric text-sm font-semibold font-headline mb-3">$5M - $100M</p>
+            <p class="text-silver/45 text-sm leading-relaxed mb-6 flex-1">
+              Fixed-rate senior financing for stabilized assets generating predictable cash flows, designed for long-term hold strategies with certainty of terms.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="text-xs text-electric/80 bg-electric/5 px-3 py-1 rounded font-medium">Fixed-Rate</span>
+              <span class="text-xs text-electric/80 bg-electric/5 px-3 py-1 rounded font-medium">Stabilized</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Special Situations -->
+        <div class="reveal reveal-delay-3 platform-card bg-void rounded overflow-hidden flex flex-col">
+          <div class="relative h-52">
+            <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/rendering-center-at-miami-gardens-courtesy-3650-reit.jpg?ssl=1"
+                 alt="Special Situations development"
+                 class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-void via-void/50 to-transparent"></div>
+            <div class="absolute top-4 left-4">
+              <span class="text-xs font-headline font-semibold tracking-wider uppercase text-electric bg-void/60 px-3 py-1.5 rounded">Special</span>
+            </div>
+          </div>
+          <div class="p-7 flex flex-col flex-1">
+            <h3 class="font-headline font-bold text-xl text-white mb-2">Special Situations</h3>
+            <p class="text-electric text-sm font-semibold font-headline mb-3">Flexible Sizing</p>
+            <p class="text-silver/45 text-sm leading-relaxed mb-6 flex-1">
+              Flexible capital for broken structures, distressed scenarios, and transitional assets requiring creative solutions and accelerated timelines.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="text-xs text-electric/80 bg-electric/5 px-3 py-1 rounded font-medium">Flexible</span>
+              <span class="text-xs text-electric/80 bg-electric/5 px-3 py-1 rounded font-medium">Transitional</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       COMPARISON TABLE
+       ════════════════════════════════════════════════════════════════════ -->
+  <section id="comparison" class="py-24 lg:py-32 bg-void">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+
+      <!-- Section header -->
+      <div class="max-w-2xl mb-16">
+        <div class="accent-line mb-6 reveal"></div>
+        <p class="reveal text-xs font-headline font-semibold tracking-[0.2em] uppercase text-electric mb-4">Product Comparison</p>
+        <h2 class="reveal reveal-delay-1 font-headline font-bold text-3xl lg:text-5xl text-white leading-tight mb-4">
+          Find the right structure.
+        </h2>
+        <p class="reveal reveal-delay-2 text-silver/50 text-base leading-relaxed">
+          Compare key parameters across our primary financing products to identify the best fit for your project.
+        </p>
+      </div>
+
+      <!-- Table -->
+      <div class="reveal reveal-delay-2 overflow-x-auto">
+        <table class="w-full min-w-[640px]">
+          <thead>
+            <tr>
+              <th class="py-4 pr-6 text-left text-silver/40 text-xs font-headline font-semibold tracking-[0.15em] uppercase" style="border-bottom: 1px solid rgba(167,200,255,0.10);">Parameter</th>
+              <th class="py-4 px-6 text-left text-xs font-headline font-semibold tracking-[0.15em] uppercase" style="border-bottom: 1px solid rgba(167,200,255,0.10);"><span class="electric-gradient-text">Senior Construction</span></th>
+              <th class="py-4 px-6 text-left text-xs font-headline font-semibold tracking-[0.15em] uppercase" style="border-bottom: 1px solid rgba(167,200,255,0.10);"><span class="electric-gradient-text">Fixed-Rate Senior</span></th>
+              <th class="py-4 px-6 text-left text-xs font-headline font-semibold tracking-[0.15em] uppercase" style="border-bottom: 1px solid rgba(167,200,255,0.10);"><span class="electric-gradient-text">Preferred Equity</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="py-5 pr-6 text-silver/60 text-sm font-medium" style="border-bottom: 1px solid rgba(167,200,255,0.05);">Use Case</td>
+              <td class="py-5 px-6 text-white text-sm" style="border-bottom: 1px solid rgba(167,200,255,0.05);">Ground-up development, major repositioning</td>
+              <td class="py-5 px-6 text-white text-sm" style="border-bottom: 1px solid rgba(167,200,255,0.05);">Stabilized assets, long-term holds</td>
+              <td class="py-5 px-6 text-white text-sm" style="border-bottom: 1px solid rgba(167,200,255,0.05);">Recapitalizations, equity gap financing</td>
+            </tr>
+            <tr>
+              <td class="py-5 pr-6 text-silver/60 text-sm font-medium" style="border-bottom: 1px solid rgba(167,200,255,0.05);">Deal Size</td>
+              <td class="py-5 px-6 text-white text-sm" style="border-bottom: 1px solid rgba(167,200,255,0.05);">$10M - $250M</td>
+              <td class="py-5 px-6 text-white text-sm" style="border-bottom: 1px solid rgba(167,200,255,0.05);">$5M - $100M</td>
+              <td class="py-5 px-6 text-white text-sm" style="border-bottom: 1px solid rgba(167,200,255,0.05);">$5M - $75M</td>
+            </tr>
+            <tr>
+              <td class="py-5 pr-6 text-silver/60 text-sm font-medium" style="border-bottom: 1px solid rgba(167,200,255,0.05);">Leverage</td>
+              <td class="py-5 px-6 text-white text-sm" style="border-bottom: 1px solid rgba(167,200,255,0.05);">Up to 75% LTC</td>
+              <td class="py-5 px-6 text-white text-sm" style="border-bottom: 1px solid rgba(167,200,255,0.05);">Up to 70% LTV</td>
+              <td class="py-5 px-6 text-white text-sm" style="border-bottom: 1px solid rgba(167,200,255,0.05);">Up to 85% of capital stack</td>
+            </tr>
+            <tr>
+              <td class="py-5 pr-6 text-silver/60 text-sm font-medium">Servicing</td>
+              <td class="py-5 px-6 text-white text-sm">In-house, retained from closing</td>
+              <td class="py-5 px-6 text-white text-sm">In-house, retained from closing</td>
+              <td class="py-5 px-6 text-white text-sm">In-house, retained from closing</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Footnote -->
+      <p class="reveal reveal-delay-3 mt-8 text-silver/25 text-xs leading-relaxed">
+        All products benefit from 3650 Capital's vertically integrated platform. Terms and availability subject to underwriting and market conditions.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       APPROACH
+       ════════════════════════════════════════════════════════════════════ -->
+  <section id="approach" class="py-24 lg:py-32 bg-void-light">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+
+        <!-- Image -->
+        <div class="reveal image-ambient">
+          <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/DJI_0135-HDR-scaled.jpg?ssl=1"
+               alt="Aerial view of 3650 Capital financed property"
+               class="w-full h-auto rounded ambient-shadow-lg min-h-[320px] object-cover">
+        </div>
+
+        <!-- Content -->
+        <div>
+          <div class="accent-line mb-6 reveal"></div>
+          <p class="reveal text-xs font-headline font-semibold tracking-[0.2em] uppercase text-electric mb-4">Our Approach</p>
+          <h2 class="reveal reveal-delay-1 font-headline font-bold text-3xl lg:text-4xl text-white leading-tight mb-6">
+            Built for borrowers who value certainty.
+          </h2>
+          <p class="reveal reveal-delay-2 text-silver/50 text-base leading-relaxed mb-10">
+            Every product we offer is backed by the same operating platform. Retained servicing means one relationship from closing through maturity. Vertical integration means faster execution and better outcomes.
+          </p>
+
+          <div class="reveal reveal-delay-3 space-y-6 mb-10">
+            <div class="flex items-start gap-4">
+              <div class="feature-icon-wrap w-10 h-10 rounded flex items-center justify-center flex-shrink-0 mt-0.5">
+                <span class="material-symbols-outlined text-electric text-lg">group</span>
+              </div>
+              <div>
+                <p class="font-headline font-semibold text-white text-sm mb-1">Same Team, Start to Finish</p>
+                <p class="text-silver/40 text-sm">Your origination team is your servicing team. No handoffs, no surprises.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="feature-icon-wrap w-10 h-10 rounded flex items-center justify-center flex-shrink-0 mt-0.5">
+                <span class="material-symbols-outlined text-electric text-lg">bolt</span>
+              </div>
+              <div>
+                <p class="font-headline font-semibold text-white text-sm mb-1">Speed and Certainty</p>
+                <p class="text-silver/40 text-sm">In-house credit, legal, and capital markets execution reduce timelines and risk.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="feature-icon-wrap w-10 h-10 rounded flex items-center justify-center flex-shrink-0 mt-0.5">
+                <span class="material-symbols-outlined text-electric text-lg">layers</span>
+              </div>
+              <div>
+                <p class="font-headline font-semibold text-white text-sm mb-1">Flexible Capital Stack</p>
+                <p class="text-silver/40 text-sm">Senior, mezzanine, and preferred equity from a single source to optimize your structure.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="reveal reveal-delay-4">
+            <a href="./contact.html" class="btn-electric px-8 py-3.5 rounded text-sm font-headline font-semibold tracking-wide inline-flex items-center gap-2">
+              Discuss Your Project
+              <span class="material-symbols-outlined text-lg">arrow_forward</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       CTA
+       ════════════════════════════════════════════════════════════════════ -->
+  <section id="cta" class="py-24 lg:py-32 bg-void">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto text-center">
+
+        <div class="accent-line mx-auto mb-8 reveal"></div>
+
+        <p class="reveal text-xs font-headline font-semibold tracking-[0.2em] uppercase text-electric mb-5">Get Started</p>
+
+        <h2 class="font-headline font-bold text-3xl sm:text-4xl lg:text-5xl text-white leading-tight mb-6 reveal reveal-delay-1">
+          Ready to structure your next deal?
+        </h2>
+
+        <p class="text-base text-silver/55 leading-relaxed mb-12 reveal reveal-delay-2">
+          Whether you are pursuing ground-up construction, refinancing a stabilized asset, or exploring creative capital solutions, our team is ready.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-wrap justify-center gap-4 reveal reveal-delay-3">
+          <a href="./contact.html" class="btn-electric px-10 py-4 rounded text-sm font-headline font-semibold tracking-wide inline-flex items-center gap-2">
+            Contact Our Team
+            <span class="material-symbols-outlined text-lg">arrow_forward</span>
+          </a>
+          <a href="./transactions.html" class="btn-ghost px-10 py-4 rounded text-sm font-headline font-medium tracking-wide inline-flex items-center gap-2">
+            View Transactions
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       FOOTER
+       ════════════════════════════════════════════════════════════════════ -->
+  <footer class="bg-void py-16">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+
+      <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-10">
+
+        <!-- Logo + Tagline -->
+        <div>
+          <img
+            src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650Capital-Logo.png?ssl=1"
+            alt="3650 Capital"
+            class="h-7 w-auto mb-4"
+            loading="lazy"
+          >
+          <p class="text-xs text-silver/35">Short-term capital. Long-term solutions.</p>
+        </div>
+
+        <!-- Footer Links -->
+        <div class="flex flex-wrap gap-8 lg:gap-12">
+          <a href="./index.html" class="text-xs text-silver/40 hover:text-silver/70 transition-colors duration-300 font-headline tracking-wide">Home</a>
+          <a href="./firm.html" class="text-xs text-silver/40 hover:text-silver/70 transition-colors duration-300 font-headline tracking-wide">Firm</a>
+          <a href="./solutions.html" class="text-xs text-silver/40 hover:text-silver/70 transition-colors duration-300 font-headline tracking-wide">Solutions</a>
+          <a href="./transactions.html" class="text-xs text-silver/40 hover:text-silver/70 transition-colors duration-300 font-headline tracking-wide">Transactions</a>
+          <a href="./leadership.html" class="text-xs text-silver/40 hover:text-silver/70 transition-colors duration-300 font-headline tracking-wide">Leadership</a>
+          <a href="./contact.html" class="text-xs text-silver/40 hover:text-silver/70 transition-colors duration-300 font-headline tracking-wide">Contact</a>
+        </div>
+
+      </div>
+
+      <!-- Divider -->
+      <div class="h-[1px] bg-void-high mt-12 mb-8"></div>
+
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+        <p class="text-xs text-silver/25">
+          &copy; 2026 3650 Capital LLC. All rights reserved.
+        </p>
+        <div class="flex gap-6">
+          <a href="#" class="text-xs text-silver/25 hover:text-silver/50 transition-colors duration-300">Privacy Policy</a>
+          <a href="#" class="text-xs text-silver/25 hover:text-silver/50 transition-colors duration-300">Terms of Use</a>
+          <a href="#" class="text-xs text-silver/25 hover:text-silver/50 transition-colors duration-300">Disclosures</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       SCRIPTS
+       ════════════════════════════════════════════════════════════════════ -->
+  <script>
+    (function () {
+      'use strict';
+
+      /* ── Reduced Motion Check ── */
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      /* ─────────────────────────────────────────────
+         IntersectionObserver — Scroll Reveal
+         ───────────────────────────────────────────── */
+      function initScrollReveal() {
+        const reveals = document.querySelectorAll('.reveal');
+
+        if (prefersReducedMotion) {
+          reveals.forEach(function (el) {
+            el.classList.add('is-visible');
+          });
+          return;
+        }
+
+        const observer = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          {
+            threshold: 0.12,
+            rootMargin: '0px 0px -40px 0px',
+          }
+        );
+
+        reveals.forEach(function (el) {
+          observer.observe(el);
+        });
+      }
+
+      /* ─────────────────────────────────────────────
+         Mobile Menu Toggle
+         ───────────────────────────────────────────── */
+      function initMobileMenu() {
+        var toggle = document.getElementById('menuToggle');
+        var closeBtn = document.getElementById('menuClose');
+        var mobileMenu = document.getElementById('mobileMenu');
+        var menuLinks = document.querySelectorAll('.mobile-menu-link');
+
+        if (!toggle || !mobileMenu) return;
+
+        function openMenu() {
+          mobileMenu.classList.add('is-open');
+          document.body.style.overflow = 'hidden';
+        }
+
+        function closeMenu() {
+          mobileMenu.classList.remove('is-open');
+          document.body.style.overflow = '';
+        }
+
+        toggle.addEventListener('click', openMenu);
+
+        if (closeBtn) {
+          closeBtn.addEventListener('click', closeMenu);
+        }
+
+        menuLinks.forEach(function (link) {
+          link.addEventListener('click', closeMenu);
+        });
+
+        // Close on ESC
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape' && mobileMenu.classList.contains('is-open')) {
+            closeMenu();
+          }
+        });
+      }
+
+      /* ─────────────────────────────────────────────
+         Nav Background Opacity on Scroll
+         ───────────────────────────────────────────── */
+      function initNavScroll() {
+        var nav = document.querySelector('.glass-nav');
+        if (!nav) return;
+
+        var ticking = false;
+
+        window.addEventListener('scroll', function () {
+          if (!ticking) {
+            requestAnimationFrame(function () {
+              if (window.scrollY > 80) {
+                nav.style.background = 'rgba(19, 19, 19, 0.88)';
+              } else {
+                nav.style.background = 'rgba(19, 19, 19, 0.70)';
+              }
+              ticking = false;
+            });
+            ticking = true;
+          }
+        });
+      }
+
+      /* ─────────────────────────────────────────────
+         Smooth Scroll for Anchor Links
+         ───────────────────────────────────────────── */
+      function initSmoothScroll() {
+        document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+          anchor.addEventListener('click', function (e) {
+            var targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+
+            var targetEl = document.querySelector(targetId);
+            if (targetEl) {
+              e.preventDefault();
+              var navHeight = 72;
+              var targetPosition = targetEl.getBoundingClientRect().top + window.pageYOffset - navHeight;
+              window.scrollTo({
+                top: targetPosition,
+                behavior: prefersReducedMotion ? 'auto' : 'smooth',
+              });
+            }
+          });
+        });
+      }
+
+      /* ─────────────────────────────────────────────
+         Initialize Everything
+         ───────────────────────────────────────────── */
+      document.addEventListener('DOMContentLoaded', function () {
+        initScrollReveal();
+        initMobileMenu();
+        initNavScroll();
+        initSmoothScroll();
+      });
+    })();
+  </script>
+
+</body>
+</html>

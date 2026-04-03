@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3650 Capital — Leadership</title>
+  <meta name="description" content="Meet the leadership team at 3650 Capital — lifetime CRE professionals with cross-discipline experience across origination, credit, capital markets, and servicing.">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Material Symbols Outlined -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap">
+
+  <!-- Tailwind Config -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'charcoal': '#1a1a1a',
+            'warm': '#f5efe6',
+            'warm-dark': '#e8ddd0',
+            'copper': '#8b5e34',
+            'copper-light': '#a67c52',
+            'slate-dark': '#2d2d2d',
+          },
+          fontFamily: {
+            'headline': ['DM Serif Display', 'serif'],
+            'body': ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Base resets */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; color: #1a1a1a; background: #f5efe6; }
+
+    /* Scroll animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-40px);
+      transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .reveal-left.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(40px);
+      transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .reveal-right.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .reveal-scale {
+      opacity: 0;
+      transform: scale(0.92);
+      transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .reveal-scale.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* Stagger delays */
+    .delay-1 { transition-delay: 0.1s; }
+    .delay-2 { transition-delay: 0.2s; }
+    .delay-3 { transition-delay: 0.3s; }
+    .delay-4 { transition-delay: 0.4s; }
+    .delay-5 { transition-delay: 0.5s; }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      .reveal, .reveal-left, .reveal-right, .reveal-scale {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+    }
+
+    /* Copper accent line */
+    .copper-line {
+      width: 48px;
+      height: 3px;
+      background: #8b5e34;
+    }
+
+    /* Nav backdrop */
+    .nav-scrolled {
+      background: rgba(245,239,230,0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 1px 12px rgba(0,0,0,0.06);
+    }
+
+    /* Mobile menu */
+    .mobile-menu {
+      transform: translateX(100%);
+      transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .mobile-menu.open {
+      transform: translateX(0);
+    }
+
+    /* Pull quote */
+    .pull-quote {
+      position: relative;
+      padding-left: 24px;
+      border-left: 3px solid #8b5e34;
+    }
+
+    /* Founder card with overlap */
+    .founder-card {
+      position: relative;
+      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease;
+    }
+    .founder-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    }
+
+    /* Overlap decorative element */
+    .founder-accent {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 12px;
+      left: 12px;
+      border: 2px solid #8b5e34;
+      border-radius: 12px;
+      z-index: -1;
+      opacity: 0.4;
+    }
+
+    /* Team card hover */
+    .team-card {
+      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease;
+    }
+    .team-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    }
+    .team-card:hover .team-photo {
+      transform: scale(1.05);
+    }
+    .team-photo {
+      transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    /* Scrollbar styling */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #f5efe6; }
+    ::-webkit-scrollbar-thumb { background: #8b5e34; border-radius: 4px; }
+  </style>
+</head>
+
+<body class="bg-warm font-body antialiased overflow-x-hidden">
+
+  <!-- ==================== NAV ==================== -->
+  <nav id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <!-- Logo -->
+        <a href="./index.html" class="flex-shrink-0">
+          <img
+            src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650Capital-Logo.png?ssl=1"
+            alt="3650 Capital"
+            class="h-10 w-auto"
+          >
+        </a>
+
+        <!-- Desktop Links -->
+        <div class="hidden md:flex items-center gap-8">
+          <a href="./index.html" class="text-sm font-medium text-charcoal/70 hover:text-copper transition-colors duration-200">Home</a>
+          <a href="./firm.html" class="text-sm font-medium text-charcoal/70 hover:text-copper transition-colors duration-200">Firm</a>
+          <a href="./solutions.html" class="text-sm font-medium text-charcoal/70 hover:text-copper transition-colors duration-200">Solutions</a>
+          <a href="./transactions.html" class="text-sm font-medium text-charcoal/70 hover:text-copper transition-colors duration-200">Transactions</a>
+          <a href="./leadership.html" class="text-sm font-medium text-copper transition-colors duration-200">Leadership</a>
+          <a href="./contact.html" class="inline-flex items-center gap-2 bg-copper text-white text-sm font-semibold px-5 py-2.5 rounded-md hover:bg-copper-light transition-colors duration-200">
+            Contact Us
+            <span class="material-symbols-outlined text-base">arrow_forward</span>
+          </a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button id="menuToggle" class="md:hidden flex items-center justify-center w-10 h-10 text-charcoal" aria-label="Toggle menu">
+          <span class="material-symbols-outlined text-2xl">menu</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu Panel -->
+    <div id="mobileMenu" class="mobile-menu fixed top-0 right-0 w-72 h-full bg-warm shadow-2xl z-50 md:hidden">
+      <div class="flex items-center justify-between px-6 h-20 border-b border-warm-dark">
+        <span class="font-headline text-lg text-charcoal">Menu</span>
+        <button id="menuClose" class="flex items-center justify-center w-10 h-10 text-charcoal" aria-label="Close menu">
+          <span class="material-symbols-outlined text-2xl">close</span>
+        </button>
+      </div>
+      <div class="flex flex-col px-6 py-8 gap-6">
+        <a href="./index.html" class="text-base font-medium text-charcoal/80 hover:text-copper transition-colors">Home</a>
+        <a href="./firm.html" class="text-base font-medium text-charcoal/80 hover:text-copper transition-colors">Firm</a>
+        <a href="./solutions.html" class="text-base font-medium text-charcoal/80 hover:text-copper transition-colors">Solutions</a>
+        <a href="./transactions.html" class="text-base font-medium text-charcoal/80 hover:text-copper transition-colors">Transactions</a>
+        <a href="./leadership.html" class="text-base font-medium text-copper transition-colors">Leadership</a>
+        <div class="pt-4 border-t border-warm-dark">
+          <a href="./contact.html" class="inline-flex items-center gap-2 bg-copper text-white text-sm font-semibold px-5 py-2.5 rounded-md hover:bg-copper-light transition-colors w-full justify-center">
+            Contact Us
+            <span class="material-symbols-outlined text-base">arrow_forward</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <!-- Mobile Menu Overlay -->
+  <div id="menuOverlay" class="fixed inset-0 bg-charcoal/30 z-40 hidden md:hidden"></div>
+
+
+  <!-- ==================== HERO ==================== -->
+  <section class="relative bg-warm pt-28 pb-16 md:pt-32 md:pb-24 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+
+        <!-- Left: Content -->
+        <div class="relative z-10">
+          <!-- Label Tags -->
+          <div class="reveal flex flex-wrap items-center gap-3 mb-8">
+            <span class="inline-flex items-center px-4 py-1.5 bg-copper/10 text-copper text-xs font-semibold tracking-widest uppercase rounded-full">Origination</span>
+            <span class="text-copper/40 text-xs">&middot;</span>
+            <span class="inline-flex items-center px-4 py-1.5 bg-copper/10 text-copper text-xs font-semibold tracking-widest uppercase rounded-full">Credit</span>
+            <span class="text-copper/40 text-xs">&middot;</span>
+            <span class="inline-flex items-center px-4 py-1.5 bg-copper/10 text-copper text-xs font-semibold tracking-widest uppercase rounded-full">Capital Markets</span>
+          </div>
+
+          <!-- Headline -->
+          <h1 class="reveal delay-1 font-headline text-3xl md:text-4xl lg:text-5xl text-charcoal mb-6 leading-tight">
+            An established<br>
+            <span class="text-copper">industry force.</span>
+          </h1>
+
+          <div class="reveal delay-2 copper-line mb-6"></div>
+
+          <p class="reveal delay-3 text-charcoal/60 text-base md:text-lg leading-relaxed max-w-lg mb-8">
+            Lifetime CRE professionals with cross-discipline experience across origination, credit, capital markets, and servicing.
+          </p>
+
+          <a href="./contact.html" class="reveal delay-4 inline-flex items-center gap-2 bg-copper text-white font-semibold px-7 py-3.5 rounded-md hover:bg-copper-light transition-colors duration-200 text-sm">
+            Partner With Us
+            <span class="material-symbols-outlined text-lg">arrow_forward</span>
+          </a>
+        </div>
+
+        <!-- Right: Hero Image -->
+        <div class="reveal-right delay-2 relative">
+          <div class="rounded-xl overflow-hidden shadow-2xl">
+            <img
+              src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Founders-Profile-.png?ssl=1"
+              alt="3650 Capital Founders"
+              class="w-full h-auto"
+              loading="eager"
+            >
+          </div>
+          <!-- Copper accent offset -->
+          <div class="absolute -bottom-4 -right-4 w-full h-full border-2 border-copper/30 rounded-xl -z-10"></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==================== CO-FOUNDERS ==================== -->
+  <section class="bg-charcoal py-20 md:py-28 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+
+      <div class="text-center mb-16">
+        <div class="reveal copper-line mx-auto mb-8"></div>
+        <h2 class="reveal delay-1 font-headline text-3xl md:text-4xl lg:text-5xl text-white mb-4 leading-tight">
+          Co-Founders
+        </h2>
+        <p class="reveal delay-2 text-white/50 text-base max-w-md mx-auto">
+          Three Managing Partners with decades of institutional CRE lending experience.
+        </p>
+      </div>
+
+      <!-- Founder Cards — Bold with Overlapping Elements -->
+      <div class="space-y-20 md:space-y-28">
+
+        <!-- Justin Kennedy -->
+        <div class="reveal grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+          <div class="relative">
+            <div class="founder-card rounded-xl overflow-hidden relative z-10">
+              <img
+                src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-Headshots-A1067.jpg?ssl=1"
+                alt="Justin Kennedy"
+                class="w-full aspect-[4/5] object-cover"
+                loading="lazy"
+              >
+            </div>
+            <div class="founder-accent"></div>
+          </div>
+          <div class="relative">
+            <span class="font-headline text-[8rem] md:text-[10rem] leading-none text-white/[0.03] absolute -top-8 -left-4 select-none pointer-events-none">01</span>
+            <div class="relative z-10">
+              <span class="inline-flex items-center px-3 py-1 bg-copper/20 text-copper text-xs font-semibold tracking-widest uppercase rounded-full mb-4">Co-Founder</span>
+              <h3 class="font-headline text-3xl md:text-4xl text-white mb-2">Justin Kennedy</h3>
+              <p class="text-copper text-sm font-medium mb-6">Managing Partner</p>
+              <div class="copper-line mb-6"></div>
+              <p class="text-white/60 text-sm leading-relaxed mb-4">
+                Justin Kennedy is a Co-Founder and Managing Partner of 3650 Capital. He brings decades of experience in commercial real estate finance, with deep expertise spanning origination, structuring, and capital markets execution.
+              </p>
+              <p class="text-white/60 text-sm leading-relaxed">
+                Justin has been instrumental in building 3650 Capital into a vertically integrated lending platform that prioritizes borrower relationships and long-term alignment. His vision for a single-point-of-contact model has defined the firm's culture.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Jonathan Roth -->
+        <div class="reveal grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+          <div class="lg:order-2 relative">
+            <div class="founder-card rounded-xl overflow-hidden relative z-10">
+              <img
+                src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-Headshots-A0857.jpg?ssl=1"
+                alt="Jonathan Roth"
+                class="w-full aspect-[4/5] object-cover"
+                loading="lazy"
+              >
+            </div>
+            <div class="founder-accent"></div>
+          </div>
+          <div class="lg:order-1 relative">
+            <span class="font-headline text-[8rem] md:text-[10rem] leading-none text-white/[0.03] absolute -top-8 -left-4 select-none pointer-events-none">02</span>
+            <div class="relative z-10">
+              <span class="inline-flex items-center px-3 py-1 bg-copper/20 text-copper text-xs font-semibold tracking-widest uppercase rounded-full mb-4">Co-Founder</span>
+              <h3 class="font-headline text-3xl md:text-4xl text-white mb-2">Jonathan Roth</h3>
+              <p class="text-copper text-sm font-medium mb-6">Managing Partner</p>
+              <div class="copper-line mb-6"></div>
+              <p class="text-white/60 text-sm leading-relaxed mb-4">
+                Jonathan Roth is a Co-Founder and Managing Partner of 3650 Capital. With extensive experience across credit underwriting, portfolio management, and institutional lending, Jonathan oversees the firm's credit and risk management functions.
+              </p>
+              <p class="text-white/60 text-sm leading-relaxed">
+                His disciplined approach to real estate lending has been central to the firm's track record of consistent performance. Jonathan's emphasis on rigorous due diligence has allowed 3650 Capital to navigate every market cycle with resilience.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Toby Cobb -->
+        <div class="reveal grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+          <div class="relative">
+            <div class="founder-card rounded-xl overflow-hidden relative z-10">
+              <img
+                src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-Headshots-A0746.jpg?ssl=1"
+                alt="Toby Cobb"
+                class="w-full aspect-[4/5] object-cover"
+                loading="lazy"
+              >
+            </div>
+            <div class="founder-accent"></div>
+          </div>
+          <div class="relative">
+            <span class="font-headline text-[8rem] md:text-[10rem] leading-none text-white/[0.03] absolute -top-8 -left-4 select-none pointer-events-none">03</span>
+            <div class="relative z-10">
+              <span class="inline-flex items-center px-3 py-1 bg-copper/20 text-copper text-xs font-semibold tracking-widest uppercase rounded-full mb-4">Co-Founder</span>
+              <h3 class="font-headline text-3xl md:text-4xl text-white mb-2">Toby Cobb</h3>
+              <p class="text-copper text-sm font-medium mb-6">Managing Partner</p>
+              <div class="copper-line mb-6"></div>
+              <p class="text-white/60 text-sm leading-relaxed mb-4">
+                Toby Cobb is a Co-Founder and Managing Partner of 3650 Capital. A veteran of the commercial real estate industry, Toby leads the firm's origination and capital formation efforts.
+              </p>
+              <p class="text-white/60 text-sm leading-relaxed">
+                His deep relationships across the institutional investor community and his commitment to borrower-centric lending have been foundational to 3650 Capital's growth. Toby's ability to source and structure complex transactions has made him a trusted partner for sponsors nationwide.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==================== TEAM ROSTER ==================== -->
+  <section class="bg-warm py-20 md:py-28">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+
+      <div class="text-center mb-16">
+        <div class="reveal copper-line mx-auto mb-8"></div>
+        <h2 class="reveal delay-1 font-headline text-3xl md:text-4xl lg:text-5xl text-charcoal mb-4 leading-tight">
+          Our Team
+        </h2>
+        <p class="reveal delay-2 text-charcoal/50 text-base max-w-lg mx-auto">
+          20 key professionals driving origination, credit, capital markets, servicing, and operations across the platform.
+        </p>
+      </div>
+
+      <!-- Team Grid -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5 md:gap-6">
+
+        <!-- Andrew Parower -->
+        <div class="reveal team-card bg-white rounded-xl overflow-hidden">
+          <div class="aspect-[3/4] overflow-hidden">
+            <img src="https://raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-Headshots-Oct-2023-Miami-A0562-scaled.jpg" alt="Andrew Parower" class="w-full h-full object-cover team-photo" loading="lazy">
+          </div>
+          <div class="p-4">
+            <h4 class="font-headline text-sm text-charcoal leading-tight">Andrew Parower</h4>
+            <p class="text-copper text-xs mt-1 font-medium">Chief Credit Officer</p>
+          </div>
+        </div>
+
+        <!-- Peter LaPointe -->
+        <div class="reveal delay-1 team-card bg-white rounded-xl overflow-hidden">
+          <div class="aspect-[3/4] overflow-hidden">
+            <img src="https://raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Peter-3650-A013.jpg" alt="Peter LaPointe" class="w-full h-full object-cover team-photo" loading="lazy">
+          </div>
+          <div class="p-4">
+            <h4 class="font-headline text-sm text-charcoal leading-tight">Peter LaPointe</h4>
+            <p class="text-copper text-xs mt-1 font-medium">Chief Operating Officer</p>
+          </div>
+        </div>
+
+        <!-- Mark Jefferis -->
+        <div class="reveal delay-2 team-card bg-white rounded-xl overflow-hidden">
+          <div class="aspect-[3/4] overflow-hidden">
+            <img src="https://raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Mark-Jefferis-scaled.jpg" alt="Mark Jefferis" class="w-full h-full object-cover team-photo" loading="lazy">
+          </div>
+          <div class="p-4">
+            <h4 class="font-headline text-sm text-charcoal leading-tight">Mark Jefferis</h4>
+            <p class="text-copper text-xs mt-1 font-medium">General Counsel</p>
+          </div>
+        </div>
+
+        <!-- John Wright -->
+        <div class="reveal delay-3 team-card bg-white rounded-xl overflow-hidden">
+          <div class="aspect-[3/4] overflow-hidden">
+            <img src="https://raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/john-wright-headshot.jpg" alt="John Wright" class="w-full h-full object-cover team-photo" loading="lazy">
+          </div>
+          <div class="p-4">
+            <h4 class="font-headline text-sm text-charcoal leading-tight">John Wright</h4>
+            <p class="text-copper text-xs mt-1 font-medium">Head of Capital Formation</p>
+          </div>
+        </div>
+
+        <!-- Malay Bansal -->
+        <div class="reveal delay-4 team-card bg-white rounded-xl overflow-hidden">
+          <div class="aspect-[3/4] overflow-hidden">
+            <img src="https://raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-Headshots-A0385.jpg" alt="Malay Bansal" class="w-full h-full object-cover team-photo" loading="lazy">
+          </div>
+          <div class="p-4">
+            <h4 class="font-headline text-sm text-charcoal leading-tight">Malay Bansal</h4>
+            <p class="text-copper text-xs mt-1 font-medium">Managing Director</p>
+          </div>
+        </div>
+
+        <!-- Ken Dickey -->
+        <div class="reveal team-card bg-white rounded-xl overflow-hidden">
+          <div class="aspect-[3/4] overflow-hidden">
+            <img src="https://raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-Headshots-A0088-2.jpg" alt="Ken Dickey" class="w-full h-full object-cover team-photo" loading="lazy">
+          </div>
+          <div class="p-4">
+            <h4 class="font-headline text-sm text-charcoal leading-tight">Ken Dickey</h4>
+            <p class="text-copper text-xs mt-1 font-medium">Director, Originations</p>
+          </div>
+        </div>
+
+        <!-- Michael Fleischer -->
+        <div class="reveal delay-1 team-card bg-white rounded-xl overflow-hidden">
+          <div class="aspect-[3/4] overflow-hidden">
+            <img src="https://raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/MichaelF-04688A3.jpg" alt="Michael Fleischer" class="w-full h-full object-cover team-photo" loading="lazy">
+          </div>
+          <div class="p-4">
+            <h4 class="font-headline text-sm text-charcoal leading-tight">Michael Fleischer</h4>
+            <p class="text-copper text-xs mt-1 font-medium">Managing Director</p>
+          </div>
+        </div>
+
+        <!-- Jake Stahler -->
+        <div class="reveal delay-2 team-card bg-white rounded-xl overflow-hidden">
+          <div class="aspect-[3/4] overflow-hidden">
+            <img src="https://raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-Headshots-A0720-min.jpg" alt="Jake Stahler" class="w-full h-full object-cover team-photo" loading="lazy">
+          </div>
+          <div class="p-4">
+            <h4 class="font-headline text-sm text-charcoal leading-tight">Jake Stahler</h4>
+            <p class="text-copper text-xs mt-1 font-medium">Director</p>
+          </div>
+        </div>
+
+        <!-- Evan Guttman -->
+        <div class="reveal delay-3 team-card bg-white rounded-xl overflow-hidden">
+          <div class="aspect-[3/4] overflow-hidden">
+            <img src="https://raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-Headshots-Oct-2023-NYC-B1181-3-scaled.jpg" alt="Evan Guttman" class="w-full h-full object-cover team-photo" loading="lazy">
+          </div>
+          <div class="p-4">
+            <h4 class="font-headline text-sm text-charcoal leading-tight">Evan Guttman</h4>
+            <p class="text-copper text-xs mt-1 font-medium">Vice President</p>
+          </div>
+        </div>
+
+        <!-- Michael McCabe -->
+        <div class="reveal delay-4 team-card bg-white rounded-xl overflow-hidden">
+          <div class="aspect-[3/4] overflow-hidden">
+            <img src="https://raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-Headshots-Oct-2023-NYC-B1078-scaled.jpg" alt="Michael McCabe" class="w-full h-full object-cover team-photo" loading="lazy">
+          </div>
+          <div class="p-4">
+            <h4 class="font-headline text-sm text-charcoal leading-tight">Michael McCabe</h4>
+            <p class="text-copper text-xs mt-1 font-medium">Vice President</p>
+          </div>
+        </div>
+
+        <!-- Stephanie Sabellico -->
+        <div class="reveal team-card bg-white rounded-xl overflow-hidden">
+          <div class="aspect-[3/4] overflow-hidden">
+            <img src="https://raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/EVN0949-Edit-scaled.jpg" alt="Stephanie Sabellico" class="w-full h-full object-cover team-photo" loading="lazy">
+          </div>
+          <div class="p-4">
+            <h4 class="font-headline text-sm text-charcoal leading-tight">Stephanie Sabellico</h4>
+            <p class="text-copper text-xs mt-1 font-medium">Director</p>
+          </div>
+        </div>
+
+        <!-- Barrett Graham -->
+        <div class="reveal delay-1 team-card bg-white rounded-xl overflow-hidden">
+          <div class="aspect-[3/4] overflow-hidden">
+            <img src="https://raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/MGM_2579-scaled.jpg" alt="Barrett Graham" class="w-full h-full object-cover team-photo" loading="lazy">
+          </div>
+          <div class="p-4">
+            <h4 class="font-headline text-sm text-charcoal leading-tight">Barrett Graham</h4>
+            <p class="text-copper text-xs mt-1 font-medium">Vice President</p>
+          </div>
+        </div>
+
+        <!-- Brent Thurn -->
+        <div class="reveal delay-2 team-card bg-white rounded-xl overflow-hidden">
+          <div class="aspect-[3/4] overflow-hidden">
+            <img src="https://raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-2564-scaled.jpg" alt="Brent Thurn" class="w-full h-full object-cover team-photo" loading="lazy">
+          </div>
+          <div class="p-4">
+            <h4 class="font-headline text-sm text-charcoal leading-tight">Brent Thurn</h4>
+            <p class="text-copper text-xs mt-1 font-medium">Vice President</p>
+          </div>
+        </div>
+
+        <!-- Daniel Vaknin -->
+        <div class="reveal delay-3 team-card bg-white rounded-xl overflow-hidden">
+          <div class="aspect-[3/4] overflow-hidden">
+            <img src="https://raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-1192-Edit.jpg" alt="Daniel Vaknin" class="w-full h-full object-cover team-photo" loading="lazy">
+          </div>
+          <div class="p-4">
+            <h4 class="font-headline text-sm text-charcoal leading-tight">Daniel Vaknin</h4>
+            <p class="text-copper text-xs mt-1 font-medium">Vice President</p>
+          </div>
+        </div>
+
+        <!-- Eric Kraft -->
+        <div class="reveal delay-4 team-card bg-white rounded-xl overflow-hidden">
+          <div class="aspect-[3/4] overflow-hidden">
+            <img src="https://raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/eric-kraft-headshot.jpeg" alt="Eric Kraft" class="w-full h-full object-cover team-photo" loading="lazy">
+          </div>
+          <div class="p-4">
+            <h4 class="font-headline text-sm text-charcoal leading-tight">Eric Kraft</h4>
+            <p class="text-copper text-xs mt-1 font-medium">Director</p>
+          </div>
+        </div>
+
+        <!-- Noah Moghavem -->
+        <div class="reveal team-card bg-white rounded-xl overflow-hidden">
+          <div class="aspect-[3/4] overflow-hidden">
+            <img src="https://raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Noah-Moghavem-scaled.jpg" alt="Noah Moghavem" class="w-full h-full object-cover team-photo" loading="lazy">
+          </div>
+          <div class="p-4">
+            <h4 class="font-headline text-sm text-charcoal leading-tight">Noah Moghavem</h4>
+            <p class="text-copper text-xs mt-1 font-medium">Associate</p>
+          </div>
+        </div>
+
+        <!-- Will Pierce -->
+        <div class="reveal delay-1 team-card bg-white rounded-xl overflow-hidden">
+          <div class="aspect-[3/4] overflow-hidden">
+            <img src="https://raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/151A8204.jpg" alt="Will Pierce" class="w-full h-full object-cover team-photo" loading="lazy">
+          </div>
+          <div class="p-4">
+            <h4 class="font-headline text-sm text-charcoal leading-tight">Will Pierce</h4>
+            <p class="text-copper text-xs mt-1 font-medium">Vice President</p>
+          </div>
+        </div>
+
+        <!-- Jeremiah Sharf -->
+        <div class="reveal delay-2 team-card bg-white rounded-xl overflow-hidden">
+          <div class="aspect-[3/4] overflow-hidden">
+            <img src="https://raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Jeremiah-Sharf_1-scaled.jpg" alt="Jeremiah Sharf" class="w-full h-full object-cover team-photo" loading="lazy">
+          </div>
+          <div class="p-4">
+            <h4 class="font-headline text-sm text-charcoal leading-tight">Jeremiah Sharf</h4>
+            <p class="text-copper text-xs mt-1 font-medium">Director</p>
+          </div>
+        </div>
+
+        <!-- Katie Spillman -->
+        <div class="reveal delay-3 team-card bg-white rounded-xl overflow-hidden">
+          <div class="aspect-[3/4] overflow-hidden">
+            <img src="https://raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Katie-Spillman-1-scaled.jpg" alt="Katie Spillman" class="w-full h-full object-cover team-photo" loading="lazy">
+          </div>
+          <div class="p-4">
+            <h4 class="font-headline text-sm text-charcoal leading-tight">Katie Spillman</h4>
+            <p class="text-copper text-xs mt-1 font-medium">Director</p>
+          </div>
+        </div>
+
+        <!-- Corey Altman -->
+        <div class="reveal delay-4 team-card bg-white rounded-xl overflow-hidden">
+          <div class="aspect-[3/4] overflow-hidden">
+            <img src="https://raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-0608-Edit-scaled.jpg" alt="Corey Altman" class="w-full h-full object-cover team-photo" loading="lazy">
+          </div>
+          <div class="p-4">
+            <h4 class="font-headline text-sm text-charcoal leading-tight">Corey Altman</h4>
+            <p class="text-copper text-xs mt-1 font-medium">Director</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer data-review-section="footer" id="footer" class="bg-charcoal text-white py-20 md:py-28">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 mb-16">
+
+        <!-- Left: CTA -->
+        <div>
+          <div class="reveal w-12 h-[3px] bg-copper mb-8"></div>
+          <h2 class="reveal delay-1 font-headline text-3xl md:text-4xl lg:text-5xl text-white mb-6 leading-tight">
+            Building for the<br>Next Decade.
+          </h2>
+          <p class="reveal delay-2 text-white/50 text-base md:text-lg leading-relaxed max-w-md mb-8">
+            If you're looking for a lending partner with permanence, patience, and presence &mdash; we should talk.
+          </p>
+          <a href="./contact.html" class="reveal delay-3 inline-flex items-center gap-2 bg-copper text-white font-semibold px-7 py-3.5 rounded-md hover:bg-copper-light transition-colors duration-200 text-sm">
+            Get in Touch
+            <span class="material-symbols-outlined text-lg">mail</span>
+          </a>
+        </div>
+
+        <!-- Right: Contact Details -->
+        <div class="reveal-right delay-2 flex flex-col justify-end">
+          <div class="space-y-6">
+
+            <div class="flex items-start gap-4">
+              <span class="material-symbols-outlined text-copper text-xl mt-0.5">location_on</span>
+              <div>
+                <span class="text-white/80 text-sm font-semibold block mb-1">Headquarters</span>
+                <span class="text-white/50 text-sm">1450 Brickell Avenue, Suite 2600<br>Miami, FL 33131</span>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <span class="material-symbols-outlined text-copper text-xl mt-0.5">apartment</span>
+              <div>
+                <span class="text-white/80 text-sm font-semibold block mb-1">New York Office</span>
+                <span class="text-white/50 text-sm">590 Madison Avenue, 21st Floor<br>New York, NY 10022</span>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <span class="material-symbols-outlined text-copper text-xl mt-0.5">mail</span>
+              <div>
+                <span class="text-white/80 text-sm font-semibold block mb-1">Email</span>
+                <a href="mailto:info@3650capital.com" class="text-copper text-sm hover:text-copper-light transition-colors">info@3650capital.com</a>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <span class="material-symbols-outlined text-copper text-xl mt-0.5">call</span>
+              <div>
+                <span class="text-white/80 text-sm font-semibold block mb-1">Phone</span>
+                <a href="tel:+13054105001" class="text-copper text-sm hover:text-copper-light transition-colors">(305) 410-5001</a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom bar -->
+      <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-4">
+          <img
+            src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650Capital-Logo.png?ssl=1"
+            alt="3650 Capital"
+            class="h-8 w-auto brightness-0 invert opacity-60"
+          >
+        </div>
+        <p class="text-white/30 text-xs">
+          &copy; 2026 3650 Capital LLC. All rights reserved.
+        </p>
+        <div class="flex items-center gap-6">
+          <a href="#" class="text-white/40 text-xs hover:text-white/60 transition-colors">Privacy Policy</a>
+          <a href="#" class="text-white/40 text-xs hover:text-white/60 transition-colors">Terms</a>
+          <a href="#" class="text-white/40 text-xs hover:text-white/60 transition-colors">Disclosures</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+
+  <!-- ==================== SCRIPTS ==================== -->
+  <script>
+    // ---- Mobile Menu ----
+    const menuToggle = document.getElementById('menuToggle');
+    const menuClose = document.getElementById('menuClose');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuOverlay = document.getElementById('menuOverlay');
+
+    function openMenu() {
+      mobileMenu.classList.add('open');
+      menuOverlay.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeMenu() {
+      mobileMenu.classList.remove('open');
+      menuOverlay.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+
+    menuToggle.addEventListener('click', openMenu);
+    menuClose.addEventListener('click', closeMenu);
+    menuOverlay.addEventListener('click', closeMenu);
+
+    // Close on link click
+    mobileMenu.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', closeMenu);
+    });
+
+    // ---- Nav Scroll ----
+    const navbar = document.getElementById('navbar');
+    function handleNavScroll() {
+      if (window.scrollY > 40) {
+        navbar.classList.add('nav-scrolled');
+      } else {
+        navbar.classList.remove('nav-scrolled');
+      }
+    }
+    window.addEventListener('scroll', handleNavScroll, { passive: true });
+    handleNavScroll();
+
+    // ---- Intersection Observer for reveal animations ----
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (!prefersReducedMotion) {
+      const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+
+      const revealObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.12,
+        rootMargin: '0px 0px -40px 0px'
+      });
+
+      revealElements.forEach(function(el) {
+        revealObserver.observe(el);
+      });
+    } else {
+      // If reduced motion, make everything visible immediately
+      document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(function(el) {
+        el.classList.add('visible');
+      });
+    }
+
+    // ---- Smooth scroll for anchor links ----
+    document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+      anchor.addEventListener('click', function(e) {
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        const targetEl = document.querySelector(targetId);
+        if (targetEl) {
+          e.preventDefault();
+          const navHeight = navbar.offsetHeight;
+          const targetPosition = targetEl.getBoundingClientRect().top + window.scrollY - navHeight;
+          window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

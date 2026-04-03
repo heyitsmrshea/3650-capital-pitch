@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3650 Capital — Contact</title>
+  <meta name="description" content="Contact 3650 Capital. Direct channels, real offices across Miami, New York, Los Angeles, Dallas, Atlanta, Nashville, and Washington DC.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,300;1,6..72,400;1,6..72,500;1,6..72,600&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Material Symbols -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'paper': '#fbfaee',
+            'paper-low': '#f5f4e8',
+            'paper-high': '#e4e3d7',
+            'charcoal': '#1b1c15',
+            'copper': '#894d0d',
+            'copper-light': '#a76526',
+            'copper-soft': '#c49a6c',
+            'sage': '#8b4a2c',
+          },
+          fontFamily: {
+            'headline': ['Newsreader', 'serif'],
+            'body': ['Manrope', 'sans-serif'],
+          },
+          borderRadius: {
+            'DEFAULT': '0px',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    *, *::before, *::after {
+      border-radius: 0 !important;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Manrope', sans-serif;
+      background-color: #fbfaee;
+      color: #1b1c15;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Ledger-style label */
+    .label-ledger {
+      font-family: 'Manrope', sans-serif;
+      font-weight: 600;
+      font-size: 0.6875rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      line-height: 1;
+    }
+
+    /* Pull-Insight component */
+    .pull-insight-number {
+      font-family: 'Newsreader', serif;
+      font-weight: 300;
+      line-height: 0.9;
+      color: #894d0d;
+    }
+
+    /* Copper gradient CTA */
+    .btn-copper {
+      background: linear-gradient(135deg, #894d0d, #a76526);
+      color: #fbfaee;
+      font-family: 'Manrope', sans-serif;
+      font-weight: 600;
+      font-size: 0.8125rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 1.125rem 2.75rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.625rem;
+      transition: all 450ms cubic-bezier(0.22, 1, 0.36, 1);
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .btn-copper:hover {
+      background: linear-gradient(135deg, #a76526, #c49a6c);
+      transform: translateY(-1px);
+      box-shadow: 0 12px 40px rgba(137, 77, 13, 0.2);
+    }
+
+    /* Ambient shadow for images */
+    .ambient-shadow {
+      box-shadow: 0 24px 80px -16px rgba(137, 77, 13, 0.18),
+                  0 8px 24px -8px rgba(27, 28, 21, 0.08);
+    }
+
+    /* Watermark */
+    .watermark-3650 {
+      font-family: 'Newsreader', serif;
+      font-weight: 700;
+      color: rgba(137, 77, 13, 0.06);
+      line-height: 0.8;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    /* Scroll animation base */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 700ms cubic-bezier(0.22, 1, 0.36, 1),
+                  transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 100ms; }
+    .reveal-delay-2 { transition-delay: 200ms; }
+    .reveal-delay-3 { transition-delay: 300ms; }
+    .reveal-delay-4 { transition-delay: 400ms; }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+
+      .reveal.visible {
+        opacity: 1;
+        transform: none;
+      }
+
+      .btn-copper {
+        transition: none;
+      }
+
+      .btn-copper:hover {
+        transform: none;
+      }
+
+      .nav-glass {
+        transition: none;
+      }
+
+      .card-lift {
+        transition: none;
+      }
+
+      .card-lift:hover {
+        transform: none;
+      }
+    }
+
+    /* Nav glassmorphism */
+    .nav-glass {
+      background: rgba(251, 250, 238, 0.88);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      transition: background 400ms cubic-bezier(0.22, 1, 0.36, 1),
+                  box-shadow 400ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .nav-glass.scrolled {
+      background: rgba(251, 250, 238, 0.95);
+      box-shadow: 0 1px 0 rgba(137, 77, 13, 0.08);
+    }
+
+    /* Ghost border for accessibility focus */
+    *:focus-visible {
+      outline: 2px solid rgba(137, 77, 13, 0.35);
+      outline-offset: 2px;
+    }
+
+    /* Mobile nav overlay */
+    .mobile-nav-overlay {
+      background: rgba(251, 250, 238, 0.97);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 400ms cubic-bezier(0.22, 1, 0.36, 1),
+                  visibility 400ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .mobile-nav-overlay.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* Editorial divider */
+    .divider-copper {
+      width: 48px;
+      height: 2px;
+      background: linear-gradient(90deg, #894d0d, #c49a6c);
+    }
+
+    /* Card hover lift */
+    .card-lift {
+      transition: transform 400ms cubic-bezier(0.22, 1, 0.36, 1),
+                  box-shadow 400ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .card-lift:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px -12px rgba(27, 28, 21, 0.1);
+    }
+
+    /* Image cover */
+    .img-cover { object-fit: cover; width: 100%; height: 100%; }
+
+    /* Form styles - editorial/copper */
+    .form-input {
+      background: #fbfaee;
+      border: 1px solid rgba(137, 77, 13, 0.15);
+      padding: 14px 18px;
+      font-size: 0.9375rem;
+      color: #1b1c15;
+      transition: border-color 400ms cubic-bezier(0.22, 1, 0.36, 1),
+                  box-shadow 400ms cubic-bezier(0.22, 1, 0.36, 1);
+      width: 100%;
+      outline: none;
+      font-family: 'Manrope', sans-serif;
+    }
+    .form-input:focus {
+      border-color: #894d0d;
+      box-shadow: 0 0 0 3px rgba(137, 77, 13, 0.1);
+    }
+    .form-input::placeholder {
+      color: rgba(27, 28, 21, 0.3);
+    }
+
+    .form-select {
+      background: #fbfaee;
+      border: 1px solid rgba(137, 77, 13, 0.15);
+      padding: 14px 18px;
+      font-size: 0.9375rem;
+      color: #1b1c15;
+      transition: border-color 400ms cubic-bezier(0.22, 1, 0.36, 1),
+                  box-shadow 400ms cubic-bezier(0.22, 1, 0.36, 1);
+      width: 100%;
+      outline: none;
+      font-family: 'Manrope', sans-serif;
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%23894d0d' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      background-size: 18px;
+      padding-right: 44px;
+    }
+    .form-select:focus {
+      border-color: #894d0d;
+      box-shadow: 0 0 0 3px rgba(137, 77, 13, 0.1);
+    }
+
+    .form-textarea {
+      background: #fbfaee;
+      border: 1px solid rgba(137, 77, 13, 0.15);
+      padding: 14px 18px;
+      font-size: 0.9375rem;
+      color: #1b1c15;
+      transition: border-color 400ms cubic-bezier(0.22, 1, 0.36, 1),
+                  box-shadow 400ms cubic-bezier(0.22, 1, 0.36, 1);
+      width: 100%;
+      outline: none;
+      font-family: 'Manrope', sans-serif;
+      resize: vertical;
+      min-height: 140px;
+    }
+    .form-textarea:focus {
+      border-color: #894d0d;
+      box-shadow: 0 0 0 3px rgba(137, 77, 13, 0.1);
+    }
+    .form-textarea::placeholder {
+      color: rgba(27, 28, 21, 0.3);
+    }
+  </style>
+</head>
+
+<body class="bg-paper text-charcoal font-body overflow-x-hidden">
+
+  <!-- ================================================================
+       NAVIGATION
+       ================================================================ -->
+  <nav id="main-nav" class="nav-glass fixed top-0 left-0 right-0 z-50" role="navigation" aria-label="Main navigation">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="flex items-center justify-between h-20 lg:h-24">
+        <!-- Logo -->
+        <a href="./index.html" class="flex-shrink-0" aria-label="3650 Capital home">
+          <img
+            src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650Capital-Logo.png?ssl=1"
+            alt="3650 Capital"
+            class="h-8 lg:h-10 w-auto"
+          >
+        </a>
+
+        <!-- Desktop links -->
+        <div class="hidden lg:flex items-center gap-10">
+          <a href="./index.html" class="label-ledger text-copper hover:text-copper-light transition-colors duration-300">Home</a>
+          <a href="./firm.html" class="label-ledger text-copper hover:text-copper-light transition-colors duration-300">Firm</a>
+          <a href="./solutions.html" class="label-ledger text-copper hover:text-copper-light transition-colors duration-300">Solutions</a>
+          <a href="./transactions.html" class="label-ledger text-copper hover:text-copper-light transition-colors duration-300">Transactions</a>
+          <a href="./leadership.html" class="label-ledger text-copper hover:text-copper-light transition-colors duration-300">Leadership</a>
+          <a href="./contact.html" class="btn-copper text-xs" style="border-bottom: 2px solid #894d0d; padding-bottom: 2px; background: linear-gradient(135deg, #894d0d, #a76526); padding: 1.125rem 2.75rem;">
+            Contact
+            <span class="material-symbols-outlined text-base" aria-hidden="true">arrow_forward</span>
+          </a>
+        </div>
+
+        <!-- Mobile menu button -->
+        <button
+          id="mobile-menu-btn"
+          class="lg:hidden flex items-center justify-center w-10 h-10 text-copper"
+          aria-label="Open navigation menu"
+          aria-expanded="false"
+        >
+          <span class="material-symbols-outlined text-2xl">menu</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile nav overlay -->
+    <div id="mobile-nav" class="mobile-nav-overlay fixed inset-0 top-0 z-50 lg:hidden flex flex-col">
+      <div class="flex items-center justify-between h-20 px-6">
+        <a href="./index.html" aria-label="3650 Capital home">
+          <img
+            src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650Capital-Logo.png?ssl=1"
+            alt="3650 Capital"
+            class="h-8 w-auto"
+          >
+        </a>
+        <button id="mobile-close-btn" class="flex items-center justify-center w-10 h-10 text-copper" aria-label="Close navigation menu">
+          <span class="material-symbols-outlined text-2xl">close</span>
+        </button>
+      </div>
+      <div class="flex-1 flex flex-col justify-center items-center gap-10 px-6">
+        <a href="./index.html" class="mobile-nav-link font-headline text-3xl text-charcoal hover:text-copper transition-colors duration-300">Home</a>
+        <a href="./firm.html" class="mobile-nav-link font-headline text-3xl text-charcoal hover:text-copper transition-colors duration-300">Firm</a>
+        <a href="./solutions.html" class="mobile-nav-link font-headline text-3xl text-charcoal hover:text-copper transition-colors duration-300">Solutions</a>
+        <a href="./transactions.html" class="mobile-nav-link font-headline text-3xl text-charcoal hover:text-copper transition-colors duration-300">Transactions</a>
+        <a href="./leadership.html" class="mobile-nav-link font-headline text-3xl text-charcoal hover:text-copper transition-colors duration-300">Leadership</a>
+        <a href="./contact.html" class="mobile-nav-link btn-copper mt-4">
+          Contact
+          <span class="material-symbols-outlined text-base" aria-hidden="true">arrow_forward</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- ================================================================
+       HERO
+       ================================================================ -->
+  <section class="bg-paper pt-32 lg:pt-40 pb-20 lg:pb-28 relative overflow-hidden">
+    <!-- Watermark -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 watermark-3650 text-[clamp(10rem,25vw,22rem)]">3650</div>
+
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 relative z-10">
+      <!-- Label -->
+      <div class="reveal mb-8">
+        <span class="label-ledger text-copper">Contact</span>
+        <div class="divider-copper mt-3"></div>
+      </div>
+
+      <!-- Hero grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <!-- Headline (left) -->
+        <div class="lg:col-span-7">
+          <h1 class="reveal font-headline text-5xl sm:text-6xl lg:text-7xl xl:text-[5.25rem] font-light leading-[1.05] tracking-tight text-charcoal mb-8">
+            Direct channels.<br>
+            <span class="text-copper">Real offices.</span>
+          </h1>
+          <p class="reveal reveal-delay-1 font-body text-lg lg:text-xl text-charcoal/70 max-w-xl leading-relaxed">
+            Whether you are exploring new financing, managing an existing loan, or covering our platform, there is a direct line to the right person.
+          </p>
+        </div>
+
+        <!-- Hero image (right) -->
+        <div class="lg:col-span-5">
+          <div class="reveal reveal-delay-2 ambient-shadow overflow-hidden">
+            <img
+              src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/commercial-observer-power-finance.jpg?ssl=1"
+              alt="3650 Capital at Commercial Observer Power Finance"
+              class="img-cover aspect-[4/3]"
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================================================================
+       DIRECT CONTACTS
+       ================================================================ -->
+  <section class="bg-paper-low py-24 lg:py-32">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+
+      <!-- Section header -->
+      <div class="reveal mb-16">
+        <span class="label-ledger text-copper">Direct Lines</span>
+        <div class="divider-copper mt-3 mb-6"></div>
+        <h2 class="font-headline text-3xl lg:text-4xl font-light text-charcoal leading-tight">
+          Reach the Right Team
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- General -->
+        <div class="reveal card-lift bg-paper p-8" style="box-shadow: 0 1px 0 rgba(137, 77, 13, 0.08);">
+          <span class="label-ledger text-copper mb-5 block">General</span>
+          <h3 class="font-headline text-xl text-charcoal mb-4">General Inquiries</h3>
+          <div class="space-y-3">
+            <a href="tel:305-901-1010" class="text-charcoal/60 text-sm hover:text-copper transition-colors flex items-center gap-3">
+              <span class="material-symbols-outlined text-base text-copper/60">phone</span>
+              305-901-1010
+            </a>
+            <a href="mailto:info@3650capital.com" class="text-charcoal/60 text-sm hover:text-copper transition-colors flex items-center gap-3">
+              <span class="material-symbols-outlined text-base text-copper/60">mail</span>
+              info@3650capital.com
+            </a>
+          </div>
+        </div>
+
+        <!-- Servicing -->
+        <div class="reveal reveal-delay-1 card-lift bg-paper p-8" style="box-shadow: 0 1px 0 rgba(137, 77, 13, 0.08);">
+          <span class="label-ledger text-copper mb-5 block">Servicing</span>
+          <h3 class="font-headline text-xl text-charcoal mb-4">Loan Servicing</h3>
+          <div class="space-y-3">
+            <a href="mailto:servicing@3650capital.com" class="text-charcoal/60 text-sm hover:text-copper transition-colors flex items-center gap-3">
+              <span class="material-symbols-outlined text-base text-copper/60">mail</span>
+              servicing@3650capital.com
+            </a>
+            <p class="text-charcoal/40 text-xs leading-relaxed mt-3">For existing borrowers with active loan inquiries, payoff requests, and servicing matters.</p>
+          </div>
+        </div>
+
+        <!-- Media -->
+        <div class="reveal reveal-delay-2 card-lift bg-paper p-8" style="box-shadow: 0 1px 0 rgba(137, 77, 13, 0.08);">
+          <span class="label-ledger text-copper mb-5 block">Media</span>
+          <h3 class="font-headline text-xl text-charcoal mb-4">Media &amp; Press</h3>
+          <div class="space-y-3">
+            <a href="mailto:info@3650capital.com" class="text-charcoal/60 text-sm hover:text-copper transition-colors flex items-center gap-3">
+              <span class="material-symbols-outlined text-base text-copper/60">mail</span>
+              info@3650capital.com
+            </a>
+            <p class="text-charcoal/40 text-xs leading-relaxed mt-3">For media inquiries, speaking engagements, and press requests.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ================================================================
+       OFFICES
+       ================================================================ -->
+  <section class="bg-paper py-24 lg:py-32">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+
+      <!-- Section header -->
+      <div class="reveal mb-16">
+        <span class="label-ledger text-copper">Our Offices</span>
+        <div class="divider-copper mt-3 mb-6"></div>
+        <h2 class="font-headline text-3xl lg:text-4xl font-light text-charcoal leading-tight mb-4">
+          7 Offices Nationwide
+        </h2>
+        <p class="text-charcoal/55 text-lg leading-relaxed max-w-xl">
+          Presence in every major commercial real estate market.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <!-- Miami HQ -->
+        <div class="reveal card-lift bg-paper-low p-6" style="box-shadow: 0 1px 0 rgba(137, 77, 13, 0.08);">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="font-headline text-lg text-charcoal">Miami</h3>
+            <span class="label-ledger text-copper">HQ</span>
+          </div>
+          <p class="text-charcoal/55 text-sm leading-relaxed">
+            2977 McFarlane Rd<br>
+            Ste 300<br>
+            Miami, FL 33133
+          </p>
+        </div>
+
+        <!-- New York -->
+        <div class="reveal reveal-delay-1 card-lift bg-paper-low p-6" style="box-shadow: 0 1px 0 rgba(137, 77, 13, 0.08);">
+          <div class="mb-4">
+            <h3 class="font-headline text-lg text-charcoal">New York</h3>
+          </div>
+          <p class="text-charcoal/55 text-sm leading-relaxed">
+            410 Park Ave<br>
+            Ste 720<br>
+            New York, NY 10022
+          </p>
+        </div>
+
+        <!-- Los Angeles -->
+        <div class="reveal reveal-delay-2 card-lift bg-paper-low p-6" style="box-shadow: 0 1px 0 rgba(137, 77, 13, 0.08);">
+          <div class="mb-4">
+            <h3 class="font-headline text-lg text-charcoal">Los Angeles</h3>
+          </div>
+          <p class="text-charcoal/55 text-sm leading-relaxed">
+            9595 Wilshire Blvd<br>
+            Ste 611<br>
+            Beverly Hills, CA 90212
+          </p>
+        </div>
+
+        <!-- Dallas -->
+        <div class="reveal reveal-delay-3 card-lift bg-paper-low p-6" style="box-shadow: 0 1px 0 rgba(137, 77, 13, 0.08);">
+          <div class="mb-4">
+            <h3 class="font-headline text-lg text-charcoal">Dallas</h3>
+          </div>
+          <p class="text-charcoal/55 text-sm leading-relaxed">
+            4143 Maple Ave<br>
+            Ste 220<br>
+            Dallas, TX 75219
+          </p>
+        </div>
+
+        <!-- Atlanta -->
+        <div class="reveal card-lift bg-paper-low p-6" style="box-shadow: 0 1px 0 rgba(137, 77, 13, 0.08);">
+          <div class="mb-4">
+            <h3 class="font-headline text-lg text-charcoal">Atlanta</h3>
+          </div>
+          <p class="text-charcoal/55 text-sm leading-relaxed">
+            3050 Peachtree Rd NW<br>
+            Ste 320<br>
+            Atlanta, GA 30305
+          </p>
+        </div>
+
+        <!-- Nashville -->
+        <div class="reveal reveal-delay-1 card-lift bg-paper-low p-6" style="box-shadow: 0 1px 0 rgba(137, 77, 13, 0.08);">
+          <div class="mb-4">
+            <h3 class="font-headline text-lg text-charcoal">Nashville</h3>
+          </div>
+          <p class="text-charcoal/55 text-sm leading-relaxed">
+            Nashville, TN
+          </p>
+        </div>
+
+        <!-- Washington DC -->
+        <div class="reveal reveal-delay-2 card-lift bg-paper-low p-6" style="box-shadow: 0 1px 0 rgba(137, 77, 13, 0.08);">
+          <div class="mb-4">
+            <h3 class="font-headline text-lg text-charcoal">Washington DC</h3>
+          </div>
+          <p class="text-charcoal/55 text-sm leading-relaxed">
+            Washington, DC Area
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ================================================================
+       OFFICE IMAGES
+       ================================================================ -->
+  <section class="bg-paper-low py-20 lg:py-28">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="reveal ambient-shadow overflow-hidden">
+          <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/nyc-office-interior-1.jpg?ssl=1"
+               alt="3650 Capital NYC office interior"
+               class="img-cover aspect-[4/3]" loading="lazy">
+        </div>
+        <div class="reveal reveal-delay-1 ambient-shadow overflow-hidden">
+          <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/nyc-office-interior-2.jpg?ssl=1"
+               alt="3650 Capital NYC office workspace"
+               class="img-cover aspect-[4/3]" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================================================================
+       CONTACT FORM
+       ================================================================ -->
+  <section class="bg-paper py-24 lg:py-32">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+
+        <!-- Left: Context -->
+        <div>
+          <div class="reveal mb-8">
+            <span class="label-ledger text-copper">Inquiry</span>
+            <div class="divider-copper mt-3"></div>
+          </div>
+          <h2 class="reveal reveal-delay-1 font-headline text-3xl lg:text-4xl font-light text-charcoal leading-tight mb-6">
+            Begin a Dialogue
+          </h2>
+          <p class="reveal reveal-delay-2 text-charcoal/60 text-lg leading-relaxed mb-12">
+            Whether you are a borrower exploring financing, a servicer managing an active loan, or a member of the press, we respond to every inquiry directly.
+          </p>
+
+          <!-- Quick contact ledger rows -->
+          <div class="reveal reveal-delay-3 space-y-6">
+            <div class="flex items-start gap-5" style="box-shadow: 0 1px 0 rgba(137, 77, 13, 0.06); padding-bottom: 1.25rem;">
+              <span class="material-symbols-outlined text-copper text-xl mt-0.5">call</span>
+              <div>
+                <span class="label-ledger text-copper block mb-1.5">General</span>
+                <a href="tel:305-901-1010" class="text-charcoal/60 text-sm hover:text-copper transition-colors">305-901-1010</a>
+              </div>
+            </div>
+            <div class="flex items-start gap-5" style="box-shadow: 0 1px 0 rgba(137, 77, 13, 0.06); padding-bottom: 1.25rem;">
+              <span class="material-symbols-outlined text-copper text-xl mt-0.5">mail</span>
+              <div>
+                <span class="label-ledger text-copper block mb-1.5">General Email</span>
+                <a href="mailto:info@3650capital.com" class="text-charcoal/60 text-sm hover:text-copper transition-colors">info@3650capital.com</a>
+              </div>
+            </div>
+            <div class="flex items-start gap-5">
+              <span class="material-symbols-outlined text-copper text-xl mt-0.5">support_agent</span>
+              <div>
+                <span class="label-ledger text-copper block mb-1.5">Servicing</span>
+                <a href="mailto:servicing@3650capital.com" class="text-charcoal/60 text-sm hover:text-copper transition-colors">servicing@3650capital.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Form -->
+        <div class="reveal reveal-delay-2">
+          <div class="bg-paper-low p-8 lg:p-10" style="box-shadow: 0 1px 0 rgba(137, 77, 13, 0.08);">
+            <form id="contactForm" class="space-y-6">
+              <!-- Name -->
+              <div>
+                <label for="name" class="label-ledger text-copper mb-2 block">Full Name</label>
+                <input type="text" id="name" name="name" required placeholder="Your full name" class="form-input">
+              </div>
+
+              <!-- Email -->
+              <div>
+                <label for="email" class="label-ledger text-copper mb-2 block">Email Address</label>
+                <input type="email" id="email" name="email" required placeholder="you@company.com" class="form-input">
+              </div>
+
+              <!-- Company -->
+              <div>
+                <label for="company" class="label-ledger text-copper mb-2 block">Company</label>
+                <input type="text" id="company" name="company" placeholder="Your company" class="form-input">
+              </div>
+
+              <!-- Topic -->
+              <div>
+                <label for="topic" class="label-ledger text-copper mb-2 block">Topic</label>
+                <select id="topic" name="topic" required class="form-select">
+                  <option value="" disabled selected>Select a topic</option>
+                  <option value="new-financing">New financing</option>
+                  <option value="loan-servicing">Loan servicing</option>
+                  <option value="media">Media</option>
+                </select>
+              </div>
+
+              <!-- Message -->
+              <div>
+                <label for="message" class="label-ledger text-copper mb-2 block">Message</label>
+                <textarea id="message" name="message" required placeholder="Tell us about your inquiry..." class="form-textarea"></textarea>
+              </div>
+
+              <!-- Submit -->
+              <button type="submit" class="btn-copper w-full justify-center mt-2">
+                Submit Inquiry
+                <span class="material-symbols-outlined text-base" aria-hidden="true">send</span>
+              </button>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================================================================
+       FOOTER
+       ================================================================ -->
+  <footer class="bg-paper-high py-16 lg:py-20">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+        <!-- Logo & tagline -->
+        <div class="lg:col-span-4">
+          <img
+            src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650Capital-Logo.png?ssl=1"
+            alt="3650 Capital"
+            class="h-8 w-auto mb-5"
+          >
+          <p class="text-charcoal/50 text-sm leading-relaxed max-w-xs">
+            Vertically integrated commercial real estate lending.
+            From origination to maturity.
+          </p>
+        </div>
+
+        <!-- Navigation -->
+        <div class="lg:col-span-2">
+          <span class="label-ledger text-copper mb-4 block">Navigate</span>
+          <ul class="space-y-3">
+            <li><a href="./index.html" class="text-charcoal/55 hover:text-copper text-sm transition-colors duration-300">Home</a></li>
+            <li><a href="./firm.html" class="text-charcoal/55 hover:text-copper text-sm transition-colors duration-300">Firm</a></li>
+            <li><a href="./solutions.html" class="text-charcoal/55 hover:text-copper text-sm transition-colors duration-300">Solutions</a></li>
+            <li><a href="./transactions.html" class="text-charcoal/55 hover:text-copper text-sm transition-colors duration-300">Transactions</a></li>
+            <li><a href="./leadership.html" class="text-charcoal/55 hover:text-copper text-sm transition-colors duration-300">Leadership</a></li>
+            <li><a href="./contact.html" class="text-charcoal/55 hover:text-copper text-sm transition-colors duration-300">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact -->
+        <div class="lg:col-span-3">
+          <span class="label-ledger text-copper mb-4 block">Contact</span>
+          <ul class="space-y-3">
+            <li><a href="mailto:info@3650capital.com" class="text-charcoal/55 hover:text-copper text-sm transition-colors duration-300">info@3650capital.com</a></li>
+            <li><a href="tel:305-901-1010" class="text-charcoal/55 hover:text-copper text-sm transition-colors duration-300">305-901-1010</a></li>
+            <li><span class="text-charcoal/55 text-sm">Miami &middot; New York &middot; Los Angeles</span></li>
+          </ul>
+        </div>
+
+        <!-- Legal -->
+        <div class="lg:col-span-3">
+          <span class="label-ledger text-copper mb-4 block">Legal</span>
+          <ul class="space-y-3">
+            <li><a href="#" class="text-charcoal/55 hover:text-copper text-sm transition-colors duration-300">Privacy Policy</a></li>
+            <li><a href="#" class="text-charcoal/55 hover:text-copper text-sm transition-colors duration-300">Terms of Use</a></li>
+            <li><a href="#" class="text-charcoal/55 hover:text-copper text-sm transition-colors duration-300">Disclosures</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Bottom bar -->
+      <div class="mt-16 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4" style="box-shadow: 0 -1px 0 rgba(137, 77, 13, 0.08);">
+        <p class="label-ledger text-charcoal/35 text-xs">
+          &copy; 2026 3650 Capital. All Rights Reserved.
+        </p>
+        <p class="label-ledger text-charcoal/35 text-xs">
+          One Lender. Wholly Committed.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ================================================================
+       SCRIPTS
+       ================================================================ -->
+  <script>
+    (function () {
+      'use strict';
+
+      // -- Reduced motion check --
+      var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      // -- IntersectionObserver: Scroll reveal --
+      function initRevealObserver() {
+        var revealEls = document.querySelectorAll('.reveal');
+
+        if (prefersReducedMotion) {
+          revealEls.forEach(function (el) {
+            el.classList.add('visible');
+          });
+          return;
+        }
+
+        if (!('IntersectionObserver' in window)) {
+          revealEls.forEach(function (el) {
+            el.classList.add('visible');
+          });
+          return;
+        }
+
+        var observer = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          {
+            threshold: 0.12,
+            rootMargin: '0px 0px -40px 0px',
+          }
+        );
+
+        revealEls.forEach(function (el) {
+          observer.observe(el);
+        });
+      }
+
+      // -- Nav scroll effect --
+      function initNavScroll() {
+        var nav = document.getElementById('main-nav');
+        if (!nav) return;
+
+        var scrolled = false;
+
+        function onScroll() {
+          var isScrolled = window.scrollY > 40;
+          if (isScrolled !== scrolled) {
+            scrolled = isScrolled;
+            if (scrolled) {
+              nav.classList.add('scrolled');
+            } else {
+              nav.classList.remove('scrolled');
+            }
+          }
+        }
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+      }
+
+      // -- Mobile nav --
+      function initMobileNav() {
+        var btn = document.getElementById('mobile-menu-btn');
+        var closeBtn = document.getElementById('mobile-close-btn');
+        var overlay = document.getElementById('mobile-nav');
+        var links = overlay ? overlay.querySelectorAll('.mobile-nav-link') : [];
+
+        if (!btn || !closeBtn || !overlay) return;
+
+        function open() {
+          overlay.classList.add('open');
+          btn.setAttribute('aria-expanded', 'true');
+          document.body.style.overflow = 'hidden';
+        }
+
+        function close() {
+          overlay.classList.remove('open');
+          btn.setAttribute('aria-expanded', 'false');
+          document.body.style.overflow = '';
+        }
+
+        btn.addEventListener('click', open);
+        closeBtn.addEventListener('click', close);
+
+        links.forEach(function (link) {
+          link.addEventListener('click', close);
+        });
+
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape' && overlay.classList.contains('open')) {
+            close();
+          }
+        });
+      }
+
+      // -- Form submission --
+      function initForm() {
+        var form = document.getElementById('contactForm');
+        if (!form) return;
+
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          var btn = form.querySelector('button[type="submit"]');
+          var span = btn.querySelector('.material-symbols-outlined');
+          var textNode = btn.childNodes[0];
+          span.textContent = 'check_circle';
+          textNode.textContent = 'Inquiry Sent ';
+          btn.disabled = true;
+          btn.style.opacity = '0.7';
+          setTimeout(function () {
+            span.textContent = 'send';
+            textNode.textContent = '\n                Submit Inquiry\n                ';
+            btn.disabled = false;
+            btn.style.opacity = '1';
+            form.reset();
+          }, 3000);
+        });
+      }
+
+      // -- Smooth scroll for anchor links --
+      function initSmoothScroll() {
+        document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+          anchor.addEventListener('click', function (e) {
+            var targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+
+            var targetEl = document.querySelector(targetId);
+            if (!targetEl) return;
+
+            e.preventDefault();
+
+            var navHeight = 96;
+            var targetPosition = targetEl.getBoundingClientRect().top + window.pageYOffset - navHeight;
+
+            if (prefersReducedMotion) {
+              window.scrollTo(0, targetPosition);
+            } else {
+              window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth',
+              });
+            }
+          });
+        });
+      }
+
+      // -- Init --
+      document.addEventListener('DOMContentLoaded', function () {
+        initRevealObserver();
+        initNavScroll();
+        initMobileNav();
+        initForm();
+        initSmoothScroll();
+      });
+    })();
+  </script>
+
+</body>
+</html>

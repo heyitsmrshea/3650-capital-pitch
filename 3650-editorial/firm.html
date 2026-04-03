@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3650 Capital — The Firm</title>
+  <meta name="description" content="3650 Capital is a vertically integrated commercial real estate lending platform anchored by relationships, responsiveness, and transparency.">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+
+  <!-- Material Symbols -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'ink': '#1a1612',
+            'cream': '#f5f0e8',
+            'cream-dark': '#e8ddd0',
+            'terra': '#b8432a',
+            'terra-light': '#d4634e',
+            'sage': '#2a4a3c',
+          },
+          fontFamily: {
+            'headline': ['Playfair Display', 'serif'],
+            'body': ['Source Sans 3', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Base resets */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Source Sans 3', sans-serif; background-color: #f5f0e8; color: #1a1612; }
+
+    /* Editorial typography */
+    .headline-massive {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 7vw, 7rem);
+      line-height: 1.0;
+      letter-spacing: -0.02em;
+    }
+    .headline-large {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4.5vw, 4.5rem);
+      line-height: 1.1;
+      letter-spacing: -0.015em;
+    }
+    .headline-mid {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.5rem, 3vw, 3rem);
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+    }
+    .label-editorial {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+    .pull-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.3rem, 2.5vw, 2rem);
+      line-height: 1.35;
+      font-style: italic;
+    }
+
+    /* Scroll animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+    .reveal-delay-5 { transition-delay: 0.5s; }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+      html { scroll-behavior: auto; }
+    }
+
+    /* Divider */
+    .editorial-rule {
+      width: 60px;
+      height: 2px;
+      background-color: #b8432a;
+    }
+
+    /* Nav transition */
+    .nav-scrolled {
+      background-color: rgba(245, 240, 232, 0.97) !important;
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(26, 22, 18, 0.08);
+    }
+
+    /* Bento card hover */
+    .bento-card {
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+    }
+    .bento-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(26, 22, 18, 0.1);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .bento-card { transition: none; }
+      .bento-card:hover { transform: none; }
+    }
+
+    /* Image caption */
+    .caption-line::before {
+      content: '';
+      display: inline-block;
+      width: 24px;
+      height: 1px;
+      background: #b8432a;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+
+    /* Stat number editorial */
+    .stat-editorial {
+      font-family: 'Playfair Display', serif;
+      font-weight: 300;
+      line-height: 1;
+    }
+
+    /* Selection color */
+    ::selection {
+      background-color: #b8432a;
+      color: #f5f0e8;
+    }
+
+    /* Smooth image loading */
+    img {
+      opacity: 1;
+      transition: opacity 0.5s ease;
+    }
+  </style>
+</head>
+
+<body data-review-page="firm" class="bg-cream text-ink font-body antialiased overflow-x-hidden">
+
+  <!-- ========== NAV ========== -->
+  <nav id="mainNav" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500" role="navigation" aria-label="Main navigation">
+    <div class="max-w-[1400px] mx-auto px-6 md:px-10 py-5 flex items-center justify-between">
+      <!-- Logo -->
+      <a href="./index.html" class="flex items-center gap-3 group" aria-label="3650 Capital Home">
+        <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650Capital-Logo.png?ssl=1"
+             alt="3650 Capital" class="h-8 md:h-10 w-auto">
+      </a>
+
+      <!-- Nav links — desktop -->
+      <div class="hidden md:flex items-center gap-8">
+        <a href="./index.html" class="label-editorial text-ink/70 hover:text-terra transition-colors duration-300">Home</a>
+        <a href="./firm.html" class="label-editorial text-terra transition-colors duration-300">Firm</a>
+        <a href="./solutions.html" class="label-editorial text-ink/70 hover:text-terra transition-colors duration-300">Solutions</a>
+        <a href="./transactions.html" class="label-editorial text-ink/70 hover:text-terra transition-colors duration-300">Transactions</a>
+        <a href="./leadership.html" class="label-editorial text-ink/70 hover:text-terra transition-colors duration-300">Leadership</a>
+        <a href="./contact.html" class="label-editorial bg-terra text-cream px-5 py-2.5 hover:bg-terra-light transition-colors duration-300">Contact</a>
+      </div>
+
+      <!-- Mobile menu button -->
+      <button id="mobileMenuBtn" class="md:hidden flex flex-col gap-1.5 p-2" aria-label="Toggle menu" aria-expanded="false">
+        <span class="block w-6 h-[1.5px] bg-ink transition-all duration-300" id="menuLine1"></span>
+        <span class="block w-6 h-[1.5px] bg-ink transition-all duration-300" id="menuLine2"></span>
+        <span class="block w-4 h-[1.5px] bg-ink transition-all duration-300 ml-auto" id="menuLine3"></span>
+      </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobileMenu" class="md:hidden hidden bg-cream border-t border-ink/10">
+      <div class="px-6 py-8 flex flex-col gap-6">
+        <a href="./index.html" class="label-editorial text-ink/70 hover:text-terra transition-colors" onclick="closeMobileMenu()">Home</a>
+        <a href="./firm.html" class="label-editorial text-terra transition-colors" onclick="closeMobileMenu()">Firm</a>
+        <a href="./solutions.html" class="label-editorial text-ink/70 hover:text-terra transition-colors" onclick="closeMobileMenu()">Solutions</a>
+        <a href="./transactions.html" class="label-editorial text-ink/70 hover:text-terra transition-colors" onclick="closeMobileMenu()">Transactions</a>
+        <a href="./leadership.html" class="label-editorial text-ink/70 hover:text-terra transition-colors" onclick="closeMobileMenu()">Leadership</a>
+        <a href="./contact.html" class="label-editorial bg-terra text-cream px-5 py-2.5 text-center hover:bg-terra-light transition-colors" onclick="closeMobileMenu()">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========== HERO ========== -->
+  <section data-review-section="hero" class="relative pt-28 md:pt-36 pb-16 md:pb-24 bg-cream">
+    <div class="max-w-[1400px] mx-auto px-6 md:px-10">
+
+      <!-- Editorial label -->
+      <div class="reveal mb-6 flex items-center gap-3">
+        <div class="editorial-rule"></div>
+        <span class="label-editorial text-terra">The Firm — Profile</span>
+      </div>
+
+      <!-- Headline -->
+      <h1 class="headline-massive reveal reveal-delay-1 max-w-[1100px]">
+        One lender.<br>
+        <em class="text-terra">Wholly</em> committed.
+      </h1>
+
+      <!-- Sub-headline -->
+      <p class="reveal reveal-delay-2 mt-8 text-lg md:text-xl text-ink/60 font-body max-w-[600px] leading-relaxed">
+        3650 Capital is built on relationships, responsiveness, effectiveness, and transparency. A single platform that holds every loan it makes from origination through maturity.
+      </p>
+
+      <!-- Hero image with editorial caption -->
+      <div class="reveal reveal-delay-3 mt-14 relative">
+        <div class="w-full aspect-[16/7] overflow-hidden bg-ink/5">
+          <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/pere-panel-group-shot.jpg?ssl=1"
+               alt="3650 Capital leadership at PERE industry panel"
+               class="w-full h-full object-cover">
+        </div>
+        <div class="mt-4 flex items-center">
+          <span class="caption-line text-xs text-ink/50 font-body tracking-wide">3650 Capital leadership — PERE Americas Forum</span>
+        </div>
+      </div>
+
+      <!-- CTA link -->
+      <div class="reveal reveal-delay-4 mt-10">
+        <a href="./leadership.html" class="inline-flex items-center gap-2 label-editorial text-terra hover:text-terra-light transition-colors duration-300">
+          Meet the leadership team
+          <span class="material-symbols-outlined text-base">arrow_forward</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Thin editorial divider -->
+  <div class="max-w-[1400px] mx-auto px-6 md:px-10">
+    <div class="w-full h-[1px] bg-ink/10"></div>
+  </div>
+
+  <!-- ========== PULL QUOTE ========== -->
+  <section class="py-16 md:py-24 bg-cream">
+    <div class="max-w-[1400px] mx-auto px-6 md:px-10">
+      <div class="reveal relative py-12 md:py-16 border-t border-b border-ink/10">
+        <span class="material-symbols-outlined text-5xl text-terra/20 absolute top-6 left-0 md:left-1/2 md:-translate-x-1/2" aria-hidden="true">format_quote</span>
+        <blockquote class="pull-quote text-center max-w-[800px] mx-auto px-4 md:px-8 mt-4">
+          "Commercial real estate is a relationship business that has been treated like a transactional world. We are bringing the relationship back to the people."
+        </blockquote>
+        <p class="text-center mt-6 label-editorial text-ink/40">— 3650 Capital Founding Principle</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== ETHOS ========== -->
+  <section data-review-section="ethos" class="py-20 md:py-32 bg-cream">
+    <div class="max-w-[1400px] mx-auto px-6 md:px-10">
+
+      <!-- Section label -->
+      <div class="reveal flex items-center gap-3 mb-6">
+        <div class="editorial-rule"></div>
+        <span class="label-editorial text-terra">Our Ethos</span>
+      </div>
+
+      <!-- Section headline -->
+      <h2 class="headline-large reveal reveal-delay-1 max-w-[900px] mb-6">
+        Relationships anchor the <em class="text-terra">operating model.</em>
+      </h2>
+
+      <p class="reveal reveal-delay-2 text-lg text-ink/60 max-w-[600px] mb-14 leading-relaxed">
+        Four principles guide every interaction, every underwriting decision, and every servicing relationship across the platform.
+      </p>
+
+      <!-- Bento grid — 4 ethos pillars -->
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-[1px] bg-ink/10">
+
+        <!-- Card 1: Process — large -->
+        <div class="reveal md:col-span-7 bento-card bg-ink text-cream p-8 md:p-12 flex flex-col justify-between min-h-[360px]">
+          <div>
+            <span class="label-editorial text-terra-light">01</span>
+            <h3 class="headline-mid mt-4 mb-4">Process</h3>
+            <p class="text-cream/60 leading-relaxed max-w-[420px]">
+              Predictable structure from term sheet to closing and throughout the life of every loan. Borrowers know what to expect at each stage because we have eliminated the ambiguity that plagues conventional lending.
+            </p>
+          </div>
+          <div class="mt-8 flex items-end gap-3">
+            <span class="material-symbols-outlined text-terra-light text-4xl">timeline</span>
+            <span class="label-editorial text-cream/40 mb-1">Structured &<br>Repeatable</span>
+          </div>
+        </div>
+
+        <!-- Card 2: Cycle — smaller -->
+        <div class="reveal reveal-delay-1 md:col-span-5 bento-card bg-cream-dark p-8 md:p-12 flex flex-col justify-between min-h-[360px]">
+          <div>
+            <span class="label-editorial text-terra">02</span>
+            <h3 class="headline-mid mt-4 mb-4">Cycle</h3>
+            <p class="text-ink/60 leading-relaxed">
+              Origination, servicing, and asset management integrated under one roof. From day one through day 3,650, every function operates in coordination &mdash; not in silos.
+            </p>
+          </div>
+          <div class="mt-8">
+            <span class="material-symbols-outlined text-4xl text-terra/40">sync</span>
+          </div>
+        </div>
+
+        <!-- Card 3: Expertise -->
+        <div class="reveal reveal-delay-2 md:col-span-4 bento-card bg-sage text-cream p-8 md:p-12 flex flex-col justify-between min-h-[300px]">
+          <div>
+            <span class="label-editorial text-cream/50">03</span>
+            <h3 class="font-headline text-xl mt-4 mb-3">Expertise</h3>
+            <p class="text-cream/60 text-sm leading-relaxed">
+              92+ years of combined senior leadership experience across commercial real estate debt markets, capital markets, and institutional servicing.
+            </p>
+          </div>
+          <div class="mt-6 flex items-end gap-2">
+            <span class="stat-editorial text-6xl md:text-7xl text-cream/30">92</span>
+            <span class="label-editorial text-cream/40 mb-2">Years Combined<br>Experience</span>
+          </div>
+        </div>
+
+        <!-- Card 4: Footprint — wider -->
+        <div class="reveal reveal-delay-3 md:col-span-8 bento-card bg-cream p-8 md:p-12 flex flex-col md:flex-row justify-between min-h-[300px] gap-8">
+          <div class="flex-1">
+            <span class="label-editorial text-terra">04</span>
+            <h3 class="headline-mid mt-4 mb-4">Footprint</h3>
+            <p class="text-ink/60 leading-relaxed max-w-[400px]">
+              Seven offices positioned across the country &mdash; Miami, New York, Los Angeles, Dallas, Atlanta, Nashville, and Washington D.C. Local market intelligence with national platform reach.
+            </p>
+          </div>
+          <div class="flex flex-col justify-end items-end">
+            <span class="stat-editorial text-5xl md:text-7xl text-ink/10">7</span>
+            <span class="label-editorial text-ink/40 mt-1">Offices Nationwide</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Ethos image -->
+      <div class="reveal mt-16">
+        <div class="w-full aspect-[21/9] overflow-hidden bg-ink/5">
+          <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/nyc-office-interior-2.jpg?ssl=1"
+               alt="3650 Capital New York office interior"
+               class="w-full h-full object-cover">
+        </div>
+        <span class="caption-line text-xs text-ink/50 mt-3 inline-block">3650 Capital — New York office interior</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Thin editorial divider -->
+  <div class="max-w-[1400px] mx-auto px-6 md:px-10">
+    <div class="w-full h-[1px] bg-ink/10"></div>
+  </div>
+
+  <!-- ========== PLATFORM ========== -->
+  <section data-review-section="platform" class="py-20 md:py-32 bg-cream">
+    <div class="max-w-[1400px] mx-auto px-6 md:px-10">
+
+      <!-- Section label -->
+      <div class="reveal flex items-center gap-3 mb-6">
+        <div class="editorial-rule"></div>
+        <span class="label-editorial text-terra">Platform Principles</span>
+      </div>
+
+      <!-- Section headline -->
+      <h2 class="headline-large reveal reveal-delay-1 max-w-[900px] mb-6">
+        How the platform <em class="text-terra">operates.</em>
+      </h2>
+
+      <p class="reveal reveal-delay-2 text-lg text-ink/60 max-w-[600px] mb-14 leading-relaxed">
+        Two sides of the same commitment: who we are and why that matters for borrowers seeking certainty, speed, and alignment.
+      </p>
+
+      <!-- Two-column layout -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-[1px] bg-ink/10">
+
+        <!-- Who we are -->
+        <div class="reveal bg-cream-dark p-8 md:p-12">
+          <h3 class="font-headline text-2xl mb-3">Who we are</h3>
+          <p class="text-ink/60 text-lg mb-8 leading-relaxed">Institutional credit specialists built to originate, service, and manage commercial real estate loans for the entire term.</p>
+
+          <div class="space-y-5">
+            <div class="flex items-start gap-4 border-b border-ink/10 pb-5">
+              <span class="material-symbols-outlined text-terra text-xl mt-0.5">account_balance</span>
+              <div>
+                <p class="font-semibold text-ink/90">Balance Sheet Lender</p>
+                <p class="text-ink/50 text-sm mt-1">Permanent capital with institutional backing and conviction</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4 border-b border-ink/10 pb-5">
+              <span class="material-symbols-outlined text-terra text-xl mt-0.5">hub</span>
+              <div>
+                <p class="font-semibold text-ink/90">Fully Integrated</p>
+                <p class="text-ink/50 text-sm mt-1">In-house origination, underwriting, closing, servicing, and asset management</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <span class="material-symbols-outlined text-terra text-xl mt-0.5">layers</span>
+              <div>
+                <p class="font-semibold text-ink/90">Multi-Product Platform</p>
+                <p class="text-ink/50 text-sm mt-1">Bridge, permanent CMBS, and mezzanine products across all major property types</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Why us -->
+        <div class="reveal reveal-delay-1 bg-ink text-cream p-8 md:p-12">
+          <h3 class="font-headline text-2xl mb-3">Why us</h3>
+          <p class="text-cream/60 text-lg mb-8 leading-relaxed">Execution continuity as an operating advantage &mdash; the team that closes your loan is the same team that services it.</p>
+
+          <div class="space-y-5">
+            <div class="flex items-start gap-4 border-b border-cream/10 pb-5">
+              <span class="material-symbols-outlined text-terra-light text-xl mt-0.5">person_pin</span>
+              <div>
+                <p class="font-semibold text-cream/90">Single Point of Contact</p>
+                <p class="text-cream/40 text-sm mt-1">Eliminates third-party hand-offs and bureaucratic delays</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4 border-b border-cream/10 pb-5">
+              <span class="material-symbols-outlined text-terra-light text-xl mt-0.5">speed</span>
+              <div>
+                <p class="font-semibold text-cream/90">Faster Decisions</p>
+                <p class="text-cream/40 text-sm mt-1">Retained servicing means rapid action on modifications and extensions</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <span class="material-symbols-outlined text-terra-light text-xl mt-0.5">trending_up</span>
+              <div>
+                <p class="font-semibold text-cream/90">Aligned Incentives</p>
+                <p class="text-cream/40 text-sm mt-1">Our success is measured by borrower performance, not securitization speed</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Platform image -->
+      <div class="reveal mt-16">
+        <div class="w-full aspect-[16/7] overflow-hidden bg-ink/5">
+          <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/toby-nyc-office.jpg?ssl=1"
+               alt="3650 Capital leadership in New York office"
+               class="w-full h-full object-cover">
+        </div>
+        <span class="caption-line text-xs text-ink/50 mt-3 inline-block">3650 Capital — Leadership in the New York office</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="bg-ink text-cream py-16 md:py-20">
+    <div class="max-w-[1400px] mx-auto px-6 md:px-10">
+
+      <!-- Top row -->
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8 pb-12 border-b border-cream/10">
+
+        <!-- Logo & tagline -->
+        <div class="md:col-span-4">
+          <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650Capital-Logo.png?ssl=1"
+               alt="3650 Capital" class="h-8 w-auto mb-4 brightness-0 invert opacity-80">
+          <p class="text-cream/40 text-sm leading-relaxed max-w-[300px]">
+            A permanent capital CRE lending platform. Bridge. Permanent. Mezzanine. In-house servicing. One lender for the full cycle.
+          </p>
+        </div>
+
+        <!-- Navigation -->
+        <div class="md:col-span-2">
+          <h4 class="label-editorial text-cream/30 mb-4">Navigation</h4>
+          <ul class="space-y-2.5">
+            <li><a href="./index.html" class="text-cream/60 text-sm hover:text-terra-light transition-colors">Home</a></li>
+            <li><a href="./firm.html" class="text-cream/60 text-sm hover:text-terra-light transition-colors">Firm</a></li>
+            <li><a href="./solutions.html" class="text-cream/60 text-sm hover:text-terra-light transition-colors">Solutions</a></li>
+            <li><a href="./transactions.html" class="text-cream/60 text-sm hover:text-terra-light transition-colors">Transactions</a></li>
+            <li><a href="./leadership.html" class="text-cream/60 text-sm hover:text-terra-light transition-colors">Leadership</a></li>
+            <li><a href="./contact.html" class="text-cream/60 text-sm hover:text-terra-light transition-colors">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Products -->
+        <div class="md:col-span-3">
+          <h4 class="label-editorial text-cream/30 mb-4">Lending</h4>
+          <ul class="space-y-2.5">
+            <li><a href="#" class="text-cream/60 text-sm hover:text-terra-light transition-colors">Bridge Loans</a></li>
+            <li><a href="#" class="text-cream/60 text-sm hover:text-terra-light transition-colors">Permanent / CMBS</a></li>
+            <li><a href="#" class="text-cream/60 text-sm hover:text-terra-light transition-colors">Mezzanine & Preferred Equity</a></li>
+            <li><a href="#" class="text-cream/60 text-sm hover:text-terra-light transition-colors">In-House Servicing</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact info -->
+        <div class="md:col-span-3">
+          <h4 class="label-editorial text-cream/30 mb-4">Headquarters</h4>
+          <address class="not-italic text-cream/60 text-sm leading-relaxed">
+            3650 Capital<br>
+            New York, NY<br>
+            <a href="mailto:info@3650capital.com" class="hover:text-terra-light transition-colors">info@3650capital.com</a>
+          </address>
+        </div>
+      </div>
+
+      <!-- Bottom row -->
+      <div class="pt-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+        <p class="text-cream/30 text-xs">&copy; 2026 3650 Capital LLC. All rights reserved.</p>
+        <div class="flex gap-6">
+          <a href="#" class="text-cream/30 text-xs hover:text-cream/60 transition-colors">Privacy Policy</a>
+          <a href="#" class="text-cream/30 text-xs hover:text-cream/60 transition-colors">Terms of Use</a>
+          <a href="#" class="text-cream/30 text-xs hover:text-cream/60 transition-colors">Disclosures</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========== SCRIPTS ========== -->
+  <script>
+    /* ---- Reduced motion check ---- */
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    /* ---- IntersectionObserver for scroll reveals ---- */
+    if (!prefersReducedMotion) {
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -40px 0px'
+      });
+
+      document.querySelectorAll('.reveal').forEach(el => {
+        revealObserver.observe(el);
+      });
+    } else {
+      document.querySelectorAll('.reveal').forEach(el => {
+        el.classList.add('visible');
+      });
+    }
+
+    /* ---- Counter animations ---- */
+    function animateCounter(el) {
+      const target = parseFloat(el.getAttribute('data-counter'));
+      const decimals = parseInt(el.getAttribute('data-decimals')) || 0;
+      const duration = 2000;
+      const startTime = performance.now();
+
+      if (prefersReducedMotion) {
+        el.textContent = decimals > 0 ? target.toFixed(decimals) : Math.round(target).toLocaleString();
+        return;
+      }
+
+      function update(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const current = target * eased;
+
+        if (decimals > 0) {
+          el.textContent = current.toFixed(decimals);
+        } else {
+          el.textContent = Math.round(current).toLocaleString();
+        }
+
+        if (progress < 1) {
+          requestAnimationFrame(update);
+        }
+      }
+
+      requestAnimationFrame(update);
+    }
+
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCounter(entry.target);
+          counterObserver.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.5
+    });
+
+    document.querySelectorAll('[data-counter]').forEach(el => {
+      counterObserver.observe(el);
+    });
+
+    /* ---- Navbar scroll behavior ---- */
+    const nav = document.getElementById('mainNav');
+    let lastScroll = 0;
+
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.pageYOffset;
+
+      if (currentScroll > 80) {
+        nav.classList.add('nav-scrolled');
+      } else {
+        nav.classList.remove('nav-scrolled');
+      }
+
+      lastScroll = currentScroll;
+    }, { passive: true });
+
+    /* ---- Mobile menu toggle ---- */
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuLine1 = document.getElementById('menuLine1');
+    const menuLine2 = document.getElementById('menuLine2');
+    const menuLine3 = document.getElementById('menuLine3');
+    let menuOpen = false;
+
+    mobileMenuBtn.addEventListener('click', () => {
+      menuOpen = !menuOpen;
+      mobileMenuBtn.setAttribute('aria-expanded', menuOpen);
+
+      if (menuOpen) {
+        mobileMenu.classList.remove('hidden');
+        menuLine1.style.transform = 'rotate(45deg) translate(4px, 4px)';
+        menuLine2.style.opacity = '0';
+        menuLine3.style.transform = 'rotate(-45deg) translate(2px, -2px)';
+        menuLine3.style.width = '24px';
+      } else {
+        mobileMenu.classList.add('hidden');
+        menuLine1.style.transform = 'none';
+        menuLine2.style.opacity = '1';
+        menuLine3.style.transform = 'none';
+        menuLine3.style.width = '16px';
+      }
+    });
+
+    function closeMobileMenu() {
+      menuOpen = false;
+      mobileMenuBtn.setAttribute('aria-expanded', false);
+      mobileMenu.classList.add('hidden');
+      menuLine1.style.transform = 'none';
+      menuLine2.style.opacity = '1';
+      menuLine3.style.transform = 'none';
+      menuLine3.style.width = '16px';
+    }
+
+    /* ---- Smooth scroll for anchor links ---- */
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        const targetEl = document.querySelector(targetId);
+        if (targetEl) {
+          e.preventDefault();
+          const navHeight = nav.offsetHeight;
+          const targetPos = targetEl.getBoundingClientRect().top + window.pageYOffset - navHeight - 20;
+          window.scrollTo({ top: targetPos, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

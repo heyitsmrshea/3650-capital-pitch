@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3650 Capital — Leadership</title>
+  <meta name="description" content="Meet the leadership team behind 3650 Capital — lifetime CRE professionals with cross-discipline experience across origination, credit, capital markets, and servicing.">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Material Symbols Outlined -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'void': '#0f1114',
+            'surface': '#1a1d21',
+            'surface-high': '#252830',
+            'surface-highest': '#30343c',
+            'teal': '#4dd4ac',
+            'teal-dim': '#2a9d7e',
+            'amber-soft': '#e9c176',
+          },
+          fontFamily: {
+            'display': ['Plus Jakarta Sans', 'sans-serif'],
+          },
+          borderRadius: {
+            'card': '16px',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background: #0f1114; color: #e2e4e9; }
+
+    /* Scroll animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+    .reveal-delay-5 { transition-delay: 0.5s; }
+
+    /* Respect prefers-reduced-motion */
+    @media (prefers-reduced-motion: reduce) {
+      .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+      .bento-card { transition: none !important; }
+      .bento-card:hover { transform: none !important; }
+    }
+
+    /* Bento card hover */
+    .bento-card {
+      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.35s ease;
+      border: 1px solid transparent;
+    }
+    .bento-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 32px rgba(77, 212, 172, 0.08);
+      border-color: rgba(77, 212, 172, 0.2);
+    }
+
+    /* Prop tag */
+    .prop-tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      background: rgba(77, 212, 172, 0.1);
+      color: #4dd4ac;
+      border: 1px solid rgba(77, 212, 172, 0.15);
+    }
+
+    /* Nav blur */
+    .nav-glass {
+      backdrop-filter: blur(16px) saturate(1.2);
+      -webkit-backdrop-filter: blur(16px) saturate(1.2);
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #0f1114; }
+    ::-webkit-scrollbar-thumb { background: #30343c; border-radius: 999px; }
+    ::-webkit-scrollbar-thumb:hover { background: #4dd4ac; }
+
+    /* Image cover helper */
+    .img-cover { object-fit: cover; width: 100%; height: 100%; }
+
+    /* Founder card image */
+    .founder-img {
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      width: 100%;
+      border-radius: 16px;
+    }
+
+    /* Team member card image */
+    .team-img {
+      aspect-ratio: 1/1;
+      object-fit: cover;
+      object-position: top;
+      width: 100%;
+      border-radius: 12px;
+    }
+  </style>
+</head>
+
+<body class="bg-void font-display antialiased">
+
+  <!-- ===================== NAV ===================== -->
+  <nav class="fixed top-0 left-0 w-full z-50 nav-glass bg-void/80 border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <!-- Logo -->
+      <a href="./index.html" class="flex items-center gap-3">
+        <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650Capital-Logo.png?ssl=1"
+             alt="3650 Capital logo"
+             class="h-8 w-auto brightness-110">
+      </a>
+
+      <!-- Desktop links -->
+      <div class="hidden md:flex items-center gap-8 text-sm font-medium text-white/60">
+        <a href="./index.html" class="hover:text-teal transition-colors duration-200">Home</a>
+        <a href="./firm.html" class="hover:text-teal transition-colors duration-200">Firm</a>
+        <a href="./solutions.html" class="hover:text-teal transition-colors duration-200">Solutions</a>
+        <a href="./transactions.html" class="hover:text-teal transition-colors duration-200">Transactions</a>
+        <a href="./leadership.html" class="text-teal transition-colors duration-200">Leadership</a>
+        <a href="./contact.html" class="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-teal text-void font-semibold text-sm hover:bg-teal-dim transition-colors duration-200">
+          <span class="material-symbols-outlined text-base">arrow_forward</span>
+          Contact
+        </a>
+      </div>
+
+      <!-- Mobile menu button -->
+      <button id="mobileMenuBtn" class="md:hidden flex items-center justify-center w-10 h-10 rounded-lg text-white/70 hover:text-teal transition-colors" aria-label="Toggle menu">
+        <span class="material-symbols-outlined text-2xl">menu</span>
+      </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobileMenu" class="md:hidden hidden bg-void/95 nav-glass border-t border-white/5">
+      <div class="px-6 py-6 flex flex-col gap-4 text-sm font-medium text-white/60">
+        <a href="./index.html" class="py-2 hover:text-teal transition-colors">Home</a>
+        <a href="./firm.html" class="py-2 hover:text-teal transition-colors">Firm</a>
+        <a href="./solutions.html" class="py-2 hover:text-teal transition-colors">Solutions</a>
+        <a href="./transactions.html" class="py-2 hover:text-teal transition-colors">Transactions</a>
+        <a href="./leadership.html" class="py-2 text-teal">Leadership</a>
+        <a href="./contact.html" class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-teal text-void font-semibold text-sm mt-2">
+          <span class="material-symbols-outlined text-base">arrow_forward</span>
+          Contact
+        </a>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- ===================== HERO ===================== -->
+  <section id="hero" class="relative min-h-[85vh] flex items-center overflow-hidden pt-16">
+    <!-- Background image overlay -->
+    <div class="absolute inset-0">
+      <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Founders-Profile-.png?ssl=1"
+           alt="3650 Capital founders"
+           class="img-cover opacity-15">
+      <div class="absolute inset-0 bg-gradient-to-b from-void/60 via-void/80 to-void"></div>
+    </div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-6 py-24 md:py-32 lg:py-40">
+      <div class="max-w-4xl">
+        <!-- Eyebrow -->
+        <p class="reveal text-teal text-sm font-semibold tracking-widest uppercase mb-6">Leadership</p>
+
+        <!-- Main headline -->
+        <h1 class="reveal reveal-delay-1 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.05] tracking-tight text-white mb-8">
+          An established<br>
+          <span class="text-teal">industry force.</span>
+        </h1>
+
+        <!-- Sub copy -->
+        <p class="reveal reveal-delay-2 text-lg md:text-xl text-white/50 max-w-2xl mb-10 leading-relaxed">
+          Lifetime CRE professionals with cross-discipline experience across origination, credit, capital markets, and servicing.
+        </p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== CO-FOUNDERS ===================== -->
+  <section id="founders" class="relative py-24 md:py-32 bg-void">
+    <div class="max-w-7xl mx-auto px-6">
+      <!-- Section header -->
+      <div class="mb-14 max-w-2xl">
+        <p class="reveal text-teal text-sm font-semibold tracking-widest uppercase mb-4">Founders</p>
+        <h2 class="reveal reveal-delay-1 text-3xl md:text-5xl font-extrabold text-white leading-tight">
+          Co-Founders
+        </h2>
+        <p class="reveal reveal-delay-2 text-white/40 text-lg mt-4 leading-relaxed">
+          The founding partners who built 3650 Capital from the ground up.
+        </p>
+      </div>
+
+      <!-- Founders Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+        <!-- Justin Kennedy -->
+        <div class="reveal bento-card bg-surface-high rounded-card overflow-hidden">
+          <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-Headshots-A1067.jpg?ssl=1"
+               alt="Justin Kennedy"
+               class="founder-img">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-white mb-1">Justin Kennedy</h3>
+            <p class="text-teal text-sm font-semibold">Co-Founder, Managing Partner</p>
+          </div>
+        </div>
+
+        <!-- Jonathan Roth -->
+        <div class="reveal reveal-delay-1 bento-card bg-surface-high rounded-card overflow-hidden">
+          <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-Headshots-A0857.jpg?ssl=1"
+               alt="Jonathan Roth"
+               class="founder-img">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-white mb-1">Jonathan Roth</h3>
+            <p class="text-teal text-sm font-semibold">Co-Founder, Managing Partner</p>
+          </div>
+        </div>
+
+        <!-- Toby Cobb -->
+        <div class="reveal reveal-delay-2 bento-card bg-surface-high rounded-card overflow-hidden">
+          <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-Headshots-A0746.jpg?ssl=1"
+               alt="Toby Cobb"
+               class="founder-img">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-white mb-1">Toby Cobb</h3>
+            <p class="text-teal text-sm font-semibold">Co-Founder, Managing Partner</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== TEAM ===================== -->
+  <section id="team" class="relative py-24 md:py-32 bg-void">
+    <div class="max-w-7xl mx-auto px-6">
+      <!-- Section header -->
+      <div class="mb-14 max-w-2xl">
+        <p class="reveal text-teal text-sm font-semibold tracking-widest uppercase mb-4">Our People</p>
+        <h2 class="reveal reveal-delay-1 text-3xl md:text-5xl font-extrabold text-white leading-tight">
+          The Team
+        </h2>
+        <p class="reveal reveal-delay-2 text-white/40 text-lg mt-4 leading-relaxed">
+          Senior professionals driving execution across every discipline.
+        </p>
+      </div>
+
+      <!-- Team Grid -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5">
+
+        <!-- Andrew Parower -->
+        <div class="reveal bento-card bg-surface-high rounded-card overflow-hidden">
+          <img src="https://raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-Headshots-Oct-2023-Miami-A0562-scaled.jpg"
+               alt="Andrew Parower"
+               class="team-img">
+          <div class="p-4">
+            <h4 class="text-sm font-bold text-white mb-0.5">Andrew Parower</h4>
+            <p class="text-white/40 text-xs">Chief Credit Officer</p>
+          </div>
+        </div>
+
+        <!-- Peter LaPointe -->
+        <div class="reveal reveal-delay-1 bento-card bg-surface-high rounded-card overflow-hidden">
+          <img src="https://raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Peter-3650-A013.jpg"
+               alt="Peter LaPointe"
+               class="team-img">
+          <div class="p-4">
+            <h4 class="text-sm font-bold text-white mb-0.5">Peter LaPointe</h4>
+            <p class="text-white/40 text-xs">COO</p>
+          </div>
+        </div>
+
+        <!-- Mark Jefferis -->
+        <div class="reveal reveal-delay-2 bento-card bg-surface-high rounded-card overflow-hidden">
+          <img src="https://raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Mark-Jefferis-scaled.jpg"
+               alt="Mark Jefferis"
+               class="team-img">
+          <div class="p-4">
+            <h4 class="text-sm font-bold text-white mb-0.5">Mark Jefferis</h4>
+            <p class="text-white/40 text-xs">General Counsel</p>
+          </div>
+        </div>
+
+        <!-- John Wright -->
+        <div class="reveal reveal-delay-3 bento-card bg-surface-high rounded-card overflow-hidden">
+          <img src="https://raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/john-wright-headshot.jpg"
+               alt="John Wright"
+               class="team-img">
+          <div class="p-4">
+            <h4 class="text-sm font-bold text-white mb-0.5">John Wright</h4>
+            <p class="text-white/40 text-xs">Head of Capital Formation</p>
+          </div>
+        </div>
+
+        <!-- Malay Bansal -->
+        <div class="reveal reveal-delay-4 bento-card bg-surface-high rounded-card overflow-hidden">
+          <img src="https://raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-Headshots-A0385.jpg"
+               alt="Malay Bansal"
+               class="team-img">
+          <div class="p-4">
+            <h4 class="text-sm font-bold text-white mb-0.5">Malay Bansal</h4>
+            <p class="text-white/40 text-xs">Managing Director</p>
+          </div>
+        </div>
+
+        <!-- Ken Dickey -->
+        <div class="reveal bento-card bg-surface-high rounded-card overflow-hidden">
+          <img src="https://raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-Headshots-A0088-2.jpg"
+               alt="Ken Dickey"
+               class="team-img">
+          <div class="p-4">
+            <h4 class="text-sm font-bold text-white mb-0.5">Ken Dickey</h4>
+            <p class="text-white/40 text-xs">Director, Originations</p>
+          </div>
+        </div>
+
+        <!-- Michael Fleischer -->
+        <div class="reveal reveal-delay-1 bento-card bg-surface-high rounded-card overflow-hidden">
+          <img src="https://raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/MichaelF-04688A3.jpg"
+               alt="Michael Fleischer"
+               class="team-img">
+          <div class="p-4">
+            <h4 class="text-sm font-bold text-white mb-0.5">Michael Fleischer</h4>
+            <p class="text-white/40 text-xs">Managing Director</p>
+          </div>
+        </div>
+
+        <!-- Jake Stahler -->
+        <div class="reveal reveal-delay-2 bento-card bg-surface-high rounded-card overflow-hidden">
+          <img src="https://raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-Headshots-A0720-min.jpg"
+               alt="Jake Stahler"
+               class="team-img">
+          <div class="p-4">
+            <h4 class="text-sm font-bold text-white mb-0.5">Jake Stahler</h4>
+            <p class="text-white/40 text-xs">Director</p>
+          </div>
+        </div>
+
+        <!-- Evan Guttman -->
+        <div class="reveal reveal-delay-3 bento-card bg-surface-high rounded-card overflow-hidden">
+          <img src="https://raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-Headshots-Oct-2023-NYC-B1181-3-scaled.jpg"
+               alt="Evan Guttman"
+               class="team-img">
+          <div class="p-4">
+            <h4 class="text-sm font-bold text-white mb-0.5">Evan Guttman</h4>
+            <p class="text-white/40 text-xs">Vice President</p>
+          </div>
+        </div>
+
+        <!-- Michael McCabe -->
+        <div class="reveal reveal-delay-4 bento-card bg-surface-high rounded-card overflow-hidden">
+          <img src="https://raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-Headshots-Oct-2023-NYC-B1078-scaled.jpg"
+               alt="Michael McCabe"
+               class="team-img">
+          <div class="p-4">
+            <h4 class="text-sm font-bold text-white mb-0.5">Michael McCabe</h4>
+            <p class="text-white/40 text-xs">Vice President</p>
+          </div>
+        </div>
+
+        <!-- Stephanie Sabellico -->
+        <div class="reveal bento-card bg-surface-high rounded-card overflow-hidden">
+          <img src="https://raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/EVN0949-Edit-scaled.jpg"
+               alt="Stephanie Sabellico"
+               class="team-img">
+          <div class="p-4">
+            <h4 class="text-sm font-bold text-white mb-0.5">Stephanie Sabellico</h4>
+            <p class="text-white/40 text-xs">Director</p>
+          </div>
+        </div>
+
+        <!-- Barrett Graham -->
+        <div class="reveal reveal-delay-1 bento-card bg-surface-high rounded-card overflow-hidden">
+          <img src="https://raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/MGM_2579-scaled.jpg"
+               alt="Barrett Graham"
+               class="team-img">
+          <div class="p-4">
+            <h4 class="text-sm font-bold text-white mb-0.5">Barrett Graham</h4>
+            <p class="text-white/40 text-xs">Vice President</p>
+          </div>
+        </div>
+
+        <!-- Brent Thurn -->
+        <div class="reveal reveal-delay-2 bento-card bg-surface-high rounded-card overflow-hidden">
+          <img src="https://raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-2564-scaled.jpg"
+               alt="Brent Thurn"
+               class="team-img">
+          <div class="p-4">
+            <h4 class="text-sm font-bold text-white mb-0.5">Brent Thurn</h4>
+            <p class="text-white/40 text-xs">Vice President</p>
+          </div>
+        </div>
+
+        <!-- Daniel Vaknin -->
+        <div class="reveal reveal-delay-3 bento-card bg-surface-high rounded-card overflow-hidden">
+          <img src="https://raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-1192-Edit.jpg"
+               alt="Daniel Vaknin"
+               class="team-img">
+          <div class="p-4">
+            <h4 class="text-sm font-bold text-white mb-0.5">Daniel Vaknin</h4>
+            <p class="text-white/40 text-xs">Vice President</p>
+          </div>
+        </div>
+
+        <!-- Eric Kraft -->
+        <div class="reveal reveal-delay-4 bento-card bg-surface-high rounded-card overflow-hidden">
+          <img src="https://raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/eric-kraft-headshot.jpeg"
+               alt="Eric Kraft"
+               class="team-img">
+          <div class="p-4">
+            <h4 class="text-sm font-bold text-white mb-0.5">Eric Kraft</h4>
+            <p class="text-white/40 text-xs">Director</p>
+          </div>
+        </div>
+
+        <!-- Noah Moghavem -->
+        <div class="reveal bento-card bg-surface-high rounded-card overflow-hidden">
+          <img src="https://raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Noah-Moghavem-scaled.jpg"
+               alt="Noah Moghavem"
+               class="team-img">
+          <div class="p-4">
+            <h4 class="text-sm font-bold text-white mb-0.5">Noah Moghavem</h4>
+            <p class="text-white/40 text-xs">Associate</p>
+          </div>
+        </div>
+
+        <!-- Will Pierce -->
+        <div class="reveal reveal-delay-1 bento-card bg-surface-high rounded-card overflow-hidden">
+          <img src="https://raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/151A8204.jpg"
+               alt="Will Pierce"
+               class="team-img">
+          <div class="p-4">
+            <h4 class="text-sm font-bold text-white mb-0.5">Will Pierce</h4>
+            <p class="text-white/40 text-xs">Vice President</p>
+          </div>
+        </div>
+
+        <!-- Jeremiah Sharf -->
+        <div class="reveal reveal-delay-2 bento-card bg-surface-high rounded-card overflow-hidden">
+          <img src="https://raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Jeremiah-Sharf_1-scaled.jpg"
+               alt="Jeremiah Sharf"
+               class="team-img">
+          <div class="p-4">
+            <h4 class="text-sm font-bold text-white mb-0.5">Jeremiah Sharf</h4>
+            <p class="text-white/40 text-xs">Director</p>
+          </div>
+        </div>
+
+        <!-- Katie Spillman -->
+        <div class="reveal reveal-delay-3 bento-card bg-surface-high rounded-card overflow-hidden">
+          <img src="https://raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Katie-Spillman-1-scaled.jpg"
+               alt="Katie Spillman"
+               class="team-img">
+          <div class="p-4">
+            <h4 class="text-sm font-bold text-white mb-0.5">Katie Spillman</h4>
+            <p class="text-white/40 text-xs">Director</p>
+          </div>
+        </div>
+
+        <!-- Corey Altman -->
+        <div class="reveal reveal-delay-4 bento-card bg-surface-high rounded-card overflow-hidden">
+          <img src="https://raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-0608-Edit-scaled.jpg"
+               alt="Corey Altman"
+               class="team-img">
+          <div class="p-4">
+            <h4 class="text-sm font-bold text-white mb-0.5">Corey Altman</h4>
+            <p class="text-white/40 text-xs">Director</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="bg-surface border-t border-white/5 py-14">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+
+        <!-- Column 1: Logo & tagline -->
+        <div>
+          <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650Capital-Logo.png?ssl=1"
+               alt="3650 Capital logo"
+               class="h-7 w-auto brightness-110 mb-4">
+          <p class="text-white/30 text-sm leading-relaxed max-w-xs">
+            An integrated commercial real estate lending platform delivering certainty from Day 1 to Day 3650.
+          </p>
+        </div>
+
+        <!-- Column 2: Links -->
+        <div>
+          <h4 class="text-white/50 text-xs font-semibold tracking-widest uppercase mb-4">Navigation</h4>
+          <ul class="space-y-2">
+            <li><a href="./index.html" class="text-white/30 text-sm hover:text-teal transition-colors">Home</a></li>
+            <li><a href="./firm.html" class="text-white/30 text-sm hover:text-teal transition-colors">Firm</a></li>
+            <li><a href="./solutions.html" class="text-white/30 text-sm hover:text-teal transition-colors">Solutions</a></li>
+            <li><a href="./transactions.html" class="text-white/30 text-sm hover:text-teal transition-colors">Transactions</a></li>
+            <li><a href="./leadership.html" class="text-white/30 text-sm hover:text-teal transition-colors">Leadership</a></li>
+            <li><a href="./contact.html" class="text-white/30 text-sm hover:text-teal transition-colors">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Legal -->
+        <div>
+          <h4 class="text-white/50 text-xs font-semibold tracking-widest uppercase mb-4">Legal</h4>
+          <ul class="space-y-2">
+            <li><a href="#" class="text-white/30 text-sm hover:text-teal transition-colors">Privacy Policy</a></li>
+            <li><a href="#" class="text-white/30 text-sm hover:text-teal transition-colors">Terms of Use</a></li>
+            <li><a href="#" class="text-white/30 text-sm hover:text-teal transition-colors">Disclosures</a></li>
+          </ul>
+          <div class="mt-6 flex gap-4">
+            <a href="#" class="w-9 h-9 rounded-lg bg-surface-high flex items-center justify-center text-white/30 hover:text-teal hover:bg-surface-highest transition-colors" aria-label="LinkedIn">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+            <a href="#" class="w-9 h-9 rounded-lg bg-surface-high flex items-center justify-center text-white/30 hover:text-teal hover:bg-surface-highest transition-colors" aria-label="Twitter">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom bar -->
+      <div class="mt-12 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
+        <p class="text-white/20 text-xs">&copy; 2026 3650 Capital. All rights reserved.</p>
+        <p class="text-white/10 text-xs">Designed with precision. Built for continuity.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ===================== SCRIPTS ===================== -->
+  <script>
+    // Mobile menu toggle
+    (function() {
+      const btn = document.getElementById('mobileMenuBtn');
+      const menu = document.getElementById('mobileMenu');
+      if (btn && menu) {
+        btn.addEventListener('click', function() {
+          menu.classList.toggle('hidden');
+          const icon = btn.querySelector('.material-symbols-outlined');
+          icon.textContent = menu.classList.contains('hidden') ? 'menu' : 'close';
+        });
+        // Close on link click
+        menu.querySelectorAll('a').forEach(function(link) {
+          link.addEventListener('click', function() {
+            menu.classList.add('hidden');
+            btn.querySelector('.material-symbols-outlined').textContent = 'menu';
+          });
+        });
+      }
+    })();
+
+    // IntersectionObserver for scroll reveal animations
+    (function() {
+      var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      if (prefersReduced) {
+        document.querySelectorAll('.reveal').forEach(function(el) {
+          el.classList.add('visible');
+        });
+        return;
+      }
+
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.08,
+        rootMargin: '0px 0px -40px 0px'
+      });
+
+      document.querySelectorAll('.reveal').forEach(function(el) {
+        observer.observe(el);
+      });
+    })();
+
+    // Navbar background solidify on scroll
+    (function() {
+      var nav = document.querySelector('nav');
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > 80) {
+          nav.classList.add('bg-void/95');
+          nav.classList.remove('bg-void/80');
+        } else {
+          nav.classList.remove('bg-void/95');
+          nav.classList.add('bg-void/80');
+        }
+      }, { passive: true });
+    })();
+  </script>
+
+</body>
+</html>
