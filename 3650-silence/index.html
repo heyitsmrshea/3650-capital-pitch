@@ -1,0 +1,1309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>3650 Capital — One Lender. Wholly Committed.</title>
+<meta name="description" content="3650 Capital is a vertically integrated commercial real estate lender offering balance sheet lending, CMBS, and mezzanine solutions with 100% retained servicing."/>
+<link rel="icon" type="image/png" href="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650Capital-Logo.png?ssl=1"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+
+<style>
+  /* ── Reset & Base ────────────────────────────────────── */
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --primary:           #5F5E5E;
+    --primary-dim:       #535252;
+    --on-primary:        #FAF7F6;
+    --surface:           #FBF9F5;
+    --surface-dim:       #D9DBD2;
+    --surface-low:       #F5F4EF;
+    --surface-container: #EEEEE8;
+    --surface-high:      #E8E9E2;
+    --surface-highest:   #E2E3DB;
+    --on-surface:        #30332E;
+    --on-surface-variant:#5D605A;
+    --tertiary:          #615F59;
+    --outline-variant:   #B1B3AB;
+    --ghost:             rgba(177,179,171,0.15);
+    --font-headline:     'Noto Serif', Georgia, serif;
+    --font-body:         'Plus Jakarta Sans', system-ui, sans-serif;
+    --font-label:        'Inter', system-ui, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--surface);
+    color: var(--on-surface);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+
+  img { display: block; max-width: 100%; height: auto; }
+  a   { text-decoration: none; color: inherit; }
+  button { cursor: pointer; border: none; font-family: inherit; }
+  input, select, textarea { font-family: inherit; }
+
+  /* ── Scrollbar ───────────────────────────────────────── */
+  ::-webkit-scrollbar       { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--surface); }
+  ::-webkit-scrollbar-thumb { background: var(--surface-highest); }
+
+  /* Material icons baseline */
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+    vertical-align: middle;
+  }
+
+  /* ── Layout helpers ──────────────────────────────────── */
+  .container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 48px;
+  }
+
+  @media (max-width: 768px) {
+    .container { padding: 0 24px; }
+  }
+
+  /* ── Typography ──────────────────────────────────────── */
+  .font-headline { font-family: var(--font-headline); }
+  .font-label    { font-family: var(--font-label); }
+
+  .label-xs {
+    font-family: var(--font-label);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--tertiary);
+  }
+
+  .label-sm {
+    font-family: var(--font-label);
+    font-size: 12px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--tertiary);
+  }
+
+  /* ── Ghost Border ────────────────────────────────────── */
+  .ghost-border-b { border-bottom: 1px solid var(--ghost); }
+  .ghost-border-t { border-top: 1px solid var(--ghost); }
+  .ghost-border   { border: 1px solid var(--ghost); }
+
+  /* ── CTA Gradient Button ─────────────────────────────── */
+  .btn-primary {
+    display: inline-block;
+    background: linear-gradient(to bottom, var(--primary), var(--primary-dim));
+    color: var(--on-primary);
+    font-family: var(--font-label);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 20px 40px;
+    border-radius: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  .btn-primary:hover { opacity: 0.88; }
+  .btn-primary:active { transform: scale(0.98); }
+
+  .btn-ghost {
+    font-family: var(--font-label);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding-bottom: 4px;
+    border-bottom: 1px solid var(--on-surface);
+    background: none;
+    color: var(--on-surface);
+    transition: opacity 0.3s ease;
+  }
+  .btn-ghost:hover { opacity: 0.6; }
+
+  /* ── Nav ─────────────────────────────────────────────── */
+  .site-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    background: rgba(253,251,247,0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transition: background 0.4s ease;
+  }
+
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px 48px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .nav-logo img {
+    height: 28px;
+    width: auto;
+  }
+
+  .nav-logo-text {
+    font-family: var(--font-headline);
+    font-size: 18px;
+    letter-spacing: 0.15em;
+    font-weight: 300;
+    color: var(--on-surface);
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: var(--font-label);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--tertiary);
+    transition: color 0.3s ease;
+  }
+  .nav-links a:hover,
+  .nav-links a.active { color: var(--on-surface); }
+
+  .nav-cta {
+    background: linear-gradient(to bottom, var(--primary), var(--primary-dim));
+    color: var(--on-primary);
+    font-family: var(--font-label);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 12px 24px;
+    border-radius: 0;
+    transition: opacity 0.3s ease;
+  }
+  .nav-cta:hover { opacity: 0.85; }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .nav-hamburger {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--on-surface);
+    font-size: 28px;
+    cursor: pointer;
+  }
+
+  /* Mobile nav overlay */
+  .mobile-nav {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background: var(--surface);
+    flex-direction: column;
+    padding: 24px;
+  }
+  .mobile-nav.open {
+    display: flex;
+  }
+  .mobile-nav-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 48px;
+  }
+  .mobile-nav-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  .mobile-nav-links a {
+    font-family: var(--font-headline);
+    font-size: 28px;
+    font-weight: 300;
+    color: var(--on-surface);
+  }
+
+  @media (max-width: 960px) {
+    .nav-links { display: none; }
+    .nav-cta   { display: none; }
+    .nav-hamburger { display: block; }
+    .nav-inner { padding: 20px 24px; }
+  }
+
+  /* ── Hero ────────────────────────────────────────────── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: 96px;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right,
+      rgba(251,249,245,0.92) 0%,
+      rgba(251,249,245,0.55) 45%,
+      rgba(251,249,245,0.1) 75%,
+      transparent 100%
+    );
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 10;
+    max-width: 680px;
+  }
+
+  .hero h1 {
+    font-family: var(--font-headline);
+    font-size: clamp(42px, 7vw, 96px);
+    font-weight: 300;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    color: var(--on-surface);
+    margin-bottom: 32px;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  .hero-body {
+    font-size: 19px;
+    color: var(--on-surface-variant);
+    line-height: 1.7;
+    max-width: 520px;
+    margin-bottom: 48px;
+  }
+
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+
+  .hero-scroll-hint {
+    position: absolute;
+    bottom: 48px;
+    right: 48px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    z-index: 10;
+  }
+  .hero-scroll-hint span {
+    font-family: var(--font-label);
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--tertiary);
+  }
+  .hero-scroll-hint::after {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 48px;
+    background: var(--ghost);
+  }
+
+  @media (max-width: 768px) {
+    .hero { min-height: 90vh; padding-top: 80px; }
+    .hero-overlay {
+      background: linear-gradient(to bottom,
+        rgba(251,249,245,0.9) 0%,
+        rgba(251,249,245,0.7) 60%,
+        rgba(251,249,245,0.3) 100%
+      );
+    }
+    .hero-scroll-hint { display: none; }
+    .hero-body { font-size: 17px; }
+  }
+
+  /* ── Platform Section (Asymmetric) ───────────────────── */
+  .platform {
+    padding: 128px 0;
+    background: var(--surface);
+  }
+
+  .platform-grid {
+    display: grid;
+    grid-template-columns: 7fr 5fr;
+    gap: 64px;
+    align-items: center;
+  }
+
+  .platform-image-wrap {
+    position: relative;
+  }
+
+  .platform-image-wrap img {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    filter: grayscale(0.15);
+  }
+
+  .platform-overlay-card {
+    position: absolute;
+    bottom: -32px;
+    right: -32px;
+    background: var(--surface-low);
+    padding: 40px;
+    max-width: 340px;
+  }
+
+  .platform-overlay-card h3 {
+    font-family: var(--font-headline);
+    font-size: 22px;
+    margin-bottom: 12px;
+  }
+
+  .platform-overlay-card p {
+    font-size: 14px;
+    color: var(--on-surface-variant);
+    line-height: 1.65;
+  }
+
+  .platform-right h2 {
+    font-family: var(--font-headline);
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 300;
+    line-height: 1.15;
+    margin-bottom: 48px;
+  }
+
+  .platform-step {
+    margin-bottom: 40px;
+  }
+
+  .platform-step .step-num {
+    font-family: var(--font-label);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--tertiary);
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .platform-step h4 {
+    font-family: var(--font-headline);
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  .platform-step p {
+    color: var(--on-surface-variant);
+    line-height: 1.65;
+    font-size: 15px;
+  }
+
+  @media (max-width: 960px) {
+    .platform { padding: 80px 0; }
+    .platform-grid {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+    .platform-overlay-card {
+      position: relative;
+      bottom: auto;
+      right: auto;
+      margin-top: -24px;
+      max-width: 100%;
+    }
+  }
+
+  /* ── Founders Band ───────────────────────────────────── */
+  .founders-band {
+    padding: 80px 0;
+    background: var(--surface-low);
+  }
+
+  .founders-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+
+  .founders-image img {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    filter: grayscale(0.1);
+  }
+
+  .founders-text h3 {
+    font-family: var(--font-headline);
+    font-size: 28px;
+    font-weight: 300;
+    margin-bottom: 20px;
+    line-height: 1.3;
+  }
+
+  .founders-text p {
+    font-size: 15px;
+    color: var(--on-surface-variant);
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+
+  @media (max-width: 768px) {
+    .founders-inner {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+  }
+
+  /* ── Stats / Decade Discipline ───────────────────────── */
+  .stats {
+    padding: 160px 0;
+    background: var(--surface-low);
+  }
+
+  .stats-inner {
+    max-width: 880px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .stats h2 {
+    font-family: var(--font-headline);
+    font-size: clamp(36px, 5vw, 72px);
+    font-weight: 300;
+    line-height: 1.12;
+    margin-bottom: 48px;
+  }
+
+  .stats-divider {
+    width: 96px;
+    height: 1px;
+    background: var(--primary);
+    margin: 0 auto 48px;
+  }
+
+  .stats-body {
+    font-size: 21px;
+    font-weight: 300;
+    color: var(--on-surface-variant);
+    line-height: 1.65;
+    margin-bottom: 64px;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px;
+  }
+
+  .stat-item { text-align: center; }
+
+  .stat-number {
+    font-family: var(--font-headline);
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 300;
+    color: var(--on-surface);
+    margin-bottom: 8px;
+  }
+
+  .stat-label {
+    font-family: var(--font-label);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--tertiary);
+  }
+
+  @media (max-width: 640px) {
+    .stats { padding: 96px 0; }
+    .stats-grid { grid-template-columns: 1fr; gap: 40px; }
+    .stats-body { font-size: 18px; }
+  }
+
+  /* ── Insights Editorial Grid ─────────────────────────── */
+  .insights {
+    padding: 128px 0;
+    background: var(--surface);
+  }
+
+  .insights-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 80px;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+
+  .insights-header h2 {
+    font-family: var(--font-headline);
+    font-size: clamp(36px, 4vw, 52px);
+    font-weight: 300;
+  }
+
+  .insights-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--surface-high);
+  }
+
+  .insight-card {
+    background: var(--surface);
+    padding: 48px;
+    display: flex;
+    flex-direction: column;
+    min-height: 380px;
+    transition: background 0.5s ease;
+    cursor: pointer;
+  }
+  .insight-card:hover {
+    background: var(--surface-low);
+  }
+
+  .insight-card .card-date {
+    font-family: var(--font-label);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--tertiary);
+    margin-bottom: 32px;
+  }
+
+  .insight-card h3 {
+    font-family: var(--font-headline);
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 1.35;
+    margin-bottom: 20px;
+  }
+
+  .insight-card p {
+    font-size: 15px;
+    color: var(--on-surface-variant);
+    line-height: 1.65;
+    flex: 1;
+  }
+
+  .insight-card .card-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 40px;
+    font-family: var(--font-label);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+  .insight-card .card-link .material-symbols-outlined {
+    font-size: 16px;
+    transition: transform 0.3s ease;
+  }
+  .insight-card:hover .card-link .material-symbols-outlined {
+    transform: translateX(6px);
+  }
+
+  @media (max-width: 960px) {
+    .insights { padding: 80px 0; }
+    .insights-grid { grid-template-columns: 1fr; }
+    .insight-card { min-height: auto; }
+  }
+
+  /* ── Contact CTA ─────────────────────────────────────── */
+  .contact {
+    padding: 160px 0;
+    background: var(--surface-highest);
+  }
+
+  .contact-inner {
+    max-width: 640px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .contact h2 {
+    font-family: var(--font-headline);
+    font-size: clamp(36px, 5vw, 60px);
+    font-weight: 300;
+    margin-bottom: 24px;
+  }
+
+  .contact .contact-body {
+    font-size: 18px;
+    color: var(--on-surface-variant);
+    margin-bottom: 48px;
+    line-height: 1.65;
+  }
+
+  .contact-form {
+    text-align: left;
+  }
+
+  .contact-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-bottom: 32px;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .form-group label {
+    font-family: var(--font-label);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--tertiary);
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--ghost);
+    padding: 12px 0;
+    font-size: 15px;
+    color: var(--on-surface);
+    outline: none;
+    transition: border-color 0.3s ease;
+    border-radius: 0;
+    -webkit-appearance: none;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-bottom-color: var(--on-surface);
+  }
+
+  .form-group input::placeholder {
+    color: #C5C3BD;
+  }
+
+  .form-group select {
+    cursor: pointer;
+  }
+
+  .contact-form-submit {
+    text-align: center;
+    margin-top: 48px;
+  }
+
+  .btn-submit {
+    background: var(--on-surface);
+    color: var(--surface);
+    font-family: var(--font-label);
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    padding: 22px 64px;
+    border: none;
+    border-radius: 0;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    width: 100%;
+    max-width: 400px;
+  }
+  .btn-submit:hover { background: #454845; }
+
+  @media (max-width: 640px) {
+    .contact { padding: 96px 0; }
+    .contact-form-row { grid-template-columns: 1fr; }
+    .btn-submit { width: 100%; max-width: none; }
+  }
+
+  /* ── Footer ──────────────────────────────────────────── */
+  .site-footer {
+    background: var(--surface-low);
+    padding: 48px 0;
+  }
+
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+
+  .footer-copy {
+    font-family: var(--font-label);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--on-surface);
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+  }
+
+  .footer-links a {
+    font-family: var(--font-label);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--tertiary);
+    transition: color 0.3s ease;
+  }
+  .footer-links a:hover { color: var(--on-surface); }
+
+  .footer-icons {
+    display: flex;
+    gap: 20px;
+  }
+  .footer-icons .material-symbols-outlined {
+    color: var(--tertiary);
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  .footer-icons .material-symbols-outlined:hover {
+    color: var(--on-surface);
+  }
+
+  @media (max-width: 768px) {
+    .footer-inner {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+
+  /* ── Reveal Animations ───────────────────────────────── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.8s cubic-bezier(0.22,1,0.36,1),
+                transform 0.8s cubic-bezier(0.22,1,0.36,1);
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .reveal-left {
+    opacity: 0;
+    transform: translateX(-40px);
+    transition: opacity 0.8s cubic-bezier(0.22,1,0.36,1),
+                transform 0.8s cubic-bezier(0.22,1,0.36,1);
+  }
+  .reveal-left.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .reveal-right {
+    opacity: 0;
+    transform: translateX(40px);
+    transition: opacity 0.8s cubic-bezier(0.22,1,0.36,1),
+                transform 0.8s cubic-bezier(0.22,1,0.36,1);
+  }
+  .reveal-right.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* Stagger delays */
+  .stagger-1 { transition-delay: 0.08s; }
+  .stagger-2 { transition-delay: 0.16s; }
+  .stagger-3 { transition-delay: 0.24s; }
+  .stagger-4 { transition-delay: 0.32s; }
+  .stagger-5 { transition-delay: 0.40s; }
+  .stagger-6 { transition-delay: 0.48s; }
+
+  /* ── Reduced Motion ──────────────────────────────────── */
+  @media (prefers-reduced-motion: reduce) {
+    .reveal,
+    .reveal-left,
+    .reveal-right {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+    .stat-number { transition: none !important; }
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+
+<body data-review-page="home">
+
+<!-- ═══════════════════════════════════════════════════════
+     TOP NAV
+     ═══════════════════════════════════════════════════════ -->
+<nav class="site-nav" role="navigation" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="./index.html" class="nav-logo" aria-label="3650 Capital home">
+      <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650Capital-Logo.png?ssl=1" alt="3650 Capital" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="./index.html" class="active">Home</a></li>
+      <li><a href="./portfolio.html">Portfolio</a></li>
+      <li><a href="./lending.html">Lending</a></li>
+      <li><a href="./insights.html">Insights</a></li>
+      <li><a href="./about.html">About</a></li>
+      <li><a href="./contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="nav-cta">Investor Portal</button>
+      <button class="nav-hamburger" aria-label="Open menu" onclick="document.getElementById('mobileNav').classList.add('open')">
+        <span class="material-symbols-outlined">menu</span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Nav Overlay -->
+<div class="mobile-nav" id="mobileNav" role="dialog" aria-label="Mobile navigation">
+  <div class="mobile-nav-header">
+    <a href="./index.html" class="nav-logo" aria-label="3650 Capital home">
+      <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650Capital-Logo.png?ssl=1" alt="3650 Capital" style="height:28px;" />
+    </a>
+    <button aria-label="Close menu" onclick="document.getElementById('mobileNav').classList.remove('open')" style="background:none;border:none;cursor:pointer;">
+      <span class="material-symbols-outlined" style="font-size:28px;">close</span>
+    </button>
+  </div>
+  <ul class="mobile-nav-links">
+    <li><a href="./index.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Home</a></li>
+    <li><a href="./portfolio.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Portfolio</a></li>
+    <li><a href="./lending.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Lending</a></li>
+    <li><a href="./insights.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Insights</a></li>
+    <li><a href="./about.html" onclick="document.getElementById('mobileNav').classList.remove('open')">About</a></li>
+    <li><a href="./contact.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Contact</a></li>
+  </ul>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     HERO
+     ═══════════════════════════════════════════════════════ -->
+<header class="hero" id="hero">
+  <div class="hero-bg">
+    <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/grove-central-hero.jpg?w=1200&ssl=1"
+         alt="Grove Central — a 3650 Capital portfolio property featuring modern mixed-use architecture" />
+    <div class="hero-overlay"></div>
+  </div>
+  <div class="container">
+    <div class="hero-content">
+      <span class="label-sm reveal stagger-1" style="margin-bottom:24px;display:block;">The Curated Silence</span>
+      <h1 class="reveal stagger-2">
+        One lender.<br/>
+        <em>Wholly committed.</em>
+      </h1>
+      <p class="hero-body reveal stagger-3">
+        Architecting the future of commercial real estate finance through unwavering precision and the discipline of long-cycle preservation.
+      </p>
+      <div class="hero-actions reveal stagger-4">
+        <a href="./portfolio.html" class="btn-primary">Explore the Portfolio</a>
+        <a href="./lending.html" class="btn-ghost">Our Platform</a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll-hint" aria-hidden="true">
+    <span>Scroll to Discover</span>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════════════════════════
+     PLATFORM ARCHITECTURE (Asymmetric)
+     ═══════════════════════════════════════════════════════ -->
+<section class="platform" id="platform">
+  <div class="container">
+    <div class="platform-grid">
+      <!-- Left: large image with overlay card -->
+      <div class="platform-image-wrap reveal-left">
+        <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/rendering-center-at-miami-gardens-courtesy-3650-reit.jpg?w=800&ssl=1"
+             alt="Rendering of The Center at Miami Gardens — a 3650 REIT development" />
+        <div class="platform-overlay-card">
+          <h3 class="font-headline">Platform Architecture</h3>
+          <p>Our vertically integrated structure ensures that every asset is managed with the same rigor from origination through to resolution.</p>
+        </div>
+      </div>
+
+      <!-- Right: text content with steps -->
+      <div class="platform-right" style="padding-left:24px;">
+        <span class="label-sm reveal stagger-1" style="margin-bottom:24px;display:block;">Structural Integrity</span>
+        <h2 class="reveal stagger-2">Precision in Every Placement.</h2>
+
+        <div class="platform-step reveal stagger-3">
+          <span class="step-num">01 / Origination</span>
+          <h4 class="font-headline">Institutional Grade Sourcing</h4>
+          <p>Leveraging deep-market relationships to access premium opportunities before they reach the wider market.</p>
+        </div>
+
+        <div class="platform-step reveal stagger-4">
+          <span class="step-num">02 / Asset Management</span>
+          <h4 class="font-headline">Direct Surveillance</h4>
+          <p>Continuous, hands-on oversight of every property within the 3650 ecosystem to ensure performance stability.</p>
+        </div>
+
+        <div class="platform-step reveal stagger-5">
+          <span class="step-num">03 / Technology</span>
+          <h4 class="font-headline">Proprietary Risk Modeling</h4>
+          <p>Utilizing advanced data analytics to forecast market shifts and mitigate long-term exposure.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     FOUNDERS BAND
+     ═══════════════════════════════════════════════════════ -->
+<section class="founders-band ghost-border-t" id="founders">
+  <div class="container">
+    <div class="founders-inner">
+      <div class="founders-image reveal-left">
+        <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Commercial-Observer-Founders-Image.png?w=800&ssl=1"
+             alt="3650 Capital co-founders — Commercial Observer" />
+      </div>
+      <div class="founders-text reveal-right">
+        <span class="label-xs" style="margin-bottom:16px;display:block;">Leadership</span>
+        <h3 class="font-headline">Founded by Industry Veterans</h3>
+        <p>3650 Capital was established by seasoned leaders from Arbor Realty Trust and other top-tier CRE institutions, bringing decades of institutional lending expertise under a single, vertically integrated platform.</p>
+        <a href="./about.html" class="btn-ghost">Meet the Team</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     THE QUIET ACCUMULATION (Stats)
+     ═══════════════════════════════════════════════════════ -->
+<section class="stats" id="stats">
+  <div class="container">
+    <div class="stats-inner">
+      <span class="label-sm reveal stagger-1" style="margin-bottom:40px;display:block;">The Decade Discipline</span>
+      <h2 class="reveal stagger-2">The Quiet Accumulation.</h2>
+      <div class="stats-divider reveal stagger-3"></div>
+      <p class="stats-body reveal stagger-3">
+        In a market obsessed with the immediate, we prioritize the enduring. Our investment philosophy is rooted in the "Curated Silence" — the ability to filter noise and focus on multi-cycle value creation.
+      </p>
+      <div class="stats-grid">
+        <div class="stat-item reveal stagger-4">
+          <div class="stat-number" data-target="16.3" data-prefix="$" data-suffix="B+">$0B+</div>
+          <div class="stat-label">CRE Loans Serviced</div>
+        </div>
+        <div class="stat-item reveal stagger-5">
+          <div class="stat-number" data-target="1300" data-prefix="" data-suffix="+">0+</div>
+          <div class="stat-label">Properties Funded</div>
+        </div>
+        <div class="stat-item reveal stagger-6">
+          <div class="stat-number" data-target="100" data-prefix="" data-suffix="%">0%</div>
+          <div class="stat-label">Retained Servicing</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     NYC OFFICE IMAGE BAND
+     ═══════════════════════════════════════════════════════ -->
+<section style="background:var(--surface);padding:0;">
+  <div class="container reveal" style="padding-top:0;padding-bottom:0;">
+    <div style="position:relative;overflow:hidden;">
+      <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/nyc-office-interior-2.jpg?w=800&ssl=1"
+           alt="3650 Capital New York City office interior"
+           style="width:100%;aspect-ratio:21/9;object-fit:cover;filter:grayscale(0.1);" />
+      <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(251,249,245,0.3),transparent);"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     MARKET INSIGHTS (Editorial Grid)
+     ═══════════════════════════════════════════════════════ -->
+<section class="insights" id="insights">
+  <div class="container">
+    <div class="insights-header">
+      <div>
+        <span class="label-sm reveal stagger-1" style="margin-bottom:16px;display:block;">Intelligence</span>
+        <h2 class="reveal stagger-2">Market Insights</h2>
+      </div>
+      <a href="./insights.html" class="btn-ghost reveal stagger-3">View All Analysis</a>
+    </div>
+
+    <div class="insights-grid ghost-border">
+      <article class="insight-card reveal stagger-1">
+        <span class="card-date">March 2026</span>
+        <h3>The Resilience of Urban Logistics in Softening Markets</h3>
+        <p>A deep dive into why last-mile industrial assets remain the bedrock of institutional portfolios as cap rates compress across gateway cities.</p>
+        <div class="card-link">
+          <span>Read Report</span>
+          <span class="material-symbols-outlined">arrow_forward</span>
+        </div>
+      </article>
+
+      <article class="insight-card reveal stagger-2">
+        <span class="card-date">February 2026</span>
+        <h3>Recalibrating Office: The Flight to Quality 2.0</h3>
+        <p>Analyzing the widening gap between Class-A core assets and the legacy secondary market as tenant expectations evolve post-pandemic.</p>
+        <div class="card-link">
+          <span>Read Report</span>
+          <span class="material-symbols-outlined">arrow_forward</span>
+        </div>
+      </article>
+
+      <article class="insight-card reveal stagger-3">
+        <span class="card-date">January 2026</span>
+        <h3>Interest Rate Equilibrium and its Impact on CRE Capital Flows</h3>
+        <p>Navigating the new normal: Why price discovery is finally accelerating across key submarkets and what it means for borrowers.</p>
+        <div class="card-link">
+          <span>Read Report</span>
+          <span class="material-symbols-outlined">arrow_forward</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     BEGIN THE CONVERSATION (Contact CTA)
+     ═══════════════════════════════════════════════════════ -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="contact-inner">
+      <h2 class="reveal stagger-1">Begin the Conversation.</h2>
+      <p class="contact-body reveal stagger-2">
+        Connect with our investment team to discuss customized capital solutions for your commercial real estate portfolio.
+      </p>
+      <form class="contact-form reveal stagger-3" onsubmit="event.preventDefault();" aria-label="Contact form">
+        <div class="contact-form-row">
+          <div class="form-group">
+            <label for="contact-name">Full Name</label>
+            <input type="text" id="contact-name" name="name" placeholder="John Doe" autocomplete="name" />
+          </div>
+          <div class="form-group">
+            <label for="contact-email">Email Address</label>
+            <input type="email" id="contact-email" name="email" placeholder="john@example.com" autocomplete="email" />
+          </div>
+        </div>
+        <div class="form-group" style="margin-bottom:32px;">
+          <label for="contact-company">Company</label>
+          <input type="text" id="contact-company" name="company" placeholder="Company or Institution" autocomplete="organization" />
+        </div>
+        <div class="form-group">
+          <label for="contact-type">Inquiry Type</label>
+          <select id="contact-type" name="inquiry_type">
+            <option value="">Select an inquiry type</option>
+            <option value="lending">Lending Inquiry</option>
+            <option value="equity">Equity Investment</option>
+            <option value="servicing">Servicing Question</option>
+            <option value="media">General / Media</option>
+          </select>
+        </div>
+        <div class="form-group" style="margin-top:32px;">
+          <label for="contact-message">Message</label>
+          <textarea id="contact-message" name="message" rows="3" placeholder="Tell us about your project or inquiry..." style="resize:vertical;min-height:60px;"></textarea>
+        </div>
+        <div class="contact-form-submit">
+          <button type="submit" class="btn-submit">Submit Inquiry</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════════════════════ -->
+<footer class="site-footer ghost-border-t">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-copy">&copy; 2026 3650 Capital. All Rights Reserved.</div>
+      <ul class="footer-links">
+        <li><a href="./portfolio.html">Portfolio</a></li>
+        <li><a href="./lending.html">Lending</a></li>
+        <li><a href="./about.html">About</a></li>
+        <li><a href="./contact.html">Contact</a></li>
+        <li><a href="#">Disclosures</a></li>
+        <li><a href="#">Privacy</a></li>
+        <li><a href="#">Terms</a></li>
+      </ul>
+      <div class="footer-icons">
+        <span class="material-symbols-outlined" aria-label="Language">language</span>
+        <span class="material-symbols-outlined" aria-label="Share">share</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════════════════
+     SCRIPTS
+     ═══════════════════════════════════════════════════════ -->
+<script>
+(function() {
+  'use strict';
+
+  /* ── Reduced motion check ────────────────────────────── */
+  var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ── Intersection Observer for reveal animations ─────── */
+  if (!prefersReduced && 'IntersectionObserver' in window) {
+    var revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+    var revealObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.12,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    revealElements.forEach(function(el) {
+      revealObserver.observe(el);
+    });
+  } else {
+    /* If no IntersectionObserver or reduced motion, show everything */
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(function(el) {
+      el.classList.add('visible');
+    });
+  }
+
+  /* ── Counter animation for stat numbers ──────────────── */
+  function animateCounters() {
+    var counters = document.querySelectorAll('.stat-number[data-target]');
+    counters.forEach(function(counter) {
+      if (counter.dataset.animated === 'true') return;
+
+      var target = parseFloat(counter.dataset.target);
+      var prefix = counter.dataset.prefix || '';
+      var suffix = counter.dataset.suffix || '';
+      var isDecimal = target % 1 !== 0;
+      var duration = 2000;
+      var startTime = null;
+
+      counter.dataset.animated = 'true';
+
+      if (prefersReduced) {
+        counter.textContent = prefix + (isDecimal ? target.toFixed(1) : target.toLocaleString()) + suffix;
+        return;
+      }
+
+      function easeOutQuart(t) {
+        return 1 - Math.pow(1 - t, 4);
+      }
+
+      function step(timestamp) {
+        if (!startTime) startTime = timestamp;
+        var progress = Math.min((timestamp - startTime) / duration, 1);
+        var easedProgress = easeOutQuart(progress);
+        var current = easedProgress * target;
+
+        if (isDecimal) {
+          counter.textContent = prefix + current.toFixed(1) + suffix;
+        } else {
+          counter.textContent = prefix + Math.floor(current).toLocaleString() + suffix;
+        }
+
+        if (progress < 1) {
+          requestAnimationFrame(step);
+        } else {
+          counter.textContent = prefix + (isDecimal ? target.toFixed(1) : target.toLocaleString()) + suffix;
+        }
+      }
+
+      requestAnimationFrame(step);
+    });
+  }
+
+  /* Observe the stats section for counter trigger */
+  if (!prefersReduced && 'IntersectionObserver' in window) {
+    var statsSection = document.getElementById('stats');
+    if (statsSection) {
+      var statsObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            /* Small delay to let the reveal animation start first */
+            setTimeout(animateCounters, 400);
+            statsObserver.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.3
+      });
+      statsObserver.observe(statsSection);
+    }
+  } else {
+    animateCounters();
+  }
+
+  /* ── Nav background on scroll ────────────────────────── */
+  var nav = document.querySelector('.site-nav');
+  if (nav) {
+    var lastScroll = 0;
+    window.addEventListener('scroll', function() {
+      var scrollY = window.pageYOffset || document.documentElement.scrollTop;
+      if (scrollY > 80) {
+        nav.style.background = 'rgba(253,251,247,0.97)';
+        nav.style.boxShadow = '0 1px 0 rgba(177,179,171,0.15)';
+      } else {
+        nav.style.background = 'rgba(253,251,247,0.92)';
+        nav.style.boxShadow = 'none';
+      }
+      lastScroll = scrollY;
+    }, { passive: true });
+  }
+
+  /* ── Close mobile nav on Escape ──────────────────────── */
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      var mobileNav = document.getElementById('mobileNav');
+      if (mobileNav) mobileNav.classList.remove('open');
+    }
+  });
+
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>3650 CAPITAL // REV 4.0</title>
+<meta name="description" content="3650 Capital — Full lifecycle commercial real estate lender. From origination to maturity."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=IBM+Plex+Sans:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet"/>
+<style>
+/* ── RESET & BASE ── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: 'IBM Plex Sans', sans-serif;
+    background-color: #F5FAFF;
+    color: #04122E;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+}
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; text-decoration: none; }
+button { cursor: pointer; border: none; background: none; font-family: inherit; }
+ul, ol { list-style: none; }
+
+/* ── FONT FAMILIES ── */
+.font-title { font-family: 'DM Serif Text', serif; }
+.font-body  { font-family: 'IBM Plex Sans', sans-serif; }
+.font-tech  { font-family: 'Space Grotesk', monospace; }
+
+/* ── DESIGN TOKENS ── */
+:root {
+    --bg:       #F5FAFF;
+    --navy:     #04122E;
+    --card:     #1A2744;
+    --accent:   #2ECC71;
+    --dim:      rgba(4, 18, 46, 0.4);
+    --border:   rgba(26, 39, 68, 0.25);
+    --ghost:    2px 2px 0px 0px #1A2744;
+    --max-w:    1280px;
+}
+
+/* ── CROSSHATCH PATTERN ── */
+.crosshatch {
+    background-image: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 10px,
+        rgba(26, 39, 68, 0.05) 10px,
+        rgba(26, 39, 68, 0.05) 11px
+    );
+}
+.crosshatch-dense {
+    background-image: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 6px,
+        rgba(26, 39, 68, 0.04) 6px,
+        rgba(26, 39, 68, 0.04) 7px
+    );
+}
+
+/* ── GHOST OFFSET SHADOW ── */
+.ghost-offset { box-shadow: var(--ghost); }
+
+/* ── DIMENSION LINES ── */
+.dim-left  { position: relative; }
+.dim-left::before {
+    content: '';
+    position: absolute;
+    left: -20px;
+    top: 0;
+    width: 1px;
+    height: 100%;
+    background: var(--navy);
+    opacity: 0.15;
+}
+.dim-top { position: relative; }
+.dim-top::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 0;
+    height: 1px;
+    width: 100%;
+    background: var(--navy);
+    opacity: 0.15;
+}
+
+/* ── LAYOUT ── */
+.container {
+    width: 100%;
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 0 clamp(1.25rem, 4vw, 3rem);
+}
+
+/* ── SECTION HEADER ── */
+.section-label {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+}
+.section-label .tag {
+    font-family: 'Space Grotesk', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    background: var(--navy);
+    color: #fff;
+    padding: 3px 10px;
+    white-space: nowrap;
+}
+.section-label .line {
+    flex: 1;
+    height: 1px;
+    border-top: 1px dashed var(--border);
+}
+.section-label .note {
+    font-family: 'Space Grotesk', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--dim);
+    white-space: nowrap;
+}
+
+/* ── BUTTONS ── */
+.btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Space Grotesk', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 12px 28px;
+    border: 1px solid var(--navy);
+    background: var(--card);
+    color: #fff;
+    box-shadow: var(--ghost);
+    transition: transform 0.1s, box-shadow 0.1s;
+}
+.btn-primary:active {
+    transform: translate(2px, 2px);
+    box-shadow: none;
+}
+.btn-export {
+    background: var(--accent);
+    color: var(--navy);
+    border-color: var(--accent);
+    font-weight: 700;
+}
+
+/* ── SCROLL REVEAL ── */
+.reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+.reveal-line {
+    opacity: 0;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: opacity 0.6s ease, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal-line.visible {
+    opacity: 1;
+    transform: scaleX(1);
+}
+.reveal-draw {
+    opacity: 0;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: opacity 0.5s ease, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal-draw.visible {
+    opacity: 1;
+    transform: scaleY(1);
+}
+
+/* Stagger children */
+.stagger > .reveal:nth-child(1) { transition-delay: 0s; }
+.stagger > .reveal:nth-child(2) { transition-delay: 0.1s; }
+.stagger > .reveal:nth-child(3) { transition-delay: 0.2s; }
+.stagger > .reveal:nth-child(4) { transition-delay: 0.3s; }
+.stagger > .reveal:nth-child(5) { transition-delay: 0.4s; }
+.stagger > .reveal:nth-child(6) { transition-delay: 0.5s; }
+.stagger > .reveal:nth-child(7) { transition-delay: 0.6s; }
+
+/* ── REDUCED MOTION ── */
+@media (prefers-reduced-motion: reduce) {
+    .reveal, .reveal-line, .reveal-draw {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+    html { scroll-behavior: auto; }
+    .counter-value { transition: none !important; }
+}
+
+/* ══════════════════════════════════════════
+   HEADER / NAV
+   ══════════════════════════════════════════ */
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    background: var(--bg);
+    border-bottom: 0.5px dashed var(--border);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+.site-header .inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 clamp(1.25rem, 4vw, 3rem);
+    height: 64px;
+    max-width: var(--max-w);
+    margin: 0 auto;
+}
+.site-header .logo-text {
+    font-family: 'DM Serif Text', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    color: var(--navy);
+}
+.site-header nav {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+.site-header nav a {
+    font-family: 'Space Grotesk', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--dim);
+    padding: 4px 8px;
+    transition: background 0.15s, color 0.15s;
+}
+.site-header nav a:hover,
+.site-header nav a.active {
+    background: var(--navy);
+    color: #fff;
+}
+.site-header nav a.active {
+    border-bottom: 1px solid var(--navy);
+    color: var(--navy);
+    background: none;
+    font-weight: 700;
+}
+
+/* Mobile menu toggle */
+.menu-toggle {
+    display: none;
+    width: 32px;
+    height: 24px;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    padding: 0;
+    background: none;
+    border: none;
+}
+.menu-toggle span {
+    display: block;
+    width: 100%;
+    height: 1px;
+    background: var(--navy);
+    transition: transform 0.3s, opacity 0.3s;
+}
+.menu-toggle.open span:nth-child(1) { transform: translateY(11.5px) rotate(45deg); }
+.menu-toggle.open span:nth-child(2) { opacity: 0; }
+.menu-toggle.open span:nth-child(3) { transform: translateY(-11.5px) rotate(-45deg); }
+
+@media (max-width: 768px) {
+    .menu-toggle { display: flex; }
+    .site-header nav {
+        display: none;
+        position: absolute;
+        top: 64px;
+        left: 0;
+        width: 100%;
+        background: var(--bg);
+        border-bottom: 1px dashed var(--border);
+        flex-direction: column;
+        padding: 1.5rem;
+        gap: 0.75rem;
+    }
+    .site-header nav.open { display: flex; }
+    .site-header nav a { padding: 10px 12px; width: 100%; }
+}
+
+/* ══════════════════════════════════════════
+   HERO
+   ══════════════════════════════════════════ */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 120px;
+    padding-bottom: 80px;
+    position: relative;
+    border-left: 0.5px dashed var(--border);
+    margin-left: clamp(1.25rem, 4vw, 3rem);
+    padding-left: 2rem;
+}
+.hero .side-annotation {
+    position: absolute;
+    left: -52px;
+    top: 0;
+    font-family: 'Space Grotesk', monospace;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--dim);
+    transform: rotate(-90deg);
+    transform-origin: top right;
+    white-space: nowrap;
+}
+.hero .stamp {
+    display: inline-block;
+    border: 2px solid var(--navy);
+    padding: 2.5rem 3rem;
+    box-shadow: var(--ghost);
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 2.5rem;
+}
+.hero .stamp .stamp-bg {
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 10px,
+        rgba(26, 39, 68, 0.07) 10px,
+        rgba(26, 39, 68, 0.07) 11px
+    );
+}
+.hero .stamp h1 {
+    font-family: 'DM Serif Text', serif;
+    font-size: clamp(5rem, 12vw, 9rem);
+    line-height: 0.9;
+    letter-spacing: -0.04em;
+    position: relative;
+    z-index: 1;
+    color: var(--navy);
+}
+.hero .stamp .rev-bar {
+    font-family: 'Space Grotesk', monospace;
+    font-size: 11px;
+    margin-top: 1rem;
+    border-top: 1px solid var(--border);
+    padding-top: 0.6rem;
+    display: flex;
+    justify-content: space-between;
+    letter-spacing: 0.1em;
+    position: relative;
+    z-index: 1;
+    color: var(--dim);
+}
+.hero .headline {
+    font-family: 'DM Serif Text', serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    max-width: 640px;
+    line-height: 1.15;
+    color: var(--navy);
+    margin-bottom: 3rem;
+}
+.hero .pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+.hero .pill {
+    font-family: 'Space Grotesk', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    border: 1px solid var(--border);
+    padding: 6px 16px;
+    color: var(--dim);
+}
+
+/* ══════════════════════════════════════════
+   METRICS GRID
+   ══════════════════════════════════════════ */
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid var(--border);
+    border-left: 1px solid var(--border);
+}
+@media (max-width: 768px) {
+    .metrics-grid { grid-template-columns: 1fr; }
+}
+.metric-cell {
+    padding: 2.5rem;
+    border-right: 1px dashed var(--border);
+    border-bottom: 1px dashed var(--border);
+    position: relative;
+}
+.metric-cell .cell-id {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-family: 'Space Grotesk', monospace;
+    font-size: 9px;
+    color: var(--dim);
+}
+.metric-cell .metric-label {
+    font-family: 'Space Grotesk', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    color: rgba(4, 18, 46, 0.55);
+    margin-bottom: 1rem;
+}
+.metric-cell .metric-value {
+    font-family: 'DM Serif Text', serif;
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    line-height: 1;
+    color: var(--navy);
+    margin-bottom: 0.5rem;
+}
+.metric-cell .metric-note {
+    font-family: 'Space Grotesk', monospace;
+    font-size: 10px;
+    color: var(--dim);
+    margin-top: 1.5rem;
+    border-left: 2px solid var(--navy);
+    padding-left: 8px;
+    line-height: 1.8;
+}
+
+/* ══════════════════════════════════════════
+   OPERATING MODEL
+   ══════════════════════════════════════════ */
+.operating-model {
+    position: relative;
+}
+.operating-model .side-note {
+    position: absolute;
+    right: -52px;
+    top: 0;
+    font-family: 'Space Grotesk', monospace;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--dim);
+    transform: rotate(90deg);
+    transform-origin: top left;
+    white-space: nowrap;
+}
+.operating-model .section-title {
+    font-family: 'DM Serif Text', serif;
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-style: italic;
+    margin-bottom: 0.5rem;
+    color: var(--navy);
+}
+.operating-model .section-sub {
+    font-family: 'Space Grotesk', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--dim);
+}
+.model-flow {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 5rem 0;
+    border-top: 1px dashed var(--border);
+    border-bottom: 1px dashed var(--border);
+}
+.model-flow .flow-line {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 0.5px;
+    background: rgba(26, 39, 68, 0.3);
+    z-index: 0;
+}
+@media (max-width: 768px) {
+    .model-flow {
+        flex-direction: column;
+        padding: 3rem 0;
+    }
+    .model-flow .flow-line {
+        top: 0;
+        left: 50%;
+        width: 0.5px;
+        height: 100%;
+    }
+}
+.model-node {
+    width: 180px;
+    aspect-ratio: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.25rem;
+    border: 1px solid var(--navy);
+    box-shadow: var(--ghost);
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.model-node:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: 3px 3px 0px 0px #1A2744;
+}
+.model-node.light { background: var(--bg); }
+.model-node.dark  { background: var(--card); color: #fff; }
+.model-node .node-id {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    font-family: 'Space Grotesk', monospace;
+    font-size: 9px;
+    opacity: 0.5;
+}
+.model-node .node-label {
+    font-family: 'Space Grotesk', monospace;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+.model-node .node-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--navy);
+}
+.model-node.dark .node-dot { background: #fff; }
+.model-node .node-note {
+    font-family: 'Space Grotesk', monospace;
+    font-size: 9px;
+    opacity: 0.5;
+    margin-top: 0.75rem;
+}
+
+/* ══════════════════════════════════════════
+   PRODUCTS (BENTO)
+   ══════════════════════════════════════════ */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 1.5rem;
+}
+@media (max-width: 768px) {
+    .products-grid { grid-template-columns: 1fr; }
+}
+.product-card {
+    border: 1px solid var(--border);
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 380px;
+}
+.product-card .card-spec {
+    font-family: 'Space Grotesk', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    color: var(--dim);
+}
+.product-card .card-title {
+    font-family: 'DM Serif Text', serif;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    font-weight: 700;
+    margin-top: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+.product-card .card-body {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: rgba(4, 18, 46, 0.75);
+}
+.product-card .card-specs {
+    padding-top: 1.5rem;
+    border-top: 1px dashed var(--border);
+    margin-top: auto;
+}
+.product-card .card-specs li {
+    font-family: 'Space Grotesk', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 0.4rem;
+}
+.product-card .card-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px dashed var(--border);
+    margin-top: auto;
+}
+.product-card .card-meta span {
+    font-family: 'Space Grotesk', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+}
+.product-full {
+    grid-column: 1 / -1;
+    background: var(--card);
+    color: #fff;
+    border-color: var(--navy);
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+    padding: 3rem;
+    min-height: auto;
+}
+@media (max-width: 768px) {
+    .product-full { flex-direction: column; align-items: flex-start; }
+}
+.product-full .card-body { color: rgba(255,255,255,0.65); }
+.product-full .card-spec { color: rgba(255,255,255,0.35); }
+.product-full .card-title {
+    font-style: italic;
+    letter-spacing: -0.01em;
+}
+.btn-white {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Space Grotesk', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 14px 32px;
+    background: #fff;
+    color: var(--navy);
+    border: none;
+    transition: background 0.2s;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+.btn-white:hover { background: #e8edf2; }
+.btn-white:active { transform: translate(1px, 1px); }
+
+.product-image {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border: 1px solid var(--navy);
+    filter: grayscale(100%);
+    flex-shrink: 0;
+}
+
+/* ══════════════════════════════════════════
+   OFFICES GRID
+   ══════════════════════════════════════════ */
+.offices-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 1rem;
+    margin-bottom: 0;
+}
+.offices-header h3 {
+    font-family: 'DM Serif Text', serif;
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-style: italic;
+    color: var(--navy);
+}
+.offices-header .count {
+    font-family: 'Space Grotesk', monospace;
+    font-size: 10px;
+    color: var(--dim);
+}
+.offices-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 1px;
+    background: rgba(26, 39, 68, 0.08);
+    border: 1px solid rgba(26, 39, 68, 0.08);
+}
+@media (max-width: 1024px) { .offices-grid { grid-template-columns: repeat(4, 1fr); } }
+@media (max-width: 640px)  { .offices-grid { grid-template-columns: repeat(2, 1fr); } }
+.office-cell {
+    background: var(--bg);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    transition: background 0.25s, color 0.25s;
+    cursor: default;
+    position: relative;
+}
+.office-cell:hover {
+    background: var(--card);
+    color: #fff;
+}
+.office-cell .coord {
+    font-family: 'Space Grotesk', monospace;
+    font-size: 9px;
+    color: var(--dim);
+    transition: color 0.25s;
+}
+.office-cell:hover .coord { color: rgba(255,255,255,0.4); }
+.office-cell .city {
+    font-family: 'Space Grotesk', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+}
+.office-cell .tag-label {
+    font-family: 'Space Grotesk', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    opacity: 0;
+    transition: opacity 0.25s;
+}
+.office-cell:hover .tag-label { opacity: 1; }
+.office-cell .primary-marker {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    font-family: 'Space Grotesk', monospace;
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+}
+
+/* ══════════════════════════════════════════
+   IMAGE FEATURE STRIP
+   ══════════════════════════════════════════ */
+.feature-strip {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+@media (max-width: 768px) { .feature-strip { grid-template-columns: 1fr; } }
+.feature-card {
+    border: 1px dashed var(--border);
+    overflow: hidden;
+    position: relative;
+}
+.feature-card img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    filter: grayscale(40%);
+    transition: filter 0.4s;
+}
+.feature-card:hover img { filter: grayscale(0%); }
+.feature-card .caption {
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px dashed var(--border);
+}
+.feature-card .caption .name {
+    font-family: 'Space Grotesk', monospace;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+.feature-card .caption .ref {
+    font-family: 'Space Grotesk', monospace;
+    font-size: 9px;
+    color: var(--dim);
+}
+
+/* ══════════════════════════════════════════
+   FOOTER
+   ══════════════════════════════════════════ */
+.site-footer {
+    background: #E8EDF2;
+    border-top: 0.5px dashed var(--navy);
+}
+.footer-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    padding: 3.5rem clamp(1.25rem, 4vw, 3rem);
+    max-width: var(--max-w);
+    margin: 0 auto;
+}
+@media (max-width: 768px) { .footer-inner { grid-template-columns: 1fr; } }
+.footer-brand {
+    font-family: 'DM Serif Text', serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    color: var(--navy);
+}
+.footer-legal {
+    font-family: 'Space Grotesk', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    line-height: 2;
+    color: var(--dim);
+}
+.footer-links {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+.footer-links .col-title {
+    font-family: 'Space Grotesk', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    opacity: 0.6;
+    margin-bottom: 0.75rem;
+    letter-spacing: 0.12em;
+}
+.footer-links a {
+    display: block;
+    font-family: 'Space Grotesk', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    opacity: 0.6;
+    padding: 2px 0;
+    transition: opacity 0.2s;
+}
+.footer-links a:hover { opacity: 1; }
+
+/* ── FLOATING MARGINALIA ── */
+.marginalia {
+    position: fixed;
+    font-family: 'Space Grotesk', monospace;
+    font-size: 9px;
+    opacity: 0.2;
+    pointer-events: none;
+    user-select: none;
+    color: var(--navy);
+}
+.marginalia.bottom-left {
+    left: 16px;
+    bottom: 16px;
+    line-height: 1.6;
+}
+.marginalia.mid-right {
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%) rotate(90deg);
+    transform-origin: center center;
+    white-space: nowrap;
+}
+@media (max-width: 1024px) { .marginalia { display: none; } }
+
+/* ── UTILITY ── */
+.sr-only {
+    position: absolute; width: 1px; height: 1px;
+    padding: 0; margin: -1px; overflow: hidden;
+    clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+</style>
+</head>
+
+<body data-review-page="home">
+
+<!-- ═══════════════════════════════════════════
+     NAVIGATION
+     ═══════════════════════════════════════════ -->
+<header class="site-header">
+    <div class="inner">
+        <a href="index.html" class="logo-text">3650 CAPITAL <span class="font-tech" style="font-weight:400; font-size:10px; letter-spacing:0.1em; opacity:0.5;">// REV 4.0</span></a>
+
+        <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+
+        <nav id="main-nav" role="navigation" aria-label="Main">
+            <a href="index.html" class="active">ORIGINATION</a>
+            <a href="servicing.html">SERVICING</a>
+            <a href="asset-management.html">ASSET MGMT</a>
+            <a href="portfolio.html">PORTFOLIO</a>
+            <a href="contact.html">CONTACT</a>
+            <button class="btn-primary btn-export" onclick="window.print()">EXPORT .PDF</button>
+        </nav>
+    </div>
+</header>
+
+<!-- ═══════════════════════════════════════════
+     SEC 01.A — HERO
+     ═══════════════════════════════════════════ -->
+<main>
+<section class="hero" id="hero">
+    <div class="side-annotation" aria-hidden="true">SEC: 01.A // INITIAL_STAMP</div>
+
+    <div class="reveal">
+        <div class="stamp">
+            <div class="stamp-bg" aria-hidden="true"></div>
+            <h1>3650</h1>
+            <div class="rev-bar">
+                <span>REV 4.0 — APRIL 2026</span>
+                <span>[ STATUS: CERTIFIED ]</span>
+            </div>
+        </div>
+    </div>
+
+    <h2 class="headline reveal">One lender. From origination to maturity.</h2>
+
+    <div class="pills reveal">
+        <span class="pill">CMBS &amp; CONDUIT</span>
+        <span class="pill">FY: 2026</span>
+        <span class="pill">REF. DWG_001</span>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     SEC 02.B — METRICS SCHEMATIC
+     ═══════════════════════════════════════════ -->
+<section style="padding-bottom:8rem;" class="container">
+    <div class="section-label reveal">
+        <span class="tag">Section 02.B</span>
+        <span class="line"></span>
+        <span class="note">Scale: 1:100</span>
+    </div>
+
+    <div class="metrics-grid stagger">
+        <!-- Metric 1 -->
+        <div class="metric-cell crosshatch reveal">
+            <span class="cell-id" aria-hidden="true">METRIC_ID: 01</span>
+            <div class="metric-label">SERVICED — ASSETS</div>
+            <div class="metric-value"><span class="counter" data-target="16.3" data-prefix="$" data-suffix="B">$0B</span></div>
+            <div class="metric-note">[ ACCURACY: &plusmn; 0.05% ]<br/>REF: Q1_REPORT</div>
+        </div>
+
+        <!-- Metric 2 -->
+        <div class="metric-cell reveal" style="background:#fff;">
+            <span class="cell-id" aria-hidden="true">METRIC_ID: 02</span>
+            <div class="metric-label">MEASURED — COUNT</div>
+            <div class="metric-value"><span class="counter" data-target="1300" data-suffix="+">0</span></div>
+            <div class="metric-note">[ DENSITY: NATIONAL ]<br/>LOC: 50_STATES</div>
+        </div>
+
+        <!-- Metric 3 -->
+        <div class="metric-cell crosshatch reveal">
+            <span class="cell-id" aria-hidden="true">METRIC_ID: 03</span>
+            <div class="metric-label">SECURITIZED — VOL</div>
+            <div class="metric-value"><span class="counter" data-target="11.5" data-prefix="$" data-suffix="B">$0B</span></div>
+            <div class="metric-note">[ CLASS: CMBS/CRE_CLO ]<br/>ISSUE: GLOBAL_CAP</div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     SEC 04.B — OPERATING MODEL
+     ═══════════════════════════════════════════ -->
+<section class="container operating-model" style="padding-bottom:8rem;">
+    <div class="side-note" aria-hidden="true">VERTICAL_FLOW // REF_4B</div>
+
+    <div class="reveal" style="margin-bottom:4rem;">
+        <h3 class="section-title">Section 04.B: Operating Model</h3>
+        <p class="section-sub">Full lifecycle integration schematic</p>
+    </div>
+
+    <div class="model-flow stagger">
+        <div class="flow-line reveal-line" aria-hidden="true"></div>
+
+        <div class="model-node light reveal">
+            <span class="node-id">01</span>
+            <div class="node-label">Origination</div>
+            <div class="node-dot"></div>
+            <div class="node-note">[ ENTRY_POINT ]</div>
+        </div>
+
+        <div class="model-node dark reveal">
+            <span class="node-id">02</span>
+            <div class="node-label">Servicing</div>
+            <div class="node-dot"></div>
+            <div class="node-note">[ ACTIVE_MGMT ]</div>
+        </div>
+
+        <div class="model-node light reveal">
+            <span class="node-id">03</span>
+            <div class="node-label">Asset Mgmt</div>
+            <div class="node-dot"></div>
+            <div class="node-note">[ VALUE_PRESERV ]</div>
+        </div>
+
+        <div class="model-node light reveal">
+            <span class="node-id">04</span>
+            <div class="node-label">Maturity</div>
+            <div class="node-dot"></div>
+            <div class="node-note">[ EXIT_STRAT ]</div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     SEC 05 — PRODUCTS (BENTO)
+     ═══════════════════════════════════════════ -->
+<section class="container" style="padding-bottom:8rem;">
+    <div class="section-label reveal">
+        <span class="tag">Section 05.A</span>
+        <span class="line"></span>
+        <span class="note">Product Specifications</span>
+    </div>
+
+    <div class="products-grid">
+        <!-- RECS -->
+        <div class="product-card reveal" style="grid-column: span 4;">
+            <div>
+                <span class="card-spec">SPEC_01</span>
+                <h4 class="card-title">RECS</h4>
+                <p class="card-body">Customized relative value and event-driven commercial real estate debt investment strategies focused on top-tier metropolitan areas.</p>
+            </div>
+            <div class="card-specs">
+                <ul>
+                    <li>&bull; FLOATING_RATE</li>
+                    <li>&bull; TRANSITIONAL_ASSETS</li>
+                    <li>&bull; SENIOR_DEBT</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Stable Cash Flow -->
+        <div class="product-card crosshatch reveal" style="grid-column: span 8;">
+            <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:1.5rem; flex-wrap:wrap;">
+                <div>
+                    <span class="card-spec">SPEC_02</span>
+                    <h4 class="card-title">STABLE CASH FLOW</h4>
+                </div>
+                <img class="product-image"
+                     src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/nyc-office-interior-2.jpg?w=800&ssl=1"
+                     alt="Modern commercial office interior with institutional design"
+                     loading="lazy"/>
+            </div>
+            <p class="card-body" style="max-width:540px;">Long-term, fixed-rate financing for stabilized institutional properties. Direct lending approach with balance sheet certainty.</p>
+            <div class="card-meta">
+                <span>LTV_MAX: 75%</span>
+                <span>TERM: 5-10Y</span>
+                <span>ASSET: CORE+</span>
+            </div>
+        </div>
+
+        <!-- Special Situations -->
+        <div class="product-card product-full reveal">
+            <div style="max-width:480px; flex-shrink:0;">
+                <span class="card-spec">SPEC_03</span>
+                <h4 class="card-title">Special Situations</h4>
+                <p class="card-body">Flexible capital solutions for complex capital structures, distress remediation, and unique property repositioning mandates.</p>
+            </div>
+            <button class="btn-white" onclick="window.location.href='portfolio.html'">VIEW PORTFOLIO</button>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     SEC 06 — FEATURE IMAGES
+     ═══════════════════════════════════════════ -->
+<section class="container" style="padding-bottom:8rem;">
+    <div class="section-label reveal">
+        <span class="tag">Section 06.A</span>
+        <span class="line"></span>
+        <span class="note">Field Documentation</span>
+    </div>
+
+    <div class="feature-strip">
+        <div class="feature-card reveal">
+            <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/rendering-center-at-miami-gardens-courtesy-3650-reit.jpg?w=800&ssl=1"
+                 alt="Rendering of Center at Miami Gardens, courtesy 3650 REIT"
+                 loading="lazy"/>
+            <div class="caption">
+                <span class="name">CENTER AT MIAMI GARDENS</span>
+                <span class="ref">IMG_REF: 06A_01</span>
+            </div>
+        </div>
+
+        <div class="feature-card reveal">
+            <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/nyc-office-interior-2.jpg?w=800&ssl=1"
+                 alt="3650 Capital New York City office interior"
+                 loading="lazy"/>
+            <div class="caption">
+                <span class="name">NEW YORK — HQ INTERIOR</span>
+                <span class="ref">IMG_REF: 06A_02</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     SEC 07 — GLOBAL OPERATIONS HUBS
+     ═══════════════════════════════════════════ -->
+<section class="container" style="padding-bottom:8rem;">
+    <div class="offices-header reveal">
+        <h3>Global Operations Hubs</h3>
+        <span class="count">[ 07_STATIONS ]</span>
+    </div>
+
+    <div class="offices-grid stagger">
+        <div class="office-cell reveal">
+            <span class="primary-marker">PRIMARY</span>
+            <span class="coord">25.7617&deg; N</span>
+            <span class="city">MIAMI</span>
+            <span class="tag-label">HQ_01</span>
+        </div>
+        <div class="office-cell reveal">
+            <span class="coord">40.7128&deg; N</span>
+            <span class="city">NEW YORK</span>
+            <span class="tag-label">OFF_02</span>
+        </div>
+        <div class="office-cell reveal">
+            <span class="coord">34.0522&deg; N</span>
+            <span class="city">LOS ANGELES</span>
+            <span class="tag-label">OFF_03</span>
+        </div>
+        <div class="office-cell reveal">
+            <span class="coord">32.7767&deg; N</span>
+            <span class="city">DALLAS</span>
+            <span class="tag-label">OFF_04</span>
+        </div>
+        <div class="office-cell reveal">
+            <span class="coord">33.7490&deg; N</span>
+            <span class="city">ATLANTA</span>
+            <span class="tag-label">OFF_05</span>
+        </div>
+        <div class="office-cell reveal">
+            <span class="coord">36.1627&deg; N</span>
+            <span class="city">NASHVILLE</span>
+            <span class="tag-label">OFF_06</span>
+        </div>
+        <div class="office-cell reveal">
+            <span class="coord">38.9072&deg; N</span>
+            <span class="city">DC</span>
+            <span class="tag-label">OFF_07</span>
+        </div>
+    </div>
+</section>
+</main>
+
+<!-- ═══════════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════════ -->
+<footer class="site-footer">
+    <div class="footer-inner">
+        <div>
+            <div class="footer-brand">3650 CAPITAL</div>
+            <div class="footer-legal">
+                &copy; 2026 3650 CAPITAL | SPEC: GLOBAL_V4.0 | ALL RIGHTS RESERVED<br/>
+                CONFIDENTIAL INTELLECTUAL PROPERTY OF 3650 RE DEBT INVESTORS.<br/>
+                REVISION: 4.0 | ISSUED: APRIL 2026 | STATUS: ACTIVE
+            </div>
+        </div>
+        <div class="footer-links">
+            <div>
+                <div class="col-title">SPEC SHEET</div>
+                <a href="#">ORIGINATION_SPEC</a>
+                <a href="#">SERVICING_SPEC</a>
+                <a href="#">ASSET_MGMT_SPEC</a>
+                <a href="#">PORTFOLIO_INDEX</a>
+            </div>
+            <div>
+                <div class="col-title">REGULATORY FILING</div>
+                <a href="#" style="text-decoration:underline; text-decoration-style:dashed;">PRIVACY_POLICY</a>
+                <a href="#">DISCLOSURES_04</a>
+                <a href="#">TERMS_OF_USE</a>
+                <a href="#">SEC_FILINGS</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- ── FLOATING MARGINALIA ── -->
+<div class="marginalia bottom-left" aria-hidden="true">
+    [ X: 42.0000 | Y: 104.223 ]<br/>
+    COORD: BLUEPRINT_GRID_SYSTEM
+</div>
+<div class="marginalia mid-right" aria-hidden="true">
+    &#x2194; 1280PX WIDTH // GRID_08_COL
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SCRIPTS
+     ═══════════════════════════════════════════ -->
+<script>
+(function() {
+    'use strict';
+
+    /* ── Mobile menu toggle ── */
+    var menuBtn = document.querySelector('.menu-toggle');
+    var navEl   = document.getElementById('main-nav');
+    if (menuBtn && navEl) {
+        menuBtn.addEventListener('click', function() {
+            var isOpen = navEl.classList.toggle('open');
+            menuBtn.classList.toggle('open', isOpen);
+            menuBtn.setAttribute('aria-expanded', isOpen);
+        });
+    }
+
+    /* ── Intersection Observer for scroll reveals ── */
+    var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (!prefersReduced && 'IntersectionObserver' in window) {
+        var revealEls = document.querySelectorAll('.reveal, .reveal-line, .reveal-draw');
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.12,
+            rootMargin: '0px 0px -40px 0px'
+        });
+
+        revealEls.forEach(function(el) { observer.observe(el); });
+    } else {
+        /* Immediately show all if reduced motion or no IO */
+        document.querySelectorAll('.reveal, .reveal-line, .reveal-draw').forEach(function(el) {
+            el.classList.add('visible');
+        });
+    }
+
+    /* ── Counter animation ── */
+    function animateCounter(el) {
+        var target  = parseFloat(el.getAttribute('data-target'));
+        var prefix  = el.getAttribute('data-prefix') || '';
+        var suffix  = el.getAttribute('data-suffix') || '';
+        var isFloat = String(target).indexOf('.') !== -1;
+        var decimals = isFloat ? String(target).split('.')[1].length : 0;
+        var duration = 2000;
+        var startTime = null;
+        var started = false;
+
+        function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
+
+        function step(timestamp) {
+            if (!startTime) startTime = timestamp;
+            var progress = Math.min((timestamp - startTime) / duration, 1);
+            var eased = easeOutCubic(progress);
+            var current = eased * target;
+
+            if (isFloat) {
+                el.textContent = prefix + current.toFixed(decimals) + suffix;
+            } else {
+                el.textContent = prefix + Math.floor(current).toLocaleString() + suffix;
+            }
+
+            if (progress < 1) {
+                requestAnimationFrame(step);
+            } else {
+                if (isFloat) {
+                    el.textContent = prefix + target.toFixed(decimals) + suffix;
+                } else {
+                    el.textContent = prefix + target.toLocaleString() + suffix;
+                }
+            }
+        }
+
+        /* Start counter when parent becomes visible */
+        if (prefersReduced) {
+            if (isFloat) {
+                el.textContent = prefix + target.toFixed(decimals) + suffix;
+            } else {
+                el.textContent = prefix + target.toLocaleString() + suffix;
+            }
+            return;
+        }
+
+        var counterObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting && !started) {
+                    started = true;
+                    requestAnimationFrame(step);
+                    counterObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
+
+        counterObserver.observe(el);
+    }
+
+    document.querySelectorAll('.counter').forEach(animateCounter);
+
+    /* ── Smooth scroll for anchor links ── */
+    document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+        a.addEventListener('click', function(e) {
+            var id = this.getAttribute('href').slice(1);
+            var target = document.getElementById(id);
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+
+})();
+</script>
+</body>
+</html>

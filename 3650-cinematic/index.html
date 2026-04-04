@@ -1,0 +1,1496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>3650 Capital — One Lender. Wholly Committed.</title>
+<meta name="description" content="3650 Capital is a vertically integrated commercial real estate lending platform providing balance sheet loans, CMBS, and mezzanine capital from origination to maturity."/>
+<link rel="icon" type="image/png" href="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650Capital-Logo.png?ssl=1"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Space+Grotesk:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+
+<style>
+/* ══════════════════════════════════════════════════════
+   RESET & BASE
+   ══════════════════════════════════════════════════════ */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg-dark:       #1a1c22;
+  --bg-dark-deep:  #141519;
+  --bg-light:      #f4f3ef;
+  --bg-light-dim:  #eae9e4;
+  --text-white:    #ffffff;
+  --text-light:    #c6c6c6;
+  --text-muted:    #919191;
+  --text-dark:     #1a1c22;
+  --text-dark-mid: #555555;
+  --accent-line:   rgba(255,255,255,0.15);
+  --accent-line-dk:rgba(0,0,0,0.08);
+  --font-headline: 'Cormorant Garamond', Georgia, serif;
+  --font-label:    'Space Grotesk', monospace;
+  --font-body:     'Inter', system-ui, sans-serif;
+}
+
+html {
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-snap-type: none; scroll-behavior: auto; }
+  .reveal, .stagger > *, .counter-value { transition: none !important; animation: none !important; }
+  .reveal { opacity: 1 !important; transform: none !important; }
+  .stagger > * { opacity: 1 !important; transform: none !important; }
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-dark);
+  color: var(--text-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+img { display: block; max-width: 100%; height: auto; }
+a   { text-decoration: none; color: inherit; }
+button { cursor: pointer; border: none; font-family: inherit; background: none; }
+input, select, textarea { font-family: inherit; }
+
+/* ── Scrollbar ─────────────────────────────────────── */
+::-webkit-scrollbar       { width: 5px; }
+::-webkit-scrollbar-track { background: var(--bg-dark); }
+::-webkit-scrollbar-thumb { background: #353535; }
+
+/* Material icons */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 24;
+  vertical-align: middle;
+  font-size: 16px;
+}
+
+/* ══════════════════════════════════════════════════════
+   TYPOGRAPHY
+   ══════════════════════════════════════════════════════ */
+.font-headline { font-family: var(--font-headline); font-weight: 300; }
+.font-label    { font-family: var(--font-label); }
+.font-body     { font-family: var(--font-body); }
+
+.kern-wide    { letter-spacing: 0.25em; }
+.kern-extreme { letter-spacing: 0.5em; }
+.kern-track   { letter-spacing: 0.15em; }
+
+/* ══════════════════════════════════════════════════════
+   SECTIONS — CINEMATIC FRAMES
+   ══════════════════════════════════════════════════════ */
+.frame {
+  scroll-snap-align: start;
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.frame-dark {
+  background: var(--bg-dark);
+  color: var(--text-white);
+}
+
+.frame-deep {
+  background: var(--bg-dark-deep);
+  color: var(--text-white);
+}
+
+.frame-light {
+  background: var(--bg-light);
+  color: var(--text-dark);
+}
+
+/* ── Container ───────────────────────────────────────── */
+.container {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+@media (max-width: 768px) {
+  .container { padding: 0 24px; }
+}
+
+/* ══════════════════════════════════════════════════════
+   NAV
+   ══════════════════════════════════════════════════════ */
+.nav-main {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 28px 48px;
+  background: rgba(26,28,34,0.55);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  transition: background 0.4s ease, padding 0.4s ease;
+}
+
+.nav-main.is-scrolled {
+  background: rgba(20,21,25,0.92);
+  padding: 18px 48px;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.nav-logo img {
+  height: 28px;
+  width: auto;
+  opacity: 0.95;
+}
+
+.nav-logo-text {
+  font-family: var(--font-headline);
+  font-weight: 300;
+  font-size: 22px;
+  letter-spacing: -0.02em;
+  color: var(--text-white);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.nav-link {
+  font-family: var(--font-label);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--text-muted);
+  transition: color 0.3s ease;
+  padding-bottom: 2px;
+}
+
+.nav-link:hover,
+.nav-link.is-active {
+  color: var(--text-white);
+}
+
+.nav-link.is-active {
+  border-bottom: 1px solid rgba(255,255,255,0.4);
+}
+
+.nav-cta {
+  font-family: var(--font-label);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  padding: 12px 32px;
+  background: var(--text-white);
+  color: var(--text-dark);
+  transition: all 0.3s ease;
+}
+
+.nav-cta:hover {
+  background: transparent;
+  color: var(--text-white);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.3);
+}
+
+/* Mobile nav */
+.nav-mobile-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.nav-mobile-toggle span {
+  display: block;
+  width: 24px;
+  height: 1px;
+  background: var(--text-white);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.mobile-nav-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: var(--bg-dark-deep);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.mobile-nav-overlay.is-open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.mobile-nav-overlay a {
+  font-family: var(--font-headline);
+  font-size: 36px;
+  font-weight: 300;
+  color: var(--text-white);
+  transition: opacity 0.3s ease;
+}
+
+.mobile-nav-overlay a:hover {
+  opacity: 0.6;
+}
+
+.mobile-nav-close {
+  position: absolute;
+  top: 28px;
+  right: 48px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-white);
+}
+
+@media (max-width: 900px) {
+  .nav-links, .nav-cta { display: none; }
+  .nav-mobile-toggle { display: flex; }
+  .nav-main { padding: 20px 24px; }
+  .nav-main.is-scrolled { padding: 14px 24px; }
+  .mobile-nav-close { right: 24px; }
+}
+
+/* ══════════════════════════════════════════════════════
+   SIDE NAV DOTS
+   ══════════════════════════════════════════════════════ */
+.side-nav {
+  position: fixed;
+  right: 32px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 90;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: flex-end;
+}
+
+.side-nav-dot {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: opacity 0.3s ease;
+}
+
+.side-nav-dot .dot-label {
+  font-family: var(--font-label);
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  color: rgba(255,255,255,0.25);
+  transition: color 0.3s ease;
+}
+
+.side-nav-dot .dot-circle {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.side-nav-dot.is-active .dot-label { color: var(--text-white); }
+.side-nav-dot.is-active .dot-circle { background: var(--text-white); transform: scale(1.5); }
+
+.side-nav-dot:hover .dot-label { color: rgba(255,255,255,0.6); }
+.side-nav-dot:hover .dot-circle { background: rgba(255,255,255,0.5); }
+
+@media (max-width: 900px) {
+  .side-nav { display: none; }
+}
+
+/* ══════════════════════════════════════════════════════
+   HERO (Frame 1)
+   ══════════════════════════════════════════════════════ */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.3;
+  transform: scale(1.05);
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(26,28,34,0.5) 0%,
+    rgba(26,28,34,0.3) 40%,
+    rgba(26,28,34,0.7) 100%
+  );
+}
+
+.hero-content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100vh;
+  padding: 0 48px;
+}
+
+.hero-label {
+  font-family: var(--font-label);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.4em;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 40px;
+}
+
+.hero-headline {
+  font-family: var(--font-headline);
+  font-weight: 300;
+  font-size: clamp(48px, 9vw, 128px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--text-white);
+  margin-bottom: 48px;
+  max-width: 900px;
+}
+
+.hero-rule {
+  width: 80px;
+  height: 1px;
+  background: rgba(255,255,255,0.3);
+  margin-bottom: 40px;
+}
+
+.hero-scroll-hint {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  opacity: 0.4;
+  animation: pulse-hint 2.5s ease-in-out infinite;
+}
+
+.hero-scroll-hint span {
+  font-family: var(--font-label);
+  font-size: 9px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+@keyframes pulse-hint {
+  0%, 100% { opacity: 0.3; transform: translateX(-50%) translateY(0); }
+  50% { opacity: 0.6; transform: translateX(-50%) translateY(4px); }
+}
+
+/* ══════════════════════════════════════════════════════
+   FRAME 2 — PLATFORM (Light)
+   ══════════════════════════════════════════════════════ */
+.platform-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.platform-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px 64px;
+}
+
+.platform-text .section-label {
+  font-family: var(--font-label);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: var(--text-dark-mid);
+  margin-bottom: 32px;
+}
+
+.platform-text h2 {
+  font-family: var(--font-headline);
+  font-weight: 300;
+  font-size: clamp(32px, 4.5vw, 64px);
+  line-height: 1.15;
+  color: var(--text-dark);
+  margin-bottom: 24px;
+}
+
+.platform-text p {
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--text-dark-mid);
+  max-width: 480px;
+  margin-bottom: 48px;
+}
+
+.platform-stats {
+  display: flex;
+  gap: 48px;
+  border-top: 1px solid var(--accent-line-dk);
+  padding-top: 32px;
+}
+
+.platform-stat-label {
+  font-family: var(--font-label);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--text-dark-mid);
+  margin-bottom: 8px;
+  display: block;
+}
+
+.platform-stat-value {
+  font-family: var(--font-headline);
+  font-size: 24px;
+  font-weight: 300;
+  color: var(--text-dark);
+}
+
+.platform-image {
+  position: relative;
+  overflow: hidden;
+}
+
+.platform-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 900px) {
+  .platform-grid { grid-template-columns: 1fr; }
+  .platform-text { padding: 120px 24px 48px; }
+  .platform-image { min-height: 50vh; }
+  .platform-stats { flex-direction: column; gap: 24px; }
+}
+
+/* ══════════════════════════════════════════════════════
+   FRAME 3 — CONTINUITY (Dark, centered)
+   ══════════════════════════════════════════════════════ */
+.continuity-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.continuity-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.15;
+  filter: grayscale(1);
+}
+
+.continuity-content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
+  padding: 120px 48px;
+}
+
+.continuity-content .section-label {
+  font-family: var(--font-label);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5em;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 48px;
+}
+
+.continuity-content h2 {
+  font-family: var(--font-headline);
+  font-weight: 300;
+  font-size: clamp(36px, 6vw, 96px);
+  line-height: 1.1;
+  color: var(--text-white);
+  max-width: 960px;
+  margin-bottom: 56px;
+}
+
+.continuity-cta {
+  font-family: var(--font-label);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  padding: 18px 48px;
+  border: 1px solid rgba(255,255,255,0.2);
+  color: var(--text-white);
+  background: transparent;
+  transition: all 0.3s ease;
+}
+
+.continuity-cta:hover {
+  background: var(--text-white);
+  color: var(--text-dark);
+}
+
+@media (max-width: 768px) {
+  .continuity-content { padding: 120px 24px; }
+}
+
+/* ══════════════════════════════════════════════════════
+   FRAME 4 — SCALE / BENTO STATS (Dark deep)
+   ══════════════════════════════════════════════════════ */
+.scale-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.scale-image-panel {
+  position: relative;
+  overflow: hidden;
+}
+
+.scale-image-panel img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.85;
+}
+
+.scale-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 60%, var(--bg-dark-deep) 100%);
+}
+
+.scale-data-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px 64px;
+}
+
+.scale-data-panel .section-label {
+  font-family: var(--font-label);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: var(--text-muted);
+  margin-bottom: 64px;
+}
+
+.stat-block {
+  margin-bottom: 56px;
+}
+
+.stat-number {
+  font-family: var(--font-headline);
+  font-weight: 300;
+  font-size: clamp(48px, 6vw, 88px);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--text-white);
+}
+
+.stat-desc {
+  font-family: var(--font-label);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: var(--text-muted);
+  margin-top: 12px;
+}
+
+@media (max-width: 900px) {
+  .scale-layout { grid-template-columns: 1fr; }
+  .scale-image-panel { min-height: 40vh; }
+  .scale-image-overlay { background: linear-gradient(180deg, transparent 60%, var(--bg-dark-deep) 100%); }
+  .scale-data-panel { padding: 48px 24px; }
+}
+
+/* ══════════════════════════════════════════════════════
+   FRAME 5 — FEATURED TRANSACTION (Light)
+   ══════════════════════════════════════════════════════ */
+.transaction-layout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 80px 48px;
+  gap: 64px;
+}
+
+.transaction-image-wrap {
+  flex: 0 0 58%;
+  max-width: 58%;
+  position: relative;
+  overflow: hidden;
+}
+
+.transaction-image-wrap img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16/10;
+  object-fit: cover;
+  filter: grayscale(1);
+  transition: filter 1s ease;
+}
+
+.transaction-image-wrap:hover img {
+  filter: grayscale(0);
+}
+
+.transaction-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.transaction-details .section-label {
+  font-family: var(--font-label);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: var(--text-dark-mid);
+  margin-bottom: 20px;
+}
+
+.transaction-details h2 {
+  font-family: var(--font-headline);
+  font-weight: 300;
+  font-size: clamp(32px, 3.5vw, 56px);
+  line-height: 1.15;
+  color: var(--text-dark);
+  margin-bottom: 32px;
+}
+
+.transaction-meta {
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+.transaction-meta-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--accent-line-dk);
+}
+
+.transaction-meta-label {
+  font-family: var(--font-label);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--text-dark-mid);
+}
+
+.transaction-meta-value {
+  font-family: var(--font-label);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: var(--text-dark);
+}
+
+.transaction-cta {
+  font-family: var(--font-label);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  padding: 16px 40px;
+  border: 1px solid var(--text-dark);
+  color: var(--text-dark);
+  background: transparent;
+  transition: all 0.3s ease;
+}
+
+.transaction-cta:hover {
+  background: var(--text-dark);
+  color: var(--bg-light);
+}
+
+@media (max-width: 900px) {
+  .transaction-layout {
+    flex-direction: column;
+    padding: 120px 24px 60px;
+    gap: 40px;
+  }
+  .transaction-image-wrap { flex: none; max-width: 100%; width: 100%; }
+}
+
+/* ══════════════════════════════════════════════════════
+   FRAME 6 — CONTACT (Dark)
+   ══════════════════════════════════════════════════════ */
+.contact-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
+  padding: 120px 48px;
+}
+
+.contact-content h2 {
+  font-family: var(--font-headline);
+  font-weight: 300;
+  font-size: clamp(64px, 12vw, 160px);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--text-white);
+  margin-bottom: 48px;
+}
+
+.contact-subtitle {
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--text-muted);
+  max-width: 480px;
+  margin-bottom: 56px;
+}
+
+.contact-form {
+  width: 100%;
+  max-width: 520px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: var(--text-white);
+  padding: 16px 20px;
+  font-size: 14px;
+  font-family: var(--font-body);
+  transition: border-color 0.3s ease;
+  outline: none;
+  border-radius: 0;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: rgba(255,255,255,0.35);
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: var(--text-muted);
+  font-size: 13px;
+  letter-spacing: 0.02em;
+}
+
+.contact-form textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.contact-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.contact-submit {
+  font-family: var(--font-label);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  padding: 18px 48px;
+  background: var(--text-white);
+  color: var(--text-dark);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 8px;
+  align-self: flex-start;
+}
+
+.contact-submit:hover {
+  background: transparent;
+  color: var(--text-white);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.3);
+}
+
+@media (max-width: 768px) {
+  .contact-content { padding: 120px 24px; }
+  .contact-form-row { grid-template-columns: 1fr; }
+  .contact-submit { align-self: stretch; }
+}
+
+/* ══════════════════════════════════════════════════════
+   FOOTER
+   ══════════════════════════════════════════════════════ */
+.footer-main {
+  width: 100%;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  background: var(--bg-dark-deep);
+  padding: 48px;
+}
+
+.footer-inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-copy {
+  font-family: var(--font-label);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.footer-links {
+  display: flex;
+  gap: 40px;
+}
+
+.footer-link {
+  font-family: var(--font-label);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.25);
+  transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+  color: var(--text-white);
+}
+
+@media (max-width: 768px) {
+  .footer-main { padding: 32px 24px; }
+  .footer-inner { flex-direction: column; gap: 24px; text-align: center; }
+  .footer-links { gap: 24px; }
+}
+
+/* ══════════════════════════════════════════════════════
+   SCROLL ANIMATIONS
+   ══════════════════════════════════════════════════════ */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.stagger > * {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.stagger.is-visible > *:nth-child(1) { transition-delay: 0.05s; }
+.stagger.is-visible > *:nth-child(2) { transition-delay: 0.15s; }
+.stagger.is-visible > *:nth-child(3) { transition-delay: 0.25s; }
+.stagger.is-visible > *:nth-child(4) { transition-delay: 0.35s; }
+.stagger.is-visible > *:nth-child(5) { transition-delay: 0.45s; }
+.stagger.is-visible > *:nth-child(6) { transition-delay: 0.55s; }
+.stagger.is-visible > *:nth-child(7) { transition-delay: 0.65s; }
+.stagger.is-visible > *:nth-child(8) { transition-delay: 0.75s; }
+
+.stagger.is-visible > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-fade {
+  opacity: 0;
+  transition: opacity 1.2s ease;
+}
+
+.reveal-fade.is-visible {
+  opacity: 1;
+}
+
+/* ── Parallax subtle ────────────────────────────────── */
+.parallax-img {
+  transition: transform 0.1s linear;
+  will-change: transform;
+}
+
+/* ── Film frame label ────────────────────────────────── */
+.film-label {
+  font-family: var(--font-label);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5em;
+  opacity: 0.35;
+}
+</style>
+</head>
+
+<body data-review-page="home">
+
+<!-- ════════════════════════════════════════════════════
+     NAV — Fixed, backdrop-blur
+     ════════════════════════════════════════════════════ -->
+<nav class="nav-main" id="main-nav" aria-label="Primary navigation">
+  <a href="./index.html" class="nav-logo">
+    <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650Capital-Logo.png?ssl=1" alt="3650 Capital" width="120" height="28"/>
+  </a>
+
+  <div class="nav-links">
+    <a class="nav-link is-active" href="./index.html">Platform</a>
+    <a class="nav-link" href="./firm.html">Firm</a>
+    <a class="nav-link" href="./strategy.html">Strategy</a>
+    <a class="nav-link" href="./transactions.html">Transactions</a>
+    <a class="nav-link" href="./leadership.html">Leadership</a>
+  </div>
+
+  <a href="./contact.html" class="nav-cta">Contact</a>
+
+  <button class="nav-mobile-toggle" id="mobile-toggle" aria-label="Open navigation menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</nav>
+
+<!-- Mobile Nav Overlay -->
+<div class="mobile-nav-overlay" id="mobile-nav">
+  <button class="mobile-nav-close" id="mobile-close" aria-label="Close navigation menu">
+    <span class="material-symbols-outlined" style="font-size:28px;">close</span>
+  </button>
+  <a href="./index.html">Platform</a>
+  <a href="./firm.html">Firm</a>
+  <a href="./strategy.html">Strategy</a>
+  <a href="./transactions.html">Transactions</a>
+  <a href="./leadership.html">Leadership</a>
+  <a href="./contact.html">Contact</a>
+</div>
+
+<!-- ════════════════════════════════════════════════════
+     SIDE NAV DOTS
+     ════════════════════════════════════════════════════ -->
+<div class="side-nav" id="side-nav" aria-hidden="true">
+  <a href="#hero" class="side-nav-dot is-active" data-section="hero">
+    <span class="dot-label">01</span>
+    <span class="dot-circle"></span>
+  </a>
+  <a href="#platform" class="side-nav-dot" data-section="platform">
+    <span class="dot-label">02</span>
+    <span class="dot-circle"></span>
+  </a>
+  <a href="#continuity" class="side-nav-dot" data-section="continuity">
+    <span class="dot-label">03</span>
+    <span class="dot-circle"></span>
+  </a>
+  <a href="#scale" class="side-nav-dot" data-section="scale">
+    <span class="dot-label">04</span>
+    <span class="dot-circle"></span>
+  </a>
+  <a href="#portfolio" class="side-nav-dot" data-section="portfolio">
+    <span class="dot-label">05</span>
+    <span class="dot-circle"></span>
+  </a>
+  <a href="#contact" class="side-nav-dot" data-section="contact">
+    <span class="dot-label">06</span>
+    <span class="dot-circle"></span>
+  </a>
+</div>
+
+<!-- ════════════════════════════════════════════════════
+     MAIN CONTENT
+     ════════════════════════════════════════════════════ -->
+<main>
+
+  <!-- ──────────────────────────────────────────────────
+       FRAME 1 — HERO
+       Full-screen dark, hero photo at 30% opacity
+       ────────────────────────────────────────────────── -->
+  <section class="frame frame-dark" id="hero">
+    <div class="hero-bg">
+      <img
+        src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/grove-central-hero.jpg?w=1200&ssl=1"
+        alt="Grove Central commercial real estate project — aerial view"
+        loading="eager"
+      />
+      <div class="hero-overlay"></div>
+    </div>
+
+    <div class="hero-content">
+      <p class="hero-label reveal kern-wide">Strategic Lending Partners</p>
+      <h1 class="hero-headline reveal" style="transition-delay: 0.15s;">
+        One lender.<br/>Wholly committed.
+      </h1>
+      <div class="hero-rule reveal" style="transition-delay: 0.3s;"></div>
+    </div>
+
+    <div class="hero-scroll-hint" aria-hidden="true">
+      <span class="material-symbols-outlined">expand_more</span>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+
+  <!-- ──────────────────────────────────────────────────
+       FRAME 2 — PLATFORM (Light frame)
+       Large text left, architectural image right
+       ────────────────────────────────────────────────── -->
+  <section class="frame frame-light" id="platform">
+    <div class="platform-grid">
+      <div class="platform-text">
+        <span class="section-label reveal kern-wide">01 / Platform</span>
+        <h2 class="reveal" style="transition-delay: 0.1s;">
+          One lender.<br/>From origination<br/>to maturity.
+        </h2>
+        <p class="reveal" style="transition-delay: 0.2s;">
+          Our fully integrated approach ensures that every transaction is managed with
+          architectural precision. We do not just provide capital — we provide the
+          structural foundation for stability and continuity across the entire loan lifecycle.
+        </p>
+        <div class="platform-stats stagger">
+          <div>
+            <span class="platform-stat-label">Continuity</span>
+            <span class="platform-stat-value">01</span>
+          </div>
+          <div>
+            <span class="platform-stat-label">Focus</span>
+            <span class="platform-stat-value">Commercial RE</span>
+          </div>
+          <div>
+            <span class="platform-stat-label">Strategy</span>
+            <span class="platform-stat-value">Direct Origination</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="platform-image reveal-fade">
+        <img
+          src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Commercial-Observer-Founders-Image.png?w=800&ssl=1"
+          alt="3650 Capital founders — leadership portrait"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ──────────────────────────────────────────────────
+       FRAME 3 — CONTINUITY (Dark, centered)
+       ────────────────────────────────────────────────── -->
+  <section class="frame frame-dark" id="continuity">
+    <div class="continuity-bg">
+      <img
+        src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/pere-panel-group-shot.jpg?w=800&ssl=1"
+        alt="PERE industry panel discussion — 3650 Capital leadership"
+        loading="lazy"
+      />
+    </div>
+
+    <div class="continuity-content">
+      <span class="section-label reveal kern-extreme film-label">03 / Continuity</span>
+      <h2 class="reveal" style="transition-delay: 0.15s;">
+        Borrowers do not<br/>just need capital.<br/>They need continuity.
+      </h2>
+      <a href="./firm.html" class="continuity-cta reveal" style="transition-delay: 0.3s;">
+        Our Commitment
+      </a>
+    </div>
+  </section>
+
+
+  <!-- ──────────────────────────────────────────────────
+       FRAME 4 — SCALE / BENTO STATS (Dark deep)
+       $16.3B, 1,300+, 24/7 with NYC office image
+       ────────────────────────────────────────────────── -->
+  <section class="frame frame-deep" id="scale">
+    <div class="scale-layout">
+      <div class="scale-image-panel">
+        <img
+          src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/nyc-office-interior-2.jpg?w=800&ssl=1"
+          alt="3650 Capital New York City office interior"
+          loading="lazy"
+        />
+        <div class="scale-image-overlay"></div>
+      </div>
+
+      <div class="scale-data-panel">
+        <span class="section-label reveal kern-wide">04 / The Scale of Impact</span>
+
+        <div class="stagger">
+          <div class="stat-block">
+            <div class="stat-number counter-value" data-counter="16.3" data-prefix="$" data-suffix="B">$0B</div>
+            <p class="stat-desc kern-track">Total Assets Serviced</p>
+          </div>
+
+          <div class="stat-block">
+            <div class="stat-number counter-value" data-counter="1300" data-prefix="" data-suffix="+">0+</div>
+            <p class="stat-desc kern-track">Properties Financed</p>
+          </div>
+
+          <div class="stat-block">
+            <div class="stat-number">24/7</div>
+            <p class="stat-desc kern-track">Platform Availability</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ──────────────────────────────────────────────────
+       FRAME 5 — FEATURED TRANSACTION (Light)
+       Center at Miami Gardens $49.3M
+       ────────────────────────────────────────────────── -->
+  <section class="frame frame-light" id="portfolio">
+    <div class="transaction-layout">
+      <div class="transaction-image-wrap reveal-fade">
+        <img
+          src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/rendering-center-at-miami-gardens-courtesy-3650-reit.jpg?w=800&ssl=1"
+          alt="Center at Miami Gardens — mixed-use commercial rendering"
+          loading="lazy"
+        />
+      </div>
+
+      <div class="transaction-details">
+        <span class="section-label reveal kern-wide">Featured Transaction / 2024</span>
+        <h2 class="reveal" style="transition-delay: 0.1s;">Center at<br/>Miami Gardens</h2>
+
+        <div class="transaction-meta stagger">
+          <div class="transaction-meta-row">
+            <span class="transaction-meta-label">Valuation</span>
+            <span class="transaction-meta-value">$49.3M</span>
+          </div>
+          <div class="transaction-meta-row">
+            <span class="transaction-meta-label">Location</span>
+            <span class="transaction-meta-value">Miami, FL</span>
+          </div>
+          <div class="transaction-meta-row">
+            <span class="transaction-meta-label">Type</span>
+            <span class="transaction-meta-value">Mixed-Use</span>
+          </div>
+          <div class="transaction-meta-row">
+            <span class="transaction-meta-label">Year</span>
+            <span class="transaction-meta-value">2024</span>
+          </div>
+        </div>
+
+        <a href="./transactions.html" class="transaction-cta reveal" style="transition-delay: 0.3s;">
+          View All Transactions
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ──────────────────────────────────────────────────
+       FRAME 6 — CONTACT (Dark)
+       "Begin." with form
+       ────────────────────────────────────────────────── -->
+  <section class="frame frame-dark" id="contact">
+    <div class="contact-content">
+      <h2 class="reveal">Begin.</h2>
+      <p class="contact-subtitle reveal" style="transition-delay: 0.1s;">
+        Whether you are exploring a new transaction, seeking to refinance,
+        or looking for a lending partner who stays with you from origination to maturity —
+        we are ready to start the conversation.
+      </p>
+
+      <form class="contact-form stagger" action="#" method="post" aria-label="Contact form">
+        <div class="contact-form-row">
+          <input type="text" name="name" placeholder="Full Name" required aria-label="Full Name"/>
+          <input type="text" name="company" placeholder="Company" aria-label="Company"/>
+        </div>
+        <input type="email" name="email" placeholder="Email Address" required aria-label="Email Address"/>
+        <input type="tel" name="phone" placeholder="Phone (optional)" aria-label="Phone"/>
+        <textarea name="message" placeholder="Tell us about your project or inquiry..." rows="5" aria-label="Message"></textarea>
+        <button type="submit" class="contact-submit">Send Inquiry</button>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+
+<!-- ════════════════════════════════════════════════════
+     FOOTER
+     ════════════════════════════════════════════════════ -->
+<footer class="footer-main">
+  <div class="footer-inner">
+    <span class="footer-copy">&copy; 2024 3650 Capital. All Rights Reserved.</span>
+    <div class="footer-links">
+      <a href="./firm.html" class="footer-link">Firm</a>
+      <a href="./strategy.html" class="footer-link">Strategy</a>
+      <a href="./transactions.html" class="footer-link">Transactions</a>
+      <a href="./leadership.html" class="footer-link">Leadership</a>
+      <a href="./contact.html" class="footer-link">Contact</a>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ════════════════════════════════════════════════════
+     SCRIPTS
+     ════════════════════════════════════════════════════ -->
+<script>
+(function () {
+  'use strict';
+
+  /* ── Reduced motion check ─────────────────────────── */
+  var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ══════════════════════════════════════════════════
+     Intersection Observer — .reveal, .stagger, .reveal-fade
+     ══════════════════════════════════════════════════ */
+  var animatedEls = document.querySelectorAll('.reveal, .stagger, .reveal-fade');
+
+  var observerOptions = {
+    root: null,
+    rootMargin: '0px 0px -60px 0px',
+    threshold: 0.12
+  };
+
+  if (!prefersReducedMotion) {
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    animatedEls.forEach(function (el) {
+      observer.observe(el);
+    });
+  } else {
+    /* If reduced motion, make everything visible immediately */
+    animatedEls.forEach(function (el) {
+      el.classList.add('is-visible');
+    });
+  }
+
+  /* ══════════════════════════════════════════════════
+     Counter Animation
+     ══════════════════════════════════════════════════ */
+  var counters = document.querySelectorAll('.counter-value[data-counter]');
+
+  function easeOutCubic(t) {
+    return 1 - Math.pow(1 - t, 3);
+  }
+
+  function animateCounter(el) {
+    var target = parseFloat(el.getAttribute('data-counter'));
+    var prefix = el.getAttribute('data-prefix') || '';
+    var suffix = el.getAttribute('data-suffix') || '';
+    var isDecimal = String(target).indexOf('.') !== -1;
+    var duration = 2200;
+    var startTime = performance.now();
+
+    function step(currentTime) {
+      var elapsed = currentTime - startTime;
+      var progress = Math.min(elapsed / duration, 1);
+      var easedProgress = easeOutCubic(progress);
+      var current = easedProgress * target;
+
+      if (isDecimal) {
+        el.textContent = prefix + current.toFixed(1) + suffix;
+      } else {
+        el.textContent = prefix + Math.floor(current).toLocaleString() + suffix;
+      }
+
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      } else {
+        if (isDecimal) {
+          el.textContent = prefix + target.toFixed(1) + suffix;
+        } else {
+          el.textContent = prefix + target.toLocaleString() + suffix;
+        }
+      }
+    }
+
+    if (prefersReducedMotion) {
+      if (isDecimal) {
+        el.textContent = prefix + target.toFixed(1) + suffix;
+      } else {
+        el.textContent = prefix + target.toLocaleString() + suffix;
+      }
+    } else {
+      requestAnimationFrame(step);
+    }
+  }
+
+  var counterObserverOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.4
+  };
+
+  var counterObserver = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        animateCounter(entry.target);
+        counterObserver.unobserve(entry.target);
+      }
+    });
+  }, counterObserverOptions);
+
+  counters.forEach(function (el) {
+    counterObserver.observe(el);
+  });
+
+  /* ══════════════════════════════════════════════════
+     Nav — scroll state
+     ══════════════════════════════════════════════════ */
+  var nav = document.getElementById('main-nav');
+
+  window.addEventListener('scroll', function () {
+    if (window.scrollY > 80) {
+      nav.classList.add('is-scrolled');
+    } else {
+      nav.classList.remove('is-scrolled');
+    }
+  }, { passive: true });
+
+  /* ══════════════════════════════════════════════════
+     Mobile nav toggle
+     ══════════════════════════════════════════════════ */
+  var mobileToggle = document.getElementById('mobile-toggle');
+  var mobileClose = document.getElementById('mobile-close');
+  var mobileNav = document.getElementById('mobile-nav');
+
+  function openMobileNav() {
+    mobileNav.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMobileNav() {
+    mobileNav.classList.remove('is-open');
+    document.body.style.overflow = '';
+  }
+
+  if (mobileToggle) {
+    mobileToggle.addEventListener('click', openMobileNav);
+  }
+  if (mobileClose) {
+    mobileClose.addEventListener('click', closeMobileNav);
+  }
+
+  /* Close mobile nav on link click */
+  var mobileLinks = mobileNav ? mobileNav.querySelectorAll('a') : [];
+  mobileLinks.forEach(function (link) {
+    link.addEventListener('click', closeMobileNav);
+  });
+
+  /* ══════════════════════════════════════════════════
+     Side nav — active section tracking
+     ══════════════════════════════════════════════════ */
+  var sideNavDots = document.querySelectorAll('.side-nav-dot');
+  var sections = document.querySelectorAll('.frame[id]');
+
+  var sectionObserver = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        var activeId = entry.target.getAttribute('id');
+        sideNavDots.forEach(function (dot) {
+          if (dot.getAttribute('data-section') === activeId) {
+            dot.classList.add('is-active');
+          } else {
+            dot.classList.remove('is-active');
+          }
+        });
+      }
+    });
+  }, {
+    root: null,
+    rootMargin: '-40% 0px -40% 0px',
+    threshold: 0
+  });
+
+  sections.forEach(function (section) {
+    sectionObserver.observe(section);
+  });
+
+  /* ══════════════════════════════════════════════════
+     Contact form — basic client-side handling
+     ══════════════════════════════════════════════════ */
+  var contactForm = document.querySelector('.contact-form');
+  if (contactForm) {
+    contactForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var submitBtn = contactForm.querySelector('.contact-submit');
+      var originalText = submitBtn.textContent;
+      submitBtn.textContent = 'Sent';
+      submitBtn.style.opacity = '0.6';
+      submitBtn.style.pointerEvents = 'none';
+      setTimeout(function () {
+        submitBtn.textContent = originalText;
+        submitBtn.style.opacity = '';
+        submitBtn.style.pointerEvents = '';
+        contactForm.reset();
+      }, 3000);
+    });
+  }
+
+  /* ══════════════════════════════════════════════════
+     Smooth scroll for anchor links (side nav)
+     ══════════════════════════════════════════════════ */
+  document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      var targetId = this.getAttribute('href').slice(1);
+      var targetEl = document.getElementById(targetId);
+      if (targetEl) {
+        targetEl.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+      }
+    });
+  });
+
+})();
+</script>
+
+</body>
+</html>
