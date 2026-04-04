@@ -201,7 +201,7 @@
     .text-reveal-wrap.visible .text-reveal-line:nth-child(3) { transition-delay: 0.24s; }
 
     /* Image clip reveal (bottom to top for editorial) */
-    .img-reveal { clip-path: inset(100% 0 0 0); transition: clip-path 1.2s cubic-bezier(0.16, 1, 0.3, 1); }
+    .{ clip-path: inset(100% 0 0 0); transition: clip-path 1.2s cubic-bezier(0.16, 1, 0.3, 1); }
     .img-reveal.visible { clip-path: inset(0 0 0 0); }
 
     /* Terra line draw */
@@ -324,7 +324,7 @@
 
       <!-- Hero image with editorial caption -->
       <div class="reveal reveal-delay-4 mt-14 relative">
-        <div class="w-full aspect-[16/7] overflow-hidden bg-ink/5 img-reveal img-hover">
+        <div class="w-full aspect-[16/7] overflow-hidden bg-ink/5 img-hover">
           <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/commercial-observer-power-finance.jpg?ssl=1"
                alt="3650 Capital leadership at industry event"
                class="w-full h-full object-cover">
@@ -434,7 +434,7 @@
       <!-- Office images -->
       <div class="grid md:grid-cols-2 gap-6 mt-14 stagger">
         <div class="reveal">
-          <div class="w-full aspect-[4/3] overflow-hidden bg-ink/5 img-reveal img-hover">
+          <div class="w-full aspect-[4/3] overflow-hidden bg-ink/5 img-hover">
             <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/nyc-office-interior-1.jpg?ssl=1"
                  alt="3650 Capital New York office interior"
                  class="w-full h-full object-cover">
@@ -442,7 +442,7 @@
           <span class="caption-line text-xs text-ink/50 mt-3 inline-block">New York office &mdash; 410 Park Avenue</span>
         </div>
         <div class="reveal reveal-delay-1">
-          <div class="w-full aspect-[4/3] overflow-hidden bg-ink/5 img-reveal img-hover">
+          <div class="w-full aspect-[4/3] overflow-hidden bg-ink/5 img-hover">
             <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/nyc-office-interior-2.jpg?ssl=1"
                  alt="3650 Capital office workspace"
                  class="w-full h-full object-cover">

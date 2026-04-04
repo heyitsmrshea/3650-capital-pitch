@@ -213,7 +213,7 @@
     .text-reveal-wrap.visible .text-reveal-line { transform: none; }
     .text-reveal-wrap.visible .text-reveal-line:nth-child(2) { transition-delay: 0.08s; }
     .text-reveal-wrap.visible .text-reveal-line:nth-child(3) { transition-delay: 0.16s; }
-    .img-reveal { clip-path: polygon(0 0, 0 0, 0 100%, 0 100%); transition: clip-path 1s cubic-bezier(0.22,1,0.36,1); }
+    .{ clip-path: polygon(0 0, 0 0, 0 100%, 0 100%); transition: clip-path 1s cubic-bezier(0.22,1,0.36,1); }
     .img-reveal.visible { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
     .line-draw { width: 0; height: 3px; background: #8b5e34; transition: width 0.8s cubic-bezier(0.22,1,0.36,1) 0.2s; }
     .line-draw.visible { width: 48px; }
@@ -339,7 +339,7 @@
             <img
               src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Oasis-Pointe.-Image-courtesy-of-3650-REIT-.jpeg?ssl=1"
               alt="Oasis at Dania Pointe"
-              class="w-full h-[400px] md:h-[520px] object-cover img-reveal"
+              class="w-full h-[400px] md:h-[520px] object-cover"
               loading="eager"
             >
             <!-- Overlay gradient -->

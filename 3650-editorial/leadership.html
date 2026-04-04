@@ -178,7 +178,7 @@
     .text-reveal-wrap.visible .text-reveal-line:nth-child(3) { transition-delay: 0.24s; }
 
     /* Image clip reveal (bottom to top for editorial) */
-    .img-reveal { clip-path: inset(100% 0 0 0); transition: clip-path 1.2s cubic-bezier(0.16, 1, 0.3, 1); }
+    .{ clip-path: inset(100% 0 0 0); transition: clip-path 1.2s cubic-bezier(0.16, 1, 0.3, 1); }
     .img-reveal.visible { clip-path: inset(0 0 0 0); }
 
     /* Terra line draw */
@@ -284,7 +284,7 @@
 
       <!-- Hero image with editorial caption -->
       <div class="reveal reveal-delay-3 mt-14 relative">
-        <div class="w-full aspect-[16/7] overflow-hidden bg-ink/5 img-reveal img-hover">
+        <div class="w-full aspect-[16/7] overflow-hidden bg-ink/5 img-hover">
           <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Founders-Profile-.png?ssl=1"
                alt="3650 Capital Founders"
                class="w-full h-full object-cover">
