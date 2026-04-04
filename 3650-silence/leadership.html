@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>3650 Capital — Leadership</title>
+<meta name="description" content="Meet the leadership team at 3650 Capital. Our founding partners bring over 92 years of combined experience in commercial real estate lending, securitization, and asset management."/>
+<link rel="icon" type="image/png" href="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650Capital-Logo.png?ssl=1"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --primary:           #5F5E5E;
+    --primary-dim:       #535252;
+    --on-primary:        #FAF7F6;
+    --surface:           #FBF9F5;
+    --surface-dim:       #D9DBD2;
+    --surface-low:       #F5F4EF;
+    --surface-container: #EEEEE8;
+    --surface-high:      #E8E9E2;
+    --surface-highest:   #E2E3DB;
+    --on-surface:        #30332E;
+    --on-surface-variant:#5D605A;
+    --tertiary:          #615F59;
+    --outline-variant:   #B1B3AB;
+    --ghost:             rgba(177,179,171,0.15);
+    --font-headline:     'Noto Serif', Georgia, serif;
+    --font-body:         'Plus Jakarta Sans', system-ui, sans-serif;
+    --font-label:        'Inter', system-ui, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--font-body); background: var(--surface); color: var(--on-surface); -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; overflow-x: hidden; line-height: 1.6; }
+  img { display: block; max-width: 100%; height: auto; }
+  a   { text-decoration: none; color: inherit; }
+  button { cursor: pointer; border: none; font-family: inherit; }
+
+  ::-webkit-scrollbar       { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--surface); }
+  ::-webkit-scrollbar-thumb { background: var(--surface-highest); }
+
+  .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; vertical-align: middle; }
+
+  .container { width: 100%; max-width: 1400px; margin: 0 auto; padding: 0 48px; }
+  @media (max-width: 768px) { .container { padding: 0 24px; } }
+
+  .font-headline { font-family: var(--font-headline); }
+  .label-xs { font-family: var(--font-label); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--tertiary); }
+  .label-sm { font-family: var(--font-label); font-size: 12px; letter-spacing: 0.4em; text-transform: uppercase; color: var(--tertiary); }
+  .ghost-border-b { border-bottom: 1px solid var(--ghost); }
+  .ghost-border-t { border-top: 1px solid var(--ghost); }
+  .ghost-border   { border: 1px solid var(--ghost); }
+
+  .btn-primary { display: inline-block; background: linear-gradient(to bottom, var(--primary), var(--primary-dim)); color: var(--on-primary); font-family: var(--font-label); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; padding: 20px 40px; border-radius: 0; transition: opacity 0.3s ease; }
+  .btn-primary:hover { opacity: 0.88; }
+
+  /* ── Nav ── */
+  .site-nav { position: fixed; top: 0; left: 0; width: 100%; z-index: 100; background: rgba(253,251,247,0.92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); transition: background 0.4s ease; }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 24px 48px; max-width: 1400px; margin: 0 auto; }
+  .nav-logo { display: flex; align-items: center; gap: 14px; }
+  .nav-logo img { height: 28px; width: auto; }
+  .nav-links { display: flex; align-items: center; gap: 40px; list-style: none; }
+  .nav-links a { font-family: var(--font-label); font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--tertiary); transition: color 0.3s ease; }
+  .nav-links a:hover, .nav-links a.active { color: var(--on-surface); }
+  .nav-cta { background: linear-gradient(to bottom, var(--primary), var(--primary-dim)); color: var(--on-primary); font-family: var(--font-label); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; padding: 12px 24px; border-radius: 0; transition: opacity 0.3s ease; }
+  .nav-cta:hover { opacity: 0.85; }
+  .nav-right { display: flex; align-items: center; gap: 24px; }
+  .nav-hamburger { display: none; background: none; border: none; color: var(--on-surface); font-size: 28px; cursor: pointer; }
+
+  .mobile-nav { display: none; position: fixed; inset: 0; z-index: 200; background: var(--surface); flex-direction: column; padding: 24px; }
+  .mobile-nav.open { display: flex; }
+  .mobile-nav-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 48px; }
+  .mobile-nav-links { list-style: none; display: flex; flex-direction: column; gap: 32px; }
+  .mobile-nav-links a { font-family: var(--font-headline); font-size: 28px; font-weight: 300; color: var(--on-surface); }
+
+  @media (max-width: 960px) { .nav-links { display: none; } .nav-cta { display: none; } .nav-hamburger { display: block; } .nav-inner { padding: 20px 24px; } }
+
+  /* ── Page Hero ── */
+  .page-hero { padding: 200px 0 120px; background: var(--surface); }
+  .page-hero h1 { font-family: var(--font-headline); font-size: clamp(42px, 6vw, 80px); font-weight: 300; line-height: 1.08; letter-spacing: -0.02em; margin-bottom: 32px; }
+  .page-hero h1 em { font-style: italic; font-weight: 400; }
+  .page-hero-body { font-size: 19px; color: var(--on-surface-variant); line-height: 1.7; max-width: 560px; }
+  .page-hero-divider { width: 96px; height: 1px; background: var(--primary); margin-bottom: 40px; }
+  @media (max-width: 768px) { .page-hero { padding: 140px 0 80px; } .page-hero-body { font-size: 17px; } }
+
+  /* ── Co-Founders ── */
+  .founders-section { padding: 128px 0; background: var(--surface-low); }
+  .founders-header { margin-bottom: 64px; }
+  .founders-header h2 { font-family: var(--font-headline); font-size: clamp(32px, 4vw, 52px); font-weight: 300; }
+
+  .founders-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--ghost);
+  }
+
+  .founder-card {
+    background: var(--surface-low);
+    padding: 48px 40px;
+    text-align: center;
+  }
+
+  .founder-headshot {
+    width: 180px;
+    height: 180px;
+    margin: 0 auto 24px;
+    overflow: hidden;
+  }
+
+  .founder-headshot img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(0.08);
+  }
+
+  .founder-name { font-family: var(--font-headline); font-size: 24px; font-weight: 400; margin-bottom: 8px; }
+  .founder-title { font-family: var(--font-label); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--tertiary); margin-bottom: 20px; }
+  .founder-divider { width: 48px; height: 1px; background: var(--ghost); margin: 0 auto 20px; }
+  .founder-bio { font-size: 14px; color: var(--on-surface-variant); line-height: 1.65; max-width: 320px; margin: 0 auto; }
+
+  @media (max-width: 960px) { .founders-grid { grid-template-columns: 1fr; } }
+
+  /* ── Team Grid ── */
+  .team-section { padding: 128px 0; background: var(--surface); }
+  .team-header { margin-bottom: 64px; }
+  .team-header h2 { font-family: var(--font-headline); font-size: clamp(32px, 4vw, 52px); font-weight: 300; }
+
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--ghost);
+    margin-bottom: 1px;
+  }
+
+  .team-card {
+    background: var(--surface);
+    padding: 32px 24px;
+    text-align: center;
+  }
+
+  .team-headshot {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 16px;
+    overflow: hidden;
+  }
+
+  .team-headshot img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(0.08);
+  }
+
+  .team-name { font-family: var(--font-headline); font-size: 17px; font-weight: 400; margin-bottom: 4px; }
+  .team-title { font-family: var(--font-label); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--tertiary); }
+
+  @media (max-width: 960px) { .team-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 480px) { .team-grid { grid-template-columns: 1fr 1fr; } .team-headshot { width: 96px; height: 96px; } }
+
+  /* ── Culture Band ── */
+  .culture-band { padding: 0; background: var(--surface-high); }
+  .culture-grid { display: grid; grid-template-columns: 1fr 1fr; min-height: 560px; }
+  .culture-image { position: relative; overflow: hidden; }
+  .culture-image img { width: 100%; height: 100%; object-fit: cover; min-height: 400px; filter: grayscale(0.1); }
+  .culture-content { display: flex; flex-direction: column; justify-content: center; padding: 80px 64px; }
+  .culture-content h3 { font-family: var(--font-headline); font-size: clamp(28px, 3vw, 36px); font-weight: 300; margin-bottom: 24px; line-height: 1.2; }
+  .culture-content p { font-size: 16px; color: var(--on-surface-variant); line-height: 1.7; margin-bottom: 20px; max-width: 520px; }
+
+  @media (max-width: 768px) { .culture-grid { grid-template-columns: 1fr; } .culture-content { padding: 48px 24px; } }
+
+  /* ── CTA ── */
+  .cta-band { padding: 160px 0; background: var(--surface-highest); }
+  .cta-inner { max-width: 640px; margin: 0 auto; text-align: center; }
+  .cta-inner h2 { font-family: var(--font-headline); font-size: clamp(36px, 5vw, 60px); font-weight: 300; margin-bottom: 24px; }
+  .cta-inner p { font-size: 18px; color: var(--on-surface-variant); margin-bottom: 48px; line-height: 1.65; }
+  @media (max-width: 640px) { .cta-band { padding: 96px 0; } }
+
+  /* ── Footer ── */
+  .site-footer { background: var(--surface-low); padding: 48px 0; }
+  .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 32px; flex-wrap: wrap; }
+  .footer-copy { font-family: var(--font-label); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; }
+  .footer-links { display: flex; gap: 40px; list-style: none; }
+  .footer-links a { font-family: var(--font-label); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--tertiary); transition: color 0.3s ease; }
+  .footer-links a:hover { color: var(--on-surface); }
+  .footer-icons { display: flex; gap: 20px; }
+  .footer-icons .material-symbols-outlined { color: var(--tertiary); cursor: pointer; transition: color 0.3s ease; }
+  .footer-icons .material-symbols-outlined:hover { color: var(--on-surface); }
+  @media (max-width: 768px) { .footer-inner { flex-direction: column; text-align: center; } }
+
+  /* ── Reveals ── */
+  .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.8s cubic-bezier(0.22,1,0.36,1), transform 0.8s cubic-bezier(0.22,1,0.36,1); }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-left { opacity: 0; transform: translateX(-40px); transition: opacity 0.8s cubic-bezier(0.22,1,0.36,1), transform 0.8s cubic-bezier(0.22,1,0.36,1); }
+  .reveal-left.visible { opacity: 1; transform: translateX(0); }
+  .reveal-right { opacity: 0; transform: translateX(40px); transition: opacity 0.8s cubic-bezier(0.22,1,0.36,1), transform 0.8s cubic-bezier(0.22,1,0.36,1); }
+  .reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+  .stagger-1 { transition-delay: 0.08s; }
+  .stagger-2 { transition-delay: 0.16s; }
+  .stagger-3 { transition-delay: 0.24s; }
+  .stagger-4 { transition-delay: 0.32s; }
+  .stagger-5 { transition-delay: 0.40s; }
+  .stagger-6 { transition-delay: 0.48s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal, .reveal-left, .reveal-right { opacity: 1; transform: none; transition: none; }
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+
+<body data-review-page="leadership">
+
+<!-- ═══════════════════════════════════════════════════════
+     TOP NAV
+     ═══════════════════════════════════════════════════════ -->
+<nav class="site-nav" role="navigation" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="./index.html" class="nav-logo" aria-label="3650 Capital home">
+      <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650Capital-Logo.png?ssl=1" alt="3650 Capital" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="./index.html">Home</a></li>
+      <li><a href="./firm.html">Firm</a></li>
+      <li><a href="./solutions.html">Solutions</a></li>
+      <li><a href="./transactions.html">Transactions</a></li>
+      <li><a href="./leadership.html" class="active">Leadership</a></li>
+      <li><a href="./contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="nav-cta">Investor Portal</button>
+      <button class="nav-hamburger" aria-label="Open menu" onclick="document.getElementById('mobileNav').classList.add('open')">
+        <span class="material-symbols-outlined">menu</span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Nav -->
+<div class="mobile-nav" id="mobileNav" role="dialog" aria-label="Mobile navigation">
+  <div class="mobile-nav-header">
+    <a href="./index.html" class="nav-logo"><img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650Capital-Logo.png?ssl=1" alt="3650 Capital" style="height:28px;" /></a>
+    <button aria-label="Close menu" onclick="document.getElementById('mobileNav').classList.remove('open')" style="background:none;border:none;cursor:pointer;"><span class="material-symbols-outlined" style="font-size:28px;">close</span></button>
+  </div>
+  <ul class="mobile-nav-links">
+    <li><a href="./index.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Home</a></li>
+    <li><a href="./firm.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Firm</a></li>
+    <li><a href="./solutions.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Solutions</a></li>
+    <li><a href="./transactions.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Transactions</a></li>
+    <li><a href="./leadership.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Leadership</a></li>
+    <li><a href="./contact.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Contact</a></li>
+  </ul>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     HERO
+     ═══════════════════════════════════════════════════════ -->
+<header class="page-hero">
+  <div class="container">
+    <span class="label-sm reveal stagger-1" style="margin-bottom:24px;display:block;">Leadership</span>
+    <h1 class="reveal stagger-2">An established<br/><em>industry force.</em></h1>
+    <div class="page-hero-divider reveal stagger-3"></div>
+    <p class="page-hero-body reveal stagger-4">
+      Our founding partners and senior leadership bring over 92 years of combined experience across commercial real estate lending, securitization, and institutional asset management.
+    </p>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════════════════════════
+     HERO IMAGE
+     ═══════════════════════════════════════════════════════ -->
+<section style="background:var(--surface);padding:0;">
+  <div class="container reveal" style="padding-top:0;padding-bottom:0;">
+    <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Founders-Profile-.png?w=800&ssl=1"
+         alt="3650 Capital founding partners"
+         style="width:100%;aspect-ratio:21/9;object-fit:cover;filter:grayscale(0.1);" />
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     CO-FOUNDERS
+     ═══════════════════════════════════════════════════════ -->
+<section class="founders-section" id="founders">
+  <div class="container">
+    <div class="founders-header">
+      <span class="label-sm reveal stagger-1" style="margin-bottom:16px;display:block;">Co-Founders</span>
+      <h2 class="reveal stagger-2">The founding principals.</h2>
+    </div>
+
+    <div class="founders-grid ghost-border reveal stagger-3">
+      <!-- Justin Kennedy -->
+      <div class="founder-card">
+        <div class="founder-headshot">
+          <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-Headshots-A1067.jpg?w=300&h=300&ssl=1"
+               alt="Justin Kennedy, Co-Founder and Managing Partner"
+               loading="lazy" />
+        </div>
+        <div class="founder-name">Justin Kennedy</div>
+        <div class="founder-title">Co-Founder &amp; Managing Partner</div>
+        <div class="founder-divider"></div>
+        <p class="founder-bio">Justin brings over three decades of experience in commercial real estate finance, having held senior leadership roles at major financial institutions before co-founding 3650 Capital.</p>
+      </div>
+
+      <!-- Jonathan Roth -->
+      <div class="founder-card">
+        <div class="founder-headshot">
+          <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-Headshots-A0857.jpg?w=300&h=300&ssl=1"
+               alt="Jonathan Roth, Co-Founder and Managing Partner"
+               loading="lazy" />
+        </div>
+        <div class="founder-name">Jonathan Roth</div>
+        <div class="founder-title">Co-Founder &amp; Managing Partner</div>
+        <div class="founder-divider"></div>
+        <p class="founder-bio">Jonathan has originated and structured billions of dollars in commercial real estate debt transactions across multiple market cycles, bringing deep credit expertise to every deal.</p>
+      </div>
+
+      <!-- Toby Cobb -->
+      <div class="founder-card">
+        <div class="founder-headshot">
+          <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-Headshots-A0746.jpg?w=300&h=300&ssl=1"
+               alt="Toby Cobb, Co-Founder and Managing Partner"
+               loading="lazy" />
+        </div>
+        <div class="founder-name">Toby Cobb</div>
+        <div class="founder-title">Co-Founder &amp; Managing Partner</div>
+        <div class="founder-divider"></div>
+        <p class="founder-bio">Toby is a veteran of the CMBS industry with extensive experience in capital markets, securitization, and institutional lending. He oversees the firm's capital markets operations.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     TEAM — 20 HEADSHOTS (5 rows x 4)
+     ═══════════════════════════════════════════════════════ -->
+<section class="team-section" id="team">
+  <div class="container">
+    <div class="team-header">
+      <span class="label-sm reveal stagger-1" style="margin-bottom:16px;display:block;">The Team</span>
+      <h2 class="reveal stagger-2">Senior leadership &amp; key professionals.</h2>
+    </div>
+
+    <!-- Row 1 -->
+    <div class="team-grid ghost-border reveal stagger-3">
+      <div class="team-card">
+        <div class="team-headshot">
+          <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Andrew-Parower-headshot.jpg?w=300&h=300&ssl=1" alt="Andrew Parower" loading="lazy" />
+        </div>
+        <div class="team-name font-headline">Andrew Parower</div>
+        <div class="team-title">Managing Director</div>
+      </div>
+      <div class="team-card">
+        <div class="team-headshot">
+          <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Peter-LaPointe-headshot.jpg?w=300&h=300&ssl=1" alt="Peter LaPointe" loading="lazy" />
+        </div>
+        <div class="team-name font-headline">Peter LaPointe</div>
+        <div class="team-title">Managing Director</div>
+      </div>
+      <div class="team-card">
+        <div class="team-headshot">
+          <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Mark-Jefferis-headshot.jpg?w=300&h=300&ssl=1" alt="Mark Jefferis" loading="lazy" />
+        </div>
+        <div class="team-name font-headline">Mark Jefferis</div>
+        <div class="team-title">Managing Director</div>
+      </div>
+      <div class="team-card">
+        <div class="team-headshot">
+          <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/John-Wright-headshot.jpg?w=300&h=300&ssl=1" alt="John Wright" loading="lazy" />
+        </div>
+        <div class="team-name font-headline">John Wright</div>
+        <div class="team-title">Managing Director</div>
+      </div>
+    </div>
+
+    <!-- Row 2 -->
+    <div class="team-grid ghost-border reveal stagger-4" style="margin-top:-1px;">
+      <div class="team-card">
+        <div class="team-headshot">
+          <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Malay-Bansal-headshot.jpg?w=300&h=300&ssl=1" alt="Malay Bansal" loading="lazy" />
+        </div>
+        <div class="team-name font-headline">Malay Bansal</div>
+        <div class="team-title">Head of Credit</div>
+      </div>
+      <div class="team-card">
+        <div class="team-headshot">
+          <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Ken-Dickey-headshot.jpg?w=300&h=300&ssl=1" alt="Ken Dickey" loading="lazy" />
+        </div>
+        <div class="team-name font-headline">Ken Dickey</div>
+        <div class="team-title">Managing Director</div>
+      </div>
+      <div class="team-card">
+        <div class="team-headshot">
+          <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Michael-Fleischer-headshot.jpg?w=300&h=300&ssl=1" alt="Michael Fleischer" loading="lazy" />
+        </div>
+        <div class="team-name font-headline">Michael Fleischer</div>
+        <div class="team-title">Director</div>
+      </div>
+      <div class="team-card">
+        <div class="team-headshot">
+          <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Jake-Stahler-headshot.jpg?w=300&h=300&ssl=1" alt="Jake Stahler" loading="lazy" />
+        </div>
+        <div class="team-name font-headline">Jake Stahler</div>
+        <div class="team-title">Director</div>
+      </div>
+    </div>
+
+    <!-- Row 3 -->
+    <div class="team-grid ghost-border reveal stagger-5" style="margin-top:-1px;">
+      <div class="team-card">
+        <div class="team-headshot">
+          <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Evan-Guttman-headshot.jpg?w=300&h=300&ssl=1" alt="Evan Guttman" loading="lazy" />
+        </div>
+        <div class="team-name font-headline">Evan Guttman</div>
+        <div class="team-title">Vice President</div>
+      </div>
+      <div class="team-card">
+        <div class="team-headshot">
+          <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Michael-McCabe-headshot.jpg?w=300&h=300&ssl=1" alt="Michael McCabe" loading="lazy" />
+        </div>
+        <div class="team-name font-headline">Michael McCabe</div>
+        <div class="team-title">Vice President</div>
+      </div>
+      <div class="team-card">
+        <div class="team-headshot">
+          <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Stephanie-Sabellico-headshot.jpg?w=300&h=300&ssl=1" alt="Stephanie Sabellico" loading="lazy" />
+        </div>
+        <div class="team-name font-headline">Stephanie Sabellico</div>
+        <div class="team-title">Vice President</div>
+      </div>
+      <div class="team-card">
+        <div class="team-headshot">
+          <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Barrett-Graham-headshot.jpg?w=300&h=300&ssl=1" alt="Barrett Graham" loading="lazy" />
+        </div>
+        <div class="team-name font-headline">Barrett Graham</div>
+        <div class="team-title">Vice President</div>
+      </div>
+    </div>
+
+    <!-- Row 4 -->
+    <div class="team-grid ghost-border reveal" style="margin-top:-1px;">
+      <div class="team-card">
+        <div class="team-headshot">
+          <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Brent-Thurn-headshot.jpg?w=300&h=300&ssl=1" alt="Brent Thurn" loading="lazy" />
+        </div>
+        <div class="team-name font-headline">Brent Thurn</div>
+        <div class="team-title">Vice President</div>
+      </div>
+      <div class="team-card">
+        <div class="team-headshot">
+          <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Daniel-Vaknin-headshot.jpg?w=300&h=300&ssl=1" alt="Daniel Vaknin" loading="lazy" />
+        </div>
+        <div class="team-name font-headline">Daniel Vaknin</div>
+        <div class="team-title">Vice President</div>
+      </div>
+      <div class="team-card">
+        <div class="team-headshot">
+          <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Eric-Kraft-headshot.jpg?w=300&h=300&ssl=1" alt="Eric Kraft" loading="lazy" />
+        </div>
+        <div class="team-name font-headline">Eric Kraft</div>
+        <div class="team-title">Vice President</div>
+      </div>
+      <div class="team-card">
+        <div class="team-headshot">
+          <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Noah-Moghavem-headshot.jpg?w=300&h=300&ssl=1" alt="Noah Moghavem" loading="lazy" />
+        </div>
+        <div class="team-name font-headline">Noah Moghavem</div>
+        <div class="team-title">Associate</div>
+      </div>
+    </div>
+
+    <!-- Row 5 -->
+    <div class="team-grid ghost-border reveal" style="margin-top:-1px;">
+      <div class="team-card">
+        <div class="team-headshot">
+          <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Will-Pierce-headshot.jpg?w=300&h=300&ssl=1" alt="Will Pierce" loading="lazy" />
+        </div>
+        <div class="team-name font-headline">Will Pierce</div>
+        <div class="team-title">Associate</div>
+      </div>
+      <div class="team-card">
+        <div class="team-headshot">
+          <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Jeremiah-Sharf-headshot.jpg?w=300&h=300&ssl=1" alt="Jeremiah Sharf" loading="lazy" />
+        </div>
+        <div class="team-name font-headline">Jeremiah Sharf</div>
+        <div class="team-title">Associate</div>
+      </div>
+      <div class="team-card">
+        <div class="team-headshot">
+          <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Katie-Spillman-headshot.jpg?w=300&h=300&ssl=1" alt="Katie Spillman" loading="lazy" />
+        </div>
+        <div class="team-name font-headline">Katie Spillman</div>
+        <div class="team-title">Associate</div>
+      </div>
+      <div class="team-card">
+        <div class="team-headshot">
+          <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Corey-Altman-headshot.jpg?w=300&h=300&ssl=1" alt="Corey Altman" loading="lazy" />
+        </div>
+        <div class="team-name font-headline">Corey Altman</div>
+        <div class="team-title">Analyst</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     CULTURE BAND
+     ═══════════════════════════════════════════════════════ -->
+<section class="culture-band ghost-border-t">
+  <div class="culture-grid">
+    <div class="culture-image reveal-left">
+      <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/pere-panel-group-shot.jpg?w=800&ssl=1"
+           alt="3650 Capital team at PERE panel event"
+           loading="lazy" />
+    </div>
+    <div class="culture-content reveal-right">
+      <span class="label-sm" style="margin-bottom:20px;display:block;">Our Culture</span>
+      <h3 class="font-headline">Institutional rigor. Entrepreneurial conviction.</h3>
+      <div style="width:64px;height:1px;background:var(--primary);margin-bottom:24px;"></div>
+      <p>We recruit professionals who combine institutional pedigree with the drive to build something enduring. Our culture values intellectual honesty, direct communication, and long-term thinking.</p>
+      <p>Every member of our team understands that our reputation is built one deal, one relationship, and one decision at a time.</p>
+      <a href="./contact.html" class="btn-primary" style="margin-top:24px;">Contact Us</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════════════════════ -->
+<footer class="site-footer ghost-border-t">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-copy">&copy; 2026 3650 Capital. All Rights Reserved.</div>
+      <ul class="footer-links">
+        <li><a href="./firm.html">Firm</a></li>
+        <li><a href="./solutions.html">Solutions</a></li>
+        <li><a href="./transactions.html">Transactions</a></li>
+        <li><a href="./leadership.html">Leadership</a></li>
+        <li><a href="./contact.html">Contact</a></li>
+        <li><a href="#">Disclosures</a></li>
+        <li><a href="#">Privacy</a></li>
+      </ul>
+      <div class="footer-icons">
+        <span class="material-symbols-outlined" aria-label="Language">language</span>
+        <span class="material-symbols-outlined" aria-label="Share">share</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function() {
+  'use strict';
+  var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (!prefersReduced && 'IntersectionObserver' in window) {
+    var revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+    var revealObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    revealElements.forEach(function(el) { revealObserver.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(function(el) { el.classList.add('visible'); });
+  }
+
+  var nav = document.querySelector('.site-nav');
+  if (nav) {
+    window.addEventListener('scroll', function() {
+      var scrollY = window.pageYOffset || document.documentElement.scrollTop;
+      if (scrollY > 80) { nav.style.background = 'rgba(253,251,247,0.97)'; nav.style.boxShadow = '0 1px 0 rgba(177,179,171,0.15)'; }
+      else { nav.style.background = 'rgba(253,251,247,0.92)'; nav.style.boxShadow = 'none'; }
+    }, { passive: true });
+  }
+})();
+</script>
+
+</body>
+</html>

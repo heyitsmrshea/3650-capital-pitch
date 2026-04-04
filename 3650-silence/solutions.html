@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>3650 Capital — Solutions</title>
+<meta name="description" content="3650 Capital offers direct lending solutions including senior construction loans, fixed-rate permanent financing, preferred equity, and special situations capital for commercial real estate."/>
+<link rel="icon" type="image/png" href="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650Capital-Logo.png?ssl=1"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+
+<style>
+  /* ── Reset & Base ────────────────────────────────────── */
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --primary:           #5F5E5E;
+    --primary-dim:       #535252;
+    --on-primary:        #FAF7F6;
+    --surface:           #FBF9F5;
+    --surface-dim:       #D9DBD2;
+    --surface-low:       #F5F4EF;
+    --surface-container: #EEEEE8;
+    --surface-high:      #E8E9E2;
+    --surface-highest:   #E2E3DB;
+    --on-surface:        #30332E;
+    --on-surface-variant:#5D605A;
+    --tertiary:          #615F59;
+    --outline-variant:   #B1B3AB;
+    --ghost:             rgba(177,179,171,0.15);
+    --font-headline:     'Noto Serif', Georgia, serif;
+    --font-body:         'Plus Jakarta Sans', system-ui, sans-serif;
+    --font-label:        'Inter', system-ui, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--surface);
+    color: var(--on-surface);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+
+  img { display: block; max-width: 100%; height: auto; }
+  a   { text-decoration: none; color: inherit; }
+  button { cursor: pointer; border: none; font-family: inherit; }
+  input, select, textarea { font-family: inherit; }
+
+  ::-webkit-scrollbar       { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--surface); }
+  ::-webkit-scrollbar-thumb { background: var(--surface-highest); }
+
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+    vertical-align: middle;
+  }
+
+  .container { width: 100%; max-width: 1400px; margin: 0 auto; padding: 0 48px; }
+  @media (max-width: 768px) { .container { padding: 0 24px; } }
+
+  .font-headline { font-family: var(--font-headline); }
+  .font-label    { font-family: var(--font-label); }
+
+  .label-xs { font-family: var(--font-label); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--tertiary); }
+  .label-sm { font-family: var(--font-label); font-size: 12px; letter-spacing: 0.4em; text-transform: uppercase; color: var(--tertiary); }
+
+  .ghost-border-b { border-bottom: 1px solid var(--ghost); }
+  .ghost-border-t { border-top: 1px solid var(--ghost); }
+  .ghost-border   { border: 1px solid var(--ghost); }
+
+  .btn-primary {
+    display: inline-block;
+    background: linear-gradient(to bottom, var(--primary), var(--primary-dim));
+    color: var(--on-primary);
+    font-family: var(--font-label);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 20px 40px;
+    border-radius: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  .btn-primary:hover { opacity: 0.88; }
+
+  .btn-ghost {
+    font-family: var(--font-label);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding-bottom: 4px;
+    border-bottom: 1px solid var(--on-surface);
+    background: none;
+    color: var(--on-surface);
+    transition: opacity 0.3s ease;
+  }
+  .btn-ghost:hover { opacity: 0.6; }
+
+  /* ── Nav ─────────────────────────────────────────────── */
+  .site-nav { position: fixed; top: 0; left: 0; width: 100%; z-index: 100; background: rgba(253,251,247,0.92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); transition: background 0.4s ease; }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 24px 48px; max-width: 1400px; margin: 0 auto; }
+  .nav-logo { display: flex; align-items: center; gap: 14px; }
+  .nav-logo img { height: 28px; width: auto; }
+  .nav-links { display: flex; align-items: center; gap: 40px; list-style: none; }
+  .nav-links a { font-family: var(--font-label); font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--tertiary); transition: color 0.3s ease; }
+  .nav-links a:hover, .nav-links a.active { color: var(--on-surface); }
+  .nav-cta { background: linear-gradient(to bottom, var(--primary), var(--primary-dim)); color: var(--on-primary); font-family: var(--font-label); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; padding: 12px 24px; border-radius: 0; transition: opacity 0.3s ease; }
+  .nav-cta:hover { opacity: 0.85; }
+  .nav-right { display: flex; align-items: center; gap: 24px; }
+  .nav-hamburger { display: none; background: none; border: none; color: var(--on-surface); font-size: 28px; cursor: pointer; }
+
+  .mobile-nav { display: none; position: fixed; inset: 0; z-index: 200; background: var(--surface); flex-direction: column; padding: 24px; }
+  .mobile-nav.open { display: flex; }
+  .mobile-nav-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 48px; }
+  .mobile-nav-links { list-style: none; display: flex; flex-direction: column; gap: 32px; }
+  .mobile-nav-links a { font-family: var(--font-headline); font-size: 28px; font-weight: 300; color: var(--on-surface); }
+
+  @media (max-width: 960px) {
+    .nav-links { display: none; }
+    .nav-cta   { display: none; }
+    .nav-hamburger { display: block; }
+    .nav-inner { padding: 20px 24px; }
+  }
+
+  /* ── Page Hero ──────────────────────────────────────── */
+  .page-hero { padding: 200px 0 120px; background: var(--surface); }
+  .page-hero h1 { font-family: var(--font-headline); font-size: clamp(42px, 6vw, 80px); font-weight: 300; line-height: 1.08; letter-spacing: -0.02em; color: var(--on-surface); margin-bottom: 32px; }
+  .page-hero h1 em { font-style: italic; font-weight: 400; }
+  .page-hero-body { font-size: 19px; color: var(--on-surface-variant); line-height: 1.7; max-width: 560px; }
+  .page-hero-divider { width: 96px; height: 1px; background: var(--primary); margin-bottom: 40px; }
+
+  @media (max-width: 768px) {
+    .page-hero { padding: 140px 0 80px; }
+    .page-hero-body { font-size: 17px; }
+  }
+
+  /* ── Operating Platform Cards ───────────────────────── */
+  .op-section { padding: 128px 0; background: var(--surface-low); }
+  .op-header { margin-bottom: 80px; }
+  .op-header h2 { font-family: var(--font-headline); font-size: clamp(32px, 4vw, 52px); font-weight: 300; }
+
+  .op-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--ghost);
+  }
+
+  .op-card {
+    background: var(--surface-low);
+    padding: 48px 36px;
+    display: flex;
+    flex-direction: column;
+    min-height: 320px;
+  }
+
+  .op-card .card-num { font-family: var(--font-label); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--tertiary); margin-bottom: 12px; }
+  .op-card h3 { font-family: var(--font-headline); font-size: 18px; font-weight: 400; margin-bottom: 16px; }
+  .op-card p { font-size: 14px; color: var(--on-surface-variant); line-height: 1.65; flex: 1; }
+
+  @media (max-width: 960px) { .op-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 640px) { .op-grid { grid-template-columns: 1fr; } .op-section { padding: 80px 0; } }
+
+  /* ── Product Sections ───────────────────────────────── */
+  .product-section { padding: 160px 0; background: var(--surface); }
+  .product-grid { display: grid; grid-template-columns: 7fr 5fr; gap: 80px; align-items: center; }
+  .product-grid.reversed { direction: rtl; }
+  .product-grid.reversed > * { direction: ltr; }
+
+  .product-text h2 { font-family: var(--font-headline); font-size: clamp(32px, 4vw, 56px); font-weight: 300; line-height: 1.12; margin-bottom: 32px; }
+  .product-text p { font-size: 17px; color: var(--on-surface-variant); line-height: 1.7; margin-bottom: 20px; max-width: 560px; }
+
+  .product-stats { display: flex; gap: 48px; margin-top: 32px; }
+  .product-stat-value { font-family: var(--font-headline); font-size: 28px; font-weight: 300; color: var(--on-surface); }
+  .product-stat-label { font-family: var(--font-label); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--tertiary); margin-top: 4px; }
+
+  .product-image img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; filter: grayscale(0.1); }
+
+  @media (max-width: 960px) {
+    .product-section { padding: 96px 0; }
+    .product-grid, .product-grid.reversed { grid-template-columns: 1fr; gap: 48px; direction: ltr; }
+    .product-grid.reversed > * { direction: ltr; }
+  }
+
+  /* ── Product Band (Full Width) ──────────────────────── */
+  .product-band { padding: 0; background: var(--surface-high); }
+  .product-band-grid { display: grid; grid-template-columns: 1fr 1fr; min-height: 600px; }
+  .product-band-image { position: relative; overflow: hidden; }
+  .product-band-image img { width: 100%; height: 100%; object-fit: cover; min-height: 400px; filter: grayscale(0.1); }
+  .product-band-content { display: flex; flex-direction: column; justify-content: center; padding: 80px 64px; }
+  .product-band-content h3 { font-family: var(--font-headline); font-size: clamp(28px, 3vw, 40px); font-weight: 300; margin-bottom: 24px; line-height: 1.2; }
+  .product-band-content p { font-size: 16px; color: var(--on-surface-variant); line-height: 1.7; margin-bottom: 20px; max-width: 520px; }
+
+  @media (max-width: 768px) {
+    .product-band-grid { grid-template-columns: 1fr; }
+    .product-band-content { padding: 48px 24px; }
+  }
+
+  /* ── Comparison Table ───────────────────────────────── */
+  .comparison { padding: 128px 0; background: var(--surface-low); }
+  .comparison-header { margin-bottom: 64px; }
+  .comparison-header h2 { font-family: var(--font-headline); font-size: clamp(32px, 4vw, 52px); font-weight: 300; }
+
+  .comparison-table-wrap { overflow-x: auto; }
+
+  .comparison-table {
+    width: 100%;
+    min-width: 700px;
+    border-collapse: collapse;
+  }
+
+  .comparison-table thead tr {
+    border-bottom: 2px solid var(--primary);
+  }
+
+  .comparison-table th {
+    text-align: left;
+    font-family: var(--font-label);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--tertiary);
+    padding: 16px 20px;
+    font-weight: 500;
+  }
+
+  .comparison-table tbody tr {
+    border-bottom: 1px solid var(--ghost);
+  }
+
+  .comparison-table td {
+    padding: 20px;
+    font-size: 15px;
+    color: var(--on-surface-variant);
+    line-height: 1.5;
+  }
+
+  .comparison-table td:first-child {
+    font-family: var(--font-label);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--on-surface);
+    letter-spacing: 0.02em;
+  }
+
+  /* ── CTA Band ───────────────────────────────────────── */
+  .cta-band { padding: 160px 0; background: var(--surface-highest); }
+  .cta-inner { max-width: 640px; margin: 0 auto; text-align: center; }
+  .cta-inner h2 { font-family: var(--font-headline); font-size: clamp(36px, 5vw, 60px); font-weight: 300; margin-bottom: 24px; }
+  .cta-inner p { font-size: 18px; color: var(--on-surface-variant); margin-bottom: 48px; line-height: 1.65; }
+  @media (max-width: 640px) { .cta-band { padding: 96px 0; } }
+
+  /* ── Footer ──────────────────────────────────────────── */
+  .site-footer { background: var(--surface-low); padding: 48px 0; }
+  .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 32px; flex-wrap: wrap; }
+  .footer-copy { font-family: var(--font-label); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--on-surface); }
+  .footer-links { display: flex; gap: 40px; list-style: none; }
+  .footer-links a { font-family: var(--font-label); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--tertiary); transition: color 0.3s ease; }
+  .footer-links a:hover { color: var(--on-surface); }
+  .footer-icons { display: flex; gap: 20px; }
+  .footer-icons .material-symbols-outlined { color: var(--tertiary); cursor: pointer; transition: color 0.3s ease; }
+  .footer-icons .material-symbols-outlined:hover { color: var(--on-surface); }
+  @media (max-width: 768px) { .footer-inner { flex-direction: column; text-align: center; } }
+
+  /* ── Reveal Animations ───────────────────────────────── */
+  .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.8s cubic-bezier(0.22,1,0.36,1), transform 0.8s cubic-bezier(0.22,1,0.36,1); }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-left { opacity: 0; transform: translateX(-40px); transition: opacity 0.8s cubic-bezier(0.22,1,0.36,1), transform 0.8s cubic-bezier(0.22,1,0.36,1); }
+  .reveal-left.visible { opacity: 1; transform: translateX(0); }
+  .reveal-right { opacity: 0; transform: translateX(40px); transition: opacity 0.8s cubic-bezier(0.22,1,0.36,1), transform 0.8s cubic-bezier(0.22,1,0.36,1); }
+  .reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+  .stagger-1 { transition-delay: 0.08s; }
+  .stagger-2 { transition-delay: 0.16s; }
+  .stagger-3 { transition-delay: 0.24s; }
+  .stagger-4 { transition-delay: 0.32s; }
+  .stagger-5 { transition-delay: 0.40s; }
+  .stagger-6 { transition-delay: 0.48s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal, .reveal-left, .reveal-right { opacity: 1; transform: none; transition: none; }
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+
+<body data-review-page="solutions">
+
+<!-- ═══════════════════════════════════════════════════════
+     TOP NAV
+     ═══════════════════════════════════════════════════════ -->
+<nav class="site-nav" role="navigation" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="./index.html" class="nav-logo" aria-label="3650 Capital home">
+      <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650Capital-Logo.png?ssl=1" alt="3650 Capital" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="./index.html">Home</a></li>
+      <li><a href="./firm.html">Firm</a></li>
+      <li><a href="./solutions.html" class="active">Solutions</a></li>
+      <li><a href="./transactions.html">Transactions</a></li>
+      <li><a href="./leadership.html">Leadership</a></li>
+      <li><a href="./contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="nav-cta">Investor Portal</button>
+      <button class="nav-hamburger" aria-label="Open menu" onclick="document.getElementById('mobileNav').classList.add('open')">
+        <span class="material-symbols-outlined">menu</span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Nav Overlay -->
+<div class="mobile-nav" id="mobileNav" role="dialog" aria-label="Mobile navigation">
+  <div class="mobile-nav-header">
+    <a href="./index.html" class="nav-logo" aria-label="3650 Capital home">
+      <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650Capital-Logo.png?ssl=1" alt="3650 Capital" style="height:28px;" />
+    </a>
+    <button aria-label="Close menu" onclick="document.getElementById('mobileNav').classList.remove('open')" style="background:none;border:none;cursor:pointer;">
+      <span class="material-symbols-outlined" style="font-size:28px;">close</span>
+    </button>
+  </div>
+  <ul class="mobile-nav-links">
+    <li><a href="./index.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Home</a></li>
+    <li><a href="./firm.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Firm</a></li>
+    <li><a href="./solutions.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Solutions</a></li>
+    <li><a href="./transactions.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Transactions</a></li>
+    <li><a href="./leadership.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Leadership</a></li>
+    <li><a href="./contact.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Contact</a></li>
+  </ul>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     HERO
+     ═══════════════════════════════════════════════════════ -->
+<header class="page-hero">
+  <div class="container">
+    <span class="label-sm reveal stagger-1" style="margin-bottom:24px;display:block;">Solutions</span>
+    <h1 class="reveal stagger-2">Short-term capital.<br/><em>Long-term solutions.</em></h1>
+    <div class="page-hero-divider reveal stagger-3"></div>
+    <p class="page-hero-body reveal stagger-4">
+      From senior construction loans to preferred equity, our capital solutions are engineered to meet borrowers wherever they are in the lifecycle of their asset.
+    </p>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════════════════════════
+     HERO IMAGE
+     ═══════════════════════════════════════════════════════ -->
+<section style="background:var(--surface);padding:0;">
+  <div class="container reveal" style="padding-top:0;padding-bottom:0;">
+    <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/rendering-center-at-miami-gardens.jpg?w=800&ssl=1"
+         alt="The Center at Miami Gardens, a 3650 Capital development rendering"
+         loading="lazy"
+         style="width:100%;aspect-ratio:21/9;object-fit:cover;filter:grayscale(0.1);" />
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     OPERATING PLATFORM
+     ═══════════════════════════════════════════════════════ -->
+<section class="op-section" id="platform">
+  <div class="container">
+    <div class="op-header">
+      <span class="label-sm reveal stagger-1" style="margin-bottom:16px;display:block;">Operating Platform</span>
+      <h2 class="reveal stagger-2">What sets our platform apart.</h2>
+    </div>
+
+    <div class="op-grid ghost-border reveal stagger-3">
+      <div class="op-card">
+        <span class="card-num">01 / Vertical Integration</span>
+        <h3 class="font-headline">Single Point of Accountability</h3>
+        <p>Origination, underwriting, closing, servicing, and asset management all under one roof. No handoffs, no misalignment.</p>
+      </div>
+
+      <div class="op-card">
+        <span class="card-num">02 / Loan Servicing</span>
+        <h3 class="font-headline">In-House from Day One</h3>
+        <p>Every loan is serviced in-house from day one. Our servicing team maintains direct relationships with every borrower in the portfolio.</p>
+      </div>
+
+      <div class="op-card">
+        <span class="card-num">03 / Credit Solutions</span>
+        <h3 class="font-headline">Flexible Structures</h3>
+        <p>Senior construction, bridge, fixed-rate permanent, mezzanine, and preferred equity -- flexible structures tailored to each deal.</p>
+      </div>
+
+      <div class="op-card">
+        <span class="card-num">04 / Relationship Model</span>
+        <h3 class="font-headline">Repeat-Business Lenders</h3>
+        <p>We are repeat-business lenders. Over 60% of our originations come from existing borrower relationships built on trust and execution.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     PRODUCT 1 — RECS
+     ═══════════════════════════════════════════════════════ -->
+<section class="product-section">
+  <div class="container">
+    <div class="product-grid">
+      <div class="product-text">
+        <span class="label-sm reveal stagger-1" style="margin-bottom:24px;display:block;">Product — RECS</span>
+        <h2 class="reveal stagger-2">Real Estate Credit<br/>Solutions (RECS)</h2>
+        <div class="reveal stagger-3">
+          <p>Our flagship lending platform provides senior construction and bridge financing for transitional commercial real estate assets ranging from $10 million to $250 million.</p>
+          <p>RECS loans are held on balance sheet and serviced in-house, giving borrowers certainty of execution and a direct line to decision-makers throughout the life of the loan.</p>
+        </div>
+        <div class="product-stats reveal stagger-4">
+          <div>
+            <div class="product-stat-value">$10&ndash;250M</div>
+            <div class="product-stat-label">Loan Size</div>
+          </div>
+          <div>
+            <div class="product-stat-value">Senior</div>
+            <div class="product-stat-label">Position</div>
+          </div>
+        </div>
+      </div>
+      <div class="product-image reveal-right">
+        <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Gateway-at-Wynwood.jpg?w=800&ssl=1"
+             alt="Gateway at Wynwood, a 3650 Capital financed property"
+             loading="lazy" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     PRODUCT 2 — STABLE CASH FLOW (Full Width Band)
+     ═══════════════════════════════════════════════════════ -->
+<section class="product-band ghost-border-t">
+  <div class="product-band-grid">
+    <div class="product-band-image reveal-left">
+      <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Unknown-1.png?w=800&ssl=1"
+           alt="Stabilized commercial real estate property"
+           loading="lazy" />
+    </div>
+    <div class="product-band-content reveal-right">
+      <span class="label-sm" style="margin-bottom:20px;display:block;">Product — Stable Cash Flow</span>
+      <h3 class="font-headline">Stable Cash Flow Lending</h3>
+      <div style="width:64px;height:1px;background:var(--primary);margin-bottom:24px;"></div>
+      <p>Fixed-rate permanent financing for stabilized commercial real estate assets. Loan sizes range from $5 million to $100 million with terms structured to match the long-term hold strategies of institutional borrowers.</p>
+      <div class="product-stats" style="margin-top:24px;">
+        <div>
+          <div class="product-stat-value">$5&ndash;100M</div>
+          <div class="product-stat-label">Loan Size</div>
+        </div>
+        <div>
+          <div class="product-stat-value">Fixed</div>
+          <div class="product-stat-label">Rate Structure</div>
+        </div>
+      </div>
+      <a href="./contact.html" class="btn-ghost" style="margin-top:32px;">Inquire About Financing</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     PRODUCT 3 — SPECIAL SITUATIONS
+     ═══════════════════════════════════════════════════════ -->
+<section class="product-section">
+  <div class="container">
+    <div class="product-grid reversed">
+      <div class="product-text">
+        <span class="label-sm reveal stagger-1" style="margin-bottom:24px;display:block;">Product — Special Situations</span>
+        <h2 class="reveal stagger-2">Special Situations<br/>&amp; Preferred Equity</h2>
+        <div class="reveal stagger-3">
+          <p>For deals that require creative capital structuring, our special situations and preferred equity platform provides flexible solutions across the capital stack.</p>
+          <p>Whether filling a gap in the capital structure, providing rescue capital, or funding a complex recapitalization, we bring the same rigor and commitment as our senior lending platform.</p>
+        </div>
+        <div style="margin-top:32px;" class="reveal stagger-4">
+          <a href="./transactions.html" class="btn-primary">View Transactions</a>
+        </div>
+      </div>
+      <div class="product-image reveal-left">
+        <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/DJI_0135-HDR-scaled.jpg?w=800&ssl=1"
+             alt="Aerial view of commercial real estate development"
+             loading="lazy" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     COMPARISON TABLE
+     ═══════════════════════════════════════════════════════ -->
+<section class="comparison" id="comparison">
+  <div class="container">
+    <div class="comparison-header">
+      <span class="label-sm reveal stagger-1" style="margin-bottom:16px;display:block;">Product Matrix</span>
+      <h2 class="reveal stagger-2">Compare our solutions.</h2>
+    </div>
+
+    <div class="comparison-table-wrap reveal stagger-3">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Senior Construction</th>
+            <th>Fixed-Rate Permanent</th>
+            <th>Preferred Equity</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Loan Size</td>
+            <td>$10M &ndash; $250M</td>
+            <td>$5M &ndash; $100M</td>
+            <td>$5M &ndash; $75M</td>
+          </tr>
+          <tr>
+            <td>Term</td>
+            <td>3&ndash;5 Years + Extensions</td>
+            <td>5&ndash;10 Years</td>
+            <td>2&ndash;5 Years</td>
+          </tr>
+          <tr>
+            <td>Rate Structure</td>
+            <td>Floating (SOFR +)</td>
+            <td>Fixed Rate</td>
+            <td>Fixed Preferred Return</td>
+          </tr>
+          <tr>
+            <td>Property Types</td>
+            <td>All CRE</td>
+            <td>Stabilized CRE</td>
+            <td>Transitional &amp; Stabilized</td>
+          </tr>
+          <tr>
+            <td>LTV / LTC</td>
+            <td>Up to 75% LTC</td>
+            <td>Up to 70% LTV</td>
+            <td>Up to 85% of Capital Stack</td>
+          </tr>
+          <tr>
+            <td>Servicing</td>
+            <td>In-House</td>
+            <td>In-House</td>
+            <td>In-House</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     CTA BAND
+     ═══════════════════════════════════════════════════════ -->
+<section class="cta-band">
+  <div class="container">
+    <div class="cta-inner">
+      <span class="label-sm reveal stagger-1" style="margin-bottom:32px;display:block;">Let's Build</span>
+      <h2 class="reveal stagger-2">Ready to structure your next deal?</h2>
+      <p class="reveal stagger-3">Our originations team is ready to discuss how 3650 Capital's integrated platform can serve your financing needs.</p>
+      <a href="./contact.html" class="btn-primary reveal stagger-4">Contact Our Team</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════════════════════ -->
+<footer class="site-footer ghost-border-t">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-copy">&copy; 2026 3650 Capital. All Rights Reserved.</div>
+      <ul class="footer-links">
+        <li><a href="./firm.html">Firm</a></li>
+        <li><a href="./solutions.html">Solutions</a></li>
+        <li><a href="./transactions.html">Transactions</a></li>
+        <li><a href="./leadership.html">Leadership</a></li>
+        <li><a href="./contact.html">Contact</a></li>
+        <li><a href="#">Disclosures</a></li>
+        <li><a href="#">Privacy</a></li>
+      </ul>
+      <div class="footer-icons">
+        <span class="material-symbols-outlined" aria-label="Language">language</span>
+        <span class="material-symbols-outlined" aria-label="Share">share</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════════════════
+     SCRIPTS
+     ═══════════════════════════════════════════════════════ -->
+<script>
+(function() {
+  'use strict';
+
+  var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (!prefersReduced && 'IntersectionObserver' in window) {
+    var revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+    var revealObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.12,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    revealElements.forEach(function(el) {
+      revealObserver.observe(el);
+    });
+  } else {
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(function(el) {
+      el.classList.add('visible');
+    });
+  }
+
+  var nav = document.querySelector('.site-nav');
+  if (nav) {
+    window.addEventListener('scroll', function() {
+      var scrollY = window.pageYOffset || document.documentElement.scrollTop;
+      if (scrollY > 80) {
+        nav.style.background = 'rgba(253,251,247,0.97)';
+        nav.style.boxShadow = '0 1px 0 rgba(177,179,171,0.15)';
+      } else {
+        nav.style.background = 'rgba(253,251,247,0.92)';
+        nav.style.boxShadow = 'none';
+      }
+    }, { passive: true });
+  }
+})();
+</script>
+
+</body>
+</html>

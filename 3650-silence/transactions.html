@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>3650 Capital — Transactions</title>
+<meta name="description" content="Featured transactions from 3650 Capital's senior lending and preferred equity platforms, spanning multifamily, mixed-use, industrial, and hospitality assets nationwide."/>
+<link rel="icon" type="image/png" href="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650Capital-Logo.png?ssl=1"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --primary:           #5F5E5E;
+    --primary-dim:       #535252;
+    --on-primary:        #FAF7F6;
+    --surface:           #FBF9F5;
+    --surface-dim:       #D9DBD2;
+    --surface-low:       #F5F4EF;
+    --surface-container: #EEEEE8;
+    --surface-high:      #E8E9E2;
+    --surface-highest:   #E2E3DB;
+    --on-surface:        #30332E;
+    --on-surface-variant:#5D605A;
+    --tertiary:          #615F59;
+    --outline-variant:   #B1B3AB;
+    --ghost:             rgba(177,179,171,0.15);
+    --font-headline:     'Noto Serif', Georgia, serif;
+    --font-body:         'Plus Jakarta Sans', system-ui, sans-serif;
+    --font-label:        'Inter', system-ui, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--font-body); background: var(--surface); color: var(--on-surface); -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; overflow-x: hidden; line-height: 1.6; }
+  img { display: block; max-width: 100%; height: auto; }
+  a   { text-decoration: none; color: inherit; }
+  button { cursor: pointer; border: none; font-family: inherit; }
+
+  ::-webkit-scrollbar       { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--surface); }
+  ::-webkit-scrollbar-thumb { background: var(--surface-highest); }
+
+  .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; vertical-align: middle; }
+
+  .container { width: 100%; max-width: 1400px; margin: 0 auto; padding: 0 48px; }
+  @media (max-width: 768px) { .container { padding: 0 24px; } }
+
+  .font-headline { font-family: var(--font-headline); }
+  .label-xs { font-family: var(--font-label); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--tertiary); }
+  .label-sm { font-family: var(--font-label); font-size: 12px; letter-spacing: 0.4em; text-transform: uppercase; color: var(--tertiary); }
+  .ghost-border-b { border-bottom: 1px solid var(--ghost); }
+  .ghost-border-t { border-top: 1px solid var(--ghost); }
+  .ghost-border   { border: 1px solid var(--ghost); }
+
+  .btn-primary { display: inline-block; background: linear-gradient(to bottom, var(--primary), var(--primary-dim)); color: var(--on-primary); font-family: var(--font-label); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; padding: 20px 40px; border-radius: 0; transition: opacity 0.3s ease; }
+  .btn-primary:hover { opacity: 0.88; }
+  .btn-ghost { font-family: var(--font-label); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; padding-bottom: 4px; border-bottom: 1px solid var(--on-surface); background: none; color: var(--on-surface); transition: opacity 0.3s ease; }
+  .btn-ghost:hover { opacity: 0.6; }
+
+  /* ── Nav ── */
+  .site-nav { position: fixed; top: 0; left: 0; width: 100%; z-index: 100; background: rgba(253,251,247,0.92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); transition: background 0.4s ease; }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 24px 48px; max-width: 1400px; margin: 0 auto; }
+  .nav-logo { display: flex; align-items: center; gap: 14px; }
+  .nav-logo img { height: 28px; width: auto; }
+  .nav-links { display: flex; align-items: center; gap: 40px; list-style: none; }
+  .nav-links a { font-family: var(--font-label); font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--tertiary); transition: color 0.3s ease; }
+  .nav-links a:hover, .nav-links a.active { color: var(--on-surface); }
+  .nav-cta { background: linear-gradient(to bottom, var(--primary), var(--primary-dim)); color: var(--on-primary); font-family: var(--font-label); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; padding: 12px 24px; border-radius: 0; transition: opacity 0.3s ease; }
+  .nav-cta:hover { opacity: 0.85; }
+  .nav-right { display: flex; align-items: center; gap: 24px; }
+  .nav-hamburger { display: none; background: none; border: none; color: var(--on-surface); font-size: 28px; cursor: pointer; }
+
+  .mobile-nav { display: none; position: fixed; inset: 0; z-index: 200; background: var(--surface); flex-direction: column; padding: 24px; }
+  .mobile-nav.open { display: flex; }
+  .mobile-nav-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 48px; }
+  .mobile-nav-links { list-style: none; display: flex; flex-direction: column; gap: 32px; }
+  .mobile-nav-links a { font-family: var(--font-headline); font-size: 28px; font-weight: 300; color: var(--on-surface); }
+
+  @media (max-width: 960px) {
+    .nav-links { display: none; }
+    .nav-cta   { display: none; }
+    .nav-hamburger { display: block; }
+    .nav-inner { padding: 20px 24px; }
+  }
+
+  /* ── Page Hero ── */
+  .page-hero { padding: 200px 0 120px; background: var(--surface); }
+  .page-hero h1 { font-family: var(--font-headline); font-size: clamp(42px, 6vw, 80px); font-weight: 300; line-height: 1.08; letter-spacing: -0.02em; margin-bottom: 32px; }
+  .page-hero h1 em { font-style: italic; font-weight: 400; }
+  .page-hero-body { font-size: 19px; color: var(--on-surface-variant); line-height: 1.7; max-width: 560px; }
+  .page-hero-divider { width: 96px; height: 1px; background: var(--primary); margin-bottom: 40px; }
+  @media (max-width: 768px) { .page-hero { padding: 140px 0 80px; } .page-hero-body { font-size: 17px; } }
+
+  /* ── Featured Transaction ── */
+  .featured { padding: 0; background: var(--surface-high); }
+  .featured-grid { display: grid; grid-template-columns: 1fr 1fr; min-height: 600px; }
+  .featured-image { position: relative; overflow: hidden; }
+  .featured-image img { width: 100%; height: 100%; object-fit: cover; min-height: 400px; filter: grayscale(0.08); }
+  .featured-content { display: flex; flex-direction: column; justify-content: center; padding: 80px 64px; }
+  .featured-content h3 { font-family: var(--font-headline); font-size: clamp(28px, 3vw, 40px); font-weight: 300; margin-bottom: 20px; line-height: 1.2; }
+  .featured-content p { font-size: 16px; color: var(--on-surface-variant); line-height: 1.7; margin-bottom: 24px; max-width: 520px; }
+  .featured-stats { display: flex; gap: 48px; margin-bottom: 24px; }
+  .featured-stat-value { font-family: var(--font-headline); font-size: 28px; font-weight: 300; }
+  .featured-stat-label { font-family: var(--font-label); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--tertiary); margin-top: 4px; }
+
+  @media (max-width: 768px) {
+    .featured-grid { grid-template-columns: 1fr; }
+    .featured-content { padding: 48px 24px; }
+  }
+
+  /* ── Deal Cards ── */
+  .deals-section { padding: 128px 0; }
+  .deals-header { margin-bottom: 64px; }
+  .deals-header h2 { font-family: var(--font-headline); font-size: clamp(32px, 4vw, 52px); font-weight: 300; }
+
+  .deals-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--ghost);
+  }
+
+  .deal-card {
+    background: var(--surface);
+    overflow: hidden;
+    transition: background 0.5s ease;
+  }
+  .deal-card:hover { background: var(--surface-low); }
+
+  .deal-card-image {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 3 / 2;
+  }
+  .deal-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s ease;
+    filter: grayscale(0.1);
+  }
+  .deal-card:hover .deal-card-image img { transform: scale(1.04); }
+
+  .deal-card-body {
+    padding: 32px;
+  }
+  .deal-card-type { font-family: var(--font-label); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--tertiary); margin-bottom: 10px; }
+  .deal-card-name { font-family: var(--font-headline); font-size: 20px; font-weight: 400; margin-bottom: 6px; }
+  .deal-card-location { font-size: 14px; color: var(--on-surface-variant); margin-bottom: 16px; }
+  .deal-card-divider { width: 100%; height: 1px; background: var(--ghost); margin-bottom: 16px; }
+  .deal-card-amount { font-family: var(--font-headline); font-size: 24px; font-weight: 300; }
+
+  @media (max-width: 960px) { .deals-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 640px) { .deals-grid { grid-template-columns: 1fr; } .deals-section { padding: 80px 0; } }
+
+  /* ── Structure Breakdown ── */
+  .structure { padding: 128px 0; background: var(--surface-low); }
+  .structure-header { margin-bottom: 64px; }
+  .structure-header h2 { font-family: var(--font-headline); font-size: clamp(32px, 4vw, 52px); font-weight: 300; }
+  .structure-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--ghost); }
+  .structure-card { background: var(--surface-low); padding: 64px 48px; display: flex; flex-direction: column; min-height: 320px; justify-content: space-between; }
+  .structure-card .card-label { font-family: var(--font-label); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--tertiary); margin-bottom: 8px; }
+  .structure-card .card-divider { width: 100%; height: 1px; background: var(--ghost); margin: 16px 0; }
+  .structure-card p { font-size: 15px; color: var(--on-surface-variant); line-height: 1.65; }
+  .structure-card .card-stats { display: flex; gap: 40px; margin-top: 24px; }
+  .structure-card .stat-value { font-family: var(--font-headline); font-size: clamp(28px, 3vw, 40px); font-weight: 300; }
+  .structure-card .stat-label { font-family: var(--font-label); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--tertiary); margin-top: 4px; }
+
+  @media (max-width: 768px) { .structure-grid { grid-template-columns: 1fr; } }
+
+  /* ── CTA ── */
+  .cta-band { padding: 160px 0; background: var(--surface-highest); }
+  .cta-inner { max-width: 640px; margin: 0 auto; text-align: center; }
+  .cta-inner h2 { font-family: var(--font-headline); font-size: clamp(36px, 5vw, 60px); font-weight: 300; margin-bottom: 24px; }
+  .cta-inner p { font-size: 18px; color: var(--on-surface-variant); margin-bottom: 48px; line-height: 1.65; }
+  @media (max-width: 640px) { .cta-band { padding: 96px 0; } }
+
+  /* ── Footer ── */
+  .site-footer { background: var(--surface-low); padding: 48px 0; }
+  .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 32px; flex-wrap: wrap; }
+  .footer-copy { font-family: var(--font-label); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; }
+  .footer-links { display: flex; gap: 40px; list-style: none; }
+  .footer-links a { font-family: var(--font-label); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--tertiary); transition: color 0.3s ease; }
+  .footer-links a:hover { color: var(--on-surface); }
+  .footer-icons { display: flex; gap: 20px; }
+  .footer-icons .material-symbols-outlined { color: var(--tertiary); cursor: pointer; transition: color 0.3s ease; }
+  .footer-icons .material-symbols-outlined:hover { color: var(--on-surface); }
+  @media (max-width: 768px) { .footer-inner { flex-direction: column; text-align: center; } }
+
+  /* ── Reveals ── */
+  .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.8s cubic-bezier(0.22,1,0.36,1), transform 0.8s cubic-bezier(0.22,1,0.36,1); }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-left { opacity: 0; transform: translateX(-40px); transition: opacity 0.8s cubic-bezier(0.22,1,0.36,1), transform 0.8s cubic-bezier(0.22,1,0.36,1); }
+  .reveal-left.visible { opacity: 1; transform: translateX(0); }
+  .reveal-right { opacity: 0; transform: translateX(40px); transition: opacity 0.8s cubic-bezier(0.22,1,0.36,1), transform 0.8s cubic-bezier(0.22,1,0.36,1); }
+  .reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+  .stagger-1 { transition-delay: 0.08s; }
+  .stagger-2 { transition-delay: 0.16s; }
+  .stagger-3 { transition-delay: 0.24s; }
+  .stagger-4 { transition-delay: 0.32s; }
+  .stagger-5 { transition-delay: 0.40s; }
+  .stagger-6 { transition-delay: 0.48s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal, .reveal-left, .reveal-right { opacity: 1; transform: none; transition: none; }
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+
+<body data-review-page="transactions">
+
+<!-- ═══════════════════════════════════════════════════════
+     TOP NAV
+     ═══════════════════════════════════════════════════════ -->
+<nav class="site-nav" role="navigation" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="./index.html" class="nav-logo" aria-label="3650 Capital home">
+      <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650Capital-Logo.png?ssl=1" alt="3650 Capital" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="./index.html">Home</a></li>
+      <li><a href="./firm.html">Firm</a></li>
+      <li><a href="./solutions.html">Solutions</a></li>
+      <li><a href="./transactions.html" class="active">Transactions</a></li>
+      <li><a href="./leadership.html">Leadership</a></li>
+      <li><a href="./contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="nav-cta">Investor Portal</button>
+      <button class="nav-hamburger" aria-label="Open menu" onclick="document.getElementById('mobileNav').classList.add('open')">
+        <span class="material-symbols-outlined">menu</span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Nav -->
+<div class="mobile-nav" id="mobileNav" role="dialog" aria-label="Mobile navigation">
+  <div class="mobile-nav-header">
+    <a href="./index.html" class="nav-logo"><img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650Capital-Logo.png?ssl=1" alt="3650 Capital" style="height:28px;" /></a>
+    <button aria-label="Close menu" onclick="document.getElementById('mobileNav').classList.remove('open')" style="background:none;border:none;cursor:pointer;"><span class="material-symbols-outlined" style="font-size:28px;">close</span></button>
+  </div>
+  <ul class="mobile-nav-links">
+    <li><a href="./index.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Home</a></li>
+    <li><a href="./firm.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Firm</a></li>
+    <li><a href="./solutions.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Solutions</a></li>
+    <li><a href="./transactions.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Transactions</a></li>
+    <li><a href="./leadership.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Leadership</a></li>
+    <li><a href="./contact.html" onclick="document.getElementById('mobileNav').classList.remove('open')">Contact</a></li>
+  </ul>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     HERO
+     ═══════════════════════════════════════════════════════ -->
+<header class="page-hero">
+  <div class="container">
+    <span class="label-sm reveal stagger-1" style="margin-bottom:24px;display:block;">Transactions</span>
+    <h1 class="reveal stagger-2">Featured<br/><em>transactions.</em></h1>
+    <div class="page-hero-divider reveal stagger-3"></div>
+    <p class="page-hero-body reveal stagger-4">
+      A selection of representative deals from our senior lending and preferred equity platforms, spanning major markets and property types across the United States.
+    </p>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════════════════════════
+     FEATURED — OASIS AT DANIA POINTE
+     ═══════════════════════════════════════════════════════ -->
+<section class="featured ghost-border-t" id="featured">
+  <div class="featured-grid">
+    <div class="featured-image reveal-left">
+      <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Oasis-Pointe.-Image-courtesy-of-3650-REIT-.jpeg?w=800&ssl=1"
+           alt="Oasis at Dania Pointe, a $64.3 million 3650 Capital transaction"
+           loading="lazy" />
+    </div>
+    <div class="featured-content reveal-right">
+      <span class="label-xs" style="margin-bottom:20px;display:block;">Featured Transaction</span>
+      <h3 class="font-headline">Oasis at Dania Pointe</h3>
+      <div style="width:64px;height:1px;background:var(--primary);margin-bottom:24px;"></div>
+      <p>A premier mixed-use development in one of South Florida's most dynamic corridors. 3650 Capital provided the senior construction financing to bring this transformative project to fruition, demonstrating our commitment to complex, high-conviction deals.</p>
+      <div class="featured-stats">
+        <div>
+          <div class="featured-stat-value">$64.3M</div>
+          <div class="featured-stat-label">Senior Loan</div>
+        </div>
+        <div>
+          <div class="featured-stat-value">Mixed-Use</div>
+          <div class="featured-stat-label">Property Type</div>
+        </div>
+      </div>
+      <span class="label-xs">Dania Beach, FL</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     SENIOR DEALS — 5 CARDS
+     ═══════════════════════════════════════════════════════ -->
+<section class="deals-section" style="background:var(--surface);" id="senior">
+  <div class="container">
+    <div class="deals-header">
+      <span class="label-sm reveal stagger-1" style="margin-bottom:16px;display:block;">Senior Lending</span>
+      <h2 class="reveal stagger-2">Senior construction &amp; bridge.</h2>
+    </div>
+
+    <div class="deals-grid ghost-border reveal stagger-3">
+      <div class="deal-card">
+        <div class="deal-card-image">
+          <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Gateway-at-Wynwood.jpg?w=800&ssl=1" alt="Gateway at Wynwood" loading="lazy" />
+        </div>
+        <div class="deal-card-body">
+          <div class="deal-card-type">Senior Construction</div>
+          <div class="deal-card-name font-headline">Gateway at Wynwood</div>
+          <div class="deal-card-location">Miami, FL</div>
+          <div class="deal-card-divider"></div>
+          <div class="deal-card-amount font-headline">$79M</div>
+        </div>
+      </div>
+
+      <div class="deal-card">
+        <div class="deal-card-image">
+          <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/48-east-mixed-use.jpg?w=800&ssl=1" alt="48 East mixed-use development" loading="lazy" />
+        </div>
+        <div class="deal-card-body">
+          <div class="deal-card-type">Senior Construction</div>
+          <div class="deal-card-name font-headline">48 East</div>
+          <div class="deal-card-location">Fort Lauderdale, FL</div>
+          <div class="deal-card-divider"></div>
+          <div class="deal-card-amount font-headline">$90.9M</div>
+        </div>
+      </div>
+
+      <div class="deal-card">
+        <div class="deal-card-image">
+          <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/tacoma-multifamily.jpg?w=800&ssl=1" alt="Tacoma multifamily property" loading="lazy" />
+        </div>
+        <div class="deal-card-body">
+          <div class="deal-card-type">Senior Construction</div>
+          <div class="deal-card-name font-headline">Tacoma</div>
+          <div class="deal-card-location">Tacoma, WA</div>
+          <div class="deal-card-divider"></div>
+          <div class="deal-card-amount font-headline">$82M</div>
+        </div>
+      </div>
+
+      <div class="deal-card">
+        <div class="deal-card-image">
+          <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/renaissance-development.jpg?w=800&ssl=1" alt="Renaissance development" loading="lazy" />
+        </div>
+        <div class="deal-card-body">
+          <div class="deal-card-type">Senior Construction</div>
+          <div class="deal-card-name font-headline">Renaissance</div>
+          <div class="deal-card-location">South Florida</div>
+          <div class="deal-card-divider"></div>
+          <div class="deal-card-amount font-headline">$90M</div>
+        </div>
+      </div>
+
+      <div class="deal-card">
+        <div class="deal-card-image">
+          <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/icp-irg-portfolio.jpg?w=800&ssl=1" alt="ICP/IRG commercial portfolio" loading="lazy" />
+        </div>
+        <div class="deal-card-body">
+          <div class="deal-card-type">Senior Loan</div>
+          <div class="deal-card-name font-headline">ICP / IRG Portfolio</div>
+          <div class="deal-card-location">National</div>
+          <div class="deal-card-divider"></div>
+          <div class="deal-card-amount font-headline">$180M</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     PREFERRED EQUITY DEALS — 5 CARDS
+     ═══════════════════════════════════════════════════════ -->
+<section class="deals-section" style="background:var(--surface-low);" id="preferred">
+  <div class="container">
+    <div class="deals-header">
+      <span class="label-sm reveal stagger-1" style="margin-bottom:16px;display:block;">Preferred Equity</span>
+      <h2 class="reveal stagger-2">Capital stack solutions.</h2>
+    </div>
+
+    <div class="deals-grid ghost-border reveal stagger-3">
+      <div class="deal-card" style="background:var(--surface-low);">
+        <div class="deal-card-image">
+          <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/aventura-mixed-use.jpg?w=800&ssl=1" alt="Aventura mixed-use property" loading="lazy" />
+        </div>
+        <div class="deal-card-body">
+          <div class="deal-card-type">Preferred Equity</div>
+          <div class="deal-card-name font-headline">Aventura</div>
+          <div class="deal-card-location">Aventura, FL</div>
+          <div class="deal-card-divider"></div>
+          <div class="deal-card-amount font-headline">$23M</div>
+        </div>
+      </div>
+
+      <div class="deal-card" style="background:var(--surface-low);">
+        <div class="deal-card-image">
+          <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/waterfront-property.jpg?w=800&ssl=1" alt="Waterfront property" loading="lazy" />
+        </div>
+        <div class="deal-card-body">
+          <div class="deal-card-type">Preferred Equity</div>
+          <div class="deal-card-name font-headline">Waterfront</div>
+          <div class="deal-card-location">South Florida</div>
+          <div class="deal-card-divider"></div>
+          <div class="deal-card-amount font-headline">$30M</div>
+        </div>
+      </div>
+
+      <div class="deal-card" style="background:var(--surface-low);">
+        <div class="deal-card-image">
+          <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/transcoastal-development.jpg?w=800&ssl=1" alt="Transcoastal development" loading="lazy" />
+        </div>
+        <div class="deal-card-body">
+          <div class="deal-card-type">Preferred Equity</div>
+          <div class="deal-card-name font-headline">Transcoastal</div>
+          <div class="deal-card-location">Fort Lauderdale, FL</div>
+          <div class="deal-card-divider"></div>
+          <div class="deal-card-amount font-headline">$89M</div>
+        </div>
+      </div>
+
+      <div class="deal-card" style="background:var(--surface-low);">
+        <div class="deal-card-image">
+          <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/rendering-center-at-miami-gardens-courtesy-3650-reit.jpg?w=800&ssl=1" alt="The Center at Miami Gardens" loading="lazy" />
+        </div>
+        <div class="deal-card-body">
+          <div class="deal-card-type">Preferred Equity</div>
+          <div class="deal-card-name font-headline">The Center at Miami Gardens</div>
+          <div class="deal-card-location">Miami Gardens, FL</div>
+          <div class="deal-card-divider"></div>
+          <div class="deal-card-amount font-headline">$49.3M</div>
+        </div>
+      </div>
+
+      <div class="deal-card" style="background:var(--surface-low);">
+        <div class="deal-card-image">
+          <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Oasis-Pointe.-Image-courtesy-of-3650-REIT-.jpeg?w=800&ssl=1" alt="Oasis at Dania Pointe preferred equity" loading="lazy" />
+        </div>
+        <div class="deal-card-body">
+          <div class="deal-card-type">Preferred Equity</div>
+          <div class="deal-card-name font-headline">Oasis at Dania Pointe</div>
+          <div class="deal-card-location">Dania Beach, FL</div>
+          <div class="deal-card-divider"></div>
+          <div class="deal-card-amount font-headline">$64.3M</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     STRUCTURE BREAKDOWN
+     ═══════════════════════════════════════════════════════ -->
+<section class="structure" id="structure">
+  <div class="container">
+    <div class="structure-header">
+      <span class="label-sm reveal stagger-1" style="margin-bottom:16px;display:block;">Portfolio Composition</span>
+      <h2 class="reveal stagger-2">By structure.</h2>
+    </div>
+
+    <div class="structure-grid ghost-border reveal stagger-3">
+      <div class="structure-card">
+        <div>
+          <span class="card-label">Senior Lending</span>
+          <div class="card-divider"></div>
+        </div>
+        <p>Senior construction and bridge loans held on balance sheet. Direct origination with in-house servicing for the life of each loan.</p>
+        <div class="card-stats">
+          <div>
+            <div class="stat-value">$10&ndash;250M</div>
+            <div class="stat-label">Loan Size</div>
+          </div>
+          <div>
+            <div class="stat-value">3&ndash;5 Yr</div>
+            <div class="stat-label">Term</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="structure-card">
+        <div>
+          <span class="card-label">Preferred Equity</span>
+          <div class="card-divider"></div>
+        </div>
+        <p>Flexible capital stack solutions for transitional and stabilized assets. Structured to complement senior debt and fill gaps in the capital structure.</p>
+        <div class="card-stats">
+          <div>
+            <div class="stat-value">$5&ndash;75M</div>
+            <div class="stat-label">Investment Size</div>
+          </div>
+          <div>
+            <div class="stat-value">2&ndash;5 Yr</div>
+            <div class="stat-label">Term</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     CTA
+     ═══════════════════════════════════════════════════════ -->
+<section class="cta-band">
+  <div class="container">
+    <div class="cta-inner">
+      <span class="label-sm reveal stagger-1" style="margin-bottom:32px;display:block;">Let's Build</span>
+      <h2 class="reveal stagger-2">Explore partnership opportunities.</h2>
+      <p class="reveal stagger-3">Our originations team is actively deploying capital across all major property types and geographies.</p>
+      <a href="./contact.html" class="btn-primary reveal stagger-4">Contact Our Team</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════════════════════ -->
+<footer class="site-footer ghost-border-t">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-copy">&copy; 2026 3650 Capital. All Rights Reserved.</div>
+      <ul class="footer-links">
+        <li><a href="./firm.html">Firm</a></li>
+        <li><a href="./solutions.html">Solutions</a></li>
+        <li><a href="./transactions.html">Transactions</a></li>
+        <li><a href="./leadership.html">Leadership</a></li>
+        <li><a href="./contact.html">Contact</a></li>
+        <li><a href="#">Disclosures</a></li>
+        <li><a href="#">Privacy</a></li>
+      </ul>
+      <div class="footer-icons">
+        <span class="material-symbols-outlined" aria-label="Language">language</span>
+        <span class="material-symbols-outlined" aria-label="Share">share</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function() {
+  'use strict';
+  var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (!prefersReduced && 'IntersectionObserver' in window) {
+    var revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+    var revealObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    revealElements.forEach(function(el) { revealObserver.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(function(el) { el.classList.add('visible'); });
+  }
+
+  var nav = document.querySelector('.site-nav');
+  if (nav) {
+    window.addEventListener('scroll', function() {
+      var scrollY = window.pageYOffset || document.documentElement.scrollTop;
+      if (scrollY > 80) { nav.style.background = 'rgba(253,251,247,0.97)'; nav.style.boxShadow = '0 1px 0 rgba(177,179,171,0.15)'; }
+      else { nav.style.background = 'rgba(253,251,247,0.92)'; nav.style.boxShadow = 'none'; }
+    }, { passive: true });
+  }
+})();
+</script>
+
+</body>
+</html>

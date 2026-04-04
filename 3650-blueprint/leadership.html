@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>3650 CAPITAL // LEADERSHIP — REV 4.0</title>
+<meta name="description" content="3650 Capital leadership — Meet the co-founders and professionals behind the vertically integrated CRE lending platform."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=IBM+Plex+Sans:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet"/>
+<style>
+/* ── RESET & BASE ── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: 'IBM Plex Sans', sans-serif;
+    background-color: #F5FAFF;
+    color: #04122E;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+}
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; text-decoration: none; }
+button { cursor: pointer; border: none; background: none; font-family: inherit; }
+ul, ol { list-style: none; }
+
+.font-title { font-family: 'DM Serif Text', serif; }
+.font-body  { font-family: 'IBM Plex Sans', sans-serif; }
+.font-tech  { font-family: 'Space Grotesk', monospace; }
+
+:root {
+    --bg:       #F5FAFF;
+    --navy:     #04122E;
+    --card:     #1A2744;
+    --accent:   #2ECC71;
+    --dim:      rgba(4, 18, 46, 0.4);
+    --border:   rgba(26, 39, 68, 0.25);
+    --ghost:    2px 2px 0px 0px #1A2744;
+    --max-w:    1280px;
+}
+
+.crosshatch { background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(26, 39, 68, 0.05) 10px, rgba(26, 39, 68, 0.05) 11px); }
+.crosshatch-dense { background-image: repeating-linear-gradient(45deg, transparent, transparent 6px, rgba(26, 39, 68, 0.04) 6px, rgba(26, 39, 68, 0.04) 7px); }
+.ghost-offset { box-shadow: var(--ghost); }
+
+.container { width: 100%; max-width: var(--max-w); margin: 0 auto; padding: 0 clamp(1.25rem, 4vw, 3rem); }
+
+.section-label { display: flex; align-items: center; gap: 1rem; margin-bottom: 3rem; }
+.section-label .tag { font-family: 'Space Grotesk', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.2em; background: var(--navy); color: #fff; padding: 3px 10px; white-space: nowrap; }
+.section-label .line { flex: 1; height: 1px; border-top: 1px dashed var(--border); }
+.section-label .note { font-family: 'Space Grotesk', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--dim); white-space: nowrap; }
+
+.btn-primary { display: inline-flex; align-items: center; gap: 8px; font-family: 'Space Grotesk', monospace; font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; padding: 12px 28px; border: 1px solid var(--navy); background: var(--card); color: #fff; box-shadow: var(--ghost); transition: transform 0.1s, box-shadow 0.1s; }
+.btn-primary:active { transform: translate(2px, 2px); box-shadow: none; }
+.btn-export { background: var(--accent); color: var(--navy); border-color: var(--accent); font-weight: 700; }
+
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-line { opacity: 0; transform: scaleX(0); transform-origin: left; transition: opacity 0.6s ease, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1); }
+.reveal-line.visible { opacity: 1; transform: scaleX(1); }
+
+.stagger > .reveal:nth-child(1) { transition-delay: 0s; }
+.stagger > .reveal:nth-child(2) { transition-delay: 0.1s; }
+.stagger > .reveal:nth-child(3) { transition-delay: 0.15s; }
+.stagger > .reveal:nth-child(4) { transition-delay: 0.2s; }
+.stagger > .reveal:nth-child(5) { transition-delay: 0.25s; }
+.stagger > .reveal:nth-child(6) { transition-delay: 0.3s; }
+.stagger > .reveal:nth-child(7) { transition-delay: 0.35s; }
+.stagger > .reveal:nth-child(8) { transition-delay: 0.4s; }
+.stagger > .reveal:nth-child(9) { transition-delay: 0.45s; }
+.stagger > .reveal:nth-child(10) { transition-delay: 0.5s; }
+.stagger > .reveal:nth-child(11) { transition-delay: 0.55s; }
+.stagger > .reveal:nth-child(12) { transition-delay: 0.6s; }
+.stagger > .reveal:nth-child(13) { transition-delay: 0.65s; }
+.stagger > .reveal:nth-child(14) { transition-delay: 0.7s; }
+.stagger > .reveal:nth-child(15) { transition-delay: 0.75s; }
+.stagger > .reveal:nth-child(16) { transition-delay: 0.8s; }
+.stagger > .reveal:nth-child(17) { transition-delay: 0.85s; }
+
+@media (prefers-reduced-motion: reduce) {
+    .reveal, .reveal-line { opacity: 1 !important; transform: none !important; transition: none !important; }
+    html { scroll-behavior: auto; }
+}
+
+/* ── NAV ── */
+.site-header { position: fixed; top: 0; left: 0; width: 100%; z-index: 100; background: var(--bg); border-bottom: 0.5px dashed var(--border); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+.site-header .inner { display: flex; align-items: center; justify-content: space-between; padding: 0 clamp(1.25rem, 4vw, 3rem); height: 64px; max-width: var(--max-w); margin: 0 auto; }
+.site-header .logo-text { font-family: 'DM Serif Text', serif; font-size: 1.15rem; font-weight: 700; letter-spacing: -0.03em; text-transform: uppercase; color: var(--navy); }
+.site-header nav { display: flex; align-items: center; gap: 2rem; }
+.site-header nav a { font-family: 'Space Grotesk', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--dim); padding: 4px 8px; transition: background 0.15s, color 0.15s; }
+.site-header nav a:hover { background: var(--navy); color: #fff; }
+.site-header nav a.active { border-bottom: 1px solid var(--navy); color: var(--navy); background: none; font-weight: 700; }
+
+.menu-toggle { display: none; width: 32px; height: 24px; flex-direction: column; justify-content: space-between; cursor: pointer; padding: 0; background: none; border: none; }
+.menu-toggle span { display: block; width: 100%; height: 1px; background: var(--navy); transition: transform 0.3s, opacity 0.3s; }
+.menu-toggle.open span:nth-child(1) { transform: translateY(11.5px) rotate(45deg); }
+.menu-toggle.open span:nth-child(2) { opacity: 0; }
+.menu-toggle.open span:nth-child(3) { transform: translateY(-11.5px) rotate(-45deg); }
+
+@media (max-width: 768px) {
+    .menu-toggle { display: flex; }
+    .site-header nav { display: none; position: absolute; top: 64px; left: 0; width: 100%; background: var(--bg); border-bottom: 1px dashed var(--border); flex-direction: column; padding: 1.5rem; gap: 0.75rem; }
+    .site-header nav.open { display: flex; }
+    .site-header nav a { padding: 10px 12px; width: 100%; }
+}
+
+/* ── PAGE HERO ── */
+.page-hero { padding-top: 140px; padding-bottom: 80px; position: relative; border-left: 0.5px dashed var(--border); margin-left: clamp(1.25rem, 4vw, 3rem); padding-left: 2rem; }
+.page-hero .side-annotation { position: absolute; left: -52px; top: 0; font-family: 'Space Grotesk', monospace; font-size: 9px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--dim); transform: rotate(-90deg); transform-origin: top right; white-space: nowrap; }
+.page-hero h1 { font-family: 'DM Serif Text', serif; font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 1.05; letter-spacing: -0.03em; color: var(--navy); margin-bottom: 1.5rem; }
+.page-hero .subtitle { font-size: 1.05rem; color: rgba(4, 18, 46, 0.65); max-width: 640px; line-height: 1.7; margin-bottom: 2rem; }
+
+/* ── FOUNDER PROFILE CARDS ── */
+.founder-card {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 0;
+    border: 1px solid var(--navy);
+    box-shadow: var(--ghost);
+    margin-bottom: 2rem;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+.founder-card:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: 3px 3px 0px 0px #1A2744;
+}
+@media (max-width: 768px) {
+    .founder-card { grid-template-columns: 1fr; }
+}
+.founder-card .photo-col {
+    overflow: hidden;
+    position: relative;
+}
+.founder-card .photo-col img {
+    width: 100%;
+    height: 100%;
+    min-height: 300px;
+    object-fit: cover;
+    filter: grayscale(100%);
+    transition: filter 0.4s;
+}
+.founder-card:hover .photo-col img { filter: grayscale(40%); }
+.founder-card .photo-col .person-id {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    font-family: 'Space Grotesk', monospace;
+    font-size: 9px;
+    background: var(--navy);
+    color: #fff;
+    padding: 2px 8px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+}
+.founder-card .bio-col {
+    padding: 2.5rem 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.founder-card .bio-col .role-tag {
+    font-family: 'Space Grotesk', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--dim);
+    margin-bottom: 0.5rem;
+}
+.founder-card .bio-col h3 {
+    font-family: 'DM Serif Text', serif;
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    color: var(--navy);
+    margin-bottom: 0.25rem;
+}
+.founder-card .bio-col .title {
+    font-family: 'Space Grotesk', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--navy);
+    margin-bottom: 1.5rem;
+}
+.founder-card .bio-col p {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: rgba(4, 18, 46, 0.65);
+    margin-bottom: 1.5rem;
+}
+.founder-card .bio-col .spec-line {
+    padding-top: 1rem;
+    border-top: 1px dashed var(--border);
+    font-family: 'Space Grotesk', monospace;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--dim);
+}
+
+/* ── TEAM ROSTER GRID ── */
+.roster-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+}
+@media (max-width: 1024px) { .roster-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 640px) { .roster-grid { grid-template-columns: repeat(2, 1fr); } }
+
+.roster-cell {
+    background: var(--bg);
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    transition: background 0.25s;
+    cursor: default;
+    position: relative;
+}
+.roster-cell:hover { background: #fff; }
+.roster-cell .cell-id {
+    position: absolute;
+    top: 6px;
+    left: 8px;
+    font-family: 'Space Grotesk', monospace;
+    font-size: 8px;
+    color: var(--dim);
+    z-index: 1;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+}
+.roster-cell .headshot {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    filter: grayscale(100%);
+    transition: filter 0.4s;
+}
+.roster-cell:hover .headshot { filter: grayscale(40%); }
+.roster-cell .cell-info {
+    padding: 1rem;
+}
+.roster-cell .cell-info h4 {
+    font-family: 'DM Serif Text', serif;
+    font-size: 0.85rem;
+    color: var(--navy);
+    line-height: 1.3;
+    margin-bottom: 0.25rem;
+}
+.roster-cell .cell-info .cell-title {
+    font-family: 'Space Grotesk', monospace;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--dim);
+}
+
+/* ── FOOTER ── */
+.site-footer { background: #E8EDF2; border-top: 0.5px dashed var(--navy); }
+.footer-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; padding: 3.5rem clamp(1.25rem, 4vw, 3rem); max-width: var(--max-w); margin: 0 auto; }
+@media (max-width: 768px) { .footer-inner { grid-template-columns: 1fr; } }
+.footer-brand { font-family: 'DM Serif Text', serif; font-size: 1.1rem; font-style: italic; text-transform: uppercase; margin-bottom: 1rem; color: var(--navy); }
+.footer-legal { font-family: 'Space Grotesk', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; line-height: 2; color: var(--dim); }
+.footer-links { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.footer-links .col-title { font-family: 'Space Grotesk', monospace; font-size: 10px; text-transform: uppercase; opacity: 0.6; margin-bottom: 0.75rem; letter-spacing: 0.12em; }
+.footer-links a { display: block; font-family: 'Space Grotesk', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.6; padding: 2px 0; transition: opacity 0.2s; }
+.footer-links a:hover { opacity: 1; }
+
+.marginalia { position: fixed; font-family: 'Space Grotesk', monospace; font-size: 9px; opacity: 0.2; pointer-events: none; user-select: none; color: var(--navy); }
+.marginalia.bottom-left { left: 16px; bottom: 16px; line-height: 1.6; }
+.marginalia.mid-right { right: 16px; top: 50%; transform: translateY(-50%) rotate(90deg); transform-origin: center center; white-space: nowrap; }
+@media (max-width: 1024px) { .marginalia { display: none; } }
+
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+</style>
+</head>
+
+<body data-review-page="leadership">
+
+<!-- ═══════════════════════════════════════════
+     NAVIGATION
+     ═══════════════════════════════════════════ -->
+<header class="site-header">
+    <div class="inner">
+        <a href="index.html" class="logo-text">3650 CAPITAL <span class="font-tech" style="font-weight:400; font-size:10px; letter-spacing:0.1em; opacity:0.5;">// REV 4.0</span></a>
+        <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+        <nav id="main-nav" role="navigation" aria-label="Main">
+            <a href="./index.html">HOME</a>
+            <a href="./firm.html">FIRM</a>
+            <a href="./solutions.html">SOLUTIONS</a>
+            <a href="./transactions.html">TRANSACTIONS</a>
+            <a href="./leadership.html" class="active">LEADERSHIP</a>
+            <a href="./contact.html">CONTACT</a>
+            <button class="btn-primary btn-export" onclick="window.print()">EXPORT .PDF</button>
+        </nav>
+    </div>
+</header>
+
+<!-- ═══════════════════════════════════════════
+     SEC 06.A — PAGE HERO
+     ═══════════════════════════════════════════ -->
+<main>
+<section class="page-hero" id="hero">
+    <div class="side-annotation" aria-hidden="true">SEC: 06.A // PERSONNEL_DIRECTORY</div>
+
+    <div class="reveal">
+        <div style="display:inline-block; border:2px solid var(--navy); padding:0.5rem 1rem; box-shadow:var(--ghost); margin-bottom:1.5rem;">
+            <span class="font-tech" style="font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--dim);">Section 06.A: Personnel Directory</span>
+        </div>
+    </div>
+
+    <h1 class="reveal">An established <br/><em style="font-style:italic;">industry force.</em></h1>
+
+    <p class="subtitle reveal">Lifetime CRE professionals with cross-discipline experience across origination, credit, capital markets, and servicing. Three co-founders backed by a team of 100+ professionals across seven offices.</p>
+
+    <div class="reveal" style="display:flex; flex-wrap:wrap; gap:0.75rem;">
+        <span style="font-family:'Space Grotesk',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; border:1px solid var(--border); padding:6px 16px; color:var(--dim);">3 CO-FOUNDERS</span>
+        <span style="font-family:'Space Grotesk',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; border:1px solid var(--border); padding:6px 16px; color:var(--dim);">17+ NAMED PROFESSIONALS</span>
+        <span style="font-family:'Space Grotesk',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; border:1px solid var(--border); padding:6px 16px; color:var(--dim);">REF. DWG_06A</span>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     SEC 06.B — CO-FOUNDERS
+     ═══════════════════════════════════════════ -->
+<section class="container" style="padding-bottom:6rem;">
+    <div class="section-label reveal">
+        <span class="tag">Section 06.B</span>
+        <span class="line"></span>
+        <span class="note">Co-Founders // Managing Partners</span>
+    </div>
+
+    <!-- Justin Kennedy -->
+    <div class="founder-card reveal">
+        <div class="photo-col">
+            <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-Headshots-A1067.jpg?w=300&h=300&ssl=1"
+                 alt="Justin Kennedy"
+                 loading="lazy"/>
+            <span class="person-id">PERS_01</span>
+        </div>
+        <div class="bio-col crosshatch-dense">
+            <span class="role-tag">Co-Founder</span>
+            <h3>Justin Kennedy</h3>
+            <div class="title">Managing Partner</div>
+            <p>Justin Kennedy is a Co-Founder and Managing Partner of 3650 Capital. He brings decades of experience in commercial real estate finance, with deep expertise spanning origination, structuring, and capital markets execution. Justin has been instrumental in building 3650 Capital into a vertically integrated lending platform that prioritizes borrower relationships and long-term alignment.</p>
+            <div class="spec-line">CLEARANCE: PRINCIPAL // DEPT: ORIGINATION / CAPITAL_MARKETS</div>
+        </div>
+    </div>
+
+    <!-- Jonathan Roth -->
+    <div class="founder-card reveal">
+        <div class="photo-col">
+            <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-Headshots-A0857.jpg?w=300&h=300&ssl=1"
+                 alt="Jonathan Roth"
+                 loading="lazy"/>
+            <span class="person-id">PERS_02</span>
+        </div>
+        <div class="bio-col">
+            <span class="role-tag">Co-Founder</span>
+            <h3>Jonathan Roth</h3>
+            <div class="title">Managing Partner</div>
+            <p>Jonathan Roth is a Co-Founder and Managing Partner of 3650 Capital. With extensive experience across credit underwriting, portfolio management, and institutional lending, Jonathan oversees the firm's credit and risk management functions. His disciplined approach to real estate lending has been central to the firm's track record of consistent performance.</p>
+            <div class="spec-line">CLEARANCE: PRINCIPAL // DEPT: CREDIT / RISK_MANAGEMENT</div>
+        </div>
+    </div>
+
+    <!-- Toby Cobb -->
+    <div class="founder-card reveal">
+        <div class="photo-col">
+            <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-Headshots-A0746.jpg?w=300&h=300&ssl=1"
+                 alt="Toby Cobb"
+                 loading="lazy"/>
+            <span class="person-id">PERS_03</span>
+        </div>
+        <div class="bio-col crosshatch-dense">
+            <span class="role-tag">Co-Founder</span>
+            <h3>Toby Cobb</h3>
+            <div class="title">Managing Partner</div>
+            <p>Toby Cobb is a Co-Founder and Managing Partner of 3650 Capital. A veteran of the commercial real estate industry, Toby leads the firm's origination and capital formation efforts. His deep relationships across the institutional investor community and his commitment to borrower-centric lending have been foundational to 3650 Capital's growth and market position.</p>
+            <div class="spec-line">CLEARANCE: PRINCIPAL // DEPT: ORIGINATION / CAPITAL_FORMATION</div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     SEC 06.C — FEATURE IMAGE
+     ═══════════════════════════════════════════ -->
+<section class="container" style="padding-bottom:6rem;">
+    <div style="border:1px dashed var(--border); overflow:hidden; position:relative;" class="reveal">
+        <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Founders-Profile-.png?w=800&ssl=1"
+             alt="3650 Capital Founders"
+             loading="lazy"
+             style="width:100%; height:360px; object-fit:cover; filter:grayscale(40%);"/>
+        <div style="padding:1.25rem 1.5rem; display:flex; justify-content:space-between; align-items:center; border-top:1px dashed var(--border);">
+            <span class="font-tech" style="font-size:10px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase;">FOUNDING TEAM &mdash; OFFICIAL PORTRAIT</span>
+            <span class="font-tech" style="font-size:9px; color:var(--dim);">IMG_REF: 06C_01</span>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     SEC 06.D — TEAM ROSTER
+     ═══════════════════════════════════════════ -->
+<section class="container" style="padding-bottom:6rem;">
+    <div class="section-label reveal">
+        <span class="tag">Section 06.D</span>
+        <span class="line"></span>
+        <span class="note">Technical Roster Grid</span>
+    </div>
+
+    <div class="reveal" style="margin-bottom:3rem;">
+        <h3 style="font-family:'DM Serif Text',serif; font-size:clamp(1.75rem,4vw,2.5rem); font-style:italic; color:var(--navy);">The professionals behind the platform.</h3>
+        <p class="font-tech" style="font-size:11px; letter-spacing:0.15em; text-transform:uppercase; color:var(--dim); margin-top:0.5rem;">Personnel Index // REF: ROSTER_06D // COUNT: 17</p>
+    </div>
+
+    <div class="roster-grid stagger">
+        <!-- Andrew Parower -->
+        <div class="roster-cell reveal">
+            <span class="cell-id">P_04</span>
+            <img class="headshot" src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-Headshots-Oct-2023-Miami-A0562-scaled.jpg?w=300&h=300&ssl=1" alt="Andrew Parower" loading="lazy"/>
+            <div class="cell-info">
+                <h4>Andrew Parower</h4>
+                <span class="cell-title">Chief Credit Officer</span>
+            </div>
+        </div>
+
+        <!-- Peter LaPointe -->
+        <div class="roster-cell reveal">
+            <span class="cell-id">P_05</span>
+            <img class="headshot" src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Peter-3650-A013.jpg?w=300&h=300&ssl=1" alt="Peter LaPointe" loading="lazy"/>
+            <div class="cell-info">
+                <h4>Peter LaPointe</h4>
+                <span class="cell-title">Chief Operating Officer</span>
+            </div>
+        </div>
+
+        <!-- Mark Jefferis -->
+        <div class="roster-cell reveal">
+            <span class="cell-id">P_06</span>
+            <img class="headshot" src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Mark-Jefferis-scaled.jpg?w=300&h=300&ssl=1" alt="Mark Jefferis" loading="lazy"/>
+            <div class="cell-info">
+                <h4>Mark Jefferis</h4>
+                <span class="cell-title">General Counsel</span>
+            </div>
+        </div>
+
+        <!-- John Wright -->
+        <div class="roster-cell reveal">
+            <span class="cell-id">P_07</span>
+            <img class="headshot" src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/john-wright-headshot.jpg?w=300&h=300&ssl=1" alt="John Wright" loading="lazy"/>
+            <div class="cell-info">
+                <h4>John Wright</h4>
+                <span class="cell-title">Head of Capital Formation</span>
+            </div>
+        </div>
+
+        <!-- Malay Bansal -->
+        <div class="roster-cell reveal">
+            <span class="cell-id">P_08</span>
+            <img class="headshot" src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-Headshots-A0385.jpg?w=300&h=300&ssl=1" alt="Malay Bansal" loading="lazy"/>
+            <div class="cell-info">
+                <h4>Malay Bansal</h4>
+                <span class="cell-title">Managing Director</span>
+            </div>
+        </div>
+
+        <!-- Ken Dickey -->
+        <div class="roster-cell reveal">
+            <span class="cell-id">P_09</span>
+            <img class="headshot" src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-Headshots-A0088-2.jpg?w=300&h=300&ssl=1" alt="Ken Dickey" loading="lazy"/>
+            <div class="cell-info">
+                <h4>Ken Dickey</h4>
+                <span class="cell-title">Director, Originations</span>
+            </div>
+        </div>
+
+        <!-- Michael Fleischer -->
+        <div class="roster-cell reveal">
+            <span class="cell-id">P_10</span>
+            <img class="headshot" src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/MichaelF-04688A3.jpg?w=300&h=300&ssl=1" alt="Michael Fleischer" loading="lazy"/>
+            <div class="cell-info">
+                <h4>Michael Fleischer</h4>
+                <span class="cell-title">Managing Director</span>
+            </div>
+        </div>
+
+        <!-- Jake Stahler -->
+        <div class="roster-cell reveal">
+            <span class="cell-id">P_11</span>
+            <img class="headshot" src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-Headshots-A0720-min.jpg?w=300&h=300&ssl=1" alt="Jake Stahler" loading="lazy"/>
+            <div class="cell-info">
+                <h4>Jake Stahler</h4>
+                <span class="cell-title">Director</span>
+            </div>
+        </div>
+
+        <!-- Evan Guttman -->
+        <div class="roster-cell reveal">
+            <span class="cell-id">P_12</span>
+            <img class="headshot" src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-Headshots-Oct-2023-NYC-B1181-3-scaled.jpg?w=300&h=300&ssl=1" alt="Evan Guttman" loading="lazy"/>
+            <div class="cell-info">
+                <h4>Evan Guttman</h4>
+                <span class="cell-title">Vice President</span>
+            </div>
+        </div>
+
+        <!-- Michael McCabe -->
+        <div class="roster-cell reveal">
+            <span class="cell-id">P_13</span>
+            <img class="headshot" src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-Headshots-Oct-2023-NYC-B1078-scaled.jpg?w=300&h=300&ssl=1" alt="Michael McCabe" loading="lazy"/>
+            <div class="cell-info">
+                <h4>Michael McCabe</h4>
+                <span class="cell-title">Vice President</span>
+            </div>
+        </div>
+
+        <!-- Stephanie Sabellico -->
+        <div class="roster-cell reveal">
+            <span class="cell-id">P_14</span>
+            <img class="headshot" src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/EVN0949-Edit-scaled.jpg?w=300&h=300&ssl=1" alt="Stephanie Sabellico" loading="lazy"/>
+            <div class="cell-info">
+                <h4>Stephanie Sabellico</h4>
+                <span class="cell-title">Director</span>
+            </div>
+        </div>
+
+        <!-- Barrett Graham -->
+        <div class="roster-cell reveal">
+            <span class="cell-id">P_15</span>
+            <img class="headshot" src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/MGM_2579-scaled.jpg?w=300&h=300&ssl=1" alt="Barrett Graham" loading="lazy"/>
+            <div class="cell-info">
+                <h4>Barrett Graham</h4>
+                <span class="cell-title">Vice President</span>
+            </div>
+        </div>
+
+        <!-- Brent Thurn -->
+        <div class="roster-cell reveal">
+            <span class="cell-id">P_16</span>
+            <img class="headshot" src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-2564-scaled.jpg?w=300&h=300&ssl=1" alt="Brent Thurn" loading="lazy"/>
+            <div class="cell-info">
+                <h4>Brent Thurn</h4>
+                <span class="cell-title">Vice President</span>
+            </div>
+        </div>
+
+        <!-- Daniel Vaknin -->
+        <div class="roster-cell reveal">
+            <span class="cell-id">P_17</span>
+            <img class="headshot" src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-1192-Edit.jpg?w=300&h=300&ssl=1" alt="Daniel Vaknin" loading="lazy"/>
+            <div class="cell-info">
+                <h4>Daniel Vaknin</h4>
+                <span class="cell-title">Vice President</span>
+            </div>
+        </div>
+
+        <!-- Eric Kraft -->
+        <div class="roster-cell reveal">
+            <span class="cell-id">P_18</span>
+            <img class="headshot" src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/eric-kraft-headshot.jpeg?w=300&h=300&ssl=1" alt="Eric Kraft" loading="lazy"/>
+            <div class="cell-info">
+                <h4>Eric Kraft</h4>
+                <span class="cell-title">Director</span>
+            </div>
+        </div>
+
+        <!-- Noah Moghavem -->
+        <div class="roster-cell reveal">
+            <span class="cell-id">P_19</span>
+            <img class="headshot" src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Noah-Moghavem-scaled.jpg?w=300&h=300&ssl=1" alt="Noah Moghavem" loading="lazy"/>
+            <div class="cell-info">
+                <h4>Noah Moghavem</h4>
+                <span class="cell-title">Associate</span>
+            </div>
+        </div>
+
+        <!-- Will Pierce -->
+        <div class="roster-cell reveal">
+            <span class="cell-id">P_20</span>
+            <img class="headshot" src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/151A8204.jpg?w=300&h=300&ssl=1" alt="Will Pierce" loading="lazy"/>
+            <div class="cell-info">
+                <h4>Will Pierce</h4>
+                <span class="cell-title">Vice President</span>
+            </div>
+        </div>
+
+        <!-- Jeremiah Sharf -->
+        <div class="roster-cell reveal">
+            <span class="cell-id">P_21</span>
+            <img class="headshot" src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Jeremiah-Sharf_1-scaled.jpg?w=300&h=300&ssl=1" alt="Jeremiah Sharf" loading="lazy"/>
+            <div class="cell-info">
+                <h4>Jeremiah Sharf</h4>
+                <span class="cell-title">Director</span>
+            </div>
+        </div>
+
+        <!-- Katie Spillman -->
+        <div class="roster-cell reveal">
+            <span class="cell-id">P_22</span>
+            <img class="headshot" src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Katie-Spillman-1-scaled.jpg?w=300&h=300&ssl=1" alt="Katie Spillman" loading="lazy"/>
+            <div class="cell-info">
+                <h4>Katie Spillman</h4>
+                <span class="cell-title">Director</span>
+            </div>
+        </div>
+
+        <!-- Corey Altman -->
+        <div class="roster-cell reveal">
+            <span class="cell-id">P_23</span>
+            <img class="headshot" src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-0608-Edit-scaled.jpg?w=300&h=300&ssl=1" alt="Corey Altman" loading="lazy"/>
+            <div class="cell-info">
+                <h4>Corey Altman</h4>
+                <span class="cell-title">Director</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     CTA
+     ═══════════════════════════════════════════ -->
+<section class="container" style="padding-bottom:8rem;">
+    <div class="reveal" style="border:2px solid var(--navy); box-shadow:var(--ghost); padding:4rem 3rem; text-align:center; position:relative; overflow:hidden;">
+        <div style="position:absolute; inset:0; background-image:repeating-linear-gradient(45deg,transparent,transparent 10px,rgba(26,39,68,0.04) 10px,rgba(26,39,68,0.04) 11px);"></div>
+        <div style="position:relative; z-index:1;">
+            <span class="font-tech" style="font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--dim);">REF: CTA_06 // STATUS: ACTIVE</span>
+            <h3 style="font-family:'DM Serif Text',serif; font-size:clamp(1.75rem,4vw,2.5rem); font-style:italic; color:var(--navy); margin:1rem 0 1.5rem;">Connect with our team</h3>
+            <p style="max-width:500px; margin:0 auto 2rem; color:rgba(4,18,46,0.65); font-size:0.95rem; line-height:1.7;">Reach the professionals behind the platform. Direct access to origination and leadership.</p>
+            <a href="./contact.html" class="btn-primary">INITIATE CONTACT &rarr;</a>
+        </div>
+    </div>
+</section>
+</main>
+
+<!-- ═══════════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════════ -->
+<footer class="site-footer">
+    <div class="footer-inner">
+        <div>
+            <div class="footer-brand">3650 CAPITAL</div>
+            <div class="footer-legal">
+                &copy; 2026 3650 CAPITAL | SPEC: GLOBAL_V4.0 | ALL RIGHTS RESERVED<br/>
+                CONFIDENTIAL INTELLECTUAL PROPERTY OF 3650 RE DEBT INVESTORS.<br/>
+                REVISION: 4.0 | ISSUED: APRIL 2026 | STATUS: ACTIVE
+            </div>
+        </div>
+        <div class="footer-links">
+            <div>
+                <div class="col-title">NAVIGATION</div>
+                <a href="./index.html">HOME</a>
+                <a href="./firm.html">FIRM</a>
+                <a href="./solutions.html">SOLUTIONS</a>
+                <a href="./transactions.html">TRANSACTIONS</a>
+                <a href="./leadership.html">LEADERSHIP</a>
+                <a href="./contact.html">CONTACT</a>
+            </div>
+            <div>
+                <div class="col-title">REGULATORY FILING</div>
+                <a href="#" style="text-decoration:underline; text-decoration-style:dashed;">PRIVACY_POLICY</a>
+                <a href="#">DISCLOSURES_04</a>
+                <a href="#">TERMS_OF_USE</a>
+                <a href="#">SEC_FILINGS</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- ── FLOATING MARGINALIA ── -->
+<div class="marginalia bottom-left" aria-hidden="true">
+    [ X: 42.0000 | Y: 604.991 ]<br/>
+    COORD: BLUEPRINT_LEADERSHIP
+</div>
+<div class="marginalia mid-right" aria-hidden="true">
+    &#x2194; 1280PX WIDTH // SEC_06_PERSONNEL
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SCRIPTS
+     ═══════════════════════════════════════════ -->
+<script>
+(function() {
+    'use strict';
+
+    var menuBtn = document.querySelector('.menu-toggle');
+    var navEl   = document.getElementById('main-nav');
+    if (menuBtn && navEl) {
+        menuBtn.addEventListener('click', function() {
+            var isOpen = navEl.classList.toggle('open');
+            menuBtn.classList.toggle('open', isOpen);
+            menuBtn.setAttribute('aria-expanded', isOpen);
+        });
+    }
+
+    var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (!prefersReduced && 'IntersectionObserver' in window) {
+        var revealEls = document.querySelectorAll('.reveal, .reveal-line');
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+        revealEls.forEach(function(el) { observer.observe(el); });
+    } else {
+        document.querySelectorAll('.reveal, .reveal-line').forEach(function(el) {
+            el.classList.add('visible');
+        });
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+        a.addEventListener('click', function(e) {
+            var id = this.getAttribute('href').slice(1);
+            var target = document.getElementById(id);
+            if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+        });
+    });
+})();
+</script>
+</body>
+</html>

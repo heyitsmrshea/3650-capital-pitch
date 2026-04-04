@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>3650 Capital — One Lender. Wholly Committed.</title>
-<meta name="description" content="3650 Capital is a vertically integrated commercial real estate lender offering balance sheet lending, CMBS, and mezzanine solutions with 100% retained servicing."/>
+<title>3650 Capital — The Firm</title>
+<meta name="description" content="3650 Capital is a fully integrated commercial real estate investment firm. One lender from origination to maturity, with the permanence institutional borrowers require."/>
 <link rel="icon" type="image/png" href="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650Capital-Logo.png?ssl=1"/>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
@@ -55,7 +55,6 @@
   ::-webkit-scrollbar-track { background: var(--surface); }
   ::-webkit-scrollbar-thumb { background: var(--surface-highest); }
 
-  /* Material icons baseline */
   .material-symbols-outlined {
     font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
     vertical-align: middle;
@@ -160,14 +159,6 @@
     width: auto;
   }
 
-  .nav-logo-text {
-    font-family: var(--font-headline);
-    font-size: 18px;
-    letter-spacing: 0.15em;
-    font-weight: 300;
-    color: var(--on-surface);
-  }
-
   .nav-links {
     display: flex;
     align-items: center;
@@ -253,48 +244,15 @@
     .nav-inner { padding: 20px 24px; }
   }
 
-  /* ── Hero ────────────────────────────────────────────── */
-  .hero {
-    position: relative;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    padding-top: 96px;
-    overflow: hidden;
+  /* ── Page Hero (Inner Pages) ────────────────────────── */
+  .page-hero {
+    padding: 200px 0 120px;
+    background: var(--surface);
   }
 
-  .hero-bg {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-  }
-
-  .hero-bg img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .hero-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to right,
-      rgba(251,249,245,0.92) 0%,
-      rgba(251,249,245,0.55) 45%,
-      rgba(251,249,245,0.1) 75%,
-      transparent 100%
-    );
-  }
-
-  .hero-content {
-    position: relative;
-    z-index: 10;
-    max-width: 680px;
-  }
-
-  .hero h1 {
+  .page-hero h1 {
     font-family: var(--font-headline);
-    font-size: clamp(42px, 7vw, 96px);
+    font-size: clamp(42px, 6vw, 80px);
     font-weight: 300;
     line-height: 1.08;
     letter-spacing: -0.02em;
@@ -302,459 +260,352 @@
     margin-bottom: 32px;
   }
 
-  .hero h1 em {
+  .page-hero h1 em {
     font-style: italic;
     font-weight: 400;
   }
 
-  .hero-body {
+  .page-hero-body {
     font-size: 19px;
     color: var(--on-surface-variant);
     line-height: 1.7;
-    max-width: 520px;
-    margin-bottom: 48px;
+    max-width: 560px;
   }
 
-  .hero-actions {
-    display: flex;
-    align-items: center;
-    gap: 40px;
-    flex-wrap: wrap;
-  }
-
-  .hero-scroll-hint {
-    position: absolute;
-    bottom: 48px;
-    right: 48px;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    z-index: 10;
-  }
-  .hero-scroll-hint span {
-    font-family: var(--font-label);
-    font-size: 10px;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--tertiary);
-  }
-  .hero-scroll-hint::after {
-    content: '';
-    display: block;
-    width: 1px;
-    height: 48px;
-    background: var(--ghost);
-  }
-
-  @media (max-width: 768px) {
-    .hero { min-height: 90vh; padding-top: 80px; }
-    .hero-overlay {
-      background: linear-gradient(to bottom,
-        rgba(251,249,245,0.9) 0%,
-        rgba(251,249,245,0.7) 60%,
-        rgba(251,249,245,0.3) 100%
-      );
-    }
-    .hero-scroll-hint { display: none; }
-    .hero-body { font-size: 17px; }
-  }
-
-  /* ── Platform Section (Asymmetric) ───────────────────── */
-  .platform {
-    padding: 128px 0;
-    background: var(--surface);
-  }
-
-  .platform-grid {
-    display: grid;
-    grid-template-columns: 7fr 5fr;
-    gap: 64px;
-    align-items: center;
-  }
-
-  .platform-image-wrap {
-    position: relative;
-  }
-
-  .platform-image-wrap img {
-    width: 100%;
-    aspect-ratio: 4 / 5;
-    object-fit: cover;
-    filter: grayscale(0.15);
-  }
-
-  .platform-overlay-card {
-    position: absolute;
-    bottom: -32px;
-    right: -32px;
-    background: var(--surface-low);
-    padding: 40px;
-    max-width: 340px;
-  }
-
-  .platform-overlay-card h3 {
-    font-family: var(--font-headline);
-    font-size: 22px;
-    margin-bottom: 12px;
-  }
-
-  .platform-overlay-card p {
-    font-size: 14px;
-    color: var(--on-surface-variant);
-    line-height: 1.65;
-  }
-
-  .platform-right h2 {
-    font-family: var(--font-headline);
-    font-size: clamp(32px, 4vw, 48px);
-    font-weight: 300;
-    line-height: 1.15;
-    margin-bottom: 48px;
-  }
-
-  .platform-step {
-    margin-bottom: 40px;
-  }
-
-  .platform-step .step-num {
-    font-family: var(--font-label);
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--tertiary);
-    margin-bottom: 8px;
-    display: block;
-  }
-
-  .platform-step h4 {
-    font-family: var(--font-headline);
-    font-size: 20px;
-    margin-bottom: 10px;
-  }
-
-  .platform-step p {
-    color: var(--on-surface-variant);
-    line-height: 1.65;
-    font-size: 15px;
-  }
-
-  @media (max-width: 960px) {
-    .platform { padding: 80px 0; }
-    .platform-grid {
-      grid-template-columns: 1fr;
-      gap: 48px;
-    }
-    .platform-overlay-card {
-      position: relative;
-      bottom: auto;
-      right: auto;
-      margin-top: -24px;
-      max-width: 100%;
-    }
-  }
-
-  /* ── Founders Band ───────────────────────────────────── */
-  .founders-band {
-    padding: 80px 0;
-    background: var(--surface-low);
-  }
-
-  .founders-inner {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 64px;
-    align-items: center;
-  }
-
-  .founders-image img {
-    width: 100%;
-    aspect-ratio: 16 / 10;
-    object-fit: cover;
-    filter: grayscale(0.1);
-  }
-
-  .founders-text h3 {
-    font-family: var(--font-headline);
-    font-size: 28px;
-    font-weight: 300;
-    margin-bottom: 20px;
-    line-height: 1.3;
-  }
-
-  .founders-text p {
-    font-size: 15px;
-    color: var(--on-surface-variant);
-    line-height: 1.7;
-    margin-bottom: 24px;
-  }
-
-  @media (max-width: 768px) {
-    .founders-inner {
-      grid-template-columns: 1fr;
-      gap: 32px;
-    }
-  }
-
-  /* ── Stats / Decade Discipline ───────────────────────── */
-  .stats {
-    padding: 160px 0;
-    background: var(--surface-low);
-  }
-
-  .stats-inner {
-    max-width: 880px;
-    margin: 0 auto;
-    text-align: center;
-  }
-
-  .stats h2 {
-    font-family: var(--font-headline);
-    font-size: clamp(36px, 5vw, 72px);
-    font-weight: 300;
-    line-height: 1.12;
-    margin-bottom: 48px;
-  }
-
-  .stats-divider {
+  .page-hero-divider {
     width: 96px;
     height: 1px;
     background: var(--primary);
-    margin: 0 auto 48px;
+    margin-bottom: 40px;
   }
 
-  .stats-body {
-    font-size: 21px;
-    font-weight: 300;
-    color: var(--on-surface-variant);
-    line-height: 1.65;
-    margin-bottom: 64px;
+  @media (max-width: 768px) {
+    .page-hero { padding: 140px 0 80px; }
+    .page-hero-body { font-size: 17px; }
   }
 
-  .stats-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 48px;
-  }
-
-  .stat-item { text-align: center; }
-
-  .stat-number {
-    font-family: var(--font-headline);
-    font-size: clamp(32px, 4vw, 48px);
-    font-weight: 300;
-    color: var(--on-surface);
-    margin-bottom: 8px;
-  }
-
-  .stat-label {
-    font-family: var(--font-label);
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--tertiary);
-  }
-
-  @media (max-width: 640px) {
-    .stats { padding: 96px 0; }
-    .stats-grid { grid-template-columns: 1fr; gap: 40px; }
-    .stats-body { font-size: 18px; }
-  }
-
-  /* ── Insights Editorial Grid ─────────────────────────── */
-  .insights {
+  /* ── Ethos Section ──────────────────────────────────── */
+  .ethos {
     padding: 128px 0;
-    background: var(--surface);
-  }
-
-  .insights-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    margin-bottom: 80px;
-    gap: 32px;
-    flex-wrap: wrap;
-  }
-
-  .insights-header h2 {
-    font-family: var(--font-headline);
-    font-size: clamp(36px, 4vw, 52px);
-    font-weight: 300;
-  }
-
-  .insights-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: var(--surface-high);
-  }
-
-  .insight-card {
-    background: var(--surface);
-    padding: 48px;
-    display: flex;
-    flex-direction: column;
-    min-height: 380px;
-    transition: background 0.5s ease;
-    cursor: pointer;
-  }
-  .insight-card:hover {
     background: var(--surface-low);
   }
 
-  .insight-card .card-date {
+  .ethos-header {
+    margin-bottom: 80px;
+  }
+
+  .ethos-header h2 {
+    font-family: var(--font-headline);
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 300;
+    line-height: 1.15;
+    margin-bottom: 24px;
+  }
+
+  .ethos-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--ghost);
+  }
+
+  .ethos-card {
+    background: var(--surface-low);
+    padding: 48px 40px;
+    display: flex;
+    flex-direction: column;
+    min-height: 360px;
+  }
+
+  .ethos-card .card-num {
     font-family: var(--font-label);
     font-size: 10px;
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--tertiary);
-    margin-bottom: 32px;
+    margin-bottom: 12px;
   }
 
-  .insight-card h3 {
+  .ethos-card h3 {
     font-family: var(--font-headline);
     font-size: 22px;
     font-weight: 400;
-    line-height: 1.35;
     margin-bottom: 20px;
   }
 
-  .insight-card p {
+  .ethos-card p {
     font-size: 15px;
     color: var(--on-surface-variant);
     line-height: 1.65;
     flex: 1;
   }
 
-  .insight-card .card-link {
-    display: flex;
+  .ethos-card .card-stat {
+    font-family: var(--font-headline);
+    font-size: 28px;
+    font-weight: 300;
+    margin-top: 24px;
+    color: var(--on-surface);
+  }
+
+  @media (max-width: 960px) {
+    .ethos { padding: 80px 0; }
+    .ethos-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 640px) {
+    .ethos-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ── Philosophy Section ─────────────────────────────── */
+  .philosophy {
+    padding: 160px 0;
+    background: var(--surface);
+  }
+
+  .philosophy-grid {
+    display: grid;
+    grid-template-columns: 7fr 5fr;
+    gap: 80px;
     align-items: center;
-    gap: 12px;
-    margin-top: 40px;
+  }
+
+  .philosophy-text h2 {
+    font-family: var(--font-headline);
+    font-size: clamp(36px, 5vw, 64px);
+    font-weight: 300;
+    line-height: 1.12;
+    margin-bottom: 40px;
+  }
+
+  .philosophy-text p {
+    font-size: 18px;
+    color: var(--on-surface-variant);
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+
+  .philosophy-image img {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    filter: grayscale(0.1);
+  }
+
+  @media (max-width: 960px) {
+    .philosophy { padding: 96px 0; }
+    .philosophy-grid {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+  }
+
+  /* ── Platform Band ──────────────────────────────────── */
+  .platform-band {
+    padding: 0;
+    background: var(--surface-high);
+  }
+
+  .platform-band-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 600px;
+  }
+
+  .platform-band-image {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .platform-band-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    min-height: 400px;
+    filter: grayscale(0.1);
+  }
+
+  .platform-band-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 64px;
+  }
+
+  .platform-band-content h3 {
+    font-family: var(--font-headline);
+    font-size: clamp(28px, 3vw, 40px);
+    font-weight: 300;
+    margin-bottom: 24px;
+    line-height: 1.2;
+  }
+
+  .platform-band-content p {
+    font-size: 16px;
+    color: var(--on-surface-variant);
+    line-height: 1.7;
+    margin-bottom: 20px;
+    max-width: 520px;
+  }
+
+  @media (max-width: 768px) {
+    .platform-band-grid {
+      grid-template-columns: 1fr;
+    }
+    .platform-band-content { padding: 48px 24px; }
+  }
+
+  /* ── Metrics ────────────────────────────────────────── */
+  .metrics {
+    padding: 128px 0;
+    background: var(--surface);
+  }
+
+  .metrics-header {
+    margin-bottom: 80px;
+  }
+
+  .metrics-header h2 {
+    font-family: var(--font-headline);
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 300;
+  }
+
+  .metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--ghost);
+  }
+
+  .metric-card {
+    background: var(--surface);
+    padding: 56px 48px;
+    display: flex;
+    flex-direction: column;
+    min-height: 280px;
+    justify-content: space-between;
+  }
+
+  .metric-card .metric-label {
     font-family: var(--font-label);
     font-size: 10px;
     letter-spacing: 0.2em;
     text-transform: uppercase;
+    color: var(--tertiary);
+    margin-bottom: 8px;
   }
-  .insight-card .card-link .material-symbols-outlined {
-    font-size: 16px;
-    transition: transform 0.3s ease;
+
+  .metric-card .metric-divider {
+    width: 100%;
+    height: 1px;
+    background: var(--ghost);
+    margin: 16px 0;
   }
-  .insight-card:hover .card-link .material-symbols-outlined {
-    transform: translateX(6px);
+
+  .metric-card .metric-number {
+    font-family: var(--font-headline);
+    font-size: clamp(36px, 4vw, 52px);
+    font-weight: 300;
+    color: var(--on-surface);
+  }
+
+  .metric-card .metric-desc {
+    font-size: 14px;
+    color: var(--on-surface-variant);
+    margin-top: 8px;
+  }
+
+  @media (max-width: 768px) {
+    .metrics { padding: 80px 0; }
+    .metrics-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ── Timeline ───────────────────────────────────────── */
+  .timeline {
+    padding: 128px 0;
+    background: var(--surface-low);
+  }
+
+  .timeline-header {
+    margin-bottom: 80px;
+  }
+
+  .timeline-header h2 {
+    font-family: var(--font-headline);
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 300;
+  }
+
+  .timeline-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 48px;
+  }
+
+  .timeline-item {
+    padding-left: 24px;
+    border-left: 1px solid var(--ghost);
+  }
+
+  .timeline-item .year {
+    font-family: var(--font-label);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--tertiary);
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .timeline-item h4 {
+    font-family: var(--font-headline);
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+
+  .timeline-item p {
+    font-size: 14px;
+    color: var(--on-surface-variant);
+    line-height: 1.65;
   }
 
   @media (max-width: 960px) {
-    .insights { padding: 80px 0; }
-    .insights-grid { grid-template-columns: 1fr; }
-    .insight-card { min-height: auto; }
+    .timeline-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+  }
+  @media (max-width: 640px) {
+    .timeline-grid { grid-template-columns: 1fr; }
   }
 
-  /* ── Contact CTA ─────────────────────────────────────── */
-  .contact {
+  /* ── CTA Band ───────────────────────────────────────── */
+  .cta-band {
     padding: 160px 0;
     background: var(--surface-highest);
   }
 
-  .contact-inner {
+  .cta-inner {
     max-width: 640px;
     margin: 0 auto;
     text-align: center;
   }
 
-  .contact h2 {
+  .cta-inner h2 {
     font-family: var(--font-headline);
     font-size: clamp(36px, 5vw, 60px);
     font-weight: 300;
     margin-bottom: 24px;
   }
 
-  .contact .contact-body {
+  .cta-inner p {
     font-size: 18px;
     color: var(--on-surface-variant);
     margin-bottom: 48px;
     line-height: 1.65;
   }
 
-  .contact-form {
-    text-align: left;
-  }
-
-  .contact-form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 32px;
-    margin-bottom: 32px;
-  }
-
-  .form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .form-group label {
-    font-family: var(--font-label);
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--tertiary);
-  }
-
-  .form-group input,
-  .form-group select,
-  .form-group textarea {
-    background: transparent;
-    border: none;
-    border-bottom: 1px solid var(--ghost);
-    padding: 12px 0;
-    font-size: 15px;
-    color: var(--on-surface);
-    outline: none;
-    transition: border-color 0.3s ease;
-    border-radius: 0;
-    -webkit-appearance: none;
-  }
-
-  .form-group input:focus,
-  .form-group select:focus,
-  .form-group textarea:focus {
-    border-bottom-color: var(--on-surface);
-  }
-
-  .form-group input::placeholder {
-    color: #C5C3BD;
-  }
-
-  .form-group select {
-    cursor: pointer;
-  }
-
-  .contact-form-submit {
-    text-align: center;
-    margin-top: 48px;
-  }
-
-  .btn-submit {
-    background: var(--on-surface);
-    color: var(--surface);
-    font-family: var(--font-label);
-    font-size: 11px;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    padding: 22px 64px;
-    border: none;
-    border-radius: 0;
-    cursor: pointer;
-    transition: background 0.3s ease;
-    width: 100%;
-    max-width: 400px;
-  }
-  .btn-submit:hover { background: #454845; }
-
   @media (max-width: 640px) {
-    .contact { padding: 96px 0; }
-    .contact-form-row { grid-template-columns: 1fr; }
-    .btn-submit { width: 100%; max-width: none; }
+    .cta-band { padding: 96px 0; }
   }
 
   /* ── Footer ──────────────────────────────────────────── */
@@ -866,13 +717,12 @@
       transform: none;
       transition: none;
     }
-    .stat-number { transition: none !important; }
     html { scroll-behavior: auto; }
   }
 </style>
 </head>
 
-<body data-review-page="home">
+<body data-review-page="firm">
 
 <!-- ═══════════════════════════════════════════════════════
      TOP NAV
@@ -883,8 +733,8 @@
       <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650Capital-Logo.png?ssl=1" alt="3650 Capital" />
     </a>
     <ul class="nav-links">
-      <li><a href="./index.html" class="active">Home</a></li>
-      <li><a href="./firm.html">Firm</a></li>
+      <li><a href="./index.html">Home</a></li>
+      <li><a href="./firm.html" class="active">Firm</a></li>
       <li><a href="./solutions.html">Solutions</a></li>
       <li><a href="./transactions.html">Transactions</a></li>
       <li><a href="./leadership.html">Leadership</a></li>
@@ -922,230 +772,223 @@
 <!-- ═══════════════════════════════════════════════════════
      HERO
      ═══════════════════════════════════════════════════════ -->
-<header class="hero" id="hero">
-  <div class="hero-bg">
-    <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/grove-central-hero.jpg?w=1200&ssl=1"
-         alt="Grove Central — a 3650 Capital portfolio property featuring modern mixed-use architecture" />
-    <div class="hero-overlay"></div>
-  </div>
+<header class="page-hero">
   <div class="container">
-    <div class="hero-content">
-      <span class="label-sm reveal stagger-1" style="margin-bottom:24px;display:block;">The Curated Silence</span>
-      <h1 class="reveal stagger-2">
-        One lender.<br/>
-        <em>Wholly committed.</em>
-      </h1>
-      <p class="hero-body reveal stagger-3">
-        Architecting the future of commercial real estate finance through unwavering precision and the discipline of long-cycle preservation.
-      </p>
-      <div class="hero-actions reveal stagger-4">
-        <a href="./portfolio.html" class="btn-primary">Explore the Portfolio</a>
-        <a href="./lending.html" class="btn-ghost">Our Platform</a>
-      </div>
-    </div>
-  </div>
-  <div class="hero-scroll-hint" aria-hidden="true">
-    <span>Scroll to Discover</span>
+    <span class="label-sm reveal stagger-1" style="margin-bottom:24px;display:block;">The Firm</span>
+    <h1 class="reveal stagger-2">One lender.<br/><em>Wholly committed.</em></h1>
+    <div class="page-hero-divider reveal stagger-3"></div>
+    <p class="page-hero-body reveal stagger-4">
+      3650 Capital was built on a founding conviction: borrowers deserve a lender that remains present from origination through maturity, across every market cycle.
+    </p>
   </div>
 </header>
 
 <!-- ═══════════════════════════════════════════════════════
-     PLATFORM ARCHITECTURE (Asymmetric)
-     ═══════════════════════════════════════════════════════ -->
-<section class="platform" id="platform">
-  <div class="container">
-    <div class="platform-grid">
-      <!-- Left: large image with overlay card -->
-      <div class="platform-image-wrap reveal-left">
-        <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/rendering-center-at-miami-gardens-courtesy-3650-reit.jpg?w=800&ssl=1"
-             alt="Rendering of The Center at Miami Gardens — a 3650 REIT development" />
-        <div class="platform-overlay-card">
-          <h3 class="font-headline">Platform Architecture</h3>
-          <p>Our vertically integrated structure ensures that every asset is managed with the same rigor from origination through to resolution.</p>
-        </div>
-      </div>
-
-      <!-- Right: text content with steps -->
-      <div class="platform-right" style="padding-left:24px;">
-        <span class="label-sm reveal stagger-1" style="margin-bottom:24px;display:block;">Structural Integrity</span>
-        <h2 class="reveal stagger-2">Precision in Every Placement.</h2>
-
-        <div class="platform-step reveal stagger-3">
-          <span class="step-num">01 / Origination</span>
-          <h4 class="font-headline">Institutional Grade Sourcing</h4>
-          <p>Leveraging deep-market relationships to access premium opportunities before they reach the wider market.</p>
-        </div>
-
-        <div class="platform-step reveal stagger-4">
-          <span class="step-num">02 / Asset Management</span>
-          <h4 class="font-headline">Direct Surveillance</h4>
-          <p>Continuous, hands-on oversight of every property within the 3650 ecosystem to ensure performance stability.</p>
-        </div>
-
-        <div class="platform-step reveal stagger-5">
-          <span class="step-num">03 / Technology</span>
-          <h4 class="font-headline">Proprietary Risk Modeling</h4>
-          <p>Utilizing advanced data analytics to forecast market shifts and mitigate long-term exposure.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════════
-     FOUNDERS BAND
-     ═══════════════════════════════════════════════════════ -->
-<section class="founders-band ghost-border-t" id="founders">
-  <div class="container">
-    <div class="founders-inner">
-      <div class="founders-image reveal-left">
-        <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Commercial-Observer-Founders-Image.png?w=800&ssl=1"
-             alt="3650 Capital co-founders — Commercial Observer" />
-      </div>
-      <div class="founders-text reveal-right">
-        <span class="label-xs" style="margin-bottom:16px;display:block;">Leadership</span>
-        <h3 class="font-headline">Founded by Industry Veterans</h3>
-        <p>3650 Capital was established by seasoned leaders from Arbor Realty Trust and other top-tier CRE institutions, bringing decades of institutional lending expertise under a single, vertically integrated platform.</p>
-        <a href="./about.html" class="btn-ghost">Meet the Team</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════════
-     THE QUIET ACCUMULATION (Stats)
-     ═══════════════════════════════════════════════════════ -->
-<section class="stats" id="stats">
-  <div class="container">
-    <div class="stats-inner">
-      <span class="label-sm reveal stagger-1" style="margin-bottom:40px;display:block;">The Decade Discipline</span>
-      <h2 class="reveal stagger-2">The Quiet Accumulation.</h2>
-      <div class="stats-divider reveal stagger-3"></div>
-      <p class="stats-body reveal stagger-3">
-        In a market obsessed with the immediate, we prioritize the enduring. Our investment philosophy is rooted in the "Curated Silence" — the ability to filter noise and focus on multi-cycle value creation.
-      </p>
-      <div class="stats-grid">
-        <div class="stat-item reveal stagger-4">
-          <div class="stat-number" data-target="16.3" data-prefix="$" data-suffix="B+">$0B+</div>
-          <div class="stat-label">CRE Loans Serviced</div>
-        </div>
-        <div class="stat-item reveal stagger-5">
-          <div class="stat-number" data-target="1300" data-prefix="" data-suffix="+">0+</div>
-          <div class="stat-label">Properties Funded</div>
-        </div>
-        <div class="stat-item reveal stagger-6">
-          <div class="stat-number" data-target="100" data-prefix="" data-suffix="%">0%</div>
-          <div class="stat-label">Retained Servicing</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════════
-     NYC OFFICE IMAGE BAND
+     HERO IMAGE BAND
      ═══════════════════════════════════════════════════════ -->
 <section style="background:var(--surface);padding:0;">
   <div class="container reveal" style="padding-top:0;padding-bottom:0;">
-    <div style="position:relative;overflow:hidden;">
+    <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/pere-panel-group-shot.jpg?w=800&ssl=1"
+         alt="3650 Capital leadership team at PERE industry panel"
+         style="width:100%;aspect-ratio:21/9;object-fit:cover;filter:grayscale(0.1);" />
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     ETHOS — FOUR PILLARS
+     ═══════════════════════════════════════════════════════ -->
+<section class="ethos" id="ethos">
+  <div class="container">
+    <div class="ethos-header">
+      <span class="label-sm reveal stagger-1" style="margin-bottom:16px;display:block;">Our Ethos</span>
+      <h2 class="reveal stagger-2">The pillars that define us.</h2>
+    </div>
+
+    <div class="ethos-grid ghost-border reveal stagger-3">
+      <!-- Pillar 1 -->
+      <div class="ethos-card">
+        <span class="card-num">01 / Process</span>
+        <h3 class="font-headline">Fully Integrated</h3>
+        <p>Originate. Service. Manage. Every loan remains on our balance sheet, ensuring alignment of interest at every stage of the capital lifecycle.</p>
+      </div>
+
+      <!-- Pillar 2 -->
+      <div class="ethos-card">
+        <span class="card-num">02 / Cycle</span>
+        <h3 class="font-headline">Day 1 to 3,650</h3>
+        <p>We do not originate and sell. We hold through full market cycles, providing borrowers the certainty of a permanent capital partner regardless of market conditions.</p>
+      </div>
+
+      <!-- Pillar 3 -->
+      <div class="ethos-card">
+        <span class="card-num">03 / Expertise</span>
+        <h3 class="font-headline">Deep Institutional Knowledge</h3>
+        <p>Our founders have navigated every major market inflection since the early 1990s, bringing institutional-grade judgment to every underwriting decision.</p>
+        <div class="card-stat">92+ Yrs</div>
+      </div>
+
+      <!-- Pillar 4 -->
+      <div class="ethos-card">
+        <span class="card-num">04 / Footprint</span>
+        <h3 class="font-headline">National Presence</h3>
+        <p>From coast to coast, our regional offices give us direct market intelligence and proximity to borrowers, sponsors, and assets in every major market.</p>
+        <div class="card-stat">7 Offices</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     PHILOSOPHY — PERMANENCE
+     ═══════════════════════════════════════════════════════ -->
+<section class="philosophy" id="philosophy">
+  <div class="container">
+    <div class="philosophy-grid">
+      <div class="philosophy-text">
+        <span class="label-sm reveal stagger-1" style="margin-bottom:24px;display:block;">Philosophy</span>
+        <h2 class="reveal stagger-2">Built for permanence,<br/>not exits.</h2>
+        <div class="reveal stagger-3">
+          <p>Most commercial real estate lenders operate on a fund-cycle timeline. They originate, securitize, and move on. The borrower becomes someone else's problem.</p>
+          <p>3650 Capital was structured differently from inception. We are balance-sheet lenders with permanent capital -- no fund expirations, no forced dispositions, no incentive misalignment. When we make a commitment, we honor it through the full lifecycle of the asset.</p>
+          <p style="font-family:var(--font-headline);font-size:22px;color:var(--on-surface);font-weight:400;margin-top:32px;">This is not a strategy. It is our identity.</p>
+        </div>
+      </div>
+
+      <div class="philosophy-image reveal-right">
+        <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Commercial-Observer-Founders-Image.png?w=800&ssl=1"
+             alt="3650 Capital founding partners" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     PLATFORM BAND
+     ═══════════════════════════════════════════════════════ -->
+<section class="platform-band ghost-border-t">
+  <div class="platform-band-grid">
+    <div class="platform-band-image reveal-left">
       <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/nyc-office-interior-2.jpg?w=800&ssl=1"
            alt="3650 Capital New York City office interior"
-           style="width:100%;aspect-ratio:21/9;object-fit:cover;filter:grayscale(0.1);" />
-      <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(251,249,245,0.3),transparent);"></div>
+           loading="lazy" />
+    </div>
+    <div class="platform-band-content reveal-right">
+      <span class="label-sm" style="margin-bottom:20px;display:block;">The Platform</span>
+      <h3 class="font-headline">How the platform operates.</h3>
+      <div style="width:64px;height:1px;background:var(--primary);margin-bottom:24px;"></div>
+      <p>Our platform is engineered for vertical integration. Origination, underwriting, closing, servicing, and asset management all operate under one roof, providing borrowers with a single point of accountability.</p>
+      <p>This architecture eliminates the friction, delays, and misaligned incentives that plague traditional lending models. When a borrower needs a decision, they get one -- from the same team that made the original commitment.</p>
+      <a href="./solutions.html" class="btn-ghost" style="margin-top:24px;">Explore Solutions</a>
     </div>
   </div>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════
-     MARKET INSIGHTS (Editorial Grid)
+     METRICS
      ═══════════════════════════════════════════════════════ -->
-<section class="insights" id="insights">
+<section class="metrics" id="metrics">
   <div class="container">
-    <div class="insights-header">
-      <div>
-        <span class="label-sm reveal stagger-1" style="margin-bottom:16px;display:block;">Intelligence</span>
-        <h2 class="reveal stagger-2">Market Insights</h2>
+    <div class="metrics-header">
+      <span class="label-sm reveal stagger-1" style="margin-bottom:16px;display:block;">By The Numbers</span>
+      <h2 class="reveal stagger-2">Institutional scale. Personal conviction.</h2>
+    </div>
+
+    <div class="metrics-grid ghost-border reveal stagger-3">
+      <div class="metric-card">
+        <div>
+          <span class="metric-label">Capital Base</span>
+          <div class="metric-divider"></div>
+        </div>
+        <div class="metric-number" data-target="16.3" data-prefix="$" data-suffix="B">$0B</div>
+        <div class="metric-desc">In-House Loans Serviced</div>
       </div>
-      <a href="./insights.html" class="btn-ghost reveal stagger-3">View All Analysis</a>
-    </div>
 
-    <div class="insights-grid ghost-border">
-      <article class="insight-card reveal stagger-1">
-        <span class="card-date">March 2026</span>
-        <h3>The Resilience of Urban Logistics in Softening Markets</h3>
-        <p>A deep dive into why last-mile industrial assets remain the bedrock of institutional portfolios as cap rates compress across gateway cities.</p>
-        <div class="card-link">
-          <span>Read Report</span>
-          <span class="material-symbols-outlined">arrow_forward</span>
+      <div class="metric-card">
+        <div>
+          <span class="metric-label">Portfolio Reach</span>
+          <div class="metric-divider"></div>
         </div>
-      </article>
+        <div class="metric-number" data-target="1300" data-prefix="" data-suffix="+">0+</div>
+        <div class="metric-desc">Individual Properties Financed</div>
+      </div>
 
-      <article class="insight-card reveal stagger-2">
-        <span class="card-date">February 2026</span>
-        <h3>Recalibrating Office: The Flight to Quality 2.0</h3>
-        <p>Analyzing the widening gap between Class-A core assets and the legacy secondary market as tenant expectations evolve post-pandemic.</p>
-        <div class="card-link">
-          <span>Read Report</span>
-          <span class="material-symbols-outlined">arrow_forward</span>
+      <div class="metric-card">
+        <div>
+          <span class="metric-label">National Footprint</span>
+          <div class="metric-divider"></div>
         </div>
-      </article>
-
-      <article class="insight-card reveal stagger-3">
-        <span class="card-date">January 2026</span>
-        <h3>Interest Rate Equilibrium and its Impact on CRE Capital Flows</h3>
-        <p>Navigating the new normal: Why price discovery is finally accelerating across key submarkets and what it means for borrowers.</p>
-        <div class="card-link">
-          <span>Read Report</span>
-          <span class="material-symbols-outlined">arrow_forward</span>
-        </div>
-      </article>
+        <div class="metric-number" data-target="7" data-prefix="" data-suffix=" Offices">0 Offices</div>
+        <div class="metric-desc">Coast to Coast Presence</div>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════
-     BEGIN THE CONVERSATION (Contact CTA)
+     OFFICE IMAGE BAND
      ═══════════════════════════════════════════════════════ -->
-<section class="contact" id="contact">
+<section style="background:var(--surface-low);padding:0;">
+  <div class="reveal" style="position:relative;overflow:hidden;">
+    <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/toby-nyc-office.jpg?w=800&ssl=1"
+         alt="Toby Cobb at 3650 Capital New York City office"
+         loading="lazy"
+         style="width:100%;height:clamp(400px,50vh,700px);object-fit:cover;filter:grayscale(0.1);" />
+    <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(48,51,46,0.4),transparent);"></div>
+    <div style="position:absolute;bottom:48px;left:48px;">
+      <span class="label-xs" style="color:rgba(255,255,255,0.7);margin-bottom:8px;display:block;">Leadership</span>
+      <span class="font-headline" style="color:#fff;font-size:clamp(22px,3vw,32px);font-weight:300;">Principals who lead from the front.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     TIMELINE — KEY MILESTONES
+     ═══════════════════════════════════════════════════════ -->
+<section class="timeline" id="timeline">
   <div class="container">
-    <div class="contact-inner">
-      <h2 class="reveal stagger-1">Begin the Conversation.</h2>
-      <p class="contact-body reveal stagger-2">
-        Connect with our investment team to discuss customized capital solutions for your commercial real estate portfolio.
-      </p>
-      <form class="contact-form reveal stagger-3" onsubmit="event.preventDefault();" aria-label="Contact form">
-        <div class="contact-form-row">
-          <div class="form-group">
-            <label for="contact-name">Full Name</label>
-            <input type="text" id="contact-name" name="name" placeholder="John Doe" autocomplete="name" />
-          </div>
-          <div class="form-group">
-            <label for="contact-email">Email Address</label>
-            <input type="email" id="contact-email" name="email" placeholder="john@example.com" autocomplete="email" />
-          </div>
-        </div>
-        <div class="form-group" style="margin-bottom:32px;">
-          <label for="contact-company">Company</label>
-          <input type="text" id="contact-company" name="company" placeholder="Company or Institution" autocomplete="organization" />
-        </div>
-        <div class="form-group">
-          <label for="contact-type">Inquiry Type</label>
-          <select id="contact-type" name="inquiry_type">
-            <option value="">Select an inquiry type</option>
-            <option value="lending">Lending Inquiry</option>
-            <option value="equity">Equity Investment</option>
-            <option value="servicing">Servicing Question</option>
-            <option value="media">General / Media</option>
-          </select>
-        </div>
-        <div class="form-group" style="margin-top:32px;">
-          <label for="contact-message">Message</label>
-          <textarea id="contact-message" name="message" rows="3" placeholder="Tell us about your project or inquiry..." style="resize:vertical;min-height:60px;"></textarea>
-        </div>
-        <div class="contact-form-submit">
-          <button type="submit" class="btn-submit">Submit Inquiry</button>
-        </div>
-      </form>
+    <div class="timeline-header">
+      <span class="label-sm reveal stagger-1" style="margin-bottom:16px;display:block;">Milestones</span>
+      <h2 class="reveal stagger-2">A trajectory of institutional growth.</h2>
+    </div>
+
+    <div class="timeline-grid">
+      <div class="timeline-item reveal stagger-1">
+        <span class="year">2018</span>
+        <h4 class="font-headline">Firm Founded</h4>
+        <p>Justin Kennedy, Jonathan Roth, and Toby Cobb launch 3650 Capital with a permanent capital mandate and full vertical integration.</p>
+      </div>
+
+      <div class="timeline-item reveal stagger-2">
+        <span class="year">2019</span>
+        <h4 class="font-headline">First Billion</h4>
+        <p>Within the first full year of operations, the firm surpasses $1 billion in originations across multiple property types and geographies.</p>
+      </div>
+
+      <div class="timeline-item reveal stagger-3">
+        <span class="year">2021</span>
+        <h4 class="font-headline">Platform Expansion</h4>
+        <p>Launch of preferred equity and special situations strategies, expanding the firm's capital solutions across the entire stack.</p>
+      </div>
+
+      <div class="timeline-item reveal stagger-4">
+        <span class="year">2024</span>
+        <h4 class="font-headline">$16B+ Serviced</h4>
+        <p>The in-house servicing platform now manages over $16 billion in loans, with 1,300+ individual properties under direct oversight.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     CTA BAND
+     ═══════════════════════════════════════════════════════ -->
+<section class="cta-band">
+  <div class="container">
+    <div class="cta-inner">
+      <span class="label-sm reveal stagger-1" style="margin-bottom:32px;display:block;">Our People</span>
+      <h2 class="reveal stagger-2">The team behind the conviction.</h2>
+      <p class="reveal stagger-3">Our founding partners bring over 92 years of combined experience in commercial real estate lending, securitization, and asset management.</p>
+      <a href="./leadership.html" class="btn-primary reveal stagger-4">Meet Our Team</a>
     </div>
   </div>
 </section>
@@ -1165,7 +1008,6 @@
         <li><a href="./contact.html">Contact</a></li>
         <li><a href="#">Disclosures</a></li>
         <li><a href="#">Privacy</a></li>
-        <li><a href="#">Terms</a></li>
       </ul>
       <div class="footer-icons">
         <span class="material-symbols-outlined" aria-label="Language">language</span>
@@ -1182,10 +1024,8 @@
 (function() {
   'use strict';
 
-  /* ── Reduced motion check ────────────────────────────── */
   var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ── Intersection Observer for reveal animations ─────── */
   if (!prefersReduced && 'IntersectionObserver' in window) {
     var revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
     var revealObserver = new IntersectionObserver(function(entries) {
@@ -1204,15 +1044,14 @@
       revealObserver.observe(el);
     });
   } else {
-    /* If no IntersectionObserver or reduced motion, show everything */
     document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(function(el) {
       el.classList.add('visible');
     });
   }
 
-  /* ── Counter animation for stat numbers ──────────────── */
+  /* ── Counter animation for metric numbers ──────────── */
   function animateCounters() {
-    var counters = document.querySelectorAll('.stat-number[data-target]');
+    var counters = document.querySelectorAll('.metric-number[data-target]');
     counters.forEach(function(counter) {
       if (counter.dataset.animated === 'true') return;
 
@@ -1257,22 +1096,20 @@
     });
   }
 
-  /* Observe the stats section for counter trigger */
   if (!prefersReduced && 'IntersectionObserver' in window) {
-    var statsSection = document.getElementById('stats');
-    if (statsSection) {
-      var statsObserver = new IntersectionObserver(function(entries) {
+    var metricsSection = document.getElementById('metrics');
+    if (metricsSection) {
+      var metricsObserver = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
           if (entry.isIntersecting) {
-            /* Small delay to let the reveal animation start first */
             setTimeout(animateCounters, 400);
-            statsObserver.unobserve(entry.target);
+            metricsObserver.unobserve(entry.target);
           }
         });
       }, {
         threshold: 0.3
       });
-      statsObserver.observe(statsSection);
+      metricsObserver.observe(metricsSection);
     }
   } else {
     animateCounters();
@@ -1281,7 +1118,6 @@
   /* ── Nav background on scroll ────────────────────────── */
   var nav = document.querySelector('.site-nav');
   if (nav) {
-    var lastScroll = 0;
     window.addEventListener('scroll', function() {
       var scrollY = window.pageYOffset || document.documentElement.scrollTop;
       if (scrollY > 80) {
@@ -1291,18 +1127,8 @@
         nav.style.background = 'rgba(253,251,247,0.92)';
         nav.style.boxShadow = 'none';
       }
-      lastScroll = scrollY;
     }, { passive: true });
   }
-
-  /* ── Close mobile nav on Escape ──────────────────────── */
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-      var mobileNav = document.getElementById('mobileNav');
-      if (mobileNav) mobileNav.classList.remove('open');
-    }
-  });
-
 })();
 </script>
 
