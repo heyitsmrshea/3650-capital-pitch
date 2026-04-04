@@ -71,6 +71,9 @@
       }
       .bento-card { transition: none !important; }
       .bento-card:hover { transform: none !important; }
+      .stagger > *, .text-reveal-line, .img-reveal, .line-draw,
+      .reveal-left, .reveal-right, .reveal-scale { opacity: 1; transform: none; width: auto; transition: none; }
+      .card-lift:hover, .img-hover:hover img { transform: none; }
     }
 
     /* Bento card hover */
@@ -132,6 +135,40 @@
 
     /* Image cover helper */
     .img-cover { object-fit: cover; width: 100%; height: 100%; }
+
+    /* === NEXT-LEVEL ANIMATIONS === */
+    .stagger > * { opacity: 0; transform: translateY(20px); transition: opacity 0.6s cubic-bezier(0.22,1,0.36,1), transform 0.6s cubic-bezier(0.22,1,0.36,1); }
+    .stagger.visible > * { opacity: 1; transform: none; }
+    .stagger.visible > *:nth-child(1) { transition-delay: 0ms; }
+    .stagger.visible > *:nth-child(2) { transition-delay: 90ms; }
+    .stagger.visible > *:nth-child(3) { transition-delay: 180ms; }
+    .stagger.visible > *:nth-child(4) { transition-delay: 270ms; }
+    .stagger.visible > *:nth-child(5) { transition-delay: 360ms; }
+    .stagger.visible > *:nth-child(6) { transition-delay: 450ms; }
+    .stagger.visible > *:nth-child(7) { transition-delay: 540ms; }
+    .stagger.visible > *:nth-child(8) { transition-delay: 630ms; }
+    .stagger.visible > *:nth-child(9) { transition-delay: 720ms; }
+    .stagger.visible > *:nth-child(10) { transition-delay: 810ms; }
+    .text-reveal-wrap { overflow: hidden; display: block; }
+    .text-reveal-line { display: block; transform: translateY(110%); transition: transform 0.8s cubic-bezier(0.22,1,0.36,1); }
+    .text-reveal-wrap.visible .text-reveal-line { transform: none; }
+    .text-reveal-wrap.visible .text-reveal-line:nth-child(2) { transition-delay: 0.1s; }
+    .text-reveal-wrap.visible .text-reveal-line:nth-child(3) { transition-delay: 0.2s; }
+    .img-reveal { opacity: 0; transform: scale(0.92); transition: opacity 1s ease, transform 1s cubic-bezier(0.22,1,0.36,1); }
+    .img-reveal.visible { opacity: 1; transform: none; }
+    .line-draw { width: 0; height: 2px; background: linear-gradient(90deg, #4dd4ac, #2a9d7e); box-shadow: 0 0 8px rgba(77,212,172,0.3); transition: width 0.9s cubic-bezier(0.22,1,0.36,1) 0.2s; }
+    .line-draw.visible { width: 48px; }
+    .card-lift { transition: transform 0.4s cubic-bezier(0.22,1,0.36,1), box-shadow 0.4s ease, border-color 0.4s ease; }
+    .card-lift:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(0,0,0,0.2); border-color: rgba(77,212,172,0.3); }
+    .img-hover { overflow: hidden; border-radius: 16px; }
+    .img-hover img { transition: transform 0.6s cubic-bezier(0.22,1,0.36,1); }
+    .img-hover:hover img { transform: scale(1.04); }
+    .reveal-left { opacity: 0; transform: translateX(-30px); transition: opacity 0.65s ease, transform 0.65s cubic-bezier(0.22,1,0.36,1); }
+    .reveal-left.visible { opacity: 1; transform: none; }
+    .reveal-right { opacity: 0; transform: translateX(30px); transition: opacity 0.65s ease, transform 0.65s cubic-bezier(0.22,1,0.36,1); }
+    .reveal-right.visible { opacity: 1; transform: none; }
+    .reveal-scale { opacity: 0; transform: scale(0.9); transition: opacity 0.65s ease, transform 0.65s cubic-bezier(0.22,1,0.36,1); }
+    .reveal-scale.visible { opacity: 1; transform: none; }
   </style>
 </head>
 
@@ -198,8 +235,8 @@
 
         <!-- Main headline -->
         <h1 class="reveal reveal-delay-1 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.05] tracking-tight text-white mb-8">
-          Borrowers do not just need capital.<br>
-          <span class="text-teal">They need continuity.</span>
+          <span class="text-reveal-wrap"><span class="text-reveal-line">Borrowers do not just need capital.</span></span>
+          <span class="text-reveal-wrap"><span class="text-reveal-line"><span class="text-teal">They need continuity.</span></span></span>
         </h1>
 
         <!-- Sub copy -->
@@ -245,6 +282,7 @@
     <div class="max-w-7xl mx-auto px-6">
       <!-- Section header -->
       <div class="mb-14 max-w-2xl">
+        <div class="line-draw mb-6"></div>
         <p class="reveal text-teal text-sm font-semibold tracking-widest uppercase mb-4">How We Work</p>
         <h2 class="reveal reveal-delay-1 text-3xl md:text-5xl font-extrabold text-white leading-tight">
           The 3650 Platform
@@ -255,10 +293,10 @@
       </div>
 
       <!-- Bento Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 stagger">
 
         <!-- Card 1: Integrated Operating Model (tall) -->
-        <div class="reveal bento-card bg-surface-high rounded-card p-8 md:row-span-2 flex flex-col justify-between min-h-[320px]">
+        <div class="reveal bento-card card-lift bg-surface-high rounded-card p-8 md:row-span-2 flex flex-col justify-between min-h-[320px]">
           <div>
             <div class="w-12 h-12 rounded-xl bg-teal/10 flex items-center justify-center mb-6">
               <span class="material-symbols-outlined text-teal text-2xl">hub</span>
@@ -275,7 +313,7 @@
         </div>
 
         <!-- Card 2: Servicing Posture -->
-        <div class="reveal reveal-delay-1 bento-card bg-surface-high rounded-card p-8 flex flex-col justify-between min-h-[150px]">
+        <div class="reveal reveal-delay-1 bento-card card-lift bg-surface-high rounded-card p-8 flex flex-col justify-between min-h-[150px]">
           <div>
             <div class="w-12 h-12 rounded-xl bg-amber-soft/10 flex items-center justify-center mb-5">
               <span class="material-symbols-outlined text-amber-soft text-2xl">verified_user</span>
@@ -288,13 +326,13 @@
         </div>
 
         <!-- Card 3: Stats card -->
-        <div class="reveal reveal-delay-2 bento-card bg-gradient-to-br from-teal/10 to-teal-dim/5 rounded-card p-8 flex flex-col justify-center items-center text-center min-h-[150px]">
+        <div class="reveal reveal-delay-2 bento-card card-lift reveal-scale bg-gradient-to-br from-teal/10 to-teal-dim/5 rounded-card p-8 flex flex-col justify-center items-center text-center min-h-[150px]">
           <span class="counter-value text-5xl md:text-6xl font-extrabold text-teal" data-target="16.3" data-prefix="$" data-suffix="B+">$0B+</span>
           <p class="text-white/40 text-sm mt-3 font-medium">Originated Since Inception</p>
         </div>
 
         <!-- Card 4: Physical Presence + Tags -->
-        <div class="reveal reveal-delay-3 bento-card bg-surface-high rounded-card p-8 flex flex-col justify-between min-h-[150px]">
+        <div class="reveal reveal-delay-3 bento-card card-lift bg-surface-high rounded-card p-8 flex flex-col justify-between min-h-[150px]">
           <div>
             <div class="w-12 h-12 rounded-xl bg-teal/10 flex items-center justify-center mb-5">
               <span class="material-symbols-outlined text-teal text-2xl">location_city</span>
@@ -313,7 +351,7 @@
         </div>
 
         <!-- Card 5: Image card (NYC office) -->
-        <div class="reveal reveal-delay-4 bento-card rounded-card overflow-hidden min-h-[220px] relative group">
+        <div class="reveal reveal-delay-4 bento-card card-lift rounded-card overflow-hidden min-h-[220px] relative group">
           <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/nyc-office-interior-2.jpg?ssl=1"
                alt="3650 Capital NYC office interior"
                class="img-cover transition-transform duration-700 group-hover:scale-105">
@@ -335,10 +373,11 @@
     <div class="watermark-3650" aria-hidden="true">3650</div>
 
     <div class="relative z-10 max-w-7xl mx-auto px-6">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center stagger">
         <!-- Text column -->
-        <div>
-          <p class="reveal text-teal text-sm font-semibold tracking-widest uppercase mb-4">Our Story</p>
+        <div class="reveal-left">
+          <div class="line-draw mb-6"></div>
+        <p class="reveal text-teal text-sm font-semibold tracking-widest uppercase mb-4">Our Story</p>
           <h2 class="reveal reveal-delay-1 text-3xl md:text-5xl font-extrabold text-white leading-tight mb-6">
             From Day 1<br>to Day <span class="text-teal">3650</span>.
           </h2>
@@ -356,8 +395,8 @@
         </div>
 
         <!-- Image column -->
-        <div class="reveal reveal-delay-2 relative">
-          <div class="rounded-card overflow-hidden">
+        <div class="reveal img-reveal reveal-right reveal-delay-2 relative">
+          <div class="rounded-card overflow-hidden img-hover">
             <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Commercial-Observer-Founders-Image.png?ssl=1"
                  alt="3650 Capital founders"
                  class="img-cover aspect-[4/3]">
@@ -378,6 +417,7 @@
     <div class="max-w-7xl mx-auto px-6">
       <!-- Section header -->
       <div class="text-center mb-16 max-w-2xl mx-auto">
+        <div class="line-draw mb-6"></div>
         <p class="reveal text-teal text-sm font-semibold tracking-widest uppercase mb-4">Why 3650</p>
         <h2 class="reveal reveal-delay-1 text-3xl md:text-5xl font-extrabold text-white leading-tight">
           Engineered for Excellence
@@ -388,10 +428,10 @@
       </div>
 
       <!-- Feature cards -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 stagger">
 
         <!-- Card 1: Certainty of Execution -->
-        <div class="reveal bento-card bg-surface-high rounded-card p-8 flex flex-col min-h-[320px]">
+        <div class="reveal bento-card card-lift bg-surface-high rounded-card p-8 flex flex-col min-h-[320px]">
           <div class="w-14 h-14 rounded-xl bg-teal/10 flex items-center justify-center mb-6">
             <span class="material-symbols-outlined text-teal text-3xl">check_circle</span>
           </div>
@@ -408,7 +448,7 @@
         </div>
 
         <!-- Card 2: Lender-Servicer Alignment -->
-        <div class="reveal reveal-delay-1 bento-card bg-surface-high rounded-card p-8 flex flex-col min-h-[320px]">
+        <div class="reveal reveal-delay-1 bento-card card-lift bg-surface-high rounded-card p-8 flex flex-col min-h-[320px]">
           <div class="w-14 h-14 rounded-xl bg-amber-soft/10 flex items-center justify-center mb-6">
             <span class="material-symbols-outlined text-amber-soft text-3xl">sync_alt</span>
           </div>
@@ -425,7 +465,7 @@
         </div>
 
         <!-- Card 3: Strategic Advisory -->
-        <div class="reveal reveal-delay-2 bento-card bg-surface-high rounded-card p-8 flex flex-col min-h-[320px]">
+        <div class="reveal reveal-delay-2 bento-card card-lift bg-surface-high rounded-card p-8 flex flex-col min-h-[320px]">
           <div class="w-14 h-14 rounded-xl bg-teal/10 flex items-center justify-center mb-6">
             <span class="material-symbols-outlined text-teal text-3xl">psychology</span>
           </div>
@@ -451,6 +491,7 @@
     <div class="max-w-7xl mx-auto px-6">
       <!-- Section header -->
       <div class="mb-14 max-w-2xl">
+        <div class="line-draw mb-6"></div>
         <p class="reveal text-teal text-sm font-semibold tracking-widest uppercase mb-4">Track Record</p>
         <h2 class="reveal reveal-delay-1 text-3xl md:text-5xl font-extrabold text-white leading-tight">
           Featured Transactions
@@ -459,7 +500,7 @@
 
       <!-- Featured deal -->
       <div class="reveal mb-8">
-        <div class="bento-card bg-surface-high rounded-card overflow-hidden grid grid-cols-1 lg:grid-cols-2">
+        <div class="bento-card card-lift bg-surface-high rounded-card overflow-hidden grid grid-cols-1 lg:grid-cols-2">
           <div class="relative min-h-[280px] lg:min-h-[360px]">
             <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/rendering-center-at-miami-gardens-courtesy-3650-reit.jpg?ssl=1"
                  alt="Center at Miami Gardens rendering"
@@ -474,7 +515,7 @@
             <p class="text-white/40 text-sm leading-relaxed mb-6">
               A landmark mixed-use development in Miami-Dade County. 3650 Capital provided a comprehensive financing solution structured to support the full development timeline and lease-up trajectory.
             </p>
-            <div class="grid grid-cols-2 gap-4 mb-6">
+            <div class="grid grid-cols-2 gap-4 mb-6 stagger">
               <div>
                 <p class="text-teal text-2xl font-extrabold">$185M</p>
                 <p class="text-white/30 text-xs mt-1">Loan Amount</p>
@@ -493,10 +534,10 @@
       </div>
 
       <!-- Transaction grid -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5 stagger">
 
         <!-- Transaction 1 -->
-        <div class="reveal reveal-delay-1 bento-card bg-surface-high rounded-card overflow-hidden">
+        <div class="reveal reveal-delay-1 bento-card card-lift bg-surface-high rounded-card overflow-hidden">
           <div class="relative h-48">
             <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Oasis-Pointe.-Image-courtesy-of-3650-REIT-.jpeg?ssl=1"
                  alt="Oasis Pointe property"
@@ -519,7 +560,7 @@
         </div>
 
         <!-- Transaction 2 -->
-        <div class="reveal reveal-delay-2 bento-card bg-surface-high rounded-card overflow-hidden">
+        <div class="reveal reveal-delay-2 bento-card card-lift bg-surface-high rounded-card overflow-hidden">
           <div class="relative h-48">
             <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/pere-panel-group-shot.jpg?ssl=1"
                  alt="PERE panel discussion"
@@ -542,7 +583,7 @@
         </div>
 
         <!-- Transaction 3 -->
-        <div class="reveal reveal-delay-3 bento-card bg-surface-high rounded-card overflow-hidden">
+        <div class="reveal reveal-delay-3 bento-card card-lift bg-surface-high rounded-card overflow-hidden">
           <div class="relative h-48">
             <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/grove-central-hero.jpg?ssl=1"
                  alt="Grove Central property"
@@ -624,9 +665,9 @@
 
 
   <!-- ===================== FOOTER ===================== -->
-  <footer class="bg-surface border-t border-white/5 py-14">
+  <footer class="reveal bg-surface border-t border-white/5 py-14">
     <div class="max-w-7xl mx-auto px-6">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10 stagger">
 
         <!-- Column 1: Logo & tagline -->
         <div>
@@ -701,13 +742,12 @@
       }
     })();
 
-    // IntersectionObserver for scroll reveal animations
+    // IntersectionObserver for scroll reveal animations (upgraded)
     (function() {
       var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
       if (prefersReduced) {
-        // Make everything visible immediately
-        document.querySelectorAll('.reveal').forEach(function(el) {
+        document.querySelectorAll('.reveal, .stagger, .text-reveal-wrap, .img-reveal, .line-draw, .reveal-left, .reveal-right, .reveal-scale').forEach(function(el) {
           el.classList.add('visible');
         });
         return;
@@ -725,7 +765,7 @@
         rootMargin: '0px 0px -40px 0px'
       });
 
-      document.querySelectorAll('.reveal').forEach(function(el) {
+      document.querySelectorAll('.reveal, .stagger, .text-reveal-wrap, .img-reveal, .line-draw, .reveal-left, .reveal-right, .reveal-scale').forEach(function(el) {
         observer.observe(el);
       });
     })();

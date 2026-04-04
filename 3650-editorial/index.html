@@ -207,6 +207,67 @@
       opacity: 1;
       transition: opacity 0.5s ease;
     }
+
+    /* Staggered card entrance */
+    .stagger > * { opacity: 0; transform: translateY(20px); transition: opacity 0.65s ease-out, transform 0.65s ease-out; }
+    .stagger.visible > * { opacity: 1; transform: none; }
+    .stagger.visible > *:nth-child(1) { transition-delay: 0ms; }
+    .stagger.visible > *:nth-child(2) { transition-delay: 120ms; }
+    .stagger.visible > *:nth-child(3) { transition-delay: 240ms; }
+    .stagger.visible > *:nth-child(4) { transition-delay: 360ms; }
+    .stagger.visible > *:nth-child(5) { transition-delay: 480ms; }
+    .stagger.visible > *:nth-child(6) { transition-delay: 600ms; }
+    .stagger.visible > *:nth-child(7) { transition-delay: 720ms; }
+    .stagger.visible > *:nth-child(8) { transition-delay: 840ms; }
+    .stagger.visible > *:nth-child(9) { transition-delay: 960ms; }
+    .stagger.visible > *:nth-child(10) { transition-delay: 1080ms; }
+
+    /* Text line reveal */
+    .text-reveal-wrap { overflow: hidden; display: block; }
+    .text-reveal-line { display: block; transform: translateY(110%); transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1); }
+    .text-reveal-wrap.visible .text-reveal-line { transform: none; }
+    .text-reveal-wrap.visible .text-reveal-line:nth-child(2) { transition-delay: 0.12s; }
+    .text-reveal-wrap.visible .text-reveal-line:nth-child(3) { transition-delay: 0.24s; }
+
+    /* Image clip reveal (bottom to top for editorial) */
+    .img-reveal { clip-path: inset(100% 0 0 0); transition: clip-path 1.2s cubic-bezier(0.16, 1, 0.3, 1); }
+    .img-reveal.visible { clip-path: inset(0 0 0 0); }
+
+    /* Terra line draw */
+    .line-draw { width: 0; height: 2px; background: #b8432a; transition: width 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.3s; }
+    .line-draw.visible { width: 60px; }
+
+    /* Scale reveal */
+    .reveal-scale { opacity: 0; transform: scale(0.94); transition: opacity 0.7s ease-out, transform 0.7s ease-out; }
+    .reveal-scale.visible { opacity: 1; transform: none; }
+
+    /* Slide from left/right */
+    .reveal-left { opacity: 0; transform: translateX(-30px); transition: opacity 0.7s ease-out, transform 0.7s ease-out; }
+    .reveal-left.visible { opacity: 1; transform: none; }
+    .reveal-right { opacity: 0; transform: translateX(30px); transition: opacity 0.7s ease-out, transform 0.7s ease-out; }
+    .reveal-right.visible { opacity: 1; transform: none; }
+
+    /* Card hover lift */
+    .card-lift { transition: transform 0.4s ease, box-shadow 0.4s ease; }
+    .card-lift:hover { transform: translateY(-4px); box-shadow: 0 16px 32px rgba(26,22,18,0.1); }
+
+    /* Image hover zoom */
+    .img-hover { overflow: hidden; }
+    .img-hover img { transition: transform 0.7s cubic-bezier(0.16,1,0.3,1); }
+    .img-hover:hover img { transform: scale(1.03); }
+
+    /* Pull quote entrance */
+    .quote-reveal { opacity: 0; transform: translateX(-20px); border-left: 3px solid transparent; transition: all 0.8s ease-out; }
+    .quote-reveal.visible { opacity: 1; transform: none; border-left-color: #b8432a; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .stagger > *, .text-reveal-line, .img-reveal, .line-draw,
+      .reveal-scale, .reveal-left, .reveal-right, .quote-reveal {
+        opacity: 1; transform: none; clip-path: none; width: auto; border-left-color: #b8432a; transition: none;
+      }
+      .card-lift:hover { transform: none; }
+      .img-hover:hover img { transform: none; }
+    }
   </style>
 </head>
 
@@ -254,14 +315,14 @@
 
       <!-- Editorial label -->
       <div class="reveal mb-6 flex items-center gap-3">
-        <div class="editorial-rule"></div>
+        <div class="editorial-rule line-draw"></div>
         <span class="label-editorial text-terra">Issue No. 01 — The Definitive Lender</span>
       </div>
 
       <!-- Headline -->
-      <h1 class="headline-massive reveal reveal-delay-1 max-w-[1100px]">
-        One lender.<br>
-        <em class="text-terra">Wholly</em> committed.
+      <h1 class="headline-massive max-w-[1100px]">
+        <span class="text-reveal-wrap"><span class="text-reveal-line">One lender.</span></span>
+        <span class="text-reveal-wrap"><span class="text-reveal-line"><em class="text-terra">Wholly</em> committed.</span></span>
       </h1>
 
       <!-- Sub-headline -->
@@ -271,7 +332,7 @@
 
       <!-- Hero image with editorial caption -->
       <div class="reveal reveal-delay-3 mt-14 relative">
-        <div class="w-full aspect-[16/7] overflow-hidden bg-ink/5">
+        <div class="w-full aspect-[16/7] overflow-hidden bg-ink/5 img-reveal img-hover">
           <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/grove-central-hero.jpg?ssl=1"
                alt="Grove Central — mixed-use development financed by 3650 Capital"
                class="w-full h-full object-cover">
@@ -282,7 +343,7 @@
       </div>
 
       <!-- Bento stats bar -->
-      <div class="reveal reveal-delay-4 mt-14 grid grid-cols-3 gap-[1px] bg-ink/10">
+      <div class="reveal reveal-delay-4 stagger mt-14 grid grid-cols-3 gap-[1px] bg-ink/10">
         <!-- Stat 1 -->
         <div class="bg-cream py-8 px-6 md:px-10 text-center">
           <span class="stat-editorial text-4xl md:text-6xl text-terra" data-counter="10">0</span>
@@ -316,7 +377,7 @@
 
       <!-- Section label -->
       <div class="reveal flex items-center gap-3 mb-6">
-        <div class="editorial-rule"></div>
+        <div class="editorial-rule line-draw"></div>
         <span class="label-editorial text-terra">The Platform</span>
       </div>
 
@@ -330,10 +391,10 @@
       </p>
 
       <!-- Bento grid -->
-      <div class="grid grid-cols-1 md:grid-cols-12 gap-[1px] bg-ink/10">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-[1px] bg-ink/10 stagger">
 
         <!-- Card 1: Institutional Presence — large -->
-        <div class="reveal md:col-span-7 bento-card bg-ink text-cream p-8 md:p-12 flex flex-col justify-between min-h-[360px]">
+        <div class="reveal md:col-span-7 bento-card card-lift bg-ink text-cream p-8 md:p-12 flex flex-col justify-between min-h-[360px]">
           <div>
             <span class="label-editorial text-terra-light">01</span>
             <h3 class="headline-mid mt-4 mb-4">Institutional Presence</h3>
@@ -402,7 +463,7 @@
 
       <!-- Section intro -->
       <div class="reveal flex items-center gap-3 mb-6">
-        <div class="editorial-rule"></div>
+        <div class="editorial-rule line-draw"></div>
         <span class="label-editorial text-terra">The Story</span>
       </div>
 
@@ -430,7 +491,7 @@
           </div>
           <!-- Right column: image -->
           <div class="mt-8 md:mt-0 md:pl-12">
-            <div class="w-full aspect-[4/3] overflow-hidden bg-ink/5">
+            <div class="w-full aspect-[4/3] overflow-hidden bg-ink/5 img-hover">
               <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Gateway-at-Wynwood-e1578945268648.jpg?ssl=1"
                    alt="Gateway at Wynwood — 3650 Capital financed project"
                    class="w-full h-full object-cover">
@@ -445,7 +506,7 @@
         <div class="reveal relative md:grid md:grid-cols-2 md:gap-16 mb-20 md:mb-32">
           <!-- Left column: image -->
           <div class="order-2 md:order-1 mt-8 md:mt-0 md:pr-12">
-            <div class="w-full aspect-[4/3] overflow-hidden bg-ink/5">
+            <div class="w-full aspect-[4/3] overflow-hidden bg-ink/5 img-hover">
               <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Commercial-Observer-Founders-Image.png?ssl=1"
                    alt="3650 Capital founding team"
                    class="w-full h-full object-cover">
@@ -468,7 +529,7 @@
         </div>
 
         <!-- Pull quote — full width -->
-        <div class="reveal relative py-12 md:py-20 mb-20 md:mb-32 border-t border-b border-ink/10">
+        <div class="reveal quote-reveal relative py-12 md:py-20 mb-20 md:mb-32 border-t border-b border-ink/10">
           <span class="material-symbols-outlined text-5xl text-terra/20 absolute top-6 left-0 md:left-1/2 md:-translate-x-1/2" aria-hidden="true">format_quote</span>
           <blockquote class="pull-quote text-center max-w-[800px] mx-auto px-4 md:px-8 mt-4">
             "Commercial real estate is a relationship business that has been treated like a transactional world. We are bringing the relationship back to the people."
@@ -491,7 +552,7 @@
           </div>
           <!-- Right column: image -->
           <div class="mt-8 md:mt-0 md:pl-12">
-            <div class="w-full aspect-[4/3] overflow-hidden bg-ink/5">
+            <div class="w-full aspect-[4/3] overflow-hidden bg-ink/5 img-hover">
               <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/rendering-center-at-miami-gardens-courtesy-3650-reit.jpg?ssl=1"
                    alt="Center at Miami Gardens rendering — courtesy 3650 REIT"
                    class="w-full h-full object-cover">
@@ -526,7 +587,7 @@
       </p>
 
       <!-- Stats bento grid -->
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-[1px] bg-cream/10">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-[1px] bg-cream/10 stagger">
         <!-- Stat 1 -->
         <div class="reveal bg-ink p-8 md:p-10 text-center">
           <span class="stat-editorial text-4xl md:text-5xl text-terra-light" data-counter="600">0</span>
@@ -553,7 +614,7 @@
       </div>
 
       <!-- Lower content grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-[1px] bg-cream/10 mt-[1px]">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-[1px] bg-cream/10 mt-[1px] stagger">
         <!-- Product column -->
         <div class="reveal bg-ink/80 p-8 md:p-12">
           <h3 class="font-headline text-2xl mb-6">Lending Products</h3>
@@ -592,7 +653,7 @@
         <!-- Property types column -->
         <div class="reveal reveal-delay-1 bg-ink/80 p-8 md:p-12">
           <h3 class="font-headline text-2xl mb-6">Property Types</h3>
-          <div class="grid grid-cols-2 gap-4">
+          <div class="grid grid-cols-2 gap-4 stagger">
             <div class="border border-cream/10 p-4">
               <span class="material-symbols-outlined text-cream/30 mb-2">apartment</span>
               <p class="text-sm font-semibold text-cream/80">Multifamily</p>
@@ -631,7 +692,7 @@
 
       <!-- PERE panel image -->
       <div class="reveal mt-16">
-        <div class="w-full aspect-[21/9] overflow-hidden bg-cream/5">
+        <div class="w-full aspect-[21/9] overflow-hidden bg-cream/5 img-reveal img-hover">
           <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/pere-panel-group-shot.jpg?ssl=1"
                alt="3650 Capital leadership at PERE conference panel"
                class="w-full h-full object-cover">
@@ -657,7 +718,7 @@
     <div class="relative z-10 text-center px-6 md:px-10 max-w-[1000px]">
       <div class="reveal">
         <span class="label-editorial text-terra-light tracking-[0.3em] block mb-8">The Next Decade</span>
-        <h2 class="font-headline text-cream font-bold leading-[0.95] tracking-tight" style="font-size: clamp(2.5rem, 7vw, 7rem);">
+        <h2 class="font-headline text-cream font-bold leading-[0.95] tracking-tight reveal-scale" style="font-size: clamp(2.5rem, 7vw, 7rem);">
           BUILDING FOR<br>THE NEXT<br><span class="text-terra-light">3,650</span> DAYS.
         </h2>
         <div class="mt-10 w-16 h-[2px] bg-terra mx-auto"></div>
@@ -677,7 +738,7 @@
         <!-- Left column: editorial text -->
         <div class="reveal">
           <div class="flex items-center gap-3 mb-6">
-            <div class="editorial-rule"></div>
+            <div class="editorial-rule line-draw"></div>
             <span class="label-editorial text-terra">Get in Touch</span>
           </div>
           <h2 class="headline-large mb-8">
@@ -688,7 +749,7 @@
           </p>
 
           <!-- Office locations mini-grid -->
-          <div class="grid grid-cols-2 gap-4">
+          <div class="grid grid-cols-2 gap-4 stagger">
             <div class="border-l-2 border-terra/20 pl-4">
               <p class="font-semibold text-sm">New York</p>
               <p class="text-ink/40 text-xs">Headquarters</p>
@@ -855,12 +916,12 @@
         rootMargin: '0px 0px -40px 0px'
       });
 
-      document.querySelectorAll('.reveal').forEach(el => {
+      document.querySelectorAll('.reveal, .stagger, .text-reveal-wrap, .img-reveal, .line-draw, .reveal-scale, .reveal-left, .reveal-right, .quote-reveal').forEach(el => {
         revealObserver.observe(el);
       });
     } else {
       // If reduced motion, show everything immediately
-      document.querySelectorAll('.reveal').forEach(el => {
+      document.querySelectorAll('.reveal, .stagger, .text-reveal-wrap, .img-reveal, .line-draw, .reveal-scale, .reveal-left, .reveal-right, .quote-reveal').forEach(el => {
         el.classList.add('visible');
       });
     }

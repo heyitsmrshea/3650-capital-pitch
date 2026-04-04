@@ -172,6 +172,39 @@
     ::-webkit-scrollbar { width: 8px; }
     ::-webkit-scrollbar-track { background: #f5efe6; }
     ::-webkit-scrollbar-thumb { background: #8b5e34; border-radius: 4px; }
+  
+    /* === NEXT-LEVEL ANIMATIONS === */
+    .stagger > * { opacity: 0; transform: translateY(20px); transition: opacity 0.55s cubic-bezier(0.22,1,0.36,1), transform 0.55s cubic-bezier(0.22,1,0.36,1); }
+    .stagger.visible > * { opacity: 1; transform: none; }
+    .stagger.visible > *:nth-child(1) { transition-delay: 0ms; }
+    .stagger.visible > *:nth-child(2) { transition-delay: 80ms; }
+    .stagger.visible > *:nth-child(3) { transition-delay: 160ms; }
+    .stagger.visible > *:nth-child(4) { transition-delay: 240ms; }
+    .stagger.visible > *:nth-child(5) { transition-delay: 320ms; }
+    .stagger.visible > *:nth-child(6) { transition-delay: 400ms; }
+    .stagger.visible > *:nth-child(7) { transition-delay: 480ms; }
+    .stagger.visible > *:nth-child(8) { transition-delay: 560ms; }
+    .stagger.visible > *:nth-child(9) { transition-delay: 640ms; }
+    .stagger.visible > *:nth-child(10) { transition-delay: 720ms; }
+    .text-reveal-wrap { overflow: hidden; display: block; }
+    .text-reveal-line { display: block; transform: translateY(110%); transition: transform 0.75s cubic-bezier(0.22,1,0.36,1); }
+    .text-reveal-wrap.visible .text-reveal-line { transform: none; }
+    .text-reveal-wrap.visible .text-reveal-line:nth-child(2) { transition-delay: 0.08s; }
+    .text-reveal-wrap.visible .text-reveal-line:nth-child(3) { transition-delay: 0.16s; }
+    .img-reveal { clip-path: polygon(0 0, 0 0, 0 100%, 0 100%); transition: clip-path 1s cubic-bezier(0.22,1,0.36,1); }
+    .img-reveal.visible { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
+    .line-draw { width: 0; height: 3px; background: #8b5e34; transition: width 0.8s cubic-bezier(0.22,1,0.36,1) 0.2s; }
+    .line-draw.visible { width: 48px; }
+    .card-lift { transition: transform 0.35s cubic-bezier(0.22,1,0.36,1), box-shadow 0.35s ease; }
+    .card-lift:hover { transform: translateY(-8px); box-shadow: 0 24px 48px rgba(0,0,0,0.1); }
+    .img-hover { overflow: hidden; }
+    .img-hover img { transition: transform 0.5s cubic-bezier(0.22,1,0.36,1); }
+    .img-hover:hover img { transform: scale(1.05); }
+    @media (prefers-reduced-motion: reduce) {
+      .stagger > *, .text-reveal-line, .img-reveal, .line-draw { opacity: 1; transform: none; clip-path: polygon(0 0,100% 0,100% 100%,0 100%); width: auto; transition: none; }
+      .card-lift:hover, .img-hover:hover img { transform: none; }
+    }
+
   </style>
 </head>
 
@@ -254,12 +287,9 @@
           </div>
 
           <!-- Headline -->
-          <h1 class="reveal delay-1 font-headline text-3xl md:text-4xl lg:text-5xl text-charcoal mb-6 leading-tight">
-            An established<br>
-            <span class="text-copper">industry force.</span>
-          </h1>
+          <h1 class="reveal delay-1 font-headline text-3xl md:text-4xl lg:text-5xl text-charcoal mb-6 leading-tight"><span class="text-reveal-wrap visible"><span class="text-reveal-line">An established</span><span class="text-reveal-line"><span class="text-copper">industry force.</span></span></span></h1>
 
-          <div class="reveal delay-2 copper-line mb-6"></div>
+          <div class="reveal delay-2 copper-line line-draw mb-6"></div>
 
           <p class="reveal delay-3 text-charcoal/60 text-base md:text-lg leading-relaxed max-w-lg mb-8">
             Lifetime CRE professionals with cross-discipline experience across origination, credit, capital markets, and servicing.
@@ -273,11 +303,11 @@
 
         <!-- Right: Hero Image -->
         <div class="reveal-right delay-2 relative">
-          <div class="rounded-xl overflow-hidden shadow-2xl">
+          <div class="rounded-xl overflow-hidden shadow-2xl img-hover">
             <img
               src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Founders-Profile-.png?ssl=1"
               alt="3650 Capital Founders"
-              class="w-full h-auto"
+              class="w-full h-auto img-reveal"
               loading="eager"
             >
           </div>
@@ -295,7 +325,7 @@
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
 
       <div class="text-center mb-16">
-        <div class="reveal copper-line mx-auto mb-8"></div>
+        <div class="reveal copper-line line-draw mx-auto mb-8"></div>
         <h2 class="reveal delay-1 font-headline text-3xl md:text-4xl lg:text-5xl text-white mb-4 leading-tight">
           Co-Founders
         </h2>
@@ -305,16 +335,16 @@
       </div>
 
       <!-- Founder Cards — Bold with Overlapping Elements -->
-      <div class="space-y-20 md:space-y-28">
+      <div class="space-y-20 md:space-y-28 stagger">
 
         <!-- Justin Kennedy -->
         <div class="reveal grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           <div class="relative">
-            <div class="founder-card rounded-xl overflow-hidden relative z-10">
+            <div class="founder-card rounded-xl overflow-hidden relative z-10 img-hover">
               <img
                 src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-Headshots-A1067.jpg?ssl=1"
                 alt="Justin Kennedy"
-                class="w-full aspect-[4/5] object-cover"
+                class="w-full aspect-[4/5] object-cover img-reveal"
                 loading="lazy"
               >
             </div>
@@ -326,7 +356,7 @@
               <span class="inline-flex items-center px-3 py-1 bg-copper/20 text-copper text-xs font-semibold tracking-widest uppercase rounded-full mb-4">Co-Founder</span>
               <h3 class="font-headline text-3xl md:text-4xl text-white mb-2">Justin Kennedy</h3>
               <p class="text-copper text-sm font-medium mb-6">Managing Partner</p>
-              <div class="copper-line mb-6"></div>
+              <div class="copper-line line-draw visible mb-6"></div>
               <p class="text-white/60 text-sm leading-relaxed mb-4">
                 Justin Kennedy is a Co-Founder and Managing Partner of 3650 Capital. He brings decades of experience in commercial real estate finance, with deep expertise spanning origination, structuring, and capital markets execution.
               </p>
@@ -340,11 +370,11 @@
         <!-- Jonathan Roth -->
         <div class="reveal grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           <div class="lg:order-2 relative">
-            <div class="founder-card rounded-xl overflow-hidden relative z-10">
+            <div class="founder-card rounded-xl overflow-hidden relative z-10 img-hover">
               <img
                 src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-Headshots-A0857.jpg?ssl=1"
                 alt="Jonathan Roth"
-                class="w-full aspect-[4/5] object-cover"
+                class="w-full aspect-[4/5] object-cover img-reveal"
                 loading="lazy"
               >
             </div>
@@ -356,7 +386,7 @@
               <span class="inline-flex items-center px-3 py-1 bg-copper/20 text-copper text-xs font-semibold tracking-widest uppercase rounded-full mb-4">Co-Founder</span>
               <h3 class="font-headline text-3xl md:text-4xl text-white mb-2">Jonathan Roth</h3>
               <p class="text-copper text-sm font-medium mb-6">Managing Partner</p>
-              <div class="copper-line mb-6"></div>
+              <div class="copper-line line-draw visible mb-6"></div>
               <p class="text-white/60 text-sm leading-relaxed mb-4">
                 Jonathan Roth is a Co-Founder and Managing Partner of 3650 Capital. With extensive experience across credit underwriting, portfolio management, and institutional lending, Jonathan oversees the firm's credit and risk management functions.
               </p>
@@ -370,11 +400,11 @@
         <!-- Toby Cobb -->
         <div class="reveal grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           <div class="relative">
-            <div class="founder-card rounded-xl overflow-hidden relative z-10">
+            <div class="founder-card rounded-xl overflow-hidden relative z-10 img-hover">
               <img
                 src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-Headshots-A0746.jpg?ssl=1"
                 alt="Toby Cobb"
-                class="w-full aspect-[4/5] object-cover"
+                class="w-full aspect-[4/5] object-cover img-reveal"
                 loading="lazy"
               >
             </div>
@@ -386,7 +416,7 @@
               <span class="inline-flex items-center px-3 py-1 bg-copper/20 text-copper text-xs font-semibold tracking-widest uppercase rounded-full mb-4">Co-Founder</span>
               <h3 class="font-headline text-3xl md:text-4xl text-white mb-2">Toby Cobb</h3>
               <p class="text-copper text-sm font-medium mb-6">Managing Partner</p>
-              <div class="copper-line mb-6"></div>
+              <div class="copper-line line-draw visible mb-6"></div>
               <p class="text-white/60 text-sm leading-relaxed mb-4">
                 Toby Cobb is a Co-Founder and Managing Partner of 3650 Capital. A veteran of the commercial real estate industry, Toby leads the firm's origination and capital formation efforts.
               </p>
@@ -407,7 +437,7 @@
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
 
       <div class="text-center mb-16">
-        <div class="reveal copper-line mx-auto mb-8"></div>
+        <div class="reveal copper-line line-draw mx-auto mb-8"></div>
         <h2 class="reveal delay-1 font-headline text-3xl md:text-4xl lg:text-5xl text-charcoal mb-4 leading-tight">
           Our Team
         </h2>
@@ -417,10 +447,10 @@
       </div>
 
       <!-- Team Grid -->
-      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5 md:gap-6">
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5 md:gap-6 stagger">
 
         <!-- Andrew Parower -->
-        <div class="reveal team-card bg-white rounded-xl overflow-hidden">
+        <div class="reveal team-card card-lift bg-white rounded-xl overflow-hidden">
           <div class="aspect-[3/4] overflow-hidden">
             <img src="https://raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-Headshots-Oct-2023-Miami-A0562-scaled.jpg" alt="Andrew Parower" class="w-full h-full object-cover team-photo" loading="lazy">
           </div>
@@ -431,7 +461,7 @@
         </div>
 
         <!-- Peter LaPointe -->
-        <div class="reveal delay-1 team-card bg-white rounded-xl overflow-hidden">
+        <div class="reveal delay-1 team-card card-lift bg-white rounded-xl overflow-hidden">
           <div class="aspect-[3/4] overflow-hidden">
             <img src="https://raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Peter-3650-A013.jpg" alt="Peter LaPointe" class="w-full h-full object-cover team-photo" loading="lazy">
           </div>
@@ -442,7 +472,7 @@
         </div>
 
         <!-- Mark Jefferis -->
-        <div class="reveal delay-2 team-card bg-white rounded-xl overflow-hidden">
+        <div class="reveal delay-2 team-card card-lift bg-white rounded-xl overflow-hidden">
           <div class="aspect-[3/4] overflow-hidden">
             <img src="https://raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Mark-Jefferis-scaled.jpg" alt="Mark Jefferis" class="w-full h-full object-cover team-photo" loading="lazy">
           </div>
@@ -453,7 +483,7 @@
         </div>
 
         <!-- John Wright -->
-        <div class="reveal delay-3 team-card bg-white rounded-xl overflow-hidden">
+        <div class="reveal delay-3 team-card card-lift bg-white rounded-xl overflow-hidden">
           <div class="aspect-[3/4] overflow-hidden">
             <img src="https://raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/john-wright-headshot.jpg" alt="John Wright" class="w-full h-full object-cover team-photo" loading="lazy">
           </div>
@@ -464,7 +494,7 @@
         </div>
 
         <!-- Malay Bansal -->
-        <div class="reveal delay-4 team-card bg-white rounded-xl overflow-hidden">
+        <div class="reveal delay-4 team-card card-lift bg-white rounded-xl overflow-hidden">
           <div class="aspect-[3/4] overflow-hidden">
             <img src="https://raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-Headshots-A0385.jpg" alt="Malay Bansal" class="w-full h-full object-cover team-photo" loading="lazy">
           </div>
@@ -475,7 +505,7 @@
         </div>
 
         <!-- Ken Dickey -->
-        <div class="reveal team-card bg-white rounded-xl overflow-hidden">
+        <div class="reveal team-card card-lift bg-white rounded-xl overflow-hidden">
           <div class="aspect-[3/4] overflow-hidden">
             <img src="https://raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-Headshots-A0088-2.jpg" alt="Ken Dickey" class="w-full h-full object-cover team-photo" loading="lazy">
           </div>
@@ -486,7 +516,7 @@
         </div>
 
         <!-- Michael Fleischer -->
-        <div class="reveal delay-1 team-card bg-white rounded-xl overflow-hidden">
+        <div class="reveal delay-1 team-card card-lift bg-white rounded-xl overflow-hidden">
           <div class="aspect-[3/4] overflow-hidden">
             <img src="https://raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/MichaelF-04688A3.jpg" alt="Michael Fleischer" class="w-full h-full object-cover team-photo" loading="lazy">
           </div>
@@ -497,7 +527,7 @@
         </div>
 
         <!-- Jake Stahler -->
-        <div class="reveal delay-2 team-card bg-white rounded-xl overflow-hidden">
+        <div class="reveal delay-2 team-card card-lift bg-white rounded-xl overflow-hidden">
           <div class="aspect-[3/4] overflow-hidden">
             <img src="https://raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-Headshots-A0720-min.jpg" alt="Jake Stahler" class="w-full h-full object-cover team-photo" loading="lazy">
           </div>
@@ -508,7 +538,7 @@
         </div>
 
         <!-- Evan Guttman -->
-        <div class="reveal delay-3 team-card bg-white rounded-xl overflow-hidden">
+        <div class="reveal delay-3 team-card card-lift bg-white rounded-xl overflow-hidden">
           <div class="aspect-[3/4] overflow-hidden">
             <img src="https://raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-Headshots-Oct-2023-NYC-B1181-3-scaled.jpg" alt="Evan Guttman" class="w-full h-full object-cover team-photo" loading="lazy">
           </div>
@@ -519,7 +549,7 @@
         </div>
 
         <!-- Michael McCabe -->
-        <div class="reveal delay-4 team-card bg-white rounded-xl overflow-hidden">
+        <div class="reveal delay-4 team-card card-lift bg-white rounded-xl overflow-hidden">
           <div class="aspect-[3/4] overflow-hidden">
             <img src="https://raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-Headshots-Oct-2023-NYC-B1078-scaled.jpg" alt="Michael McCabe" class="w-full h-full object-cover team-photo" loading="lazy">
           </div>
@@ -530,7 +560,7 @@
         </div>
 
         <!-- Stephanie Sabellico -->
-        <div class="reveal team-card bg-white rounded-xl overflow-hidden">
+        <div class="reveal team-card card-lift bg-white rounded-xl overflow-hidden">
           <div class="aspect-[3/4] overflow-hidden">
             <img src="https://raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/EVN0949-Edit-scaled.jpg" alt="Stephanie Sabellico" class="w-full h-full object-cover team-photo" loading="lazy">
           </div>
@@ -541,7 +571,7 @@
         </div>
 
         <!-- Barrett Graham -->
-        <div class="reveal delay-1 team-card bg-white rounded-xl overflow-hidden">
+        <div class="reveal delay-1 team-card card-lift bg-white rounded-xl overflow-hidden">
           <div class="aspect-[3/4] overflow-hidden">
             <img src="https://raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/MGM_2579-scaled.jpg" alt="Barrett Graham" class="w-full h-full object-cover team-photo" loading="lazy">
           </div>
@@ -552,7 +582,7 @@
         </div>
 
         <!-- Brent Thurn -->
-        <div class="reveal delay-2 team-card bg-white rounded-xl overflow-hidden">
+        <div class="reveal delay-2 team-card card-lift bg-white rounded-xl overflow-hidden">
           <div class="aspect-[3/4] overflow-hidden">
             <img src="https://raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-2564-scaled.jpg" alt="Brent Thurn" class="w-full h-full object-cover team-photo" loading="lazy">
           </div>
@@ -563,7 +593,7 @@
         </div>
 
         <!-- Daniel Vaknin -->
-        <div class="reveal delay-3 team-card bg-white rounded-xl overflow-hidden">
+        <div class="reveal delay-3 team-card card-lift bg-white rounded-xl overflow-hidden">
           <div class="aspect-[3/4] overflow-hidden">
             <img src="https://raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-1192-Edit.jpg" alt="Daniel Vaknin" class="w-full h-full object-cover team-photo" loading="lazy">
           </div>
@@ -574,7 +604,7 @@
         </div>
 
         <!-- Eric Kraft -->
-        <div class="reveal delay-4 team-card bg-white rounded-xl overflow-hidden">
+        <div class="reveal delay-4 team-card card-lift bg-white rounded-xl overflow-hidden">
           <div class="aspect-[3/4] overflow-hidden">
             <img src="https://raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/eric-kraft-headshot.jpeg" alt="Eric Kraft" class="w-full h-full object-cover team-photo" loading="lazy">
           </div>
@@ -585,7 +615,7 @@
         </div>
 
         <!-- Noah Moghavem -->
-        <div class="reveal team-card bg-white rounded-xl overflow-hidden">
+        <div class="reveal team-card card-lift bg-white rounded-xl overflow-hidden">
           <div class="aspect-[3/4] overflow-hidden">
             <img src="https://raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Noah-Moghavem-scaled.jpg" alt="Noah Moghavem" class="w-full h-full object-cover team-photo" loading="lazy">
           </div>
@@ -596,7 +626,7 @@
         </div>
 
         <!-- Will Pierce -->
-        <div class="reveal delay-1 team-card bg-white rounded-xl overflow-hidden">
+        <div class="reveal delay-1 team-card card-lift bg-white rounded-xl overflow-hidden">
           <div class="aspect-[3/4] overflow-hidden">
             <img src="https://raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/151A8204.jpg" alt="Will Pierce" class="w-full h-full object-cover team-photo" loading="lazy">
           </div>
@@ -607,7 +637,7 @@
         </div>
 
         <!-- Jeremiah Sharf -->
-        <div class="reveal delay-2 team-card bg-white rounded-xl overflow-hidden">
+        <div class="reveal delay-2 team-card card-lift bg-white rounded-xl overflow-hidden">
           <div class="aspect-[3/4] overflow-hidden">
             <img src="https://raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Jeremiah-Sharf_1-scaled.jpg" alt="Jeremiah Sharf" class="w-full h-full object-cover team-photo" loading="lazy">
           </div>
@@ -618,7 +648,7 @@
         </div>
 
         <!-- Katie Spillman -->
-        <div class="reveal delay-3 team-card bg-white rounded-xl overflow-hidden">
+        <div class="reveal delay-3 team-card card-lift bg-white rounded-xl overflow-hidden">
           <div class="aspect-[3/4] overflow-hidden">
             <img src="https://raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Katie-Spillman-1-scaled.jpg" alt="Katie Spillman" class="w-full h-full object-cover team-photo" loading="lazy">
           </div>
@@ -629,7 +659,7 @@
         </div>
 
         <!-- Corey Altman -->
-        <div class="reveal delay-4 team-card bg-white rounded-xl overflow-hidden">
+        <div class="reveal delay-4 team-card card-lift bg-white rounded-xl overflow-hidden">
           <div class="aspect-[3/4] overflow-hidden">
             <img src="https://raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-0608-Edit-scaled.jpg" alt="Corey Altman" class="w-full h-full object-cover team-photo" loading="lazy">
           </div>
@@ -652,7 +682,7 @@
 
         <!-- Left: CTA -->
         <div>
-          <div class="reveal w-12 h-[3px] bg-copper mb-8"></div>
+          <div class="reveal line-draw w-12 h-[3px] bg-copper mb-8"></div>
           <h2 class="reveal delay-1 font-headline text-3xl md:text-4xl lg:text-5xl text-white mb-6 leading-tight">
             Building for the<br>Next Decade.
           </h2>
@@ -773,7 +803,7 @@
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     if (!prefersReducedMotion) {
-      const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+      const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .stagger, .text-reveal-wrap, .img-reveal, .line-draw');
 
       const revealObserver = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
@@ -792,8 +822,76 @@
       });
     } else {
       // If reduced motion, make everything visible immediately
-      document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(function(el) {
+      document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .stagger, .text-reveal-wrap, .img-reveal, .line-draw').forEach(function(el) {
         el.classList.add('visible');
+      });
+    }
+
+
+
+    // ---- Counter Animation ----
+    function animateCounter(el) {
+      const target = parseFloat(el.getAttribute('data-target'));
+      const decimals = parseInt(el.getAttribute('data-decimals')) || 0;
+      const duration = 2000;
+      const startTime = performance.now();
+
+      function easeOutCubic(t) {
+        return 1 - Math.pow(1 - t, 3);
+      }
+
+      function update(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const easedProgress = easeOutCubic(progress);
+        const currentValue = easedProgress * target;
+
+        if (decimals > 0) {
+          el.textContent = currentValue.toFixed(decimals);
+        } else {
+          el.textContent = Math.round(currentValue).toLocaleString();
+        }
+
+        if (progress < 1) {
+          requestAnimationFrame(update);
+        } else {
+          if (decimals > 0) {
+            el.textContent = target.toFixed(decimals);
+          } else {
+            el.textContent = target.toLocaleString();
+          }
+        }
+      }
+
+      requestAnimationFrame(update);
+    }
+
+    if (!prefersReducedMotion) {
+      const counters = document.querySelectorAll('.counter');
+      const counterObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            animateCounter(entry.target);
+            counterObserver.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.5
+      });
+
+      counters.forEach(function(counter) {
+        counterObserver.observe(counter);
+      });
+    } else {
+      // Reduced motion: show final values immediately
+      document.querySelectorAll('.counter').forEach(function(el) {
+        const target = parseFloat(el.getAttribute('data-target'));
+        const decimals = parseInt(el.getAttribute('data-decimals')) || 0;
+        if (decimals > 0) {
+          el.textContent = target.toFixed(decimals);
+        } else {
+          el.textContent = target.toLocaleString();
+        }
       });
     }
 

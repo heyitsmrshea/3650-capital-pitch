@@ -284,6 +284,45 @@
       filter: blur(32px);
       z-index: -1;
     }
+
+    /* ── Advanced Animation Classes ── */
+    .stagger > * { opacity: 0; transform: translateY(24px); transition: opacity 0.65s cubic-bezier(0.16,1,0.3,1), transform 0.65s cubic-bezier(0.16,1,0.3,1); }
+    .stagger.is-visible > * { opacity: 1; transform: none; }
+    .stagger.is-visible > *:nth-child(1) { transition-delay: 0ms; }
+    .stagger.is-visible > *:nth-child(2) { transition-delay: 100ms; }
+    .stagger.is-visible > *:nth-child(3) { transition-delay: 200ms; }
+    .stagger.is-visible > *:nth-child(4) { transition-delay: 300ms; }
+    .stagger.is-visible > *:nth-child(5) { transition-delay: 400ms; }
+    .stagger.is-visible > *:nth-child(6) { transition-delay: 500ms; }
+    .stagger.is-visible > *:nth-child(7) { transition-delay: 600ms; }
+    .stagger.is-visible > *:nth-child(8) { transition-delay: 700ms; }
+    .stagger.is-visible > *:nth-child(9) { transition-delay: 800ms; }
+    .stagger.is-visible > *:nth-child(10) { transition-delay: 900ms; }
+    .text-reveal-wrap { overflow: hidden; display: block; }
+    .text-reveal-line { display: block; transform: translateY(110%); transition: transform 0.8s cubic-bezier(0.16,1,0.3,1); }
+    .text-reveal-wrap.is-visible .text-reveal-line { transform: none; }
+    .text-reveal-wrap.is-visible .text-reveal-line:nth-child(2) { transition-delay: 0.1s; }
+    .text-reveal-wrap.is-visible .text-reveal-line:nth-child(3) { transition-delay: 0.2s; }
+    .img-reveal { opacity: 0; transform: scale(0.95); transition: opacity 1s cubic-bezier(0.16,1,0.3,1), transform 1s cubic-bezier(0.16,1,0.3,1); }
+    .img-reveal.is-visible { opacity: 1; transform: none; }
+    .line-draw { width: 0; height: 2px; background: linear-gradient(90deg, #a7c8ff, #3291ff); transition: width 0.9s cubic-bezier(0.16,1,0.3,1) 0.2s; }
+    .line-draw.is-visible { width: 48px; }
+    .reveal-left { opacity: 0; transform: translateX(-32px); transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1); }
+    .reveal-left.is-visible { opacity: 1; transform: none; }
+    .reveal-right { opacity: 0; transform: translateX(32px); transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1); }
+    .reveal-right.is-visible { opacity: 1; transform: none; }
+    .reveal-scale { opacity: 0; transform: scale(0.92); transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1); }
+    .reveal-scale.is-visible { opacity: 1; transform: none; }
+    .card-lift { transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s ease, background-color 0.3s ease; }
+    .card-lift:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(50,145,255,0.12); }
+    .img-hover { overflow: hidden; }
+    .img-hover img { transition: transform 0.6s cubic-bezier(0.16,1,0.3,1); }
+    .img-hover:hover img { transform: scale(1.04); }
+    @media (prefers-reduced-motion: reduce) {
+      .stagger > *, .text-reveal-line, .img-reveal, .line-draw,
+      .reveal-left, .reveal-right, .reveal-scale { opacity: 1; transform: none; width: auto; transition: none; }
+      .card-lift:hover, .img-hover:hover img { transform: none; }
+    }
   </style>
 </head>
 
@@ -364,15 +403,15 @@
     <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-24 lg:py-32">
       <div class="max-w-3xl">
         <!-- Accent line -->
-        <div class="accent-line mb-8 reveal"></div>
+        <div class="line-draw accent-line mb-8 reveal"></div>
 
         <!-- Eyebrow -->
         <p class="reveal text-xs font-headline font-semibold tracking-[0.2em] uppercase text-electric mb-5">Financing Solutions</p>
 
         <!-- Headline -->
-        <h1 class="reveal reveal-delay-1 font-headline font-bold text-4xl sm:text-5xl lg:text-6xl xl:text-7xl leading-[1.08] tracking-tight text-white mb-6">
-          Short-term capital.<br>
-          <span class="electric-gradient-text">Long-term solutions.</span>
+        <h1 class="text-reveal-wrap font-headline font-bold text-4xl sm:text-5xl lg:text-6xl xl:text-7xl leading-[1.08] tracking-tight text-white mb-6">
+          <span class="text-reveal-line">Short-term capital.</span>
+          <span class="text-reveal-line"><span class="electric-gradient-text">Long-term solutions.</span></span>
         </h1>
 
         <!-- Subhead -->
@@ -398,12 +437,12 @@
   <!-- ════════════════════════════════════════════════════════════════════
        OPERATING PLATFORM
        ════════════════════════════════════════════════════════════════════ -->
-  <section id="platform" class="py-24 lg:py-32 bg-void">
+  <section id="platform" class="reveal py-24 lg:py-32 bg-void">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
 
       <!-- Section header -->
       <div class="max-w-2xl mb-16">
-        <div class="accent-line mb-6 reveal"></div>
+        <div class="line-draw accent-line mb-6 reveal"></div>
         <p class="reveal text-xs font-headline font-semibold tracking-[0.2em] uppercase text-electric mb-4">Operating Platform</p>
         <h2 class="reveal reveal-delay-1 font-headline font-bold text-3xl lg:text-5xl text-white leading-tight mb-4">
           Vertical integration and retained servicing are part of the product.
@@ -417,14 +456,14 @@
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
 
         <!-- Image card -->
-        <div class="reveal rounded overflow-hidden image-ambient">
+        <div class="reveal-left rounded overflow-hidden img-hover image-ambient">
           <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Gateway-at-Wynwood-e1578945268648.jpg?ssl=1"
                alt="Gateway at Wynwood property"
-               class="w-full h-full object-cover min-h-[320px] rounded">
+               class="img-reveal w-full h-full object-cover min-h-[320px] rounded">
         </div>
 
         <!-- Metrics 2x2 -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 stagger reveal">
 
           <!-- Metric 1 -->
           <div class="reveal reveal-delay-1 metric-card bg-void-light rounded p-6">
@@ -479,12 +518,12 @@
   <!-- ════════════════════════════════════════════════════════════════════
        PRODUCTS
        ════════════════════════════════════════════════════════════════════ -->
-  <section id="products" class="py-24 lg:py-32 bg-void-light">
+  <section id="products" class="reveal py-24 lg:py-32 bg-void-light">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
 
       <!-- Section header -->
       <div class="max-w-2xl mb-16">
-        <div class="accent-line mb-6 reveal"></div>
+        <div class="line-draw accent-line mb-6 reveal"></div>
         <p class="reveal text-xs font-headline font-semibold tracking-[0.2em] uppercase text-electric mb-4">Product Suite</p>
         <h2 class="reveal reveal-delay-1 font-headline font-bold text-3xl lg:text-5xl text-white leading-tight mb-4">
           Capital solutions across the property life cycle.
@@ -495,14 +534,14 @@
       </div>
 
       <!-- Product cards -->
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 stagger reveal">
 
         <!-- RECS -->
         <div class="reveal reveal-delay-1 platform-card bg-void rounded overflow-hidden flex flex-col">
           <div class="relative h-52">
             <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Unknown-1.png?ssl=1"
                  alt="RECS product imagery"
-                 class="w-full h-full object-cover">
+                 class="img-reveal w-full h-full object-cover">
             <div class="absolute inset-0 bg-gradient-to-t from-void via-void/50 to-transparent"></div>
             <div class="absolute top-4 left-4">
               <span class="text-xs font-headline font-semibold tracking-wider uppercase text-electric bg-void/60 px-3 py-1.5 rounded">RECS</span>
@@ -527,7 +566,7 @@
           <div class="relative h-52">
             <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/DJI_0135-HDR-scaled.jpg?ssl=1"
                  alt="Stable Cash Flow property aerial"
-                 class="w-full h-full object-cover">
+                 class="img-reveal w-full h-full object-cover">
             <div class="absolute inset-0 bg-gradient-to-t from-void via-void/50 to-transparent"></div>
             <div class="absolute top-4 left-4">
               <span class="text-xs font-headline font-semibold tracking-wider uppercase text-electric bg-void/60 px-3 py-1.5 rounded">Stable</span>
@@ -551,7 +590,7 @@
           <div class="relative h-52">
             <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/rendering-center-at-miami-gardens-courtesy-3650-reit.jpg?ssl=1"
                  alt="Special Situations development"
-                 class="w-full h-full object-cover">
+                 class="img-reveal w-full h-full object-cover">
             <div class="absolute inset-0 bg-gradient-to-t from-void via-void/50 to-transparent"></div>
             <div class="absolute top-4 left-4">
               <span class="text-xs font-headline font-semibold tracking-wider uppercase text-electric bg-void/60 px-3 py-1.5 rounded">Special</span>
@@ -578,12 +617,12 @@
   <!-- ════════════════════════════════════════════════════════════════════
        COMPARISON TABLE
        ════════════════════════════════════════════════════════════════════ -->
-  <section id="comparison" class="py-24 lg:py-32 bg-void">
+  <section id="comparison" class="reveal py-24 lg:py-32 bg-void">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
 
       <!-- Section header -->
       <div class="max-w-2xl mb-16">
-        <div class="accent-line mb-6 reveal"></div>
+        <div class="line-draw accent-line mb-6 reveal"></div>
         <p class="reveal text-xs font-headline font-semibold tracking-[0.2em] uppercase text-electric mb-4">Product Comparison</p>
         <h2 class="reveal reveal-delay-1 font-headline font-bold text-3xl lg:text-5xl text-white leading-tight mb-4">
           Find the right structure.
@@ -644,20 +683,20 @@
   <!-- ════════════════════════════════════════════════════════════════════
        APPROACH
        ════════════════════════════════════════════════════════════════════ -->
-  <section id="approach" class="py-24 lg:py-32 bg-void-light">
+  <section id="approach" class="reveal py-24 lg:py-32 bg-void-light">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
         <!-- Image -->
-        <div class="reveal image-ambient">
+        <div class="reveal-left img-hover image-ambient">
           <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/DJI_0135-HDR-scaled.jpg?ssl=1"
                alt="Aerial view of 3650 Capital financed property"
-               class="w-full h-auto rounded ambient-shadow-lg min-h-[320px] object-cover">
+               class="img-reveal w-full h-auto rounded ambient-shadow-lg min-h-[320px] object-cover">
         </div>
 
         <!-- Content -->
-        <div>
-          <div class="accent-line mb-6 reveal"></div>
+        <div class="reveal-right">
+          <div class="line-draw accent-line mb-6 reveal"></div>
           <p class="reveal text-xs font-headline font-semibold tracking-[0.2em] uppercase text-electric mb-4">Our Approach</p>
           <h2 class="reveal reveal-delay-1 font-headline font-bold text-3xl lg:text-4xl text-white leading-tight mb-6">
             Built for borrowers who value certainty.
@@ -666,7 +705,7 @@
             Every product we offer is backed by the same operating platform. Retained servicing means one relationship from closing through maturity. Vertical integration means faster execution and better outcomes.
           </p>
 
-          <div class="reveal reveal-delay-3 space-y-6 mb-10">
+          <div class="reveal reveal-delay-3 space-y-6 mb-10 stagger">
             <div class="flex items-start gap-4">
               <div class="feature-icon-wrap w-10 h-10 rounded flex items-center justify-center flex-shrink-0 mt-0.5">
                 <span class="material-symbols-outlined text-electric text-lg">group</span>
@@ -711,11 +750,11 @@
   <!-- ════════════════════════════════════════════════════════════════════
        CTA
        ════════════════════════════════════════════════════════════════════ -->
-  <section id="cta" class="py-24 lg:py-32 bg-void">
+  <section id="cta" class="reveal py-24 lg:py-32 bg-void">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <div class="max-w-3xl mx-auto text-center">
 
-        <div class="accent-line mx-auto mb-8 reveal"></div>
+        <div class="line-draw accent-line mx-auto mb-8 reveal"></div>
 
         <p class="reveal text-xs font-headline font-semibold tracking-[0.2em] uppercase text-electric mb-5">Get Started</p>
 
@@ -746,7 +785,7 @@
   <!-- ════════════════════════════════════════════════════════════════════
        FOOTER
        ════════════════════════════════════════════════════════════════════ -->
-  <footer class="bg-void py-16">
+  <footer class="reveal bg-void py-16">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
 
       <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-10">
@@ -806,10 +845,10 @@
          IntersectionObserver — Scroll Reveal
          ───────────────────────────────────────────── */
       function initScrollReveal() {
-        const reveals = document.querySelectorAll('.reveal');
+        const allAnimated = document.querySelectorAll('.reveal, .stagger, .text-reveal-wrap, .img-reveal, .line-draw, .reveal-left, .reveal-right, .reveal-scale');
 
         if (prefersReducedMotion) {
-          reveals.forEach(function (el) {
+          allAnimated.forEach(function (el) {
             el.classList.add('is-visible');
           });
           return;
@@ -830,7 +869,7 @@
           }
         );
 
-        reveals.forEach(function (el) {
+        allAnimated.forEach(function (el) {
           observer.observe(el);
         });
       }

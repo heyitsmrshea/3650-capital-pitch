@@ -252,6 +252,44 @@
     .ledger-row:hover {
       background-color: rgba(228, 227, 215, 0.4);
     }
+
+    /* ═══ NEXT-LEVEL ANIMATION SYSTEM ═══ */
+    .stagger > * { opacity: 0; transform: translateY(20px); transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1); }
+    .stagger.is-visible > * { opacity: 1; transform: none; }
+    .stagger.is-visible > *:nth-child(1) { transition-delay: 0ms; }
+    .stagger.is-visible > *:nth-child(2) { transition-delay: 110ms; }
+    .stagger.is-visible > *:nth-child(3) { transition-delay: 220ms; }
+    .stagger.is-visible > *:nth-child(4) { transition-delay: 330ms; }
+    .stagger.is-visible > *:nth-child(5) { transition-delay: 440ms; }
+    .stagger.is-visible > *:nth-child(6) { transition-delay: 550ms; }
+    .stagger.is-visible > *:nth-child(7) { transition-delay: 660ms; }
+    .stagger.is-visible > *:nth-child(8) { transition-delay: 770ms; }
+    .stagger.is-visible > *:nth-child(9) { transition-delay: 880ms; }
+    .stagger.is-visible > *:nth-child(10) { transition-delay: 990ms; }
+    .text-reveal-wrap { overflow: hidden; display: block; }
+    .text-reveal-line { display: block; transform: translateY(110%); transition: transform 0.9s cubic-bezier(0.22,1,0.36,1); }
+    .text-reveal-wrap.is-visible .text-reveal-line { transform: none; }
+    .text-reveal-wrap.is-visible .text-reveal-line:nth-child(2) { transition-delay: 0.12s; }
+    .text-reveal-wrap.is-visible .text-reveal-line:nth-child(3) { transition-delay: 0.24s; }
+    .img-reveal { clip-path: inset(0 0 0 100%); transition: clip-path 1.1s cubic-bezier(0.22,1,0.36,1); }
+    .img-reveal.is-visible { clip-path: inset(0 0 0 0); }
+    .copper-line-draw { width: 0; height: 1px; background: linear-gradient(90deg, #894d0d, #a76526); transition: width 1s cubic-bezier(0.22,1,0.36,1) 0.3s; }
+    .copper-line-draw.is-visible { width: 80px; }
+    .reveal-left { opacity: 0; transform: translateX(-24px); transition: opacity 0.8s cubic-bezier(0.22,1,0.36,1), transform 0.8s cubic-bezier(0.22,1,0.36,1); }
+    .reveal-left.is-visible { opacity: 1; transform: none; }
+    .reveal-right { opacity: 0; transform: translateX(24px); transition: opacity 0.8s cubic-bezier(0.22,1,0.36,1), transform 0.8s cubic-bezier(0.22,1,0.36,1); }
+    .reveal-right.is-visible { opacity: 1; transform: none; }
+    .reveal-scale { opacity: 0; transform: scale(0.94); transition: opacity 0.8s cubic-bezier(0.22,1,0.36,1), transform 0.8s cubic-bezier(0.22,1,0.36,1); }
+    .reveal-scale.is-visible { opacity: 1; transform: none; }
+    .img-hover img { transition: transform 0.7s cubic-bezier(0.22,1,0.36,1); }
+    .img-hover:hover img { transform: scale(1.03); }
+    .quote-reveal { opacity: 0; transform: translateX(-16px); transition: opacity 0.9s ease-out, transform 0.9s ease-out; }
+    .quote-reveal.is-visible { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      .stagger > *, .text-reveal-line, .img-reveal, .copper-line-draw,
+      .reveal-left, .reveal-right, .reveal-scale, .quote-reveal { opacity: 1; transform: none; clip-path: none; width: auto; transition: none; }
+      .img-hover:hover img { transform: none; }
+    }
   </style>
 </head>
 
@@ -334,13 +372,12 @@
       <!-- Label -->
       <div class="reveal mb-8">
         <span class="label-ledger text-copper">Transaction Record</span>
-        <div class="divider-copper mt-3"></div>
+        <div class="divider-copper copper-line-draw mt-3"></div>
       </div>
 
       <!-- Headline -->
       <h1 class="reveal reveal-delay-1 font-headline text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-300 text-charcoal leading-[1.05] mb-8" style="font-weight: 300;">
-        Featured<br>
-        <em class="text-copper" style="font-style: italic;">transactions.</em>
+<span class="text-reveal-wrap"><span class="text-reveal-line">Featured</span></span><span class="text-reveal-wrap"><span class="text-reveal-line"><em class="text-copper" style="font-style: italic;">transactions.</em></span></span>
       </h1>
 
       <!-- Subhead -->
@@ -376,7 +413,7 @@
             <h2 class="font-headline text-3xl lg:text-4xl text-charcoal mb-4 leading-tight" style="font-weight: 400;">
               Oasis at Dania Pointe
             </h2>
-            <div class="divider-copper mb-6"></div>
+            <div class="divider-copper copper-line-draw mb-6"></div>
             <p class="text-charcoal/60 text-base leading-relaxed mb-8">
               A $64.3 million senior construction loan for a Class A multifamily development in Dania Beach, Florida. This transaction exemplifies 3650 Capital's commitment to providing certainty of execution for ground-up construction projects in high-growth Florida markets.
             </p>
@@ -415,7 +452,7 @@
       <!-- Section header -->
       <div class="reveal mb-14">
         <span class="label-ledger text-copper mb-3 block">Senior Construction Loans</span>
-        <div class="divider-copper mb-6"></div>
+        <div class="divider-copper copper-line-draw mb-6"></div>
         <h2 class="font-headline text-3xl lg:text-4xl text-charcoal leading-tight" style="font-weight: 400;">
           Ground-up development financing
         </h2>
@@ -425,11 +462,11 @@
       </div>
 
       <!-- Editorial case study cards — no borders, 0px radius -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-14">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-14 stagger">
 
         <!-- Deal 1: Oasis -->
         <div class="reveal card-lift group">
-          <div class="relative overflow-hidden mb-5 ambient-shadow">
+          <div class="relative overflow-hidden mb-5 ambient-shadow img-hover">
             <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Oasis-Pointe.-Image-courtesy-of-3650-REIT-.jpeg?ssl=1"
                  alt="Oasis at Dania Pointe"
                  class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105">
@@ -445,7 +482,7 @@
 
         <!-- Deal 2: Gateway at Wynwood -->
         <div class="reveal reveal-delay-1 card-lift group">
-          <div class="relative overflow-hidden mb-5 ambient-shadow">
+          <div class="relative overflow-hidden mb-5 ambient-shadow img-hover">
             <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Gateway-at-Wynwood-e1578945268648.jpg?ssl=1"
                  alt="Gateway at Wynwood"
                  class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105">
@@ -461,7 +498,7 @@
 
         <!-- Deal 3: 48 East -->
         <div class="reveal card-lift group">
-          <div class="relative overflow-hidden mb-5 ambient-shadow">
+          <div class="relative overflow-hidden mb-5 ambient-shadow img-hover">
             <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/aus_48EastAve_austin.jpg?ssl=1"
                  alt="48 East"
                  class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105">
@@ -477,7 +514,7 @@
 
         <!-- Deal 4: Tacoma Marriott -->
         <div class="reveal reveal-delay-1 card-lift group">
-          <div class="relative overflow-hidden mb-5 ambient-shadow">
+          <div class="relative overflow-hidden mb-5 ambient-shadow img-hover">
             <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Tacoma-Marriott-Rendering_web-feature.jpg?ssl=1"
                  alt="Tacoma Marriott"
                  class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105">
@@ -493,7 +530,7 @@
 
         <!-- Deal 5: Renaissance Dallas -->
         <div class="reveal card-lift group">
-          <div class="relative overflow-hidden mb-5 ambient-shadow">
+          <div class="relative overflow-hidden mb-5 ambient-shadow img-hover">
             <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/RENAISSANCE.png?ssl=1"
                  alt="Renaissance Dallas"
                  class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105">
@@ -517,7 +554,7 @@
        ════════════════════════════════════════════════════════════════════ -->
   <section class="bg-paper-low py-16 lg:py-20">
     <div class="max-w-7xl mx-auto px-6 lg:px-10">
-      <div class="reveal grid grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-16">
+      <div class="reveal stagger grid grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-16">
         <div class="text-center">
           <p class="pull-insight-number text-4xl lg:text-5xl mb-2">10</p>
           <p class="label-ledger text-copper">Featured Deals</p>
@@ -547,7 +584,7 @@
       <!-- Section header -->
       <div class="reveal mb-14">
         <span class="label-ledger text-copper mb-3 block">Senior + Private Equity</span>
-        <div class="divider-copper mb-6"></div>
+        <div class="divider-copper copper-line-draw mb-6"></div>
         <h2 class="font-headline text-3xl lg:text-4xl text-charcoal leading-tight" style="font-weight: 400;">
           Capital solutions beyond traditional lending
         </h2>
@@ -574,7 +611,7 @@
           <div class="lg:col-span-5 lg:pt-4">
             <span class="label-ledger text-copper mb-4 block">Largest Transaction</span>
             <h3 class="font-headline text-3xl text-charcoal mb-3 leading-tight" style="font-weight: 400;">ICP/IRG</h3>
-            <div class="divider-copper mb-5"></div>
+            <div class="divider-copper copper-line-draw mb-5"></div>
             <p class="text-charcoal/60 text-base leading-relaxed mb-8">
               A landmark $180.0 million senior construction loan for a transformative mixed-use development in South Florida, representing one of 3650 Capital's largest single-asset transactions.
             </p>
@@ -597,11 +634,11 @@
       </div>
 
       <!-- Remaining PE deals -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-14">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-14 stagger">
 
         <!-- Deal 7: Aventura Self Storage -->
         <div class="reveal card-lift group">
-          <div class="relative overflow-hidden mb-5 ambient-shadow">
+          <div class="relative overflow-hidden mb-5 ambient-shadow img-hover">
             <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/DJI_0135-HDR-scaled.jpg?ssl=1"
                  alt="Aventura Self Storage"
                  class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105">
@@ -617,7 +654,7 @@
 
         <!-- Deal 8: Waterfront Corporate Center I -->
         <div class="reveal reveal-delay-1 card-lift group">
-          <div class="relative overflow-hidden mb-5 ambient-shadow">
+          <div class="relative overflow-hidden mb-5 ambient-shadow img-hover">
             <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Unknown-1.png?ssl=1"
                  alt="Waterfront Corporate Center I"
                  class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105">
@@ -633,7 +670,7 @@
 
         <!-- Deal 9: Transcoastal Portfolio -->
         <div class="reveal card-lift group">
-          <div class="relative overflow-hidden mb-5 ambient-shadow">
+          <div class="relative overflow-hidden mb-5 ambient-shadow img-hover">
             <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Transcoastal.jpeg?ssl=1"
                  alt="Transcoastal Portfolio"
                  class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105">
@@ -649,7 +686,7 @@
 
         <!-- Deal 10: Center at Miami Gardens -->
         <div class="reveal reveal-delay-1 card-lift group">
-          <div class="relative overflow-hidden mb-5 ambient-shadow">
+          <div class="relative overflow-hidden mb-5 ambient-shadow img-hover">
             <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/rendering-center-at-miami-gardens-courtesy-3650-reit.jpg?ssl=1"
                  alt="Center at Miami Gardens"
                  class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105">
@@ -675,7 +712,7 @@
     <div class="max-w-7xl mx-auto px-6 lg:px-10">
       <div class="reveal mb-10">
         <span class="label-ledger text-copper mb-3 block">Complete Record</span>
-        <div class="divider-copper mb-6"></div>
+        <div class="divider-copper copper-line-draw mb-6"></div>
         <h2 class="font-headline text-2xl lg:text-3xl text-charcoal" style="font-weight: 400;">Transaction summary</h2>
       </div>
 
@@ -764,7 +801,7 @@
     <div class="max-w-3xl mx-auto px-6 lg:px-10 text-center">
       <div class="reveal">
         <span class="label-ledger text-copper mb-4 block">Begin a Dialogue</span>
-        <div class="divider-copper mx-auto mb-8"></div>
+        <div class="divider-copper copper-line-draw mx-auto mb-8"></div>
       </div>
 
       <h2 class="reveal reveal-delay-1 font-headline text-3xl lg:text-4xl xl:text-5xl text-charcoal leading-tight mb-6" style="font-weight: 300;">
@@ -795,7 +832,7 @@
        ════════════════════════════════════════════════════════════════════ -->
   <footer class="bg-paper-high py-16 lg:py-20">
     <div class="max-w-7xl mx-auto px-6 lg:px-10">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start stagger">
         <!-- Logo & tagline -->
         <div class="lg:col-span-4">
           <img
@@ -864,20 +901,23 @@
       // ─── Reduced motion check ───────────────────────────────────────
       const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-      // ─── IntersectionObserver: Scroll reveal ────────────────────────
+      // ─── IntersectionObserver: Unified scroll reveal ───────────────
       function initRevealObserver() {
-        const revealEls = document.querySelectorAll('.reveal');
+        var allEls = document.querySelectorAll('.reveal, .stagger, .text-reveal-wrap, .img-reveal, .copper-line-draw, .reveal-left, .reveal-right, .reveal-scale, .quote-reveal');
 
         if (prefersReducedMotion) {
-          revealEls.forEach(function (el) {
-            el.classList.add('visible');
+          allEls.forEach(function (el) {
+            el.classList.add('is-visible');
+            // Keep legacy compat
+            if (el.classList.contains('reveal')) el.classList.add('visible');
           });
           return;
         }
 
         if (!('IntersectionObserver' in window)) {
-          revealEls.forEach(function (el) {
-            el.classList.add('visible');
+          allEls.forEach(function (el) {
+            el.classList.add('is-visible');
+            if (el.classList.contains('reveal')) el.classList.add('visible');
           });
           return;
         }
@@ -886,7 +926,11 @@
           function (entries) {
             entries.forEach(function (entry) {
               if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
+                entry.target.classList.add('is-visible');
+                // Keep legacy compat for .reveal elements
+                if (entry.target.classList.contains('reveal')) {
+                  entry.target.classList.add('visible');
+                }
                 observer.unobserve(entry.target);
               }
             });
@@ -897,7 +941,92 @@
           }
         );
 
-        revealEls.forEach(function (el) {
+        allEls.forEach(function (el) {
+          observer.observe(el);
+        });
+      }
+
+      // ─── Counter animations ─────────────────────────────────────────
+      function animateCounter(el) {
+        var target = parseFloat(el.getAttribute('data-count-target'));
+        var prefix = el.getAttribute('data-count-prefix') || '';
+        var suffix = el.getAttribute('data-count-suffix') || '';
+        var decimals = parseInt(el.getAttribute('data-count-decimals'), 10) || 0;
+        var isYear = el.getAttribute('data-count-is-year') === 'true';
+
+        if (isYear) {
+          el.textContent = prefix + target.toFixed(0) + suffix;
+          return;
+        }
+
+        if (prefersReducedMotion) {
+          el.textContent = prefix + target.toFixed(decimals) + suffix;
+          return;
+        }
+
+        var duration = 2000;
+        var startTime = null;
+        var startVal = 0;
+
+        function easeOutCubic(t) {
+          return 1 - Math.pow(1 - t, 3);
+        }
+
+        function step(timestamp) {
+          if (!startTime) startTime = timestamp;
+          var elapsed = timestamp - startTime;
+          var progress = Math.min(elapsed / duration, 1);
+          var easedProgress = easeOutCubic(progress);
+          var current = startVal + (target - startVal) * easedProgress;
+          el.textContent = prefix + current.toFixed(decimals) + suffix;
+
+          if (progress < 1) {
+            requestAnimationFrame(step);
+          }
+        }
+
+        requestAnimationFrame(step);
+      }
+
+      function initCounterObserver() {
+        var counterEls = document.querySelectorAll('[data-count-target]');
+
+        if (prefersReducedMotion) {
+          counterEls.forEach(function (el) {
+            var target = parseFloat(el.getAttribute('data-count-target'));
+            var prefix = el.getAttribute('data-count-prefix') || '';
+            var suffix = el.getAttribute('data-count-suffix') || '';
+            var decimals = parseInt(el.getAttribute('data-count-decimals'), 10) || 0;
+            var isYear = el.getAttribute('data-count-is-year') === 'true';
+            if (isYear) {
+              el.textContent = prefix + target.toFixed(0) + suffix;
+            } else {
+              el.textContent = prefix + target.toFixed(decimals) + suffix;
+            }
+          });
+          return;
+        }
+
+        if (!('IntersectionObserver' in window)) {
+          counterEls.forEach(function (el) { animateCounter(el); });
+          return;
+        }
+
+        var observer = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                animateCounter(entry.target);
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          {
+            threshold: 0.3,
+          }
+        );
+
+        counterEls.forEach(function (el) {
           observer.observe(el);
         });
       }
@@ -960,11 +1089,40 @@
         });
       }
 
+      // ─── Smooth scroll for anchor links ─────────────────────────────
+      function initSmoothScroll() {
+        document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+          anchor.addEventListener('click', function (e) {
+            var targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+
+            var targetEl = document.querySelector(targetId);
+            if (!targetEl) return;
+
+            e.preventDefault();
+
+            var navHeight = 96;
+            var targetPosition = targetEl.getBoundingClientRect().top + window.pageYOffset - navHeight;
+
+            if (prefersReducedMotion) {
+              window.scrollTo(0, targetPosition);
+            } else {
+              window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth',
+              });
+            }
+          });
+        });
+      }
+
       // ─── Init ───────────────────────────────────────────────────────
       document.addEventListener('DOMContentLoaded', function () {
         initRevealObserver();
+        initCounterObserver();
         initNavScroll();
         initMobileNav();
+        initSmoothScroll();
       });
     })();
   </script>

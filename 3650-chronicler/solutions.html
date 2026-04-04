@@ -231,6 +231,44 @@
     .counter-value {
       font-variant-numeric: tabular-nums;
     }
+
+    /* ═══ NEXT-LEVEL ANIMATION SYSTEM ═══ */
+    .stagger > * { opacity: 0; transform: translateY(20px); transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1); }
+    .stagger.is-visible > * { opacity: 1; transform: none; }
+    .stagger.is-visible > *:nth-child(1) { transition-delay: 0ms; }
+    .stagger.is-visible > *:nth-child(2) { transition-delay: 110ms; }
+    .stagger.is-visible > *:nth-child(3) { transition-delay: 220ms; }
+    .stagger.is-visible > *:nth-child(4) { transition-delay: 330ms; }
+    .stagger.is-visible > *:nth-child(5) { transition-delay: 440ms; }
+    .stagger.is-visible > *:nth-child(6) { transition-delay: 550ms; }
+    .stagger.is-visible > *:nth-child(7) { transition-delay: 660ms; }
+    .stagger.is-visible > *:nth-child(8) { transition-delay: 770ms; }
+    .stagger.is-visible > *:nth-child(9) { transition-delay: 880ms; }
+    .stagger.is-visible > *:nth-child(10) { transition-delay: 990ms; }
+    .text-reveal-wrap { overflow: hidden; display: block; }
+    .text-reveal-line { display: block; transform: translateY(110%); transition: transform 0.9s cubic-bezier(0.22,1,0.36,1); }
+    .text-reveal-wrap.is-visible .text-reveal-line { transform: none; }
+    .text-reveal-wrap.is-visible .text-reveal-line:nth-child(2) { transition-delay: 0.12s; }
+    .text-reveal-wrap.is-visible .text-reveal-line:nth-child(3) { transition-delay: 0.24s; }
+    .img-reveal { clip-path: inset(0 0 0 100%); transition: clip-path 1.1s cubic-bezier(0.22,1,0.36,1); }
+    .img-reveal.is-visible { clip-path: inset(0 0 0 0); }
+    .copper-line-draw { width: 0; height: 1px; background: linear-gradient(90deg, #894d0d, #a76526); transition: width 1s cubic-bezier(0.22,1,0.36,1) 0.3s; }
+    .copper-line-draw.is-visible { width: 80px; }
+    .reveal-left { opacity: 0; transform: translateX(-24px); transition: opacity 0.8s cubic-bezier(0.22,1,0.36,1), transform 0.8s cubic-bezier(0.22,1,0.36,1); }
+    .reveal-left.is-visible { opacity: 1; transform: none; }
+    .reveal-right { opacity: 0; transform: translateX(24px); transition: opacity 0.8s cubic-bezier(0.22,1,0.36,1), transform 0.8s cubic-bezier(0.22,1,0.36,1); }
+    .reveal-right.is-visible { opacity: 1; transform: none; }
+    .reveal-scale { opacity: 0; transform: scale(0.94); transition: opacity 0.8s cubic-bezier(0.22,1,0.36,1), transform 0.8s cubic-bezier(0.22,1,0.36,1); }
+    .reveal-scale.is-visible { opacity: 1; transform: none; }
+    .img-hover img { transition: transform 0.7s cubic-bezier(0.22,1,0.36,1); }
+    .img-hover:hover img { transform: scale(1.03); }
+    .quote-reveal { opacity: 0; transform: translateX(-16px); transition: opacity 0.9s ease-out, transform 0.9s ease-out; }
+    .quote-reveal.is-visible { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      .stagger > *, .text-reveal-line, .img-reveal, .copper-line-draw,
+      .reveal-left, .reveal-right, .reveal-scale, .quote-reveal { opacity: 1; transform: none; clip-path: none; width: auto; transition: none; }
+      .img-hover:hover img { transform: none; }
+    }
   </style>
 </head>
 
@@ -313,7 +351,7 @@
       <!-- Label -->
       <div class="reveal mb-8">
         <span class="label-ledger text-copper">Financing Solutions</span>
-        <div class="divider-copper mt-3"></div>
+        <div class="divider-copper copper-line-draw mt-3"></div>
       </div>
 
       <!-- Hero grid: 55/45 -->
@@ -321,8 +359,7 @@
         <!-- Headline (left) -->
         <div class="lg:col-span-7">
           <h1 class="reveal font-headline text-5xl sm:text-6xl lg:text-7xl xl:text-[5.25rem] font-light leading-[1.05] tracking-tight text-charcoal mb-8">
-            Short-term capital.<br>
-            <span class="text-copper">Long-term solutions.</span>
+<span class="text-reveal-wrap"><span class="text-reveal-line">Short-term capital.</span></span><span class="text-reveal-wrap"><span class="text-reveal-line"><span class="text-copper">Long-term solutions.</span></span></span>
           </h1>
           <p class="reveal reveal-delay-1 font-body text-lg lg:text-xl text-charcoal/70 max-w-xl leading-relaxed mb-10">
             3650 Capital delivers diverse financing products across the property life cycle with in-house servicing continuity.
@@ -341,7 +378,7 @@
             <img
               src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/rendering-center-at-miami-gardens-courtesy-3650-reit.jpg?ssl=1"
               alt="Center at Miami Gardens rendering"
-              class="w-full h-auto ambient-shadow"
+              class="w-full h-auto ambient-shadow img-reveal"
               loading="eager"
             >
           </div>
@@ -356,13 +393,13 @@
        ════════════════════════════════════════════════════════════════════ -->
   <section class="bg-paper-low py-24 lg:py-32 relative overflow-hidden">
     <!-- Watermark -->
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 watermark-3650 text-[clamp(10rem,25vw,22rem)]" aria-hidden="true">3650</div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 reveal-scale watermark-3650 text-[clamp(10rem,25vw,22rem)]" aria-hidden="true">3650</div>
 
     <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-10">
       <!-- Section label -->
       <div class="reveal mb-10">
         <span class="label-ledger text-copper">Operating Platform</span>
-        <div class="divider-copper mt-3"></div>
+        <div class="divider-copper copper-line-draw mt-3"></div>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
@@ -376,7 +413,7 @@
           </p>
 
           <!-- Pull-Insight metrics 2x2 -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 stagger">
             <!-- Metric 1 -->
             <div class="reveal reveal-delay-1">
               <span class="material-symbols-outlined text-copper text-2xl mb-3 block">hub</span>
@@ -420,7 +457,7 @@
           <img
             src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Gateway-at-Wynwood-e1578945268648.jpg?ssl=1"
             alt="Gateway at Wynwood property"
-            class="w-full h-auto ambient-shadow"
+            class="w-full h-auto ambient-shadow img-reveal"
           >
         </div>
       </div>
@@ -436,7 +473,7 @@
       <!-- Section label -->
       <div class="reveal mb-10">
         <span class="label-ledger text-copper">Product Suite</span>
-        <div class="divider-copper mt-3"></div>
+        <div class="divider-copper copper-line-draw mt-3"></div>
       </div>
 
       <h2 class="reveal font-headline text-4xl lg:text-5xl font-light leading-tight text-charcoal mb-6">
@@ -447,7 +484,7 @@
       </p>
 
       <!-- Product cards -->
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 stagger">
 
         <!-- RECS -->
         <div class="reveal reveal-delay-1 card-lift bg-paper-low overflow-hidden">
@@ -532,7 +569,7 @@
       <!-- Section label -->
       <div class="reveal mb-10">
         <span class="label-ledger text-copper">Product Comparison</span>
-        <div class="divider-copper mt-3"></div>
+        <div class="divider-copper copper-line-draw mt-3"></div>
       </div>
 
       <h2 class="reveal font-headline text-4xl lg:text-5xl font-light leading-tight text-charcoal mb-6">
@@ -602,7 +639,7 @@
           <img
             src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/DJI_0135-HDR-scaled.jpg?ssl=1"
             alt="Aerial view of 3650 Capital financed property"
-            class="w-full h-auto ambient-shadow"
+            class="w-full h-auto ambient-shadow img-reveal"
           >
         </div>
 
@@ -610,7 +647,7 @@
         <div>
           <div class="reveal mb-8">
             <span class="label-ledger text-copper">Our Approach</span>
-            <div class="divider-copper mt-3"></div>
+            <div class="divider-copper copper-line-draw mt-3"></div>
           </div>
 
           <h2 class="reveal reveal-delay-1 font-headline text-4xl lg:text-5xl font-light leading-tight text-charcoal mb-6">
@@ -660,12 +697,12 @@
        CTA
        ════════════════════════════════════════════════════════════════════ -->
   <section class="bg-paper-low py-24 lg:py-32 relative overflow-hidden">
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 watermark-3650 text-[clamp(10rem,25vw,22rem)]" aria-hidden="true">3650</div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 reveal-scale watermark-3650 text-[clamp(10rem,25vw,22rem)]" aria-hidden="true">3650</div>
 
     <div class="relative z-10 max-w-3xl mx-auto px-6 lg:px-10 text-center">
       <div class="reveal mb-6">
         <span class="label-ledger text-copper">Get Started</span>
-        <div class="divider-copper mt-3 mx-auto"></div>
+        <div class="divider-copper copper-line-draw mt-3 mx-auto"></div>
       </div>
 
       <h2 class="reveal reveal-delay-1 font-headline text-4xl lg:text-5xl font-light leading-tight text-charcoal mb-6">
@@ -689,7 +726,7 @@
        ════════════════════════════════════════════════════════════════════ -->
   <footer class="bg-paper-high py-16 lg:py-20">
     <div class="max-w-7xl mx-auto px-6 lg:px-10">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start stagger">
         <!-- Logo & tagline -->
         <div class="lg:col-span-4">
           <img
@@ -758,20 +795,23 @@
       // ─── Reduced motion check ───────────────────────────────────────
       const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-      // ─── IntersectionObserver: Scroll reveal ────────────────────────
+      // ─── IntersectionObserver: Unified scroll reveal ───────────────
       function initRevealObserver() {
-        const revealEls = document.querySelectorAll('.reveal');
+        var allEls = document.querySelectorAll('.reveal, .stagger, .text-reveal-wrap, .img-reveal, .copper-line-draw, .reveal-left, .reveal-right, .reveal-scale, .quote-reveal');
 
         if (prefersReducedMotion) {
-          revealEls.forEach(function (el) {
-            el.classList.add('visible');
+          allEls.forEach(function (el) {
+            el.classList.add('is-visible');
+            // Keep legacy compat
+            if (el.classList.contains('reveal')) el.classList.add('visible');
           });
           return;
         }
 
         if (!('IntersectionObserver' in window)) {
-          revealEls.forEach(function (el) {
-            el.classList.add('visible');
+          allEls.forEach(function (el) {
+            el.classList.add('is-visible');
+            if (el.classList.contains('reveal')) el.classList.add('visible');
           });
           return;
         }
@@ -780,7 +820,11 @@
           function (entries) {
             entries.forEach(function (entry) {
               if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
+                entry.target.classList.add('is-visible');
+                // Keep legacy compat for .reveal elements
+                if (entry.target.classList.contains('reveal')) {
+                  entry.target.classList.add('visible');
+                }
                 observer.unobserve(entry.target);
               }
             });
@@ -791,7 +835,7 @@
           }
         );
 
-        revealEls.forEach(function (el) {
+        allEls.forEach(function (el) {
           observer.observe(el);
         });
       }

@@ -270,6 +270,45 @@
     .table-row:hover {
       background-color: rgba(42, 42, 42, 0.5);
     }
+
+    /* ── Advanced Animation Classes ── */
+    .stagger > * { opacity: 0; transform: translateY(24px); transition: opacity 0.65s cubic-bezier(0.16,1,0.3,1), transform 0.65s cubic-bezier(0.16,1,0.3,1); }
+    .stagger.is-visible > * { opacity: 1; transform: none; }
+    .stagger.is-visible > *:nth-child(1) { transition-delay: 0ms; }
+    .stagger.is-visible > *:nth-child(2) { transition-delay: 100ms; }
+    .stagger.is-visible > *:nth-child(3) { transition-delay: 200ms; }
+    .stagger.is-visible > *:nth-child(4) { transition-delay: 300ms; }
+    .stagger.is-visible > *:nth-child(5) { transition-delay: 400ms; }
+    .stagger.is-visible > *:nth-child(6) { transition-delay: 500ms; }
+    .stagger.is-visible > *:nth-child(7) { transition-delay: 600ms; }
+    .stagger.is-visible > *:nth-child(8) { transition-delay: 700ms; }
+    .stagger.is-visible > *:nth-child(9) { transition-delay: 800ms; }
+    .stagger.is-visible > *:nth-child(10) { transition-delay: 900ms; }
+    .text-reveal-wrap { overflow: hidden; display: block; }
+    .text-reveal-line { display: block; transform: translateY(110%); transition: transform 0.8s cubic-bezier(0.16,1,0.3,1); }
+    .text-reveal-wrap.is-visible .text-reveal-line { transform: none; }
+    .text-reveal-wrap.is-visible .text-reveal-line:nth-child(2) { transition-delay: 0.1s; }
+    .text-reveal-wrap.is-visible .text-reveal-line:nth-child(3) { transition-delay: 0.2s; }
+    .img-reveal { opacity: 0; transform: scale(0.95); transition: opacity 1s cubic-bezier(0.16,1,0.3,1), transform 1s cubic-bezier(0.16,1,0.3,1); }
+    .img-reveal.is-visible { opacity: 1; transform: none; }
+    .line-draw { width: 0; height: 2px; background: linear-gradient(90deg, #a7c8ff, #3291ff); transition: width 0.9s cubic-bezier(0.16,1,0.3,1) 0.2s; }
+    .line-draw.is-visible { width: 48px; }
+    .reveal-left { opacity: 0; transform: translateX(-32px); transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1); }
+    .reveal-left.is-visible { opacity: 1; transform: none; }
+    .reveal-right { opacity: 0; transform: translateX(32px); transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1); }
+    .reveal-right.is-visible { opacity: 1; transform: none; }
+    .reveal-scale { opacity: 0; transform: scale(0.92); transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1); }
+    .reveal-scale.is-visible { opacity: 1; transform: none; }
+    .card-lift { transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s ease, background-color 0.3s ease; }
+    .card-lift:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(50,145,255,0.12); }
+    .img-hover { overflow: hidden; }
+    .img-hover img { transition: transform 0.6s cubic-bezier(0.16,1,0.3,1); }
+    .img-hover:hover img { transform: scale(1.04); }
+    @media (prefers-reduced-motion: reduce) {
+      .stagger > *, .text-reveal-line, .img-reveal, .line-draw,
+      .reveal-left, .reveal-right, .reveal-scale { opacity: 1; transform: none; width: auto; transition: none; }
+      .card-lift:hover, .img-hover:hover img { transform: none; }
+    }
   </style>
 </head>
 
@@ -355,11 +394,11 @@
     <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 w-full pb-20 lg:pb-28 pt-40">
       <div class="max-w-3xl">
         <!-- Accent Line -->
-        <div class="accent-line mb-10 reveal"></div>
+        <div class="line-draw accent-line mb-10 reveal"></div>
 
-        <h1 class="font-headline font-bold text-4xl sm:text-5xl lg:text-6xl xl:text-7xl text-white leading-[1.08] mb-6 reveal reveal-delay-1">
-          Featured<br>
-          <span class="electric-gradient-text">transactions.</span>
+        <h1 class="font-headline font-bold text-4xl sm:text-5xl lg:text-6xl xl:text-7xl text-white leading-[1.08] mb-6 text-reveal-wrap">
+          <span class="text-reveal-line">Featured</span>
+          <span class="text-reveal-line"><span class="electric-gradient-text">transactions.</span></span>
         </h1>
 
         <p class="text-base lg:text-lg text-silver/55 leading-relaxed max-w-xl reveal reveal-delay-2">
@@ -375,7 +414,7 @@
        ════════════════════════════════════════════════════════════════════ -->
   <section class="py-20 lg:py-28 bg-void">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
-      <div class="reveal deal-card bg-void-light rounded overflow-hidden">
+      <div class="card-lift reveal deal-card bg-void-light rounded overflow-hidden">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-0">
           <!-- Image -->
           <div class="relative h-72 lg:h-auto min-h-[420px]">
@@ -423,22 +462,22 @@
   <!-- ════════════════════════════════════════════════════════════════════
        SENIOR CONSTRUCTION LOANS
        ════════════════════════════════════════════════════════════════════ -->
-  <section class="py-16 lg:py-24 bg-void">
+  <section class="reveal py-16 lg:py-24 bg-void">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <!-- Section Header -->
       <div class="mb-14 reveal">
-        <div class="accent-line mb-8"></div>
+        <div class="line-draw accent-line mb-8"></div>
         <span class="structure-label text-electric-dim mb-3 block">Senior Construction Loans</span>
         <h2 class="font-headline font-bold text-3xl lg:text-4xl text-white leading-tight">Ground-up development financing</h2>
         <p class="text-silver/45 text-base mt-3 max-w-lg leading-relaxed">Certainty of execution from origination through construction completion and stabilization.</p>
       </div>
 
       <!-- Grid — NO borders, tonal depth only -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 stagger reveal">
 
         <!-- Deal 1: Oasis -->
-        <div class="reveal deal-card bg-void-light rounded overflow-hidden group">
-          <div class="relative h-56 overflow-hidden">
+        <div class="card-lift reveal deal-card bg-void-light rounded overflow-hidden group">
+          <div class="relative h-56 overflow-hidden img-hover">
             <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Oasis-Pointe.-Image-courtesy-of-3650-REIT-.jpeg?ssl=1"
                  alt="Oasis at Dania Pointe"
                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
@@ -456,8 +495,8 @@
         </div>
 
         <!-- Deal 2: Gateway at Wynwood -->
-        <div class="reveal reveal-delay-1 deal-card bg-void-light rounded overflow-hidden group">
-          <div class="relative h-56 overflow-hidden">
+        <div class="card-lift reveal reveal-delay-1 deal-card bg-void-light rounded overflow-hidden group">
+          <div class="relative h-56 overflow-hidden img-hover">
             <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Gateway-at-Wynwood-e1578945268648.jpg?ssl=1"
                  alt="Gateway at Wynwood"
                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
@@ -475,8 +514,8 @@
         </div>
 
         <!-- Deal 3: 48 East -->
-        <div class="reveal reveal-delay-2 deal-card bg-void-light rounded overflow-hidden group">
-          <div class="relative h-56 overflow-hidden">
+        <div class="card-lift reveal reveal-delay-2 deal-card bg-void-light rounded overflow-hidden group">
+          <div class="relative h-56 overflow-hidden img-hover">
             <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/aus_48EastAve_austin.jpg?ssl=1"
                  alt="48 East"
                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
@@ -494,8 +533,8 @@
         </div>
 
         <!-- Deal 4: Tacoma Marriott -->
-        <div class="reveal deal-card bg-void-light rounded overflow-hidden group">
-          <div class="relative h-56 overflow-hidden">
+        <div class="card-lift reveal deal-card bg-void-light rounded overflow-hidden group">
+          <div class="relative h-56 overflow-hidden img-hover">
             <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Tacoma-Marriott-Rendering_web-feature.jpg?ssl=1"
                  alt="Tacoma Marriott"
                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
@@ -513,8 +552,8 @@
         </div>
 
         <!-- Deal 5: Renaissance Dallas -->
-        <div class="reveal reveal-delay-1 deal-card bg-void-light rounded overflow-hidden group">
-          <div class="relative h-56 overflow-hidden">
+        <div class="card-lift reveal reveal-delay-1 deal-card bg-void-light rounded overflow-hidden group">
+          <div class="relative h-56 overflow-hidden img-hover">
             <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/RENAISSANCE.png?ssl=1"
                  alt="Renaissance Dallas"
                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
@@ -539,9 +578,9 @@
   <!-- ════════════════════════════════════════════════════════════════════
        STATS BAR
        ════════════════════════════════════════════════════════════════════ -->
-  <section class="py-16 lg:py-20 bg-void-light">
+  <section class="reveal py-16 lg:py-20 bg-void-light">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
-      <div class="reveal grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+      <div class="reveal stagger grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
         <div class="text-center">
           <p class="font-headline font-bold text-3xl lg:text-4xl electric-gradient-text mb-2">10</p>
           <p class="text-silver/40 text-sm font-medium">Featured Deals</p>
@@ -566,21 +605,21 @@
   <!-- ════════════════════════════════════════════════════════════════════
        SENIOR + PE TRANSACTIONS
        ════════════════════════════════════════════════════════════════════ -->
-  <section class="py-16 lg:py-24 bg-void">
+  <section class="reveal py-16 lg:py-24 bg-void">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <!-- Section Header -->
       <div class="mb-14 reveal">
-        <div class="accent-line mb-8"></div>
+        <div class="line-draw accent-line mb-8"></div>
         <span class="structure-label text-electric-dim mb-3 block">Senior + Private Equity</span>
         <h2 class="font-headline font-bold text-3xl lg:text-4xl text-white leading-tight">Capital solutions beyond traditional lending</h2>
         <p class="text-silver/45 text-base mt-3 max-w-lg leading-relaxed">Flexible structures combining senior debt with private equity participation for complex capital stacks.</p>
       </div>
 
       <!-- Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 stagger reveal">
 
         <!-- Deal 6: ICP/IRG — spans 2 cols -->
-        <div class="reveal deal-card bg-void-light rounded overflow-hidden lg:col-span-2 group">
+        <div class="card-lift reveal deal-card bg-void-light rounded overflow-hidden lg:col-span-2 group">
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-0">
             <div class="relative h-64 lg:h-auto min-h-[300px] overflow-hidden">
               <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/IPC-.png?ssl=1"
@@ -608,8 +647,8 @@
         </div>
 
         <!-- Deal 7: Aventura Self Storage -->
-        <div class="reveal reveal-delay-1 deal-card bg-void-light rounded overflow-hidden group">
-          <div class="relative h-56 overflow-hidden">
+        <div class="card-lift reveal reveal-delay-1 deal-card bg-void-light rounded overflow-hidden group">
+          <div class="relative h-56 overflow-hidden img-hover">
             <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/DJI_0135-HDR-scaled.jpg?ssl=1"
                  alt="Aventura Self Storage"
                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
@@ -627,8 +666,8 @@
         </div>
 
         <!-- Deal 8: Waterfront Corporate Center I -->
-        <div class="reveal deal-card bg-void-light rounded overflow-hidden group">
-          <div class="relative h-56 overflow-hidden">
+        <div class="card-lift reveal deal-card bg-void-light rounded overflow-hidden group">
+          <div class="relative h-56 overflow-hidden img-hover">
             <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Unknown-1.png?ssl=1"
                  alt="Waterfront Corporate Center I"
                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
@@ -646,8 +685,8 @@
         </div>
 
         <!-- Deal 9: Transcoastal Portfolio -->
-        <div class="reveal reveal-delay-1 deal-card bg-void-light rounded overflow-hidden group">
-          <div class="relative h-56 overflow-hidden">
+        <div class="card-lift reveal reveal-delay-1 deal-card bg-void-light rounded overflow-hidden group">
+          <div class="relative h-56 overflow-hidden img-hover">
             <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Transcoastal.jpeg?ssl=1"
                  alt="Transcoastal Portfolio"
                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
@@ -665,8 +704,8 @@
         </div>
 
         <!-- Deal 10: Center at Miami Gardens -->
-        <div class="reveal reveal-delay-2 deal-card bg-void-light rounded overflow-hidden group">
-          <div class="relative h-56 overflow-hidden">
+        <div class="card-lift reveal reveal-delay-2 deal-card bg-void-light rounded overflow-hidden group">
+          <div class="relative h-56 overflow-hidden img-hover">
             <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/rendering-center-at-miami-gardens-courtesy-3650-reit.jpg?ssl=1"
                  alt="Center at Miami Gardens"
                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
@@ -691,10 +730,10 @@
   <!-- ════════════════════════════════════════════════════════════════════
        DEAL TABLE
        ════════════════════════════════════════════════════════════════════ -->
-  <section class="py-16 lg:py-24 bg-void-light">
+  <section class="reveal py-16 lg:py-24 bg-void-light">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <div class="reveal mb-10">
-        <div class="accent-line mb-8"></div>
+        <div class="line-draw accent-line mb-8"></div>
         <h2 class="font-headline font-bold text-2xl lg:text-3xl text-white">Complete transaction summary</h2>
       </div>
 
@@ -779,11 +818,11 @@
   <!-- ════════════════════════════════════════════════════════════════════
        CTA
        ════════════════════════════════════════════════════════════════════ -->
-  <section class="bg-void py-28 lg:py-36">
+  <section class="reveal bg-void py-28 lg:py-36">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <div class="max-w-2xl mx-auto text-center">
         <div class="flex justify-center mb-10 reveal">
-          <div class="accent-line"></div>
+          <div class="line-draw accent-line"></div>
         </div>
 
         <h2 class="font-headline font-bold text-3xl sm:text-4xl lg:text-5xl text-white leading-tight mb-6 reveal reveal-delay-1">
@@ -811,7 +850,7 @@
   <!-- ════════════════════════════════════════════════════════════════════
        FOOTER
        ════════════════════════════════════════════════════════════════════ -->
-  <footer class="bg-void py-16">
+  <footer class="reveal bg-void py-16">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
 
       <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-10">
@@ -871,10 +910,10 @@
          IntersectionObserver — Scroll Reveal
          ───────────────────────────────────────────── */
       function initScrollReveal() {
-        const reveals = document.querySelectorAll('.reveal');
+        const allAnimated = document.querySelectorAll('.reveal, .stagger, .text-reveal-wrap, .img-reveal, .line-draw, .reveal-left, .reveal-right, .reveal-scale');
 
         if (prefersReducedMotion) {
-          reveals.forEach(function (el) {
+          allAnimated.forEach(function (el) {
             el.classList.add('is-visible');
           });
           return;
@@ -895,7 +934,7 @@
           }
         );
 
-        reveals.forEach(function (el) {
+        allAnimated.forEach(function (el) {
           observer.observe(el);
         });
       }

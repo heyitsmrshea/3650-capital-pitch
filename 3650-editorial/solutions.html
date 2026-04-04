@@ -168,6 +168,67 @@
       text-transform: uppercase;
       font-weight: 600;
     }
+
+    /* Staggered card entrance */
+    .stagger > * { opacity: 0; transform: translateY(20px); transition: opacity 0.65s ease-out, transform 0.65s ease-out; }
+    .stagger.visible > * { opacity: 1; transform: none; }
+    .stagger.visible > *:nth-child(1) { transition-delay: 0ms; }
+    .stagger.visible > *:nth-child(2) { transition-delay: 120ms; }
+    .stagger.visible > *:nth-child(3) { transition-delay: 240ms; }
+    .stagger.visible > *:nth-child(4) { transition-delay: 360ms; }
+    .stagger.visible > *:nth-child(5) { transition-delay: 480ms; }
+    .stagger.visible > *:nth-child(6) { transition-delay: 600ms; }
+    .stagger.visible > *:nth-child(7) { transition-delay: 720ms; }
+    .stagger.visible > *:nth-child(8) { transition-delay: 840ms; }
+    .stagger.visible > *:nth-child(9) { transition-delay: 960ms; }
+    .stagger.visible > *:nth-child(10) { transition-delay: 1080ms; }
+
+    /* Text line reveal */
+    .text-reveal-wrap { overflow: hidden; display: block; }
+    .text-reveal-line { display: block; transform: translateY(110%); transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1); }
+    .text-reveal-wrap.visible .text-reveal-line { transform: none; }
+    .text-reveal-wrap.visible .text-reveal-line:nth-child(2) { transition-delay: 0.12s; }
+    .text-reveal-wrap.visible .text-reveal-line:nth-child(3) { transition-delay: 0.24s; }
+
+    /* Image clip reveal (bottom to top for editorial) */
+    .img-reveal { clip-path: inset(100% 0 0 0); transition: clip-path 1.2s cubic-bezier(0.16, 1, 0.3, 1); }
+    .img-reveal.visible { clip-path: inset(0 0 0 0); }
+
+    /* Terra line draw */
+    .line-draw { width: 0; height: 2px; background: #b8432a; transition: width 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.3s; }
+    .line-draw.visible { width: 60px; }
+
+    /* Scale reveal */
+    .reveal-scale { opacity: 0; transform: scale(0.94); transition: opacity 0.7s ease-out, transform 0.7s ease-out; }
+    .reveal-scale.visible { opacity: 1; transform: none; }
+
+    /* Slide from left/right */
+    .reveal-left { opacity: 0; transform: translateX(-30px); transition: opacity 0.7s ease-out, transform 0.7s ease-out; }
+    .reveal-left.visible { opacity: 1; transform: none; }
+    .reveal-right { opacity: 0; transform: translateX(30px); transition: opacity 0.7s ease-out, transform 0.7s ease-out; }
+    .reveal-right.visible { opacity: 1; transform: none; }
+
+    /* Card hover lift */
+    .card-lift { transition: transform 0.4s ease, box-shadow 0.4s ease; }
+    .card-lift:hover { transform: translateY(-4px); box-shadow: 0 16px 32px rgba(26,22,18,0.1); }
+
+    /* Image hover zoom */
+    .img-hover { overflow: hidden; }
+    .img-hover img { transition: transform 0.7s cubic-bezier(0.16,1,0.3,1); }
+    .img-hover:hover img { transform: scale(1.03); }
+
+    /* Pull quote entrance */
+    .quote-reveal { opacity: 0; transform: translateX(-20px); border-left: 3px solid transparent; transition: all 0.8s ease-out; }
+    .quote-reveal.visible { opacity: 1; transform: none; border-left-color: #b8432a; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .stagger > *, .text-reveal-line, .img-reveal, .line-draw,
+      .reveal-scale, .reveal-left, .reveal-right, .quote-reveal {
+        opacity: 1; transform: none; clip-path: none; width: auto; border-left-color: #b8432a; transition: none;
+      }
+      .card-lift:hover { transform: none; }
+      .img-hover:hover img { transform: none; }
+    }
   </style>
 </head>
 
@@ -219,14 +280,14 @@
 
       <!-- Editorial label -->
       <div class="reveal mb-6 flex items-center gap-3">
-        <div class="editorial-rule"></div>
+        <div class="editorial-rule line-draw"></div>
         <span class="label-editorial text-terra">Issue No. 03 — Financing Solutions</span>
       </div>
 
       <!-- Headline -->
-      <h1 class="headline-massive reveal reveal-delay-1 max-w-[1100px]">
-        Short-term capital.<br>
-        <em class="text-terra">Long-term</em> solutions.
+      <h1 class="headline-massive max-w-[1100px]">
+        <span class="text-reveal-wrap"><span class="text-reveal-line">Short-term capital.</span></span>
+        <span class="text-reveal-wrap"><span class="text-reveal-line"><em class="text-terra">Long-term</em> solutions.</span></span>
       </h1>
 
       <!-- Sub-headline -->
@@ -244,7 +305,7 @@
 
       <!-- Hero image with editorial caption -->
       <div class="reveal reveal-delay-4 mt-14 relative">
-        <div class="w-full aspect-[16/7] overflow-hidden bg-ink/5">
+        <div class="w-full aspect-[16/7] overflow-hidden bg-ink/5 img-reveal img-hover">
           <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/rendering-center-at-miami-gardens-courtesy-3650-reit.jpg?ssl=1"
                alt="Center at Miami Gardens — 3650 Capital financing"
                class="w-full h-full object-cover">
@@ -267,12 +328,12 @@
 
       <!-- Section label -->
       <div class="reveal flex items-center gap-3 mb-6">
-        <div class="editorial-rule"></div>
+        <div class="editorial-rule line-draw"></div>
         <span class="label-editorial text-terra">The Operating Platform</span>
       </div>
 
       <!-- Section headline -->
-      <h2 class="headline-large reveal reveal-delay-1 max-w-[900px] mb-6">
+      <h2 class="headline-large reveal reveal-left reveal-delay-1 max-w-[900px] mb-6">
         Vertical integration and retained servicing are <em class="text-terra">part of the product.</em>
       </h2>
 
@@ -283,7 +344,7 @@
       <!-- Image + Pull Quote -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 mb-16">
         <div class="reveal reveal-delay-2">
-          <div class="w-full aspect-[4/3] overflow-hidden bg-ink/5">
+          <div class="w-full aspect-[4/3] overflow-hidden bg-ink/5 img-reveal img-hover">
             <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Gateway-at-Wynwood-e1578945268648.jpg?ssl=1"
                  alt="Gateway at Wynwood — 3650 Capital platform"
                  class="w-full h-full object-cover">
@@ -291,17 +352,17 @@
           <span class="caption-line text-xs text-ink/50 mt-3 inline-block">Gateway at Wynwood, Miami</span>
         </div>
         <div class="reveal reveal-delay-3 flex items-center">
-          <blockquote class="pull-quote text-ink/80 border-l-2 border-terra pl-6">
+          <blockquote class="pull-quote text-ink/80 border-l-2 border-terra pl-6 quote-reveal">
             "One team from origination to asset outcome. No hand-offs, no third-party transfers. That continuity is what sets us apart."
           </blockquote>
         </div>
       </div>
 
       <!-- Bento grid — four metrics -->
-      <div class="grid grid-cols-1 md:grid-cols-12 gap-[1px] bg-ink/10">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-[1px] bg-ink/10 stagger">
 
         <!-- Card 1: Vertical Integration -->
-        <div class="reveal md:col-span-6 bento-card bg-ink text-cream p-8 md:p-12 flex flex-col justify-between min-h-[280px]">
+        <div class="reveal md:col-span-6 bento-card card-lift bg-ink text-cream p-8 md:p-12 flex flex-col justify-between min-h-[280px]">
           <div>
             <span class="label-editorial text-terra-light">01</span>
             <h3 class="headline-mid mt-4 mb-4">Vertical Integration</h3>
@@ -315,7 +376,7 @@
         </div>
 
         <!-- Card 2: Loan Servicing -->
-        <div class="reveal reveal-delay-1 md:col-span-6 bento-card bg-cream-dark p-8 md:p-12 flex flex-col justify-between min-h-[280px]">
+        <div class="reveal reveal-delay-1 md:col-span-6 bento-card card-lift bg-cream-dark p-8 md:p-12 flex flex-col justify-between min-h-[280px]">
           <div>
             <span class="label-editorial text-terra">02</span>
             <h3 class="headline-mid mt-4 mb-4">Loan Servicing</h3>
@@ -329,7 +390,7 @@
         </div>
 
         <!-- Card 3: Credit Solutions -->
-        <div class="reveal reveal-delay-2 md:col-span-5 bento-card bg-sage text-cream p-8 md:p-12 flex flex-col justify-between min-h-[280px]">
+        <div class="reveal reveal-delay-2 md:col-span-5 bento-card card-lift bg-sage text-cream p-8 md:p-12 flex flex-col justify-between min-h-[280px]">
           <div>
             <span class="label-editorial text-cream/50">03</span>
             <h3 class="font-headline text-xl mt-4 mb-3">Credit Solutions</h3>
@@ -343,7 +404,7 @@
         </div>
 
         <!-- Card 4: Relationship Model -->
-        <div class="reveal reveal-delay-3 md:col-span-7 bento-card bg-cream p-8 md:p-12 flex flex-col justify-between min-h-[280px]">
+        <div class="reveal reveal-delay-3 md:col-span-7 bento-card card-lift bg-cream p-8 md:p-12 flex flex-col justify-between min-h-[280px]">
           <div>
             <span class="label-editorial text-terra">04</span>
             <h3 class="headline-mid mt-4 mb-4">Relationship Model</h3>
@@ -371,7 +432,7 @@
 
       <!-- Section intro -->
       <div class="reveal flex items-center gap-3 mb-6">
-        <div class="editorial-rule"></div>
+        <div class="editorial-rule line-draw"></div>
         <span class="label-editorial text-terra">The Products</span>
       </div>
 
@@ -385,7 +446,7 @@
 
       <!-- Product image -->
       <div class="reveal reveal-delay-2 mb-16">
-        <div class="w-full aspect-[16/7] overflow-hidden bg-ink/5">
+        <div class="w-full aspect-[16/7] overflow-hidden bg-ink/5 img-reveal img-hover">
           <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Unknown-1.png?ssl=1"
                alt="3650 Capital financing products"
                class="w-full h-full object-cover">
@@ -394,7 +455,7 @@
       </div>
 
       <!-- Product 1: RECS -->
-      <div class="reveal grid md:grid-cols-2 gap-12 md:gap-16 mb-20 md:mb-28">
+      <div class="reveal reveal-left grid md:grid-cols-2 gap-12 md:gap-16 mb-20 md:mb-28">
         <div class="md:text-right md:pr-8">
           <span class="label-editorial text-terra">Product I</span>
           <h3 class="headline-large mt-3 mb-6">RECS</h3>
@@ -421,7 +482,7 @@
       </div>
 
       <!-- Product 2: Stable Cash Flow -->
-      <div class="reveal grid md:grid-cols-2 gap-12 md:gap-16 mb-20 md:mb-28">
+      <div class="reveal reveal-right grid md:grid-cols-2 gap-12 md:gap-16 mb-20 md:mb-28">
         <div class="flex flex-col justify-center md:order-2">
           <span class="label-editorial text-terra">Product II</span>
           <h3 class="headline-large mt-3 mb-6">Stable Cash Flow</h3>
@@ -448,7 +509,7 @@
       </div>
 
       <!-- Product 3: Special Situations -->
-      <div class="reveal grid md:grid-cols-2 gap-12 md:gap-16">
+      <div class="reveal reveal-left grid md:grid-cols-2 gap-12 md:gap-16">
         <div class="md:text-right md:pr-8">
           <span class="label-editorial text-terra">Product III</span>
           <h3 class="headline-large mt-3 mb-6">Special Situations</h3>
@@ -487,7 +548,7 @@
 
       <!-- Section label -->
       <div class="reveal flex items-center gap-3 mb-6">
-        <div class="editorial-rule"></div>
+        <div class="editorial-rule line-draw"></div>
         <span class="label-editorial text-terra">At a Glance</span>
       </div>
 
@@ -496,7 +557,7 @@
       </h2>
 
       <!-- Table -->
-      <div class="reveal reveal-delay-2 overflow-x-auto">
+      <div class="reveal reveal-delay-2 reveal-scale overflow-x-auto">
         <table class="editorial-table w-full border-collapse min-w-[640px]">
           <thead>
             <tr class="border-b-2 border-ink">
@@ -564,7 +625,7 @@
       <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20">
         <!-- Left: Image -->
         <div class="reveal">
-          <div class="w-full aspect-[4/3] overflow-hidden bg-ink/5">
+          <div class="w-full aspect-[4/3] overflow-hidden bg-ink/5 img-reveal img-hover">
             <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/DJI_0135-HDR-scaled.jpg?ssl=1"
                  alt="3650 Capital approach — aerial view"
                  class="w-full h-full object-cover">
@@ -575,7 +636,7 @@
         <!-- Right: Copy -->
         <div class="reveal reveal-delay-1 flex flex-col justify-center">
           <div class="flex items-center gap-3 mb-6">
-            <div class="editorial-rule"></div>
+            <div class="editorial-rule line-draw"></div>
             <span class="label-editorial text-terra">Our Approach</span>
           </div>
           <h2 class="headline-large mb-6">
@@ -695,14 +756,62 @@
         rootMargin: '0px 0px -40px 0px'
       });
 
-      document.querySelectorAll('.reveal').forEach(el => {
+      document.querySelectorAll('.reveal, .stagger, .text-reveal-wrap, .img-reveal, .line-draw, .reveal-scale, .reveal-left, .reveal-right, .quote-reveal').forEach(el => {
         revealObserver.observe(el);
       });
     } else {
-      document.querySelectorAll('.reveal').forEach(el => {
+      document.querySelectorAll('.reveal, .stagger, .text-reveal-wrap, .img-reveal, .line-draw, .reveal-scale, .reveal-left, .reveal-right, .quote-reveal').forEach(el => {
         el.classList.add('visible');
       });
     }
+
+
+    /* ---- Counter animations ---- */
+    function animateCounter(el) {
+      const target = parseFloat(el.getAttribute('data-counter'));
+      const decimals = parseInt(el.getAttribute('data-decimals')) || 0;
+      const duration = 2000;
+      const startTime = performance.now();
+
+      if (prefersReducedMotion) {
+        el.textContent = decimals > 0 ? target.toFixed(decimals) : Math.round(target).toLocaleString();
+        return;
+      }
+
+      function update(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const current = target * eased;
+
+        if (decimals > 0) {
+          el.textContent = current.toFixed(decimals);
+        } else {
+          el.textContent = Math.round(current).toLocaleString();
+        }
+
+        if (progress < 1) {
+          requestAnimationFrame(update);
+        }
+      }
+
+      requestAnimationFrame(update);
+    }
+
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCounter(entry.target);
+          counterObserver.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.5
+    });
+
+    document.querySelectorAll('[data-counter]').forEach(el => {
+      counterObserver.observe(el);
+    });
 
     /* ---- Navbar scroll behavior ---- */
     const nav = document.getElementById('mainNav');

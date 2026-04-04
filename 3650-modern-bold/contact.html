@@ -187,6 +187,39 @@
       background: linear-gradient(135deg, rgba(139,94,52,0.15) 0%, transparent 60%);
       pointer-events: none;
     }
+  
+    /* === NEXT-LEVEL ANIMATIONS === */
+    .stagger > * { opacity: 0; transform: translateY(20px); transition: opacity 0.55s cubic-bezier(0.22,1,0.36,1), transform 0.55s cubic-bezier(0.22,1,0.36,1); }
+    .stagger.visible > * { opacity: 1; transform: none; }
+    .stagger.visible > *:nth-child(1) { transition-delay: 0ms; }
+    .stagger.visible > *:nth-child(2) { transition-delay: 80ms; }
+    .stagger.visible > *:nth-child(3) { transition-delay: 160ms; }
+    .stagger.visible > *:nth-child(4) { transition-delay: 240ms; }
+    .stagger.visible > *:nth-child(5) { transition-delay: 320ms; }
+    .stagger.visible > *:nth-child(6) { transition-delay: 400ms; }
+    .stagger.visible > *:nth-child(7) { transition-delay: 480ms; }
+    .stagger.visible > *:nth-child(8) { transition-delay: 560ms; }
+    .stagger.visible > *:nth-child(9) { transition-delay: 640ms; }
+    .stagger.visible > *:nth-child(10) { transition-delay: 720ms; }
+    .text-reveal-wrap { overflow: hidden; display: block; }
+    .text-reveal-line { display: block; transform: translateY(110%); transition: transform 0.75s cubic-bezier(0.22,1,0.36,1); }
+    .text-reveal-wrap.visible .text-reveal-line { transform: none; }
+    .text-reveal-wrap.visible .text-reveal-line:nth-child(2) { transition-delay: 0.08s; }
+    .text-reveal-wrap.visible .text-reveal-line:nth-child(3) { transition-delay: 0.16s; }
+    .img-reveal { clip-path: polygon(0 0, 0 0, 0 100%, 0 100%); transition: clip-path 1s cubic-bezier(0.22,1,0.36,1); }
+    .img-reveal.visible { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
+    .line-draw { width: 0; height: 3px; background: #8b5e34; transition: width 0.8s cubic-bezier(0.22,1,0.36,1) 0.2s; }
+    .line-draw.visible { width: 48px; }
+    .card-lift { transition: transform 0.35s cubic-bezier(0.22,1,0.36,1), box-shadow 0.35s ease; }
+    .card-lift:hover { transform: translateY(-8px); box-shadow: 0 24px 48px rgba(0,0,0,0.1); }
+    .img-hover { overflow: hidden; }
+    .img-hover img { transition: transform 0.5s cubic-bezier(0.22,1,0.36,1); }
+    .img-hover:hover img { transform: scale(1.05); }
+    @media (prefers-reduced-motion: reduce) {
+      .stagger > *, .text-reveal-line, .img-reveal, .line-draw { opacity: 1; transform: none; clip-path: polygon(0 0,100% 0,100% 100%,0 100%); width: auto; transition: none; }
+      .card-lift:hover, .img-hover:hover img { transform: none; }
+    }
+
   </style>
 </head>
 
@@ -268,11 +301,8 @@
 
           <!-- Heading with copper accent -->
           <div class="reveal delay-1">
-            <div class="copper-line mb-6"></div>
-            <h1 class="font-headline text-3xl md:text-4xl lg:text-5xl text-charcoal mb-6 leading-tight">
-              Direct channels.<br>
-              <span class="text-copper">Real offices.</span>
-            </h1>
+            <div class="copper-line line-draw visible mb-6"></div>
+            <h1 class="font-headline text-3xl md:text-4xl lg:text-5xl text-charcoal mb-6 leading-tight"><span class="text-reveal-wrap visible"><span class="text-reveal-line">Direct channels.</span><span class="text-reveal-line"><span class="text-copper">Real offices.</span></span></span></h1>
           </div>
 
           <p class="reveal delay-2 text-charcoal/60 text-base md:text-lg leading-relaxed max-w-md mb-8">
@@ -301,11 +331,11 @@
 
         <!-- Right: Hero Image -->
         <div class="reveal-right delay-2 relative">
-          <div class="img-overlay rounded-lg overflow-hidden">
+          <div class="img-overlay rounded-lg overflow-hidden img-hover">
             <img
               src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/commercial-observer-power-finance.jpg?ssl=1"
               alt="3650 Capital leadership at industry event"
-              class="w-full aspect-[4/3] object-cover"
+              class="w-full aspect-[4/3] object-cover img-reveal"
               loading="eager"
             >
           </div>
@@ -325,7 +355,7 @@
         <div class="reveal flex flex-wrap items-center gap-3 mb-6">
           <span class="inline-flex items-center px-4 py-1.5 bg-copper/10 text-copper text-xs font-semibold tracking-widest uppercase rounded-full">Offices</span>
         </div>
-        <div class="reveal delay-1 copper-line mb-6"></div>
+        <div class="reveal delay-1 copper-line line-draw mb-6"></div>
         <h2 class="reveal delay-1 font-headline text-3xl md:text-4xl lg:text-5xl text-charcoal mb-4 leading-tight">
           Seven offices. <span class="text-copper">One platform.</span>
         </h2>
@@ -335,23 +365,23 @@
       </div>
 
       <!-- Office images row -->
-      <div class="grid md:grid-cols-2 gap-6 mb-14">
+      <div class="grid md:grid-cols-2 gap-6 mb-14 stagger">
         <div class="reveal-scale">
-          <div class="img-overlay rounded-lg overflow-hidden">
+          <div class="img-overlay rounded-lg overflow-hidden img-hover">
             <img
               src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/nyc-office-interior-1.jpg?ssl=1"
               alt="3650 Capital New York office interior"
-              class="w-full aspect-[16/10] object-cover"
+              class="w-full aspect-[16/10] object-cover img-reveal"
               loading="lazy"
             >
           </div>
         </div>
         <div class="reveal-scale delay-2">
-          <div class="img-overlay rounded-lg overflow-hidden">
+          <div class="img-overlay rounded-lg overflow-hidden img-hover">
             <img
               src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/nyc-office-interior-2.jpg?ssl=1"
               alt="3650 Capital office workspace"
-              class="w-full aspect-[16/10] object-cover"
+              class="w-full aspect-[16/10] object-cover img-reveal"
               loading="lazy"
             >
           </div>
@@ -359,10 +389,10 @@
       </div>
 
       <!-- Office cards grid -->
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 stagger">
 
         <!-- Miami HQ -->
-        <div class="reveal office-card bg-warm rounded-lg p-6">
+        <div class="reveal office-card card-lift bg-warm rounded-lg p-6">
           <div class="flex items-center gap-2 mb-4">
             <span class="material-symbols-outlined text-copper text-xl">location_on</span>
             <h3 class="font-headline text-charcoal text-xl">Miami</h3>
@@ -375,7 +405,7 @@
         </div>
 
         <!-- New York -->
-        <div class="reveal delay-1 office-card bg-warm rounded-lg p-6">
+        <div class="reveal delay-1 office-card card-lift bg-warm rounded-lg p-6">
           <div class="flex items-center gap-2 mb-4">
             <span class="material-symbols-outlined text-copper text-xl">location_on</span>
             <h3 class="font-headline text-charcoal text-xl">New York</h3>
@@ -387,7 +417,7 @@
         </div>
 
         <!-- Los Angeles -->
-        <div class="reveal delay-2 office-card bg-warm rounded-lg p-6">
+        <div class="reveal delay-2 office-card card-lift bg-warm rounded-lg p-6">
           <div class="flex items-center gap-2 mb-4">
             <span class="material-symbols-outlined text-copper text-xl">location_on</span>
             <h3 class="font-headline text-charcoal text-xl">Los Angeles</h3>
@@ -399,7 +429,7 @@
         </div>
 
         <!-- Dallas -->
-        <div class="reveal delay-3 office-card bg-warm rounded-lg p-6">
+        <div class="reveal delay-3 office-card card-lift bg-warm rounded-lg p-6">
           <div class="flex items-center gap-2 mb-4">
             <span class="material-symbols-outlined text-copper text-xl">location_on</span>
             <h3 class="font-headline text-charcoal text-xl">Dallas</h3>
@@ -412,7 +442,7 @@
         </div>
 
         <!-- Atlanta -->
-        <div class="reveal office-card bg-warm rounded-lg p-6">
+        <div class="reveal office-card card-lift bg-warm rounded-lg p-6">
           <div class="flex items-center gap-2 mb-4">
             <span class="material-symbols-outlined text-copper text-xl">location_on</span>
             <h3 class="font-headline text-charcoal text-xl">Atlanta</h3>
@@ -425,7 +455,7 @@
         </div>
 
         <!-- Nashville -->
-        <div class="reveal delay-1 office-card bg-warm rounded-lg p-6">
+        <div class="reveal delay-1 office-card card-lift bg-warm rounded-lg p-6">
           <div class="flex items-center gap-2 mb-4">
             <span class="material-symbols-outlined text-copper text-xl">location_on</span>
             <h3 class="font-headline text-charcoal text-xl">Nashville</h3>
@@ -436,7 +466,7 @@
         </div>
 
         <!-- Washington D.C. -->
-        <div class="reveal delay-2 office-card bg-warm rounded-lg p-6">
+        <div class="reveal delay-2 office-card card-lift bg-warm rounded-lg p-6">
           <div class="flex items-center gap-2 mb-4">
             <span class="material-symbols-outlined text-copper text-xl">location_on</span>
             <h3 class="font-headline text-charcoal text-xl">Washington D.C.</h3>
@@ -461,7 +491,7 @@
           <div class="reveal flex flex-wrap items-center gap-3 mb-6">
             <span class="inline-flex items-center px-4 py-1.5 bg-copper/10 text-copper text-xs font-semibold tracking-widest uppercase rounded-full">Inquiry</span>
           </div>
-          <div class="reveal delay-1 copper-line mb-6"></div>
+          <div class="reveal delay-1 copper-line line-draw mb-6"></div>
           <h2 class="reveal delay-1 font-headline text-3xl md:text-4xl text-charcoal mb-4 leading-tight">
             Contact the right team.
           </h2>
@@ -471,7 +501,7 @@
 
           <form onsubmit="event.preventDefault(); this.querySelector('.submit-btn').textContent = 'Sent'; this.querySelector('.submit-btn').disabled = true;" class="reveal delay-3 space-y-5">
 
-            <div class="grid sm:grid-cols-2 gap-5">
+            <div class="grid sm:grid-cols-2 gap-5 stagger">
               <!-- Name -->
               <div>
                 <label for="name" class="block text-xs tracking-widest uppercase text-charcoal/40 font-semibold mb-2">Name <span class="text-copper">*</span></label>
@@ -499,7 +529,7 @@
               </div>
             </div>
 
-            <div class="grid sm:grid-cols-2 gap-5">
+            <div class="grid sm:grid-cols-2 gap-5 stagger">
               <!-- Company -->
               <div>
                 <label for="company" class="block text-xs tracking-widest uppercase text-charcoal/40 font-semibold mb-2">Company</label>
@@ -552,7 +582,7 @@
 
             <!-- General inquiries card -->
             <div class="bg-charcoal rounded-lg p-8">
-              <div class="copper-line mb-6"></div>
+              <div class="copper-line line-draw visible mb-6"></div>
               <h3 class="font-headline text-white text-xl mb-4">General inquiries</h3>
               <div class="space-y-4">
                 <a href="mailto:info@3650capital.com" class="flex items-center gap-3 text-copper text-sm font-medium hover:text-copper-light transition-colors">
@@ -568,7 +598,7 @@
 
             <!-- Servicing card -->
             <div class="bg-charcoal rounded-lg p-8">
-              <div class="copper-line mb-6"></div>
+              <div class="copper-line line-draw visible mb-6"></div>
               <h3 class="font-headline text-white text-xl mb-4">Loan servicing</h3>
               <a href="mailto:servicing@3650capital.com" class="flex items-center gap-3 text-copper text-sm font-medium hover:text-copper-light transition-colors">
                 <span class="material-symbols-outlined text-lg">support_agent</span>
@@ -612,7 +642,7 @@
 
         <!-- Left: CTA -->
         <div>
-          <div class="reveal w-12 h-[3px] bg-copper mb-8"></div>
+          <div class="reveal line-draw w-12 h-[3px] bg-copper mb-8"></div>
           <h2 class="reveal delay-1 font-headline text-3xl md:text-4xl lg:text-5xl text-white mb-6 leading-tight">
             Building for the<br>Next Decade.
           </h2>
@@ -733,7 +763,7 @@
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     if (!prefersReducedMotion) {
-      const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+      const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .stagger, .text-reveal-wrap, .img-reveal, .line-draw');
 
       const revealObserver = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
@@ -752,8 +782,76 @@
       });
     } else {
       // If reduced motion, make everything visible immediately
-      document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(function(el) {
+      document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .stagger, .text-reveal-wrap, .img-reveal, .line-draw').forEach(function(el) {
         el.classList.add('visible');
+      });
+    }
+
+
+
+    // ---- Counter Animation ----
+    function animateCounter(el) {
+      const target = parseFloat(el.getAttribute('data-target'));
+      const decimals = parseInt(el.getAttribute('data-decimals')) || 0;
+      const duration = 2000;
+      const startTime = performance.now();
+
+      function easeOutCubic(t) {
+        return 1 - Math.pow(1 - t, 3);
+      }
+
+      function update(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const easedProgress = easeOutCubic(progress);
+        const currentValue = easedProgress * target;
+
+        if (decimals > 0) {
+          el.textContent = currentValue.toFixed(decimals);
+        } else {
+          el.textContent = Math.round(currentValue).toLocaleString();
+        }
+
+        if (progress < 1) {
+          requestAnimationFrame(update);
+        } else {
+          if (decimals > 0) {
+            el.textContent = target.toFixed(decimals);
+          } else {
+            el.textContent = target.toLocaleString();
+          }
+        }
+      }
+
+      requestAnimationFrame(update);
+    }
+
+    if (!prefersReducedMotion) {
+      const counters = document.querySelectorAll('.counter');
+      const counterObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            animateCounter(entry.target);
+            counterObserver.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.5
+      });
+
+      counters.forEach(function(counter) {
+        counterObserver.observe(counter);
+      });
+    } else {
+      // Reduced motion: show final values immediately
+      document.querySelectorAll('.counter').forEach(function(el) {
+        const target = parseFloat(el.getAttribute('data-target'));
+        const decimals = parseInt(el.getAttribute('data-decimals')) || 0;
+        if (decimals > 0) {
+          el.textContent = target.toFixed(decimals);
+        } else {
+          el.textContent = target.toLocaleString();
+        }
       });
     }
 

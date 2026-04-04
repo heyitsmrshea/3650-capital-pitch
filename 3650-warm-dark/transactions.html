@@ -71,6 +71,9 @@
       }
       .bento-card { transition: none !important; }
       .bento-card:hover { transform: none !important; }
+      .stagger > *, .text-reveal-line, .img-reveal, .line-draw,
+      .reveal-left, .reveal-right, .reveal-scale { opacity: 1; transform: none; width: auto; transition: none; }
+      .card-lift:hover, .img-hover:hover img { transform: none; }
     }
 
     /* Bento card hover */
@@ -150,6 +153,40 @@
     .deal-img-overlay {
       background: linear-gradient(0deg, rgba(15, 17, 20, 0.90) 0%, rgba(15, 17, 20, 0.35) 60%, rgba(15, 17, 20, 0.10) 100%);
     }
+
+    /* === NEXT-LEVEL ANIMATIONS === */
+    .stagger > * { opacity: 0; transform: translateY(20px); transition: opacity 0.6s cubic-bezier(0.22,1,0.36,1), transform 0.6s cubic-bezier(0.22,1,0.36,1); }
+    .stagger.visible > * { opacity: 1; transform: none; }
+    .stagger.visible > *:nth-child(1) { transition-delay: 0ms; }
+    .stagger.visible > *:nth-child(2) { transition-delay: 90ms; }
+    .stagger.visible > *:nth-child(3) { transition-delay: 180ms; }
+    .stagger.visible > *:nth-child(4) { transition-delay: 270ms; }
+    .stagger.visible > *:nth-child(5) { transition-delay: 360ms; }
+    .stagger.visible > *:nth-child(6) { transition-delay: 450ms; }
+    .stagger.visible > *:nth-child(7) { transition-delay: 540ms; }
+    .stagger.visible > *:nth-child(8) { transition-delay: 630ms; }
+    .stagger.visible > *:nth-child(9) { transition-delay: 720ms; }
+    .stagger.visible > *:nth-child(10) { transition-delay: 810ms; }
+    .text-reveal-wrap { overflow: hidden; display: block; }
+    .text-reveal-line { display: block; transform: translateY(110%); transition: transform 0.8s cubic-bezier(0.22,1,0.36,1); }
+    .text-reveal-wrap.visible .text-reveal-line { transform: none; }
+    .text-reveal-wrap.visible .text-reveal-line:nth-child(2) { transition-delay: 0.1s; }
+    .text-reveal-wrap.visible .text-reveal-line:nth-child(3) { transition-delay: 0.2s; }
+    .img-reveal { opacity: 0; transform: scale(0.92); transition: opacity 1s ease, transform 1s cubic-bezier(0.22,1,0.36,1); }
+    .img-reveal.visible { opacity: 1; transform: none; }
+    .line-draw { width: 0; height: 2px; background: linear-gradient(90deg, #4dd4ac, #2a9d7e); box-shadow: 0 0 8px rgba(77,212,172,0.3); transition: width 0.9s cubic-bezier(0.22,1,0.36,1) 0.2s; }
+    .line-draw.visible { width: 48px; }
+    .card-lift { transition: transform 0.4s cubic-bezier(0.22,1,0.36,1), box-shadow 0.4s ease, border-color 0.4s ease; }
+    .card-lift:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(0,0,0,0.2); border-color: rgba(77,212,172,0.3); }
+    .img-hover { overflow: hidden; border-radius: 16px; }
+    .img-hover img { transition: transform 0.6s cubic-bezier(0.22,1,0.36,1); }
+    .img-hover:hover img { transform: scale(1.04); }
+    .reveal-left { opacity: 0; transform: translateX(-30px); transition: opacity 0.65s ease, transform 0.65s cubic-bezier(0.22,1,0.36,1); }
+    .reveal-left.visible { opacity: 1; transform: none; }
+    .reveal-right { opacity: 0; transform: translateX(30px); transition: opacity 0.65s ease, transform 0.65s cubic-bezier(0.22,1,0.36,1); }
+    .reveal-right.visible { opacity: 1; transform: none; }
+    .reveal-scale { opacity: 0; transform: scale(0.9); transition: opacity 0.65s ease, transform 0.65s cubic-bezier(0.22,1,0.36,1); }
+    .reveal-scale.visible { opacity: 1; transform: none; }
   </style>
 </head>
 
@@ -217,9 +254,9 @@
     <div class="relative z-10 max-w-7xl mx-auto px-6 pb-20 md:pb-28 w-full">
       <p class="reveal text-teal text-sm font-semibold tracking-widest uppercase mb-6">Transaction Record</p>
       <h1 class="reveal reveal-delay-1 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.05] tracking-tight text-white mb-6">
-        Featured<br>
-        <span class="text-teal">transactions.</span>
-      </h1>
+          <span class="text-reveal-wrap"><span class="text-reveal-line">Featured</span></span>
+          <span class="text-reveal-wrap"><span class="text-reveal-line"><span class="text-teal">transactions.</span></span></span>
+        </h1>
       <p class="reveal reveal-delay-2 text-lg md:text-xl text-white/50 max-w-2xl leading-relaxed">
         A selection of deals across senior construction loans, permanent financings, and private equity investments demonstrating 3650 Capital's breadth and execution.
       </p>
@@ -230,8 +267,8 @@
   <!-- ===================== FEATURED TRANSACTION ===================== -->
   <section class="py-20 md:py-28">
     <div class="max-w-7xl mx-auto px-6">
-      <div class="reveal bento-card rounded-card bg-surface overflow-hidden">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-0">
+      <div class="reveal bento-card card-lift rounded-card bg-surface overflow-hidden">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-0 stagger">
           <!-- Image -->
           <div class="relative h-72 lg:h-auto min-h-[400px]">
             <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Oasis-Pointe.-Image-courtesy-of-3650-REIT-.jpeg?ssl=1"
@@ -247,7 +284,7 @@
             <p class="text-white/50 text-lg mb-8 leading-relaxed">
               A $64.3 million senior construction loan for a Class A multifamily development in Dania Beach, Florida. This transaction exemplifies 3650 Capital's commitment to providing certainty of execution for ground-up construction projects in high-growth markets.
             </p>
-            <div class="grid grid-cols-2 gap-6 mb-8">
+            <div class="grid grid-cols-2 gap-6 mb-8 stagger">
               <div>
                 <p class="text-white/30 text-xs font-semibold tracking-widest uppercase mb-1">Loan Amount</p>
                 <p class="text-teal text-2xl font-bold">$64.3M</p>
@@ -277,16 +314,17 @@
     <div class="max-w-7xl mx-auto px-6">
       <!-- Section header -->
       <div class="reveal mb-12">
+        <div class="line-draw mb-6"></div>
         <span class="prop-tag mb-4">Senior Construction Loans</span>
         <h2 class="text-3xl md:text-4xl font-extrabold text-white mt-4">Ground-up development financing</h2>
         <p class="text-white/40 text-base mt-3 max-w-xl">Certainty of execution from origination through construction completion and stabilization.</p>
       </div>
 
       <!-- Bento grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 stagger">
 
         <!-- Deal 1: Oasis -->
-        <div class="reveal bento-card rounded-card bg-surface overflow-hidden group">
+        <div class="reveal bento-card card-lift rounded-card bg-surface overflow-hidden group">
           <div class="relative h-56 overflow-hidden">
             <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Oasis-Pointe.-Image-courtesy-of-3650-REIT-.jpeg?ssl=1"
                  alt="Oasis at Dania Pointe"
@@ -307,7 +345,7 @@
         </div>
 
         <!-- Deal 2: Gateway at Wynwood -->
-        <div class="reveal reveal-delay-1 bento-card rounded-card bg-surface overflow-hidden group">
+        <div class="reveal reveal-delay-1 bento-card card-lift rounded-card bg-surface overflow-hidden group">
           <div class="relative h-56 overflow-hidden">
             <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Gateway-at-Wynwood-e1578945268648.jpg?ssl=1"
                  alt="Gateway at Wynwood"
@@ -328,7 +366,7 @@
         </div>
 
         <!-- Deal 3: 48 East -->
-        <div class="reveal reveal-delay-2 bento-card rounded-card bg-surface overflow-hidden group">
+        <div class="reveal reveal-delay-2 bento-card card-lift rounded-card bg-surface overflow-hidden group">
           <div class="relative h-56 overflow-hidden">
             <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/aus_48EastAve_austin.jpg?ssl=1"
                  alt="48 East"
@@ -349,7 +387,7 @@
         </div>
 
         <!-- Deal 4: Tacoma Marriott -->
-        <div class="reveal bento-card rounded-card bg-surface overflow-hidden group">
+        <div class="reveal bento-card card-lift rounded-card bg-surface overflow-hidden group">
           <div class="relative h-56 overflow-hidden">
             <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Tacoma-Marriott-Rendering_web-feature.jpg?ssl=1"
                  alt="Tacoma Marriott"
@@ -370,7 +408,7 @@
         </div>
 
         <!-- Deal 5: Renaissance Dallas -->
-        <div class="reveal reveal-delay-1 bento-card rounded-card bg-surface overflow-hidden group">
+        <div class="reveal reveal-delay-1 bento-card card-lift rounded-card bg-surface overflow-hidden group">
           <div class="relative h-56 overflow-hidden">
             <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/RENAISSANCE.png?ssl=1"
                  alt="Renaissance Dallas"
@@ -425,17 +463,18 @@
     <div class="max-w-7xl mx-auto px-6">
       <!-- Section header -->
       <div class="reveal mb-12">
+        <div class="line-draw mb-6"></div>
         <span class="prop-tag-amber mb-4">Senior + Private Equity</span>
         <h2 class="text-3xl md:text-4xl font-extrabold text-white mt-4">Capital solutions beyond traditional lending</h2>
         <p class="text-white/40 text-base mt-3 max-w-xl">Flexible structures combining senior debt with private equity participation for complex capital stacks.</p>
       </div>
 
       <!-- Bento grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 stagger">
 
         <!-- Deal 6: ICP/IRG -->
-        <div class="reveal bento-card rounded-card bg-surface overflow-hidden lg:col-span-2 group">
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-0">
+        <div class="reveal bento-card card-lift rounded-card bg-surface overflow-hidden lg:col-span-2 group">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-0 stagger">
             <div class="relative h-64 lg:h-auto min-h-[280px] overflow-hidden">
               <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/IPC-.png?ssl=1"
                    alt="ICP/IRG"
@@ -462,7 +501,7 @@
         </div>
 
         <!-- Deal 7: Aventura Self Storage -->
-        <div class="reveal reveal-delay-1 bento-card rounded-card bg-surface overflow-hidden group">
+        <div class="reveal reveal-delay-1 bento-card card-lift rounded-card bg-surface overflow-hidden group">
           <div class="relative h-56 overflow-hidden">
             <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/DJI_0135-HDR-scaled.jpg?ssl=1"
                  alt="Aventura Self Storage"
@@ -483,7 +522,7 @@
         </div>
 
         <!-- Deal 8: Waterfront Corporate Center I -->
-        <div class="reveal bento-card rounded-card bg-surface overflow-hidden group">
+        <div class="reveal bento-card card-lift rounded-card bg-surface overflow-hidden group">
           <div class="relative h-56 overflow-hidden">
             <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Unknown-1.png?ssl=1"
                  alt="Waterfront Corporate Center I"
@@ -504,7 +543,7 @@
         </div>
 
         <!-- Deal 9: Transcoastal Portfolio -->
-        <div class="reveal reveal-delay-1 bento-card rounded-card bg-surface overflow-hidden group">
+        <div class="reveal reveal-delay-1 bento-card card-lift rounded-card bg-surface overflow-hidden group">
           <div class="relative h-56 overflow-hidden">
             <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Transcoastal.jpeg?ssl=1"
                  alt="Transcoastal Portfolio"
@@ -525,7 +564,7 @@
         </div>
 
         <!-- Deal 10: Center at Miami Gardens -->
-        <div class="reveal reveal-delay-2 bento-card rounded-card bg-surface overflow-hidden group">
+        <div class="reveal reveal-delay-2 bento-card card-lift rounded-card bg-surface overflow-hidden group">
           <div class="relative h-56 overflow-hidden">
             <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/rendering-center-at-miami-gardens-courtesy-3650-reit.jpg?ssl=1"
                  alt="Center at Miami Gardens"
@@ -554,6 +593,7 @@
   <section class="py-16 md:py-24 bg-surface">
     <div class="max-w-7xl mx-auto px-6">
       <div class="reveal mb-10">
+        <div class="line-draw mb-6"></div>
         <h2 class="text-2xl md:text-3xl font-extrabold text-white">Complete transaction summary</h2>
       </div>
 
@@ -663,9 +703,9 @@
 
 
   <!-- ===================== FOOTER ===================== -->
-  <footer class="bg-surface border-t border-white/5 py-14">
+  <footer class="reveal bg-surface border-t border-white/5 py-14">
     <div class="max-w-7xl mx-auto px-6">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10 stagger">
 
         <!-- Column 1: Logo & tagline -->
         <div>
@@ -741,12 +781,12 @@
       }
     })();
 
-    // IntersectionObserver for scroll reveal animations
+    // IntersectionObserver for scroll reveal animations (upgraded)
     (function() {
       var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
       if (prefersReduced) {
-        document.querySelectorAll('.reveal').forEach(function(el) {
+        document.querySelectorAll('.reveal, .stagger, .text-reveal-wrap, .img-reveal, .line-draw, .reveal-left, .reveal-right, .reveal-scale').forEach(function(el) {
           el.classList.add('visible');
         });
         return;
@@ -764,7 +804,7 @@
         rootMargin: '0px 0px -40px 0px'
       });
 
-      document.querySelectorAll('.reveal').forEach(function(el) {
+      document.querySelectorAll('.reveal, .stagger, .text-reveal-wrap, .img-reveal, .line-draw, .reveal-left, .reveal-right, .reveal-scale').forEach(function(el) {
         observer.observe(el);
       });
     })();

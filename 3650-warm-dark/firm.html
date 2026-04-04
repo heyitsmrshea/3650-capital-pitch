@@ -71,6 +71,9 @@
       }
       .bento-card { transition: none !important; }
       .bento-card:hover { transform: none !important; }
+      .stagger > *, .text-reveal-line, .img-reveal, .line-draw,
+      .reveal-left, .reveal-right, .reveal-scale { opacity: 1; transform: none; width: auto; transition: none; }
+      .card-lift:hover, .img-hover:hover img { transform: none; }
     }
 
     /* Bento card hover */
@@ -132,6 +135,40 @@
 
     /* Image cover helper */
     .img-cover { object-fit: cover; width: 100%; height: 100%; }
+
+    /* === NEXT-LEVEL ANIMATIONS === */
+    .stagger > * { opacity: 0; transform: translateY(20px); transition: opacity 0.6s cubic-bezier(0.22,1,0.36,1), transform 0.6s cubic-bezier(0.22,1,0.36,1); }
+    .stagger.visible > * { opacity: 1; transform: none; }
+    .stagger.visible > *:nth-child(1) { transition-delay: 0ms; }
+    .stagger.visible > *:nth-child(2) { transition-delay: 90ms; }
+    .stagger.visible > *:nth-child(3) { transition-delay: 180ms; }
+    .stagger.visible > *:nth-child(4) { transition-delay: 270ms; }
+    .stagger.visible > *:nth-child(5) { transition-delay: 360ms; }
+    .stagger.visible > *:nth-child(6) { transition-delay: 450ms; }
+    .stagger.visible > *:nth-child(7) { transition-delay: 540ms; }
+    .stagger.visible > *:nth-child(8) { transition-delay: 630ms; }
+    .stagger.visible > *:nth-child(9) { transition-delay: 720ms; }
+    .stagger.visible > *:nth-child(10) { transition-delay: 810ms; }
+    .text-reveal-wrap { overflow: hidden; display: block; }
+    .text-reveal-line { display: block; transform: translateY(110%); transition: transform 0.8s cubic-bezier(0.22,1,0.36,1); }
+    .text-reveal-wrap.visible .text-reveal-line { transform: none; }
+    .text-reveal-wrap.visible .text-reveal-line:nth-child(2) { transition-delay: 0.1s; }
+    .text-reveal-wrap.visible .text-reveal-line:nth-child(3) { transition-delay: 0.2s; }
+    .img-reveal { opacity: 0; transform: scale(0.92); transition: opacity 1s ease, transform 1s cubic-bezier(0.22,1,0.36,1); }
+    .img-reveal.visible { opacity: 1; transform: none; }
+    .line-draw { width: 0; height: 2px; background: linear-gradient(90deg, #4dd4ac, #2a9d7e); box-shadow: 0 0 8px rgba(77,212,172,0.3); transition: width 0.9s cubic-bezier(0.22,1,0.36,1) 0.2s; }
+    .line-draw.visible { width: 48px; }
+    .card-lift { transition: transform 0.4s cubic-bezier(0.22,1,0.36,1), box-shadow 0.4s ease, border-color 0.4s ease; }
+    .card-lift:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(0,0,0,0.2); border-color: rgba(77,212,172,0.3); }
+    .img-hover { overflow: hidden; border-radius: 16px; }
+    .img-hover img { transition: transform 0.6s cubic-bezier(0.22,1,0.36,1); }
+    .img-hover:hover img { transform: scale(1.04); }
+    .reveal-left { opacity: 0; transform: translateX(-30px); transition: opacity 0.65s ease, transform 0.65s cubic-bezier(0.22,1,0.36,1); }
+    .reveal-left.visible { opacity: 1; transform: none; }
+    .reveal-right { opacity: 0; transform: translateX(30px); transition: opacity 0.65s ease, transform 0.65s cubic-bezier(0.22,1,0.36,1); }
+    .reveal-right.visible { opacity: 1; transform: none; }
+    .reveal-scale { opacity: 0; transform: scale(0.9); transition: opacity 0.65s ease, transform 0.65s cubic-bezier(0.22,1,0.36,1); }
+    .reveal-scale.visible { opacity: 1; transform: none; }
   </style>
 </head>
 
@@ -200,8 +237,8 @@
 
         <!-- Main headline -->
         <h1 class="reveal reveal-delay-1 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.05] tracking-tight text-white mb-8">
-          One lender.<br>
-          <span class="text-teal">Wholly committed.</span>
+          <span class="text-reveal-wrap"><span class="text-reveal-line">One lender.</span></span>
+          <span class="text-reveal-wrap"><span class="text-reveal-line"><span class="text-teal">Wholly committed.</span></span></span>
         </h1>
 
         <!-- Sub copy -->
@@ -236,10 +273,11 @@
     <div class="watermark-3650" aria-hidden="true">3650</div>
 
     <div class="relative z-10 max-w-7xl mx-auto px-6">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20 stagger">
         <!-- Text column -->
-        <div>
-          <p class="reveal text-teal text-sm font-semibold tracking-widest uppercase mb-4">Our Ethos</p>
+        <div class="reveal-left">
+          <div class="line-draw mb-6"></div>
+        <p class="reveal text-teal text-sm font-semibold tracking-widest uppercase mb-4">Our Ethos</p>
           <h2 class="reveal reveal-delay-1 text-3xl md:text-5xl font-extrabold text-white leading-tight mb-6">
             Relationships anchor<br>the <span class="text-teal">operating model.</span>
           </h2>
@@ -249,8 +287,8 @@
         </div>
 
         <!-- Image column -->
-        <div class="reveal reveal-delay-2 relative">
-          <div class="rounded-card overflow-hidden">
+        <div class="reveal img-reveal reveal-right reveal-delay-2 relative">
+          <div class="rounded-card overflow-hidden img-hover">
             <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/nyc-office-interior-2.jpg?ssl=1"
                  alt="3650 Capital NYC office interior"
                  class="img-cover aspect-[4/3]">
@@ -259,10 +297,10 @@
       </div>
 
       <!-- Bento Grid: Four Pillars -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 stagger">
 
         <!-- Pillar 1: Process -->
-        <div class="reveal bento-card bg-surface-high rounded-card p-8 flex flex-col min-h-[280px]">
+        <div class="reveal bento-card card-lift bg-surface-high rounded-card p-8 flex flex-col min-h-[280px]">
           <div class="w-12 h-12 rounded-xl bg-teal/10 flex items-center justify-center mb-6">
             <span class="material-symbols-outlined text-teal text-2xl">checklist</span>
           </div>
@@ -276,7 +314,7 @@
         </div>
 
         <!-- Pillar 2: Cycle -->
-        <div class="reveal reveal-delay-1 bento-card bg-surface-high rounded-card p-8 flex flex-col min-h-[280px]">
+        <div class="reveal reveal-delay-1 bento-card card-lift bg-surface-high rounded-card p-8 flex flex-col min-h-[280px]">
           <div class="w-12 h-12 rounded-xl bg-amber-soft/10 flex items-center justify-center mb-6">
             <span class="material-symbols-outlined text-amber-soft text-2xl">autorenew</span>
           </div>
@@ -290,7 +328,7 @@
         </div>
 
         <!-- Pillar 3: Expertise -->
-        <div class="reveal reveal-delay-2 bento-card bg-surface-high rounded-card p-8 flex flex-col min-h-[280px]">
+        <div class="reveal reveal-delay-2 bento-card card-lift bg-surface-high rounded-card p-8 flex flex-col min-h-[280px]">
           <div class="w-12 h-12 rounded-xl bg-teal/10 flex items-center justify-center mb-6">
             <span class="material-symbols-outlined text-teal text-2xl">school</span>
           </div>
@@ -307,7 +345,7 @@
         </div>
 
         <!-- Pillar 4: Footprint -->
-        <div class="reveal reveal-delay-3 bento-card bg-surface-high rounded-card p-8 flex flex-col min-h-[280px]">
+        <div class="reveal reveal-delay-3 bento-card card-lift bg-surface-high rounded-card p-8 flex flex-col min-h-[280px]">
           <div class="w-12 h-12 rounded-xl bg-amber-soft/10 flex items-center justify-center mb-6">
             <span class="material-symbols-outlined text-amber-soft text-2xl">location_city</span>
           </div>
@@ -338,6 +376,7 @@
     <div class="max-w-7xl mx-auto px-6">
       <!-- Section header -->
       <div class="mb-14 max-w-2xl">
+        <div class="line-draw mb-6"></div>
         <p class="reveal text-teal text-sm font-semibold tracking-widest uppercase mb-4">Platform</p>
         <h2 class="reveal reveal-delay-1 text-3xl md:text-5xl font-extrabold text-white leading-tight">
           How the platform operates.
@@ -348,10 +387,10 @@
       </div>
 
       <!-- Two-column layout -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 stagger">
 
         <!-- Who We Are card -->
-        <div class="reveal bento-card bg-surface-high rounded-card overflow-hidden">
+        <div class="reveal bento-card card-lift bg-surface-high rounded-card overflow-hidden">
           <div class="relative h-56">
             <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/toby-nyc-office.jpg?ssl=1"
                  alt="3650 Capital NYC office"
@@ -376,7 +415,7 @@
         </div>
 
         <!-- Why Us card -->
-        <div class="reveal reveal-delay-1 bento-card bg-surface-high rounded-card p-8 md:p-10 flex flex-col justify-between">
+        <div class="reveal reveal-delay-1 bento-card card-lift bg-surface-high rounded-card p-8 md:p-10 flex flex-col justify-between">
           <div>
             <div class="w-12 h-12 rounded-xl bg-amber-soft/10 flex items-center justify-center mb-6">
               <span class="material-symbols-outlined text-amber-soft text-2xl">verified</span>
@@ -426,9 +465,9 @@
 
 
   <!-- ===================== FOOTER ===================== -->
-  <footer class="bg-surface border-t border-white/5 py-14">
+  <footer class="reveal bg-surface border-t border-white/5 py-14">
     <div class="max-w-7xl mx-auto px-6">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10 stagger">
 
         <!-- Column 1: Logo & tagline -->
         <div>
@@ -504,12 +543,12 @@
       }
     })();
 
-    // IntersectionObserver for scroll reveal animations
+    // IntersectionObserver for scroll reveal animations (upgraded)
     (function() {
       var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
       if (prefersReduced) {
-        document.querySelectorAll('.reveal').forEach(function(el) {
+        document.querySelectorAll('.reveal, .stagger, .text-reveal-wrap, .img-reveal, .line-draw, .reveal-left, .reveal-right, .reveal-scale').forEach(function(el) {
           el.classList.add('visible');
         });
         return;
@@ -527,7 +566,7 @@
         rootMargin: '0px 0px -40px 0px'
       });
 
-      document.querySelectorAll('.reveal').forEach(function(el) {
+      document.querySelectorAll('.reveal, .stagger, .text-reveal-wrap, .img-reveal, .line-draw, .reveal-left, .reveal-right, .reveal-scale').forEach(function(el) {
         observer.observe(el);
       });
     })();

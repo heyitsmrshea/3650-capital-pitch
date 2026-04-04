@@ -71,6 +71,9 @@
       }
       .bento-card { transition: none !important; }
       .bento-card:hover { transform: none !important; }
+      .stagger > *, .text-reveal-line, .img-reveal, .line-draw,
+      .reveal-left, .reveal-right, .reveal-scale { opacity: 1; transform: none; width: auto; transition: none; }
+      .card-lift:hover, .img-hover:hover img { transform: none; }
     }
 
     /* Bento card hover */
@@ -132,6 +135,40 @@
 
     /* Image cover helper */
     .img-cover { object-fit: cover; width: 100%; height: 100%; }
+
+    /* === NEXT-LEVEL ANIMATIONS === */
+    .stagger > * { opacity: 0; transform: translateY(20px); transition: opacity 0.6s cubic-bezier(0.22,1,0.36,1), transform 0.6s cubic-bezier(0.22,1,0.36,1); }
+    .stagger.visible > * { opacity: 1; transform: none; }
+    .stagger.visible > *:nth-child(1) { transition-delay: 0ms; }
+    .stagger.visible > *:nth-child(2) { transition-delay: 90ms; }
+    .stagger.visible > *:nth-child(3) { transition-delay: 180ms; }
+    .stagger.visible > *:nth-child(4) { transition-delay: 270ms; }
+    .stagger.visible > *:nth-child(5) { transition-delay: 360ms; }
+    .stagger.visible > *:nth-child(6) { transition-delay: 450ms; }
+    .stagger.visible > *:nth-child(7) { transition-delay: 540ms; }
+    .stagger.visible > *:nth-child(8) { transition-delay: 630ms; }
+    .stagger.visible > *:nth-child(9) { transition-delay: 720ms; }
+    .stagger.visible > *:nth-child(10) { transition-delay: 810ms; }
+    .text-reveal-wrap { overflow: hidden; display: block; }
+    .text-reveal-line { display: block; transform: translateY(110%); transition: transform 0.8s cubic-bezier(0.22,1,0.36,1); }
+    .text-reveal-wrap.visible .text-reveal-line { transform: none; }
+    .text-reveal-wrap.visible .text-reveal-line:nth-child(2) { transition-delay: 0.1s; }
+    .text-reveal-wrap.visible .text-reveal-line:nth-child(3) { transition-delay: 0.2s; }
+    .img-reveal { opacity: 0; transform: scale(0.92); transition: opacity 1s ease, transform 1s cubic-bezier(0.22,1,0.36,1); }
+    .img-reveal.visible { opacity: 1; transform: none; }
+    .line-draw { width: 0; height: 2px; background: linear-gradient(90deg, #4dd4ac, #2a9d7e); box-shadow: 0 0 8px rgba(77,212,172,0.3); transition: width 0.9s cubic-bezier(0.22,1,0.36,1) 0.2s; }
+    .line-draw.visible { width: 48px; }
+    .card-lift { transition: transform 0.4s cubic-bezier(0.22,1,0.36,1), box-shadow 0.4s ease, border-color 0.4s ease; }
+    .card-lift:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(0,0,0,0.2); border-color: rgba(77,212,172,0.3); }
+    .img-hover { overflow: hidden; border-radius: 16px; }
+    .img-hover img { transition: transform 0.6s cubic-bezier(0.22,1,0.36,1); }
+    .img-hover:hover img { transform: scale(1.04); }
+    .reveal-left { opacity: 0; transform: translateX(-30px); transition: opacity 0.65s ease, transform 0.65s cubic-bezier(0.22,1,0.36,1); }
+    .reveal-left.visible { opacity: 1; transform: none; }
+    .reveal-right { opacity: 0; transform: translateX(30px); transition: opacity 0.65s ease, transform 0.65s cubic-bezier(0.22,1,0.36,1); }
+    .reveal-right.visible { opacity: 1; transform: none; }
+    .reveal-scale { opacity: 0; transform: scale(0.9); transition: opacity 0.65s ease, transform 0.65s cubic-bezier(0.22,1,0.36,1); }
+    .reveal-scale.visible { opacity: 1; transform: none; }
   </style>
 </head>
 
@@ -200,8 +237,8 @@
 
         <!-- Main headline -->
         <h1 class="reveal reveal-delay-1 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.05] tracking-tight text-white mb-8">
-          Short-term capital.<br>
-          <span class="text-teal">Long-term solutions.</span>
+          <span class="text-reveal-wrap"><span class="text-reveal-line">Short-term capital.</span></span>
+          <span class="text-reveal-wrap"><span class="text-reveal-line"><span class="text-teal">Long-term solutions.</span></span></span>
         </h1>
 
         <!-- Sub copy -->
@@ -237,6 +274,7 @@
     <div class="max-w-7xl mx-auto px-6">
       <!-- Section header -->
       <div class="mb-14 max-w-2xl">
+        <div class="line-draw mb-6"></div>
         <p class="reveal text-teal text-sm font-semibold tracking-widest uppercase mb-4">Operating Platform</p>
         <h2 class="reveal reveal-delay-1 text-3xl md:text-5xl font-extrabold text-white leading-tight mb-4">
           Vertical integration and retained servicing are part of the product.
@@ -247,18 +285,18 @@
       </div>
 
       <!-- Image + Metrics bento grid -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 stagger">
         <!-- Platform image -->
-        <div class="reveal bento-card bg-surface-high rounded-card overflow-hidden">
+        <div class="reveal bento-card card-lift bg-surface-high rounded-card overflow-hidden img-hover">
           <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Gateway-at-Wynwood-e1578945268648.jpg?ssl=1"
                alt="Gateway at Wynwood property"
                class="img-cover h-full min-h-[320px]">
         </div>
 
         <!-- Metrics grid (2x2) -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 stagger">
           <!-- Metric 1 -->
-          <div class="reveal reveal-delay-1 bento-card bg-surface-high rounded-card p-7">
+          <div class="reveal reveal-delay-1 bento-card card-lift bg-surface-high rounded-card p-7">
             <div class="w-12 h-12 rounded-xl bg-surface-highest flex items-center justify-center mb-5">
               <span class="material-symbols-outlined text-teal text-xl">hub</span>
             </div>
@@ -269,7 +307,7 @@
           </div>
 
           <!-- Metric 2 -->
-          <div class="reveal reveal-delay-2 bento-card bg-surface-high rounded-card p-7">
+          <div class="reveal reveal-delay-2 bento-card card-lift bg-surface-high rounded-card p-7">
             <div class="w-12 h-12 rounded-xl bg-surface-highest flex items-center justify-center mb-5">
               <span class="material-symbols-outlined text-teal text-xl">account_balance</span>
             </div>
@@ -280,7 +318,7 @@
           </div>
 
           <!-- Metric 3 -->
-          <div class="reveal reveal-delay-3 bento-card bg-surface-high rounded-card p-7">
+          <div class="reveal reveal-delay-3 bento-card card-lift bg-surface-high rounded-card p-7">
             <div class="w-12 h-12 rounded-xl bg-surface-highest flex items-center justify-center mb-5">
               <span class="material-symbols-outlined text-teal text-xl">trending_up</span>
             </div>
@@ -291,7 +329,7 @@
           </div>
 
           <!-- Metric 4 -->
-          <div class="reveal reveal-delay-4 bento-card bg-surface-high rounded-card p-7">
+          <div class="reveal reveal-delay-4 bento-card card-lift bg-surface-high rounded-card p-7">
             <div class="w-12 h-12 rounded-xl bg-surface-highest flex items-center justify-center mb-5">
               <span class="material-symbols-outlined text-teal text-xl">handshake</span>
             </div>
@@ -311,6 +349,7 @@
     <div class="max-w-7xl mx-auto px-6">
       <!-- Section header -->
       <div class="mb-14 max-w-2xl">
+        <div class="line-draw mb-6"></div>
         <p class="reveal text-teal text-sm font-semibold tracking-widest uppercase mb-4">Product Suite</p>
         <h2 class="reveal reveal-delay-1 text-3xl md:text-5xl font-extrabold text-white leading-tight mb-4">
           Capital solutions across the property life cycle.
@@ -321,10 +360,10 @@
       </div>
 
       <!-- Product cards bento grid -->
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 stagger">
 
         <!-- Product 1: RECS -->
-        <div class="reveal reveal-delay-1 bento-card bg-surface rounded-card overflow-hidden flex flex-col">
+        <div class="reveal reveal-delay-1 bento-card card-lift bg-surface rounded-card overflow-hidden flex flex-col">
           <div class="relative h-52">
             <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Unknown-1.png?ssl=1"
                  alt="RECS product imagery"
@@ -349,7 +388,7 @@
         </div>
 
         <!-- Product 2: Stable Cash Flow -->
-        <div class="reveal reveal-delay-2 bento-card bg-surface rounded-card overflow-hidden flex flex-col">
+        <div class="reveal reveal-delay-2 bento-card card-lift bg-surface rounded-card overflow-hidden flex flex-col">
           <div class="relative h-52">
             <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/DJI_0135-HDR-scaled.jpg?ssl=1"
                  alt="Stable Cash Flow property aerial"
@@ -373,7 +412,7 @@
         </div>
 
         <!-- Product 3: Special Situations -->
-        <div class="reveal reveal-delay-3 bento-card bg-surface rounded-card overflow-hidden flex flex-col">
+        <div class="reveal reveal-delay-3 bento-card card-lift bg-surface rounded-card overflow-hidden flex flex-col">
           <div class="relative h-52">
             <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/rendering-center-at-miami-gardens-courtesy-3650-reit.jpg?ssl=1"
                  alt="Special Situations development"
@@ -406,6 +445,7 @@
     <div class="max-w-7xl mx-auto px-6">
       <!-- Section header -->
       <div class="mb-14 max-w-2xl">
+        <div class="line-draw mb-6"></div>
         <p class="reveal text-teal text-sm font-semibold tracking-widest uppercase mb-4">Product Comparison</p>
         <h2 class="reveal reveal-delay-1 text-3xl md:text-5xl font-extrabold text-white leading-tight mb-4">
           Find the right structure.
@@ -466,10 +506,10 @@
   <!-- ===================== APPROACH ===================== -->
   <section id="approach" class="relative py-24 md:py-32 bg-void overflow-hidden">
     <div class="max-w-7xl mx-auto px-6">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center stagger">
         <!-- Image -->
-        <div class="reveal">
-          <div class="bento-card bg-surface-high rounded-card overflow-hidden">
+        <div class="reveal reveal-left">
+          <div class="bento-card card-lift bg-surface-high rounded-card overflow-hidden img-hover">
             <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/DJI_0135-HDR-scaled.jpg?ssl=1"
                  alt="Aerial view of 3650 Capital financed property"
                  class="img-cover h-full min-h-[360px]">
@@ -477,8 +517,9 @@
         </div>
 
         <!-- Content -->
-        <div>
-          <p class="reveal text-teal text-sm font-semibold tracking-widest uppercase mb-4">Our Approach</p>
+        <div class="reveal-right">
+          <div class="line-draw mb-6"></div>
+        <p class="reveal text-teal text-sm font-semibold tracking-widest uppercase mb-4">Our Approach</p>
           <h2 class="reveal reveal-delay-1 text-3xl md:text-4xl font-extrabold text-white leading-tight mb-6">
             Built for borrowers who value certainty.
           </h2>
@@ -550,9 +591,9 @@
 
 
   <!-- ===================== FOOTER ===================== -->
-  <footer class="bg-surface border-t border-white/5 py-14">
+  <footer class="reveal bg-surface border-t border-white/5 py-14">
     <div class="max-w-7xl mx-auto px-6">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10 stagger">
 
         <!-- Column 1: Logo & tagline -->
         <div>
@@ -628,12 +669,12 @@
       }
     })();
 
-    // IntersectionObserver for scroll reveal animations
+    // IntersectionObserver for scroll reveal animations (upgraded)
     (function() {
       var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
       if (prefersReduced) {
-        document.querySelectorAll('.reveal').forEach(function(el) {
+        document.querySelectorAll('.reveal, .stagger, .text-reveal-wrap, .img-reveal, .line-draw, .reveal-left, .reveal-right, .reveal-scale').forEach(function(el) {
           el.classList.add('visible');
         });
         return;
@@ -651,7 +692,7 @@
         rootMargin: '0px 0px -40px 0px'
       });
 
-      document.querySelectorAll('.reveal').forEach(function(el) {
+      document.querySelectorAll('.reveal, .stagger, .text-reveal-wrap, .img-reveal, .line-draw, .reveal-left, .reveal-right, .reveal-scale').forEach(function(el) {
         observer.observe(el);
       });
     })();

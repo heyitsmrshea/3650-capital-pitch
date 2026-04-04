@@ -178,6 +178,67 @@
     .office-card-editorial:hover {
       transform: translateY(-3px);
     }
+
+    /* Staggered card entrance */
+    .stagger > * { opacity: 0; transform: translateY(20px); transition: opacity 0.65s ease-out, transform 0.65s ease-out; }
+    .stagger.visible > * { opacity: 1; transform: none; }
+    .stagger.visible > *:nth-child(1) { transition-delay: 0ms; }
+    .stagger.visible > *:nth-child(2) { transition-delay: 120ms; }
+    .stagger.visible > *:nth-child(3) { transition-delay: 240ms; }
+    .stagger.visible > *:nth-child(4) { transition-delay: 360ms; }
+    .stagger.visible > *:nth-child(5) { transition-delay: 480ms; }
+    .stagger.visible > *:nth-child(6) { transition-delay: 600ms; }
+    .stagger.visible > *:nth-child(7) { transition-delay: 720ms; }
+    .stagger.visible > *:nth-child(8) { transition-delay: 840ms; }
+    .stagger.visible > *:nth-child(9) { transition-delay: 960ms; }
+    .stagger.visible > *:nth-child(10) { transition-delay: 1080ms; }
+
+    /* Text line reveal */
+    .text-reveal-wrap { overflow: hidden; display: block; }
+    .text-reveal-line { display: block; transform: translateY(110%); transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1); }
+    .text-reveal-wrap.visible .text-reveal-line { transform: none; }
+    .text-reveal-wrap.visible .text-reveal-line:nth-child(2) { transition-delay: 0.12s; }
+    .text-reveal-wrap.visible .text-reveal-line:nth-child(3) { transition-delay: 0.24s; }
+
+    /* Image clip reveal (bottom to top for editorial) */
+    .img-reveal { clip-path: inset(100% 0 0 0); transition: clip-path 1.2s cubic-bezier(0.16, 1, 0.3, 1); }
+    .img-reveal.visible { clip-path: inset(0 0 0 0); }
+
+    /* Terra line draw */
+    .line-draw { width: 0; height: 2px; background: #b8432a; transition: width 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.3s; }
+    .line-draw.visible { width: 60px; }
+
+    /* Scale reveal */
+    .reveal-scale { opacity: 0; transform: scale(0.94); transition: opacity 0.7s ease-out, transform 0.7s ease-out; }
+    .reveal-scale.visible { opacity: 1; transform: none; }
+
+    /* Slide from left/right */
+    .reveal-left { opacity: 0; transform: translateX(-30px); transition: opacity 0.7s ease-out, transform 0.7s ease-out; }
+    .reveal-left.visible { opacity: 1; transform: none; }
+    .reveal-right { opacity: 0; transform: translateX(30px); transition: opacity 0.7s ease-out, transform 0.7s ease-out; }
+    .reveal-right.visible { opacity: 1; transform: none; }
+
+    /* Card hover lift */
+    .card-lift { transition: transform 0.4s ease, box-shadow 0.4s ease; }
+    .card-lift:hover { transform: translateY(-4px); box-shadow: 0 16px 32px rgba(26,22,18,0.1); }
+
+    /* Image hover zoom */
+    .img-hover { overflow: hidden; }
+    .img-hover img { transition: transform 0.7s cubic-bezier(0.16,1,0.3,1); }
+    .img-hover:hover img { transform: scale(1.03); }
+
+    /* Pull quote entrance */
+    .quote-reveal { opacity: 0; transform: translateX(-20px); border-left: 3px solid transparent; transition: all 0.8s ease-out; }
+    .quote-reveal.visible { opacity: 1; transform: none; border-left-color: #b8432a; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .stagger > *, .text-reveal-line, .img-reveal, .line-draw,
+      .reveal-scale, .reveal-left, .reveal-right, .quote-reveal {
+        opacity: 1; transform: none; clip-path: none; width: auto; border-left-color: #b8432a; transition: none;
+      }
+      .card-lift:hover { transform: none; }
+      .img-hover:hover img { transform: none; }
+    }
   </style>
 </head>
 
@@ -230,14 +291,14 @@
 
       <!-- Editorial label -->
       <div class="reveal mb-6 flex items-center gap-3">
-        <div class="editorial-rule"></div>
+        <div class="editorial-rule line-draw"></div>
         <span class="label-editorial text-terra">Contact &mdash; National Offices</span>
       </div>
 
       <!-- Headline -->
-      <h1 class="headline-massive reveal reveal-delay-1 max-w-[1100px]">
-        Direct channels.<br>
-        <em class="text-terra">Real</em> offices.
+      <h1 class="headline-massive max-w-[1100px]">
+        <span class="text-reveal-wrap"><span class="text-reveal-line">Direct channels.</span></span>
+        <span class="text-reveal-wrap"><span class="text-reveal-line"><em class="text-terra">Real</em> offices.</span></span>
       </h1>
 
       <!-- Sub-headline -->
@@ -263,7 +324,7 @@
 
       <!-- Hero image with editorial caption -->
       <div class="reveal reveal-delay-4 mt-14 relative">
-        <div class="w-full aspect-[16/7] overflow-hidden bg-ink/5">
+        <div class="w-full aspect-[16/7] overflow-hidden bg-ink/5 img-reveal img-hover">
           <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/commercial-observer-power-finance.jpg?ssl=1"
                alt="3650 Capital leadership at industry event"
                class="w-full h-full object-cover">
@@ -282,10 +343,10 @@
 
       <!-- Section header -->
       <div class="reveal mb-6 flex items-center gap-3">
-        <div class="editorial-rule"></div>
+        <div class="editorial-rule line-draw"></div>
         <span class="label-editorial text-terra">Offices</span>
       </div>
-      <h2 class="headline-large reveal reveal-delay-1 max-w-[800px] mb-6">
+      <h2 class="headline-large reveal reveal-left reveal-delay-1 max-w-[800px] mb-6">
         Seven offices. One platform.
       </h2>
       <p class="reveal reveal-delay-2 text-ink/50 text-base md:text-lg max-w-[550px] leading-relaxed mb-14">
@@ -293,10 +354,10 @@
       </p>
 
       <!-- Office grid — editorial style -->
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-ink/10">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-ink/10 stagger">
 
         <!-- Miami HQ -->
-        <div class="reveal office-card-editorial bg-cream p-8 md:p-10">
+        <div class="reveal office-card-editorial card-lift bg-cream p-8 md:p-10">
           <div class="flex items-center gap-3 mb-4">
             <span class="label-editorial text-terra">Miami</span>
             <span class="label-editorial text-ink/30 bg-ink/5 px-2 py-0.5">HQ</span>
@@ -309,7 +370,7 @@
         </div>
 
         <!-- New York -->
-        <div class="reveal reveal-delay-1 office-card-editorial bg-cream p-8 md:p-10">
+        <div class="reveal reveal-delay-1 office-card-editorial card-lift bg-cream p-8 md:p-10">
           <span class="label-editorial text-terra mb-4 block">New York</span>
           <h3 class="headline-mid mb-3">New York</h3>
           <p class="text-ink/50 text-sm leading-relaxed">
@@ -319,7 +380,7 @@
         </div>
 
         <!-- Los Angeles -->
-        <div class="reveal reveal-delay-2 office-card-editorial bg-cream p-8 md:p-10">
+        <div class="reveal reveal-delay-2 office-card-editorial card-lift bg-cream p-8 md:p-10">
           <span class="label-editorial text-terra mb-4 block">Los Angeles</span>
           <h3 class="headline-mid mb-3">Los Angeles</h3>
           <p class="text-ink/50 text-sm leading-relaxed">
@@ -329,7 +390,7 @@
         </div>
 
         <!-- Dallas -->
-        <div class="reveal office-card-editorial bg-cream p-8 md:p-10">
+        <div class="reveal office-card-editorial card-lift bg-cream p-8 md:p-10">
           <span class="label-editorial text-terra mb-4 block">Dallas</span>
           <h3 class="headline-mid mb-3">Dallas</h3>
           <p class="text-ink/50 text-sm leading-relaxed">
@@ -340,7 +401,7 @@
         </div>
 
         <!-- Atlanta -->
-        <div class="reveal reveal-delay-1 office-card-editorial bg-cream p-8 md:p-10">
+        <div class="reveal reveal-delay-1 office-card-editorial card-lift bg-cream p-8 md:p-10">
           <span class="label-editorial text-terra mb-4 block">Atlanta</span>
           <h3 class="headline-mid mb-3">Atlanta</h3>
           <p class="text-ink/50 text-sm leading-relaxed">
@@ -351,7 +412,7 @@
         </div>
 
         <!-- Nashville -->
-        <div class="reveal reveal-delay-2 office-card-editorial bg-cream p-8 md:p-10">
+        <div class="reveal reveal-delay-2 office-card-editorial card-lift bg-cream p-8 md:p-10">
           <span class="label-editorial text-terra mb-4 block">Nashville</span>
           <h3 class="headline-mid mb-3">Nashville</h3>
           <p class="text-ink/50 text-sm leading-relaxed">
@@ -360,7 +421,7 @@
         </div>
 
         <!-- Washington D.C. — spans full width on lg -->
-        <div class="reveal office-card-editorial bg-cream p-8 md:p-10">
+        <div class="reveal office-card-editorial card-lift bg-cream p-8 md:p-10">
           <span class="label-editorial text-terra mb-4 block">Washington D.C.</span>
           <h3 class="headline-mid mb-3">Washington D.C.</h3>
           <p class="text-ink/50 text-sm leading-relaxed">
@@ -371,9 +432,9 @@
       </div>
 
       <!-- Office images -->
-      <div class="grid md:grid-cols-2 gap-6 mt-14">
+      <div class="grid md:grid-cols-2 gap-6 mt-14 stagger">
         <div class="reveal">
-          <div class="w-full aspect-[4/3] overflow-hidden bg-ink/5">
+          <div class="w-full aspect-[4/3] overflow-hidden bg-ink/5 img-reveal img-hover">
             <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/nyc-office-interior-1.jpg?ssl=1"
                  alt="3650 Capital New York office interior"
                  class="w-full h-full object-cover">
@@ -381,7 +442,7 @@
           <span class="caption-line text-xs text-ink/50 mt-3 inline-block">New York office &mdash; 410 Park Avenue</span>
         </div>
         <div class="reveal reveal-delay-1">
-          <div class="w-full aspect-[4/3] overflow-hidden bg-ink/5">
+          <div class="w-full aspect-[4/3] overflow-hidden bg-ink/5 img-reveal img-hover">
             <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/nyc-office-interior-2.jpg?ssl=1"
                  alt="3650 Capital office workspace"
                  class="w-full h-full object-cover">
@@ -403,7 +464,7 @@
         <!-- Left: Form -->
         <div class="lg:col-span-7">
           <div class="reveal mb-6 flex items-center gap-3">
-            <div class="editorial-rule"></div>
+            <div class="editorial-rule line-draw"></div>
             <span class="label-editorial text-terra">Inquiry</span>
           </div>
           <h2 class="headline-large reveal reveal-delay-1 mb-4">
@@ -413,7 +474,7 @@
             Complete the form below and a member of our team will respond within one business day.
           </p>
 
-          <form onsubmit="event.preventDefault(); this.querySelector('.submit-btn').textContent = 'Sent'; this.querySelector('.submit-btn').disabled = true;" class="reveal reveal-delay-3 space-y-8">
+          <form onsubmit="event.preventDefault(); this.querySelector('.submit-btn').textContent = 'Sent'; this.querySelector('.submit-btn').disabled = true;" class="reveal reveal-delay-3 reveal-scale space-y-8">
 
             <!-- Name -->
             <div>
@@ -491,7 +552,7 @@
           <div class="reveal lg:sticky lg:top-32 space-y-10">
 
             <!-- General inquiries -->
-            <div class="border-l-2 border-terra pl-6">
+            <div class="border-l-2 border-terra pl-6 reveal-left">
               <h3 class="headline-mid mb-3">General inquiries</h3>
               <a href="mailto:info@3650capital.com" class="text-terra text-base font-semibold hover:text-terra-light transition-colors block mb-2">
                 info@3650capital.com
@@ -502,7 +563,7 @@
             </div>
 
             <!-- Loan servicing -->
-            <div class="border-l-2 border-terra pl-6">
+            <div class="border-l-2 border-terra pl-6 reveal-left">
               <h3 class="headline-mid mb-3">Loan servicing</h3>
               <a href="mailto:servicing@3650capital.com" class="text-terra text-base font-semibold hover:text-terra-light transition-colors block mb-2">
                 servicing@3650capital.com
@@ -514,7 +575,7 @@
 
             <!-- Pull quote -->
             <div class="pt-6 border-t border-ink/10">
-              <p class="pull-quote text-ink/70">
+              <p class="pull-quote text-ink/70 quote-reveal">
                 &ldquo;We built a lending platform where every borrower has a direct line to decision-makers.&rdquo;
               </p>
               <p class="label-editorial text-ink/30 mt-4">3650 Capital</p>
@@ -619,14 +680,62 @@
         rootMargin: '0px 0px -40px 0px'
       });
 
-      document.querySelectorAll('.reveal').forEach(el => {
+      document.querySelectorAll('.reveal, .stagger, .text-reveal-wrap, .img-reveal, .line-draw, .reveal-scale, .reveal-left, .reveal-right, .quote-reveal').forEach(el => {
         revealObserver.observe(el);
       });
     } else {
-      document.querySelectorAll('.reveal').forEach(el => {
+      document.querySelectorAll('.reveal, .stagger, .text-reveal-wrap, .img-reveal, .line-draw, .reveal-scale, .reveal-left, .reveal-right, .quote-reveal').forEach(el => {
         el.classList.add('visible');
       });
     }
+
+
+    /* ---- Counter animations ---- */
+    function animateCounter(el) {
+      const target = parseFloat(el.getAttribute('data-counter'));
+      const decimals = parseInt(el.getAttribute('data-decimals')) || 0;
+      const duration = 2000;
+      const startTime = performance.now();
+
+      if (prefersReducedMotion) {
+        el.textContent = decimals > 0 ? target.toFixed(decimals) : Math.round(target).toLocaleString();
+        return;
+      }
+
+      function update(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const current = target * eased;
+
+        if (decimals > 0) {
+          el.textContent = current.toFixed(decimals);
+        } else {
+          el.textContent = Math.round(current).toLocaleString();
+        }
+
+        if (progress < 1) {
+          requestAnimationFrame(update);
+        }
+      }
+
+      requestAnimationFrame(update);
+    }
+
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCounter(entry.target);
+          counterObserver.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.5
+    });
+
+    document.querySelectorAll('[data-counter]').forEach(el => {
+      counterObserver.observe(el);
+    });
 
     /* ---- Navbar scroll behavior ---- */
     const nav = document.getElementById('mainNav');
