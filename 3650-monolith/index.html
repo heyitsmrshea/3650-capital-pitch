@@ -254,6 +254,14 @@
       width: 100%;
     }
 
+    .nav-link.active {
+      color: #a7c8ff;
+    }
+
+    .nav-link.active::after {
+      width: 100%;
+    }
+
     /* ── Accent line ── */
     .accent-line {
       width: 56px;
@@ -359,7 +367,7 @@
 
         <!-- Desktop Links -->
         <div class="hidden md:flex items-center gap-10">
-          <a href="./index.html" class="nav-link text-sm tracking-wide text-silver/80">Home</a>
+          <a href="./index.html" class="nav-link active text-sm tracking-wide text-silver/80">Home</a>
           <a href="./firm.html" class="nav-link text-sm tracking-wide text-silver/80">Firm</a>
           <a href="./solutions.html" class="nav-link text-sm tracking-wide text-silver/80">Solutions</a>
           <a href="./transactions.html" class="nav-link text-sm tracking-wide text-silver/80">Transactions</a>
@@ -387,7 +395,7 @@
       <button id="menuClose" class="absolute top-6 right-6 text-silver/60" aria-label="Close menu">
         <span class="material-symbols-outlined text-2xl">close</span>
       </button>
-      <a href="./index.html" class="text-lg font-headline font-medium text-silver/80 hover:text-electric transition-colors duration-300 mobile-menu-link">Home</a>
+      <a href="./index.html" class="text-lg font-headline font-medium text-electric transition-colors duration-300 mobile-menu-link">Home</a>
       <a href="./firm.html" class="text-lg font-headline font-medium text-silver/80 hover:text-electric transition-colors duration-300 mobile-menu-link">Firm</a>
       <a href="./solutions.html" class="text-lg font-headline font-medium text-silver/80 hover:text-electric transition-colors duration-300 mobile-menu-link">Solutions</a>
       <a href="./transactions.html" class="text-lg font-headline font-medium text-silver/80 hover:text-electric transition-colors duration-300 mobile-menu-link">Transactions</a>
@@ -408,10 +416,9 @@
     <div class="absolute inset-0 z-0">
       <img
         src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/grove-central-hero.jpg?ssl=1"
-        alt=""
+        alt="Grove Central mixed-use development, a 3650 Capital financed project"
         class="w-full h-full object-cover opacity-20"
         loading="eager"
-        aria-hidden="true"
       >
       <div class="hero-bg-tint absolute inset-0"></div>
       <div class="hero-bg-overlay absolute inset-0"></div>

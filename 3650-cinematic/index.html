@@ -37,6 +37,7 @@
 html {
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -377,7 +378,7 @@ input, select, textarea { font-family: inherit; }
 .hero-headline {
   font-family: var(--font-headline);
   font-weight: 300;
-  font-size: clamp(48px, 9vw, 128px);
+  font-size: clamp(2.5rem, 8vw, 6rem);
   line-height: 1.05;
   letter-spacing: -0.02em;
   color: var(--text-white);
@@ -1267,6 +1268,9 @@ input, select, textarea { font-family: inherit; }
       <a href="./transactions.html" class="footer-link">Transactions</a>
       <a href="./leadership.html" class="footer-link">Leadership</a>
       <a href="./contact.html" class="footer-link">Contact</a>
+      <a href="#" class="footer-link">Privacy Policy</a>
+      <a href="#" class="footer-link">Terms of Use</a>
+      <a href="#" class="footer-link">Disclosures</a>
     </div>
   </div>
 </footer>
