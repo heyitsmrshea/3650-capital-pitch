@@ -1,302 +1,328 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>3650 Capital — Design Exploration</title>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>3650 CAPITAL | Visual Switchboard</title>
 <link rel="icon" href="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/favicon-3650.png?ssl=1" />
-<script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@300;400;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Inter:wght@400;500;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <script>
 tailwind.config = {
+  darkMode: "class",
   theme: {
     extend: {
+      colors: {
+        "primary-dim": "#535252",
+        "on-primary-container": "#525151",
+        "tertiary-dim": "#55534e",
+        "secondary-fixed-dim": "#dbd3ca",
+        "primary": "#5f5e5e",
+        "outline-variant": "#b1b3ab",
+        "surface": "#fbf9f5",
+        "surface-container-high": "#e8e9e2",
+        "tertiary": "#615f59",
+        "secondary-container": "#e9e1d8",
+        "surface-container-low": "#f5f4ef",
+        "tertiary-fixed": "#f8f3ec",
+        "inverse-surface": "#0e0e0d",
+        "secondary-fixed": "#e9e1d8",
+        "surface-container": "#eeeee8",
+        "on-primary": "#faf7f6",
+        "on-secondary-container": "#56514a",
+        "outline": "#797c75",
+        "on-tertiary-fixed": "#4b4944",
+        "inverse-primary": "#ffffff",
+        "primary-fixed": "#e4e2e1",
+        "on-error": "#fff7f6",
+        "background": "#fbf9f5",
+        "on-background": "#30332e",
+        "secondary": "#635e57",
+        "surface-dim": "#d9dbd2",
+        "on-tertiary": "#fdf8f1",
+        "surface-container-highest": "#e2e3db",
+        "surface-variant": "#e2e3db",
+        "tertiary-container": "#f8f3ec",
+        "on-surface": "#30332e",
+        "on-surface-variant": "#5d605a",
+        "on-primary-fixed": "#3f3f3f",
+        "tertiary-fixed-dim": "#e9e5de",
+        "on-tertiary-container": "#5e5c56",
+        "error": "#9e422c",
+        "primary-fixed-dim": "#d6d4d3",
+        "on-secondary": "#fff8f1",
+        "surface-tint": "#5f5e5e",
+        "primary-container": "#e4e2e1",
+        "surface-container-lowest": "#ffffff",
+        "surface-bright": "#fbf9f5"
+      },
+      borderRadius: {
+        DEFAULT: "0px",
+        lg: "0px",
+        xl: "0px",
+        full: "9999px"
+      },
       fontFamily: {
-        'serif': ['DM Serif Display', 'serif'],
-        'sans': ['Inter', 'sans-serif'],
+        headline: ["Noto Serif"],
+        body: ["Plus Jakarta Sans"],
+        label: ["Inter"]
       }
     }
   }
 }
 </script>
 <style>
-  body { font-family: 'Inter', sans-serif; }
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+  }
+  body { font-family: 'Plus Jakarta Sans', sans-serif; }
+  .font-serif { font-family: 'Noto Serif', serif; }
+  .font-mono { font-family: 'Inter', sans-serif; }
 
-  /* Smooth card hover */
-  .site-card {
-    transition: transform 500ms cubic-bezier(0.16, 1, 0.3, 1),
-                box-shadow 500ms cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  .site-card:hover {
-    transform: translateY(-12px);
-    box-shadow: 0 40px 80px rgba(0,0,0,0.25);
-  }
-  .site-card:hover .card-arrow {
-    transform: translateX(4px);
-  }
-  .card-arrow {
-    transition: transform 300ms ease;
-  }
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: #fbf9f5; }
+  ::-webkit-scrollbar-thumb { background: #5f5e5e; }
 
-  /* Preview iframe scaling */
-  .preview-frame {
-    width: 1440px;
-    height: 900px;
-    transform: scale(0.278);
-    transform-origin: top left;
-    pointer-events: none;
-    border: 0;
-  }
-  .preview-wrap {
-    width: 100%;
-    aspect-ratio: 16 / 10;
-    overflow: hidden;
-    position: relative;
-  }
+  /* Scroll reveals */
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1); }
+  .reveal.visible { opacity: 1; transform: none; }
+  .reveal-delay-1 { transition-delay: 0.08s; }
+  .reveal-delay-2 { transition-delay: 0.16s; }
+  .reveal-delay-3 { transition-delay: 0.24s; }
+  .reveal-delay-4 { transition-delay: 0.32s; }
+  .reveal-delay-5 { transition-delay: 0.40s; }
+  .reveal-delay-6 { transition-delay: 0.48s; }
 
-  /* Scroll reveal */
-  [data-reveal] {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 700ms cubic-bezier(0.16, 1, 0.3, 1),
-                transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  [data-reveal].is-visible {
-    opacity: 1;
-    transform: none;
-  }
-
-  /* Palette dots */
-  .palette-dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    display: inline-block;
-    border: 1px solid rgba(255,255,255,0.1);
+  /* Sidebar mobile */
+  @media (max-width: 1024px) {
+    .sidebar { transform: translateX(-100%); transition: transform 0.4s cubic-bezier(0.22,1,0.36,1); position: fixed; z-index: 50; }
+    .sidebar.open { transform: none; }
+    .main-content { margin-left: 0 !important; }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    [data-reveal] { opacity: 1; transform: none; transition: none; }
-    .site-card { transition: none; }
-    .site-card:hover { transform: none; }
+    .reveal { opacity: 1; transform: none; transition: none; }
   }
 </style>
 </head>
+<body class="bg-surface text-on-surface selection:bg-primary selection:text-on-primary">
 
-<body class="bg-[#0a0a0a] text-white antialiased selection:bg-amber-500/20">
+<!-- Mobile menu toggle -->
+<button id="sidebarToggle" class="lg:hidden fixed top-6 left-4 z-[60] bg-surface/90 backdrop-blur-sm p-2">
+  <span class="material-symbols-outlined text-on-surface">menu</span>
+</button>
 
-<!-- ─── Nav ─── -->
-<nav class="fixed top-0 w-full z-50 flex justify-between items-center px-6 md:px-12 h-16 bg-[#0a0a0a]/80 backdrop-blur-2xl border-b border-white/[0.04]">
-  <div class="flex items-center gap-3">
-    <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650Capital-Logo.png?ssl=1" alt="3650 Capital" class="h-5 brightness-0 invert opacity-70" />
+<!-- Sidebar overlay -->
+<div id="sidebarOverlay" class="hidden lg:hidden fixed inset-0 bg-black/20 z-40" onclick="closeSidebar()"></div>
+
+<!-- SideNavBar -->
+<aside id="sidebar" class="sidebar fixed left-0 top-0 h-full flex flex-col py-8 px-4 z-50 bg-surface border-r border-on-surface/10 w-64 lg:translate-x-0">
+  <div class="mb-12 px-4">
+    <h1 class="font-serif text-lg tracking-tighter text-on-surface">3650 Terminal</h1>
+    <p class="font-mono uppercase tracking-wider text-[11px] text-on-surface/60 mt-1">V1.0 — Design Exploration</p>
   </div>
-  <div class="text-[10px] tracking-[0.25em] uppercase text-neutral-500 font-medium hidden md:block">Design Exploration — April 2026</div>
-  <a href="https://projectvet.wpcomstaging.com" target="_blank" class="text-[11px] tracking-widest uppercase text-neutral-400 hover:text-white transition-colors">Current Site →</a>
-</nav>
-
-<!-- ─── Hero ─── -->
-<header class="min-h-[85vh] flex flex-col justify-center px-6 md:px-12 pt-24 pb-16 max-w-6xl mx-auto">
-  <div data-reveal>
-    <p class="text-[11px] uppercase tracking-[0.3em] text-neutral-500 font-medium mb-6">3650 Capital</p>
-    <h1 class="font-serif text-[clamp(2.8rem,7vw,6.5rem)] leading-[0.92] mb-6 max-w-4xl">
-      Six design<br/>directions.
-    </h1>
-    <p class="text-neutral-400 text-lg md:text-xl max-w-xl leading-relaxed mb-12">
-      Same content. Same photography. Six completely different visual identities — each built to show what's possible for the 3650 Capital digital platform.
-    </p>
-    <div class="flex gap-12 text-sm">
-      <div>
-        <div class="text-2xl font-bold tracking-tight">6</div>
-        <div class="text-neutral-500 text-[10px] uppercase tracking-[0.2em] mt-1">Concepts</div>
-      </div>
-      <div>
-        <div class="text-2xl font-bold tracking-tight">6</div>
-        <div class="text-neutral-500 text-[10px] uppercase tracking-[0.2em] mt-1">Pages each</div>
-      </div>
-      <div>
-        <div class="text-2xl font-bold tracking-tight">1</div>
-        <div class="text-neutral-500 text-[10px] uppercase tracking-[0.2em] mt-1">Person</div>
-      </div>
+  <nav class="flex-1 space-y-2">
+    <a class="flex items-center gap-3 px-4 py-3 text-on-surface font-bold bg-surface-container-low translate-x-1 duration-200" href="#">
+      <span class="material-symbols-outlined">grid_view</span>
+      <span class="font-mono uppercase tracking-wider text-[11px]">Visual Switchboard</span>
+    </a>
+    <a class="flex items-center gap-3 px-4 py-3 text-on-surface/60 hover:bg-surface-container-low/50 transition-all" href="https://projectvet.wpcomstaging.com" target="_blank">
+      <span class="material-symbols-outlined">language</span>
+      <span class="font-mono uppercase tracking-wider text-[11px]">Current Live Site</span>
+    </a>
+    <a class="flex items-center gap-3 px-4 py-3 text-on-surface/60 hover:bg-surface-container-low/50 transition-all" href="https://github.com/heyitsmrshea/3650-capital-pitch" target="_blank">
+      <span class="material-symbols-outlined">code</span>
+      <span class="font-mono uppercase tracking-wider text-[11px]">Source Code</span>
+    </a>
+  </nav>
+  <div class="px-4 mt-auto space-y-4">
+    <div class="border-t border-on-surface/10 pt-4">
+      <p class="font-mono text-[9px] tracking-wider uppercase text-on-surface/40 mb-1">Designed by</p>
+      <p class="font-mono text-[11px] tracking-wider text-on-surface/70">Andrew Shea</p>
+      <p class="font-mono text-[9px] tracking-wider text-on-surface/40 mt-1">AI-Assisted — April 2026</p>
     </div>
   </div>
-</header>
+</aside>
 
-<!-- ─── Variants Grid ─── -->
-<section class="px-6 md:px-12 pb-32 max-w-7xl mx-auto">
+<!-- Main Content Canvas -->
+<main class="main-content lg:ml-64 min-h-screen bg-surface">
 
-  <!-- Row 1: 2-up -->
-  <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+  <!-- TopNavBar -->
+  <header class="flex justify-between items-center w-full px-6 lg:px-12 py-6 max-w-[1920px] mx-auto">
+    <div class="text-xl font-serif tracking-[0.2em] text-on-surface pl-10 lg:pl-0">3650 CAPITAL</div>
+    <nav class="hidden md:flex items-center space-x-12">
+      <a class="font-mono uppercase tracking-[0.1em] text-[10px] text-on-surface border-b border-on-surface pb-1" href="#">Dashboard</a>
+      <a class="font-mono uppercase tracking-[0.1em] text-[10px] text-on-surface/50 pb-1 hover:text-on-surface transition-colors duration-300" href="#">Variations</a>
+    </nav>
+    <div class="flex items-center gap-4">
+      <span class="font-mono uppercase tracking-wider text-[10px] opacity-40 hidden sm:inline">6 Volumes — 36 Pages</span>
+    </div>
+  </header>
 
-    <!-- Corporate Minimal -->
-    <a href="./3650-corporate-minimal/index.html" class="site-card group block bg-[#111] rounded-lg overflow-hidden" data-reveal>
-      <div class="preview-wrap">
-        <iframe src="./3650-corporate-minimal/index.html" class="preview-frame" loading="lazy" tabindex="-1" title="Corporate Minimal"></iframe>
+  <!-- Visual Switchboard Content -->
+  <section class="px-6 lg:px-12 py-8">
+    <div class="flex flex-col lg:flex-row items-start lg:items-end justify-between mb-16 max-w-7xl gap-6 reveal">
+      <div class="space-y-4">
+        <span class="inline-block px-3 py-1 bg-surface-container text-on-surface-variant font-mono text-[10px] tracking-widest uppercase">6 Design Directions — Same Content</span>
+        <h2 class="text-4xl lg:text-6xl font-serif tracking-tight leading-none text-on-surface">Design Volumes</h2>
       </div>
-      <div class="p-6 flex items-start justify-between">
-        <div>
-          <div class="flex items-center gap-3 mb-2">
-            <h3 class="text-base font-semibold">Corporate Minimal</h3>
-            <div class="flex gap-1.5">
-              <span class="palette-dot" style="background:#000a1e"></span>
-              <span class="palette-dot" style="background:#c9a84c"></span>
-              <span class="palette-dot" style="background:#f8f9fa"></span>
-            </div>
+      <p class="max-w-xs text-on-surface-variant text-sm leading-relaxed font-light">
+        Each volume reimagines the 3650 Capital platform through a distinct visual identity — same content, same photography, six completely different experiences.
+      </p>
+    </div>
+
+    <!-- Bento Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-1 max-w-[1700px] mx-auto bg-outline-variant/10 p-1">
+
+      <!-- 01. Corporate Minimal -->
+      <a href="./3650-corporate-minimal/index.html" class="md:col-span-5 aspect-[4/3] relative group overflow-hidden bg-surface-container-low transition-all duration-500 hover:z-10 reveal reveal-delay-1 block">
+        <img alt="Minimalist glass skyscraper reflected against dawn sky" class="w-full h-full object-cover mix-blend-multiply opacity-80 group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCaxpmdButEHmGKsDKJC2EYdLD8evDUzdYy391DYHaNTBsgGpm03y_czzRf2tpqVKuh0Bc26IQ5knTxEsUU0HE2cARLOrFmizU82aPXQi5vJDbsSftN_QER6hIpZQiVHIlbay_EEn0J6ZE1zLzLk2OvozLoJGbd8EypdlZ_zY-vph-fMkuEvUzStVYEJPaMvqjkSoi4PluhZiNR6L7iIwHZiu_CEs0D7S7sOhlv8xk4m2rT6rApcvt8CXYVd4JW0y-pnAKWZCUfekH1"/>
+        <div class="absolute inset-0 p-8 flex flex-col justify-between bg-gradient-to-t from-surface/80 to-transparent">
+          <span class="font-mono text-[10px] tracking-[0.3em] uppercase opacity-40">Volume_01</span>
+          <div>
+            <h3 class="font-serif text-3xl mb-2">Corporate Minimal</h3>
+            <p class="font-mono text-[10px] tracking-widest uppercase opacity-60 mb-2">Dark navy — Gold accents — Noto Serif</p>
+            <span class="font-mono text-[10px] tracking-widest uppercase border-b border-on-surface/20 pb-1 group-hover:border-on-surface transition-all">6 Pages →</span>
           </div>
-          <p class="text-sm text-neutral-500 leading-relaxed">Dark navy hero, gold accents, Noto Serif headlines. Think Blackstone annual report.</p>
         </div>
-        <span class="card-arrow text-neutral-600 group-hover:text-white text-lg mt-1">→</span>
-      </div>
-    </a>
+      </a>
 
-    <!-- Editorial -->
-    <a href="./3650-editorial/index.html" class="site-card group block bg-[#111] rounded-lg overflow-hidden" data-reveal>
-      <div class="preview-wrap">
-        <iframe src="./3650-editorial/index.html" class="preview-frame" loading="lazy" tabindex="-1" title="Editorial"></iframe>
-      </div>
-      <div class="p-6 flex items-start justify-between">
-        <div>
-          <div class="flex items-center gap-3 mb-2">
-            <h3 class="text-base font-semibold">Editorial Story-Driven</h3>
-            <div class="flex gap-1.5">
-              <span class="palette-dot" style="background:#1a1612"></span>
-              <span class="palette-dot" style="background:#b8432a"></span>
-              <span class="palette-dot" style="background:#f5f0e8"></span>
-            </div>
+      <!-- 02. Editorial Story-Driven -->
+      <a href="./3650-editorial/index.html" class="md:col-span-3 aspect-[3/4] relative group overflow-hidden bg-secondary-container transition-all duration-500 hover:z-10 reveal reveal-delay-2 block">
+        <img alt="Gold leaf architectural detail on stone" class="w-full h-full object-cover mix-blend-overlay opacity-40 group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDIokRxzL6ovhrUGc4HEzI2EZ_34XK_DVrCYoYYiUsVFFZ1WMiLYrmJlqrcH7cMaZB97K2k5SxoNjoZSOvJ_z17Casw6Kama3BZ13Ma0kX4xZ-342RXc0JnKzoZT-rGQZB1ukOJB-kTuKG_gtbDh-XCoX9UbDDRw-cE50drmcxTPx0LxWEQdExJKLBT-sx4iwLemKxOZErp6Rwk8PG9waLcsnA5TfPdtTYytFJTd8j7lLZKJfbilQHWxDhDX4Gk-Dz9MuqYZrHp-A3"/>
+        <div class="absolute inset-0 p-8 flex flex-col justify-between">
+          <span class="font-mono text-[10px] tracking-[0.3em] uppercase opacity-60">Volume_02</span>
+          <div>
+            <h3 class="font-serif text-2xl text-on-secondary-container mb-2">Editorial Story-Driven</h3>
+            <p class="font-mono text-[10px] tracking-widest uppercase opacity-50">Playfair Display — Terracotta</p>
           </div>
-          <p class="text-sm text-neutral-500 leading-relaxed">Magazine layout, terracotta red, Playfair Display. Narrative timeline like Bloomberg.</p>
         </div>
-        <span class="card-arrow text-neutral-600 group-hover:text-white text-lg mt-1">→</span>
-      </div>
-    </a>
-  </div>
+      </a>
 
-  <!-- Row 2: 2-up -->
-  <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-
-    <!-- Modern Bold -->
-    <a href="./3650-modern-bold/index.html" class="site-card group block bg-[#111] rounded-lg overflow-hidden" data-reveal>
-      <div class="preview-wrap">
-        <iframe src="./3650-modern-bold/index.html" class="preview-frame" loading="lazy" tabindex="-1" title="Modern Bold"></iframe>
-      </div>
-      <div class="p-6 flex items-start justify-between">
-        <div>
-          <div class="flex items-center gap-3 mb-2">
-            <h3 class="text-base font-semibold">Modern Bold</h3>
-            <div class="flex gap-1.5">
-              <span class="palette-dot" style="background:#1a1a1a"></span>
-              <span class="palette-dot" style="background:#8b5e34"></span>
-              <span class="palette-dot" style="background:#f5efe6"></span>
-            </div>
+      <!-- 03. Monolith -->
+      <a href="./3650-monolith/index.html" class="md:col-span-4 aspect-square relative group overflow-hidden bg-inverse-surface transition-all duration-500 hover:z-10 reveal reveal-delay-3 block">
+        <img alt="Dark textured slate surface" class="w-full h-full object-cover opacity-50 group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGo0_2UEsyL-mEbXi1na537NWTDMVeJteNQVcfzsY_uHue3GROEaPkPtQefijPp6-aaJ8-B6ESDDQojaBVABwaFRNErZ4SYszXjxnnpczqeOfJtx6PEsWI6Eg6D5Sec3h5zj8KZdeIm79_V1M6Sab3lUGeixkCF2muT17-h81FjAE1mdv1uT2afbt4sQmNhZW56sLINXayF9b9edPAxKkzf8gPw2tiuicqm_nnd0U-g_wdr1nO-imOAzK0F-vFcZUN1zoiKVVPZbB3"/>
+        <div class="absolute inset-0 p-8 flex flex-col justify-between text-on-primary">
+          <span class="font-mono text-[10px] tracking-[0.3em] uppercase opacity-50">Volume_03</span>
+          <div>
+            <h3 class="font-serif text-3xl mb-2">Monolith</h3>
+            <p class="font-mono text-[10px] tracking-widest uppercase opacity-40">Manrope — Electric blue — Zero borders</p>
           </div>
-          <p class="text-sm text-neutral-500 leading-relaxed">Oversized "3,650" display, copper warmth, DM Serif Display. Confident and grounded.</p>
         </div>
-        <span class="card-arrow text-neutral-600 group-hover:text-white text-lg mt-1">→</span>
-      </div>
-    </a>
+      </a>
 
-    <!-- Warm Dark -->
-    <a href="./3650-warm-dark/index.html" class="site-card group block bg-[#111] rounded-lg overflow-hidden" data-reveal>
-      <div class="preview-wrap">
-        <iframe src="./3650-warm-dark/index.html" class="preview-frame" loading="lazy" tabindex="-1" title="Warm Dark"></iframe>
-      </div>
-      <div class="p-6 flex items-start justify-between">
-        <div>
-          <div class="flex items-center gap-3 mb-2">
-            <h3 class="text-base font-semibold">Warm Dark</h3>
-            <div class="flex gap-1.5">
-              <span class="palette-dot" style="background:#0f1114"></span>
-              <span class="palette-dot" style="background:#4dd4ac"></span>
-              <span class="palette-dot" style="background:#252830"></span>
-            </div>
+      <!-- 04. Financial Chronicler -->
+      <a href="./3650-chronicler/index.html" class="md:col-span-4 aspect-[4/3] relative group overflow-hidden bg-surface-container-highest transition-all duration-500 hover:z-10 reveal reveal-delay-4 block">
+        <img alt="Minimalist white marble staircase" class="w-full h-full object-cover mix-blend-multiply opacity-60 group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvIWhKYm00ggaMozRCgTI_iFWGvlTGD6mZq6fcIeAxkqqgMAOXEa2SbsxZfWEQYEhvXDyA1Vx3dolmWVQDvWoYq4ATy6BpgqD_z8OPmZ6FG9iYqaA68faFTLmR4Cwj9_bGmDIAKFFHSQLDa6PFIN4IjGOk96PYhI2DE4JOBZqUDfVwlbdDCaEbrWq901jKU_Ad3gefc-e03JeHS-IYit70sIYGNj-3mqL9uAmpqCn81buJ0PkaovCEeupCipvx48yv386828AEKGiq"/>
+        <div class="absolute inset-0 p-8 flex flex-col justify-between">
+          <span class="font-mono text-[10px] tracking-[0.3em] uppercase opacity-40">Volume_04</span>
+          <div>
+            <h3 class="font-serif text-2xl mb-2">Financial Chronicler</h3>
+            <p class="font-mono text-[10px] tracking-widest uppercase opacity-50">Newsreader — Copper — Warm paper</p>
           </div>
-          <p class="text-sm text-neutral-500 leading-relaxed">Full dark theme, teal accents, bento grid cards. Plus Jakarta Sans. Tech-forward.</p>
         </div>
-        <span class="card-arrow text-neutral-600 group-hover:text-white text-lg mt-1">→</span>
-      </div>
-    </a>
-  </div>
+      </a>
 
-  <!-- Row 3: 2-up -->
-  <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-
-    <!-- Monolith -->
-    <a href="./3650-monolith/index.html" class="site-card group block bg-[#111] rounded-lg overflow-hidden" data-reveal>
-      <div class="preview-wrap">
-        <iframe src="./3650-monolith/index.html" class="preview-frame" loading="lazy" tabindex="-1" title="Monolith"></iframe>
-      </div>
-      <div class="p-6 flex items-start justify-between">
-        <div>
-          <div class="flex items-center gap-3 mb-2">
-            <h3 class="text-base font-semibold">Monolith</h3>
-            <div class="flex gap-1.5">
-              <span class="palette-dot" style="background:#131313"></span>
-              <span class="palette-dot" style="background:#3291ff"></span>
-              <span class="palette-dot" style="background:#a7c8ff"></span>
-            </div>
+      <!-- 05. Modern Bold -->
+      <a href="./3650-modern-bold/index.html" class="md:col-span-4 aspect-[4/3] relative group overflow-hidden bg-tertiary-container transition-all duration-500 hover:z-10 reveal reveal-delay-5 block border-x border-outline-variant/10">
+        <img alt="Oxidized copper texture with grid pattern" class="w-full h-full object-cover opacity-30 group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdjcR3kEwTfExPzqCH6DSOGOeaq8y0rPlpGMVpGfUamQjgcwgfXdM_LsS81YuOZiLNiP7CpKfYHAx0VhmxrMBjQvKS7VSe2ahW2ZrJiIID5xqBFlA9QtVfgp9yG0qwzzfHrtJCLHpgCTz8KGBo7CL4q1fcCvvGK2Od_Xj9fbCgIjUxxJ4z3Z74OGg3O09Vloj3vScyXa2331bUqHqPI3eY1KacNqG00pJRUUBMijDC9jiabYioha5iVUyYvNfrf6viJ-rM6ZkR1i_s"/>
+        <div class="absolute inset-0 p-8 flex flex-col justify-between">
+          <span class="font-mono text-[10px] tracking-[0.3em] uppercase opacity-60">Volume_05</span>
+          <div>
+            <h3 class="font-serif text-2xl mb-2">Modern Bold</h3>
+            <p class="font-mono text-[10px] tracking-widest uppercase opacity-50">DM Serif Display — Copper — Warm splits</p>
           </div>
-          <p class="text-sm text-neutral-500 leading-relaxed">Ultra-dark void, electric blue, zero borders. Manrope. Architectural depth through tonal layering.</p>
         </div>
-        <span class="card-arrow text-neutral-600 group-hover:text-white text-lg mt-1">→</span>
-      </div>
-    </a>
+      </a>
 
-    <!-- Chronicler -->
-    <a href="./3650-chronicler/index.html" class="site-card group block bg-[#111] rounded-lg overflow-hidden" data-reveal>
-      <div class="preview-wrap">
-        <iframe src="./3650-chronicler/index.html" class="preview-frame" loading="lazy" tabindex="-1" title="Chronicler"></iframe>
-      </div>
-      <div class="p-6 flex items-start justify-between">
-        <div>
-          <div class="flex items-center gap-3 mb-2">
-            <h3 class="text-base font-semibold">Financial Chronicler</h3>
-            <div class="flex gap-1.5">
-              <span class="palette-dot" style="background:#fbfaee"></span>
-              <span class="palette-dot" style="background:#894d0d"></span>
-              <span class="palette-dot" style="background:#1b1c15"></span>
-            </div>
+      <!-- 06. Warm Dark -->
+      <a href="./3650-warm-dark/index.html" class="md:col-span-4 aspect-[4/3] relative group overflow-hidden bg-surface-dim transition-all duration-500 hover:z-10 reveal reveal-delay-6 block">
+        <img alt="Raw concrete building facade" class="w-full h-full object-cover opacity-40 group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBaIviQjP0crAKwdHzj9sXX93ounxmQffhIOCS25MCR96iu9ACcferE9Jwe4jVvhk8SzMSLAfIU10FYV-U1i84jaUFWzpZ4jWrJ13rz2XFRaT1b2LUfxaY-XqUSFNULUJVPrpXUaiV-QZ_7L3hlyKjzyTnrti9_RGekTssqsaYDWpylgvvAwB6kCiP6VVQHkNYS-dXrIqoMcv3HsFc8Dcv-bZIDRGV8pFNlROsXPVScC15yyrKKnMk-emsWvjtVT4-7L2VpIJPRGD-I"/>
+        <div class="absolute inset-0 p-8 flex flex-col justify-between">
+          <span class="font-mono text-[10px] tracking-[0.3em] uppercase opacity-60">Volume_06</span>
+          <div>
+            <h3 class="font-serif text-2xl mb-2">Warm Dark</h3>
+            <p class="font-mono text-[10px] tracking-widest uppercase opacity-50">Plus Jakarta Sans — Teal — Bento grid</p>
           </div>
-          <p class="text-sm text-neutral-500 leading-relaxed">Warm cream paper, copper accents, Newsreader serif. Annual-report elegance like FT Weekend.</p>
         </div>
-        <span class="card-arrow text-neutral-600 group-hover:text-white text-lg mt-1">→</span>
+      </a>
+
+      <!-- Summary bar -->
+      <div class="md:col-span-12 h-32 relative group overflow-hidden bg-tertiary-fixed border-t border-outline-variant/20 transition-all duration-500 flex items-center justify-between px-6 lg:px-12 reveal">
+        <div class="flex items-center gap-8">
+          <span class="font-mono text-[10px] tracking-[0.3em] uppercase opacity-40">System Status</span>
+          <h3 class="font-serif text-2xl lg:text-3xl">6 Volumes — 36 Pages — All Deployed</h3>
+        </div>
+        <div class="hidden md:flex gap-4 items-center">
+          <div class="flex gap-2">
+            <div class="w-12 h-1 bg-primary"></div>
+            <div class="w-12 h-1 bg-primary/40"></div>
+            <div class="w-12 h-1 bg-primary/20"></div>
+          </div>
+          <a href="https://projectvet.wpcomstaging.com" target="_blank" class="font-mono text-[10px] tracking-widest uppercase border-b border-on-surface/20 pb-1 hover:border-on-surface transition-all ml-4">View Current Site →</a>
+        </div>
       </div>
-    </a>
-  </div>
 
-</section>
+    </div>
+  </section>
 
-<!-- ─── About ─── -->
-<section class="px-6 md:px-12 pb-24 max-w-3xl mx-auto" data-reveal>
-  <div class="border-t border-white/[0.06] pt-16">
-    <p class="text-[11px] uppercase tracking-[0.3em] text-neutral-500 font-medium mb-4">About this project</p>
-    <p class="text-neutral-400 leading-relaxed mb-4">
-      Each design direction uses the same 3650 Capital content and photography from the existing site. The goal is to demonstrate range — six fundamentally different approaches to the same brand, each with its own design system, typography pairing, color architecture, and layout philosophy.
-    </p>
-    <p class="text-neutral-400 leading-relaxed">
-      Built with Claude AI + MCP browser integration + Stitch design references. Every variant includes scroll animations, counter effects, responsive layouts, and accessibility considerations.
-    </p>
-  </div>
-</section>
+  <!-- Footer -->
+  <footer class="max-w-[1700px] mx-auto px-6 lg:px-12 py-16 flex flex-col md:flex-row justify-between items-start border-t border-outline-variant/10 mt-12 bg-surface-container-low/30 reveal">
+    <div class="max-w-md">
+      <p class="font-mono text-[10px] tracking-[0.2em] uppercase text-on-surface-variant mb-6">Built for 3650 Capital — April 2026</p>
+      <h4 class="font-serif text-2xl mb-4">Six design directions. Same content. Same photography. Six different experiences.</h4>
+      <p class="text-xs text-on-surface-variant leading-relaxed opacity-60">Each volume uses real 3650 Capital content and images from the existing site. Every page includes scroll animations, responsive layouts, and accessibility support. Built with AI-assisted design + MCP browser integration.</p>
+    </div>
+    <div class="grid grid-cols-2 gap-16 lg:gap-24 mt-12 md:mt-0">
+      <div class="space-y-4">
+        <p class="font-mono text-[10px] tracking-[0.2em] uppercase opacity-40">Volumes</p>
+        <ul class="text-[11px] font-mono tracking-wider space-y-2 uppercase">
+          <li><a href="./3650-corporate-minimal/index.html" class="hover:text-primary transition-colors">01 — Corporate Minimal</a></li>
+          <li><a href="./3650-editorial/index.html" class="hover:text-primary transition-colors">02 — Editorial</a></li>
+          <li><a href="./3650-monolith/index.html" class="hover:text-primary transition-colors">03 — Monolith</a></li>
+          <li><a href="./3650-chronicler/index.html" class="hover:text-primary transition-colors">04 — Chronicler</a></li>
+          <li><a href="./3650-modern-bold/index.html" class="hover:text-primary transition-colors">05 — Modern Bold</a></li>
+          <li><a href="./3650-warm-dark/index.html" class="hover:text-primary transition-colors">06 — Warm Dark</a></li>
+        </ul>
+      </div>
+      <div class="space-y-4">
+        <p class="font-mono text-[10px] tracking-[0.2em] uppercase opacity-40">Each Volume Contains</p>
+        <ul class="text-[11px] font-mono tracking-wider space-y-2 uppercase">
+          <li class="opacity-60">Home</li>
+          <li class="opacity-60">Firm</li>
+          <li class="opacity-60">Solutions</li>
+          <li class="opacity-60">Transactions</li>
+          <li class="opacity-60">Leadership</li>
+          <li class="opacity-60">Contact</li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+</main>
 
-<!-- ─── Footer ─── -->
-<footer class="px-6 md:px-12 py-8 border-t border-white/[0.04] flex flex-col md:flex-row justify-between items-center gap-3">
-  <p class="text-[11px] text-neutral-600">Andrew Shea — April 2026</p>
-  <p class="text-[11px] text-neutral-600">Built for 3650 Capital</p>
-</footer>
-
-<!-- ─── Scripts ─── -->
 <script>
 (function() {
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach((e, i) => {
-      if (e.isIntersecting) {
-        setTimeout(() => e.target.classList.add('is-visible'), i * 60);
-        obs.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.08 });
-  document.querySelectorAll('[data-reveal]').forEach(el => obs.observe(el));
+  // Scroll reveal
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  }
+
+  // Mobile sidebar
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('sidebarOverlay');
+  const toggle = document.getElementById('sidebarToggle');
+
+  function openSidebar() { sidebar.classList.add('open'); overlay.classList.remove('hidden'); }
+  function closeSidebar() { sidebar.classList.remove('open'); overlay.classList.add('hidden'); }
+  window.closeSidebar = closeSidebar;
+
+  if (toggle) toggle.addEventListener('click', () => {
+    sidebar.classList.contains('open') ? closeSidebar() : openSidebar();
+  });
 })();
 </script>
-</body>
-</html>
+</body></html>
