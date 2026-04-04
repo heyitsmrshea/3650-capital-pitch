@@ -387,7 +387,7 @@
               src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Gateway-at-Wynwood-e1578945268648.jpg?ssl=1"
               alt="Gateway at Wynwood — 3650 Capital platform"
               class="w-full h-[300px] md:h-[360px] object-cover img-reveal"
-              loading="lazy"
+             
             >
           </div>
         </div>
@@ -466,7 +466,7 @@
           src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Unknown-1.png?ssl=1"
           alt="3650 Capital financing products"
           class="w-full max-h-[400px] object-cover img-reveal"
-          loading="lazy"
+         
         >
       </div>
 
@@ -700,7 +700,7 @@
               src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/DJI_0135-HDR-scaled.jpg?ssl=1"
               alt="3650 Capital approach — aerial view"
               class="w-full h-[340px] md:h-[420px] object-cover img-reveal"
-              loading="lazy"
+             
             >
           </div>
           <!-- Decorative element -->
@@ -888,6 +888,11 @@
         entries.forEach(function(entry) {
           if (entry.isIntersecting) {
             entry.target.classList.add('visible');
+            // Trigger nested animations
+            entry.target.querySelectorAll('.img-reveal, .line-draw, .stagger, .text-reveal-wrap').forEach(function(child) {
+              child.classList.add('visible');
+              child.classList.add('is-visible');
+            });
             revealObserver.unobserve(entry.target);
           }
         });

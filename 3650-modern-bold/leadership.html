@@ -345,7 +345,7 @@
                 src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-Headshots-A1067.jpg?ssl=1"
                 alt="Justin Kennedy"
                 class="w-full aspect-[4/5] object-cover img-reveal"
-                loading="lazy"
+               
               >
             </div>
             <div class="founder-accent"></div>
@@ -375,7 +375,7 @@
                 src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-Headshots-A0857.jpg?ssl=1"
                 alt="Jonathan Roth"
                 class="w-full aspect-[4/5] object-cover img-reveal"
-                loading="lazy"
+               
               >
             </div>
             <div class="founder-accent"></div>
@@ -405,7 +405,7 @@
                 src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-Headshots-A0746.jpg?ssl=1"
                 alt="Toby Cobb"
                 class="w-full aspect-[4/5] object-cover img-reveal"
-                loading="lazy"
+               
               >
             </div>
             <div class="founder-accent"></div>
@@ -809,6 +809,11 @@
         entries.forEach(function(entry) {
           if (entry.isIntersecting) {
             entry.target.classList.add('visible');
+            // Trigger nested animations
+            entry.target.querySelectorAll('.img-reveal, .line-draw, .stagger, .text-reveal-wrap').forEach(function(child) {
+              child.classList.add('visible');
+              child.classList.add('is-visible');
+            });
             revealObserver.unobserve(entry.target);
           }
         });

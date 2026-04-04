@@ -931,6 +931,11 @@
                 if (entry.target.classList.contains('reveal')) {
                   entry.target.classList.add('visible');
                 }
+                // Trigger nested animations
+                entry.target.querySelectorAll('.img-reveal, .line-draw, .stagger, .text-reveal-wrap').forEach(function(child) {
+                  child.classList.add('visible');
+                  child.classList.add('is-visible');
+                });
                 observer.unobserve(entry.target);
               }
             });

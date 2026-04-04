@@ -610,7 +610,7 @@
               src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/nyc-office-interior-2.jpg?ssl=1"
               alt="3650 Capital New York City office interior"
               class="img-reveal w-full rounded object-cover aspect-[4/3] ambient-shadow-lg"
-              loading="lazy"
+             
             >
           </div>
         </div>
@@ -634,7 +634,7 @@
               src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Commercial-Observer-Founders-Image.png?ssl=1"
               alt="3650 Capital founding partners"
               class="img-reveal w-full rounded object-cover aspect-[4/3]"
-              loading="lazy"
+             
             >
             <!-- Electric tint overlay -->
             <div class="absolute inset-0 bg-gradient-to-br from-electric-dim/10 to-transparent rounded pointer-events-none"></div>
@@ -889,6 +889,11 @@
             entries.forEach(function (entry) {
               if (entry.isIntersecting) {
                 entry.target.classList.add('is-visible');
+                // Trigger nested animations
+                entry.target.querySelectorAll('.img-reveal, .line-draw, .stagger, .text-reveal-wrap').forEach(function(child) {
+                  child.classList.add('visible');
+                  child.classList.add('is-visible');
+                });
                 observer.unobserve(entry.target);
               }
             });

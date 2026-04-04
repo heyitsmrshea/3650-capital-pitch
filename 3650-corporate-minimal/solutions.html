@@ -550,7 +550,7 @@
             src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/DJI_0135-HDR-scaled.jpg?ssl=1"
             alt="3650 Capital approach — aerial view"
             class="w-full img-grayscale img-reveal"
-            loading="lazy"
+           
           >
         </div>
 
@@ -724,6 +724,11 @@
           entries.forEach(function (entry) {
             if (entry.isIntersecting) {
               entry.target.classList.add('visible');
+              // Trigger nested animations
+              entry.target.querySelectorAll('.img-reveal, .line-draw, .stagger, .text-reveal-wrap').forEach(function(child) {
+                child.classList.add('visible');
+                child.classList.add('is-visible');
+              });
               revealObserver.unobserve(entry.target);
             }
           });

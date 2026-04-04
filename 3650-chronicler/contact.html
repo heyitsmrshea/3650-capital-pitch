@@ -626,12 +626,12 @@
         <div class="reveal ambient-shadow overflow-hidden">
           <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/nyc-office-interior-1.jpg?ssl=1"
                alt="3650 Capital NYC office interior"
-               class="img-cover aspect-[4/3] img-reveal" loading="lazy">
+               class="img-cover aspect-[4/3] img-reveal">
         </div>
         <div class="reveal reveal-delay-1 ambient-shadow overflow-hidden">
           <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/nyc-office-interior-2.jpg?ssl=1"
                alt="3650 Capital NYC office workspace"
-               class="img-cover aspect-[4/3] img-reveal" loading="lazy">
+               class="img-cover aspect-[4/3] img-reveal">
         </div>
       </div>
     </div>
@@ -841,6 +841,11 @@
                 if (entry.target.classList.contains('reveal')) {
                   entry.target.classList.add('visible');
                 }
+                // Trigger nested animations
+                entry.target.querySelectorAll('.img-reveal, .line-draw, .stagger, .text-reveal-wrap').forEach(function(child) {
+                  child.classList.add('visible');
+                  child.classList.add('is-visible');
+                });
                 observer.unobserve(entry.target);
               }
             });

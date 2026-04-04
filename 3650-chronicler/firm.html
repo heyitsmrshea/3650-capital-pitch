@@ -445,7 +445,7 @@
           src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/nyc-office-interior-2.jpg?ssl=1"
           alt="3650 Capital NYC office interior"
           class="w-full h-auto ambient-shadow img-reveal"
-          loading="lazy"
+         
         >
         <p class="label-ledger text-charcoal/40 mt-4">New York Office Interior</p>
       </div>
@@ -535,7 +535,7 @@
               src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/toby-nyc-office.jpg?ssl=1"
               alt="3650 Capital office"
               class="w-full h-auto ambient-shadow img-reveal"
-              loading="lazy"
+             
             >
             <p class="label-ledger text-charcoal/40 mt-4">3650 Capital — Operations</p>
           </div>
@@ -722,6 +722,11 @@
                 if (entry.target.classList.contains('reveal')) {
                   entry.target.classList.add('visible');
                 }
+                // Trigger nested animations
+                entry.target.querySelectorAll('.img-reveal, .line-draw, .stagger, .text-reveal-wrap').forEach(function(child) {
+                  child.classList.add('visible');
+                  child.classList.add('is-visible');
+                });
                 observer.unobserve(entry.target);
               }
             });
