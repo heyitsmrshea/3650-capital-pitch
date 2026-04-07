@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3650 Capital — Leadership</title>
+  <meta name="description" content="Meet the leadership team at 3650 Capital — lifetime CRE professionals with cross-discipline experience across origination, credit, capital markets, and servicing.">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+
+  <!-- Material Symbols -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'ink': '#1a1612',
+            'cream': '#f5f0e8',
+            'cream-dark': '#e8ddd0',
+            'terra': '#b8432a',
+            'terra-light': '#d4634e',
+            'sage': '#2a4a3c',
+          },
+          fontFamily: {
+            'headline': ['Playfair Display', 'serif'],
+            'body': ['Source Sans 3', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Base resets */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Source Sans 3', sans-serif; background-color: #f5f0e8; color: #1a1612; }
+
+    /* Editorial typography */
+    .headline-massive {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 7vw, 7rem);
+      line-height: 1.0;
+      letter-spacing: -0.02em;
+    }
+    .headline-large {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4.5vw, 4.5rem);
+      line-height: 1.1;
+      letter-spacing: -0.015em;
+    }
+    .headline-mid {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.5rem, 3vw, 3rem);
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+    }
+    .label-editorial {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+    .pull-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.3rem, 2.5vw, 2rem);
+      line-height: 1.35;
+      font-style: italic;
+    }
+
+    /* Scroll animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+    .reveal-delay-5 { transition-delay: 0.5s; }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+      html { scroll-behavior: auto; }
+    }
+
+    /* Divider */
+    .editorial-rule {
+      width: 60px;
+      height: 2px;
+      background-color: #b8432a;
+    }
+
+    /* Nav transition */
+    .nav-scrolled {
+      background-color: rgba(245, 240, 232, 0.97) !important;
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(26, 22, 18, 0.08);
+    }
+
+    /* Image caption */
+    .caption-line::before {
+      content: '';
+      display: inline-block;
+      width: 24px;
+      height: 1px;
+      background: #b8432a;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+
+    /* Founder profile card */
+    .founder-profile {
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .founder-profile:hover {
+      transform: translateY(-3px);
+    }
+
+    /* Team card */
+    .team-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .team-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(26, 22, 18, 0.1);
+    }
+
+    /* Selection color */
+    ::selection {
+      background-color: #b8432a;
+      color: #f5f0e8;
+    }
+
+    img {
+      opacity: 1;
+      transition: opacity 0.5s ease;
+    }
+
+    /* Staggered card entrance */
+    .stagger > * { opacity: 0; transform: translateY(20px); transition: opacity 0.65s ease-out, transform 0.65s ease-out; }
+    .stagger.visible > * { opacity: 1; transform: none; }
+    .stagger.visible > *:nth-child(1) { transition-delay: 0ms; }
+    .stagger.visible > *:nth-child(2) { transition-delay: 120ms; }
+    .stagger.visible > *:nth-child(3) { transition-delay: 240ms; }
+    .stagger.visible > *:nth-child(4) { transition-delay: 360ms; }
+    .stagger.visible > *:nth-child(5) { transition-delay: 480ms; }
+    .stagger.visible > *:nth-child(6) { transition-delay: 600ms; }
+    .stagger.visible > *:nth-child(7) { transition-delay: 720ms; }
+    .stagger.visible > *:nth-child(8) { transition-delay: 840ms; }
+    .stagger.visible > *:nth-child(9) { transition-delay: 960ms; }
+    .stagger.visible > *:nth-child(10) { transition-delay: 1080ms; }
+
+    /* Text line reveal */
+    .text-reveal-wrap { overflow: hidden; display: block; }
+    .text-reveal-line { display: block; transform: translateY(110%); transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1); }
+    .text-reveal-wrap.visible .text-reveal-line { transform: none; }
+    .text-reveal-wrap.visible .text-reveal-line:nth-child(2) { transition-delay: 0.12s; }
+    .text-reveal-wrap.visible .text-reveal-line:nth-child(3) { transition-delay: 0.24s; }
+
+    /* Image clip reveal (bottom to top for editorial) */
+    .{ clip-path: inset(100% 0 0 0); transition: clip-path 1.2s cubic-bezier(0.16, 1, 0.3, 1); }
+    .img-reveal.visible { clip-path: inset(0 0 0 0); }
+
+    /* Terra line draw */
+    .line-draw { width: 0; height: 2px; background: #b8432a; transition: width 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.3s; }
+    .line-draw.visible { width: 60px; }
+
+    /* Scale reveal */
+    .reveal-scale { opacity: 0; transform: scale(0.94); transition: opacity 0.7s ease-out, transform 0.7s ease-out; }
+    .reveal-scale.visible { opacity: 1; transform: none; }
+
+    /* Slide from left/right */
+    .reveal-left { opacity: 0; transform: translateX(-30px); transition: opacity 0.7s ease-out, transform 0.7s ease-out; }
+    .reveal-left.visible { opacity: 1; transform: none; }
+    .reveal-right { opacity: 0; transform: translateX(30px); transition: opacity 0.7s ease-out, transform 0.7s ease-out; }
+    .reveal-right.visible { opacity: 1; transform: none; }
+
+    /* Card hover lift */
+    .card-lift { transition: transform 0.4s ease, box-shadow 0.4s ease; }
+    .card-lift:hover { transform: translateY(-4px); box-shadow: 0 16px 32px rgba(26,22,18,0.1); }
+
+    /* Image hover zoom */
+    .img-hover { overflow: hidden; }
+    .img-hover img { transition: transform 0.7s cubic-bezier(0.16,1,0.3,1); }
+    .img-hover:hover img { transform: scale(1.03); }
+
+    /* Pull quote entrance */
+    .quote-reveal { opacity: 0; transform: translateX(-20px); border-left: 3px solid transparent; transition: all 0.8s ease-out; }
+    .quote-reveal.visible { opacity: 1; transform: none; border-left-color: #b8432a; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .stagger > *, .text-reveal-line, .img-reveal, .line-draw,
+      .reveal-scale, .reveal-left, .reveal-right, .quote-reveal {
+        opacity: 1; transform: none; clip-path: none; width: auto; border-left-color: #b8432a; transition: none;
+      }
+      .card-lift:hover { transform: none; }
+      .img-hover:hover img { transform: none; }
+    }
+  </style>
+</head>
+
+<body class="bg-cream text-ink font-body antialiased overflow-x-hidden">
+
+  <!-- ========== NAV ========== -->
+  <nav id="mainNav" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500" role="navigation" aria-label="Main navigation">
+    <div class="max-w-[1400px] mx-auto px-6 md:px-10 py-5 flex items-center justify-between">
+      <!-- Logo -->
+      <a href="./index.html" class="flex items-center gap-3 group" aria-label="3650 Capital Home">
+        <img loading="lazy" src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650Capital-Logo.png?w=300&h=300&ssl=1"
+             alt="3650 Capital" class="h-8 md:h-10 w-auto">
+      </a>
+
+      <!-- Nav links — desktop -->
+      <div class="hidden md:flex items-center gap-8">
+        <a href="./index.html" class="label-editorial text-ink/70 hover:text-terra transition-colors duration-300">Home</a>
+        <a href="./firm.html" class="label-editorial text-ink/70 hover:text-terra transition-colors duration-300">Firm</a>
+        <a href="./solutions.html" class="label-editorial text-ink/70 hover:text-terra transition-colors duration-300">Solutions</a>
+        <a href="./transactions.html" class="label-editorial text-ink/70 hover:text-terra transition-colors duration-300">Transactions</a>
+        <a href="./leadership.html" class="label-editorial text-terra transition-colors duration-300">Leadership</a>
+        <a href="./contact.html" class="label-editorial bg-terra text-cream px-5 py-2.5 hover:bg-terra-light transition-colors duration-300">Contact</a>
+      </div>
+
+      <!-- Mobile menu button -->
+      <button id="mobileMenuBtn" class="md:hidden flex flex-col gap-1.5 p-2" aria-label="Toggle menu" aria-expanded="false">
+        <span class="block w-6 h-[1.5px] bg-ink transition-all duration-300" id="menuLine1"></span>
+        <span class="block w-6 h-[1.5px] bg-ink transition-all duration-300" id="menuLine2"></span>
+        <span class="block w-4 h-[1.5px] bg-ink transition-all duration-300 ml-auto" id="menuLine3"></span>
+      </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobileMenu" class="md:hidden hidden bg-cream border-t border-ink/10">
+      <div class="px-6 py-8 flex flex-col gap-6">
+        <a href="./index.html" class="label-editorial text-ink/70 hover:text-terra transition-colors" onclick="closeMobileMenu()">Home</a>
+        <a href="./firm.html" class="label-editorial text-ink/70 hover:text-terra transition-colors" onclick="closeMobileMenu()">Firm</a>
+        <a href="./solutions.html" class="label-editorial text-ink/70 hover:text-terra transition-colors" onclick="closeMobileMenu()">Solutions</a>
+        <a href="./transactions.html" class="label-editorial text-ink/70 hover:text-terra transition-colors" onclick="closeMobileMenu()">Transactions</a>
+        <a href="./leadership.html" class="label-editorial text-terra transition-colors" onclick="closeMobileMenu()">Leadership</a>
+        <a href="./contact.html" class="label-editorial bg-terra text-cream px-5 py-2.5 text-center hover:bg-terra-light transition-colors" onclick="closeMobileMenu()">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========== HERO ========== -->
+  <section class="relative pt-28 md:pt-36 pb-16 md:pb-24 bg-cream">
+    <div class="max-w-[1400px] mx-auto px-6 md:px-10">
+
+      <!-- Editorial label -->
+      <div class="reveal mb-6 flex items-center gap-3">
+        <div class="editorial-rule line-draw"></div>
+        <span class="label-editorial text-terra">The People Behind the Platform</span>
+      </div>
+
+      <!-- Headline -->
+      <h1 class="headline-massive max-w-[1100px]">
+        <span class="text-reveal-wrap"><span class="text-reveal-line">An established</span></span>
+        <span class="text-reveal-wrap"><span class="text-reveal-line"><em class="text-terra">industry</em> force.</span></span>
+      </h1>
+
+      <!-- Sub-headline -->
+      <p class="reveal reveal-delay-2 mt-8 text-lg md:text-xl text-ink/60 font-body max-w-[600px] leading-relaxed">
+        Lifetime CRE professionals with cross-discipline experience across origination, credit, capital markets, and servicing.
+      </p>
+
+      <!-- Hero image with editorial caption -->
+      <div class="reveal reveal-delay-3 mt-14 relative">
+        <div class="w-full aspect-[16/7] overflow-hidden bg-ink/5 img-hover">
+          <img loading="lazy" src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Founders-Profile-.png?w=800&h=300&ssl=1"
+               alt="3650 Capital Founders"
+               class="w-full h-full object-cover">
+        </div>
+        <div class="mt-4 flex items-center">
+          <span class="caption-line text-xs text-ink/50 font-body tracking-wide">3650 Capital — Co-Founders and Managing Partners</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CO-FOUNDERS — MAGAZINE PROFILES ========== -->
+  <section class="bg-cream py-16 md:py-24">
+    <div class="max-w-[1400px] mx-auto px-6 md:px-10">
+
+      <div class="reveal mb-12 flex items-center gap-3">
+        <div class="editorial-rule line-draw"></div>
+        <span class="label-editorial text-terra">Co-Founders</span>
+      </div>
+
+      <!-- Justin Kennedy — Full Width Feature -->
+      <div class="reveal founder-profile card-lift mb-20 md:mb-28">
+        <div class="grid md:grid-cols-12 gap-8 md:gap-12 items-start">
+          <div class="md:col-span-5">
+            <div class="aspect-[3/4] overflow-hidden bg-ink/5 img-hover">
+              <img
+                src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-Headshots-A1067.jpg?w=600&h=600&ssl=1"
+                alt="Justin Kennedy"
+                class="w-full h-full object-cover"
+                loading="lazy"
+              >
+            </div>
+            <span class="caption-line text-xs text-ink/50 mt-3 inline-block">Justin Kennedy, Co-Founder</span>
+          </div>
+          <div class="md:col-span-7 md:pt-8">
+            <span class="label-editorial text-terra/60 block mb-3">Co-Founder, Managing Partner</span>
+            <h2 class="headline-large mb-6">Justin Kennedy</h2>
+            <div class="editorial-rule line-draw mb-8"></div>
+            <p class="pull-quote text-ink/70 mb-8 quote-reveal">
+              &ldquo;Our structure ensures that the person you meet on day one is the same person managing your loan on day 3,650.&rdquo;
+            </p>
+            <p class="text-sm leading-relaxed mt-3" style="color: var(--ink); opacity: 0.7;">
+              3650 Capital Co-Founder Justin Kennedy brings 32 years of CRE experience, including finance, distressed assets and development. In 2013, Kennedy and Cobb co-founded 3650 Capital's CRE development affiliate, Grass River Property, a leading South Florida developer and manager of mixed-use, urban-infill and transit-oriented properties. In partnership with leading institutional partners, the Grass River portfolio includes 14 development and equity investments totaling more than 1.8 million SF.
+            </p>
+            <p class="text-sm leading-relaxed mt-3" style="color: var(--ink); opacity: 0.7;">
+              Prior to Grass River, Kennedy and Cobb served as Co-CEOs of LNR Property LLC. Mr. Kennedy led the firm's strategic direction and investment activities across LNR's global CRE debt, equity and distressed assets platforms. Prior to LNR, Mr. Kennedy served 11 years at Deutsche Bank as Managing Director and Global Head of Real Estate Capital Markets. Prior to Deutsche Bank, Mr. Kennedy was Head of CMBS Trading at Goldman Sachs and a member of the firm's Principal Investment Group.
+            </p>
+            <p class="text-sm leading-relaxed mt-3" style="color: var(--ink); opacity: 0.7;">
+              He spent the first eight years of his career in the real estate development business in California and Colorado. Mr. Kennedy holds an A.B. in Economics from Stanford University and an M.B.A. from UCLA.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Jonathan Roth — Reversed Layout -->
+      <div class="reveal founder-profile card-lift mb-20 md:mb-28">
+        <div class="grid md:grid-cols-12 gap-8 md:gap-12 items-start">
+          <div class="md:col-span-7 md:order-1 md:pt-8">
+            <span class="label-editorial text-terra/60 block mb-3">Co-Founder, Managing Partner</span>
+            <h2 class="headline-large mb-6">Jonathan Roth</h2>
+            <div class="editorial-rule line-draw mb-8"></div>
+            <p class="pull-quote text-ink/70 mb-8 quote-reveal">
+              &ldquo;Discipline in underwriting is not a constraint — it is the foundation of every lasting borrower relationship we build.&rdquo;
+            </p>
+            <p class="text-sm leading-relaxed mt-3" style="color: var(--ink); opacity: 0.7;">
+              Mr. Roth, Co-Founder, brings 30 years of experience originating, structuring and servicing CRE investments. Previously, Mr. Roth served as President of Canyon Partners Real Estate LLC. During his 18-year tenure at Canyon, Mr. Roth was instrumental in the formation of several investment vehicles which collectively invested approximately $5.6 billion in over 200 transactions.
+            </p>
+            <p class="text-sm leading-relaxed mt-3" style="color: var(--ink); opacity: 0.7;">
+              Prior to joining Canyon, Mr. Roth was a partner specializing in complex real estate transactions at the international law firm of Loeb &amp; Loeb. Mr. Roth has served on multiple philanthropic boards and works with several leading medical institutions, including the USC Center for Applied Molecular Medicine, UCLA Medical Center and Cedars Sinai Hospital.
+            </p>
+            <p class="text-sm leading-relaxed mt-3" style="color: var(--ink); opacity: 0.7;">
+              Mr. Roth currently sits on the Board of Governors for Cedars Sinai Hospital and the Advisory Board of the Ronald Reagan UCLA Medical Center. Mr. Roth holds a B.A. in English Literature from UCLA, and a J.D. from Loyola Law School.
+            </p>
+          </div>
+          <div class="md:col-span-5 md:order-2">
+            <div class="aspect-[3/4] overflow-hidden bg-ink/5 img-hover">
+              <img
+                src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-Headshots-A0857.jpg?w=600&h=600&ssl=1"
+                alt="Jonathan Roth"
+                class="w-full h-full object-cover"
+                loading="lazy"
+              >
+            </div>
+            <span class="caption-line text-xs text-ink/50 mt-3 inline-block">Jonathan Roth, Co-Founder</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Toby Cobb — Standard Layout -->
+      <div class="reveal founder-profile card-lift">
+        <div class="grid md:grid-cols-12 gap-8 md:gap-12 items-start">
+          <div class="md:col-span-5">
+            <div class="aspect-[3/4] overflow-hidden bg-ink/5 img-hover">
+              <img
+                src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-Headshots-A0746.jpg?w=600&h=600&ssl=1"
+                alt="Toby Cobb"
+                class="w-full h-full object-cover"
+                loading="lazy"
+              >
+            </div>
+            <span class="caption-line text-xs text-ink/50 mt-3 inline-block">Toby Cobb, Co-Founder</span>
+          </div>
+          <div class="md:col-span-7 md:pt-8">
+            <span class="label-editorial text-terra/60 block mb-3">Co-Founder, Managing Partner</span>
+            <h2 class="headline-large mb-6">Toby Cobb</h2>
+            <div class="editorial-rule line-draw mb-8"></div>
+            <p class="pull-quote text-ink/70 mb-8 quote-reveal">
+              &ldquo;Permanence is our competitive advantage. We do not sell loans — we build partnerships that endure.&rdquo;
+            </p>
+            <p class="text-sm leading-relaxed mt-3" style="color: var(--ink); opacity: 0.7;">
+              Toby Cobb, Co-Founder and Managing Partner of 3650 Capital, has 30 years of experience in commercial real estate and finance. In 2013, Mr. Cobb and his partner Justin Kennedy co-founded 3650 Capital's CRE equity and development affiliate, Grass River Property, a leading South Florida developer with approximately 2 million square feet of real estate owned.
+            </p>
+            <p class="text-sm leading-relaxed mt-3" style="color: var(--ink); opacity: 0.7;">
+              Prior to Grass River, Mr. Cobb and Mr. Kennedy were Co-CEOs leading the restructuring, management and eventual sale of LNR Property, LLC. Mr. Cobb built and led LNR's loan origination platform and led its primary loan servicing and distressed assets servicing platforms, which are among the largest in both the U.S. and Europe. Prior to LNR, Mr. Cobb was Managing Director and Co-Head of US Commercial Real Estate at Deutsche Bank.
+            </p>
+            <p class="text-sm leading-relaxed mt-3" style="color: var(--ink); opacity: 0.7;">
+              Mr. Cobb holds a B.S. in Economics and Finance from Southern Methodist University and an M.B.A. in Finance and International Business from New York University. He is the Chairman, Emeritus and Board Member of the Master of Real Estate Development and Urbanism program at the University of Miami, a Trustee of the Urban Land Association (ULI), and is on the President's Council of the Real Estate Roundtable.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========== TEAM ROSTER ========== -->
+  <section class="bg-ink py-20 md:py-28">
+    <div class="max-w-[1400px] mx-auto px-6 md:px-10">
+
+      <div class="reveal mb-6 flex items-center gap-3">
+        <div class="w-[60px] h-[2px] bg-terra-light line-draw"></div>
+        <span class="label-editorial text-cream/40">Our Team</span>
+      </div>
+
+      <h2 class="reveal reveal-delay-1 headline-large text-cream mb-4">
+        The professionals behind<br>the platform.
+      </h2>
+      <p class="reveal reveal-delay-2 text-cream/50 text-base max-w-[500px] leading-relaxed mb-14">
+        20 key members across origination, credit, capital markets, servicing, and operations.
+      </p>
+
+      <!-- Team Grid -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6 stagger">
+
+        <!-- Andrew Parower -->
+        <div class="reveal team-card card-lift group">
+          <div class="aspect-[3/4] overflow-hidden bg-cream/5 img-hover">
+            <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-Headshots-Oct-2023-Miami-A0562-scaled.jpg?w=300&h=300&ssl=1" alt="Andrew Parower" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500" loading="lazy">
+          </div>
+          <div class="pt-3">
+            <h4 class="font-headline text-cream text-sm leading-tight">Andrew Parower</h4>
+            <p class="text-cream/40 text-xs mt-1">Chief Credit Officer</p>
+          </div>
+        </div>
+
+        <!-- Peter LaPointe -->
+        <div class="reveal reveal-delay-1 team-card card-lift group">
+          <div class="aspect-[3/4] overflow-hidden bg-cream/5 img-hover">
+            <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Peter-3650-A013.jpg?w=300&h=300&ssl=1" alt="Peter LaPointe" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500" loading="lazy">
+          </div>
+          <div class="pt-3">
+            <h4 class="font-headline text-cream text-sm leading-tight">Peter LaPointe</h4>
+            <p class="text-cream/40 text-xs mt-1">Chief Operating Officer</p>
+          </div>
+        </div>
+
+        <!-- Mark Jefferis -->
+        <div class="reveal reveal-delay-2 team-card card-lift group">
+          <div class="aspect-[3/4] overflow-hidden bg-cream/5 img-hover">
+            <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Mark-Jefferis-scaled.jpg?w=300&h=300&ssl=1" alt="Mark Jefferis" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500" loading="lazy">
+          </div>
+          <div class="pt-3">
+            <h4 class="font-headline text-cream text-sm leading-tight">Mark Jefferis</h4>
+            <p class="text-cream/40 text-xs mt-1">General Counsel</p>
+          </div>
+        </div>
+
+        <!-- John Wright -->
+        <div class="reveal reveal-delay-3 team-card card-lift group">
+          <div class="aspect-[3/4] overflow-hidden bg-cream/5 img-hover">
+            <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/john-wright-headshot.jpg?w=300&h=300&ssl=1" alt="John Wright" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500" loading="lazy">
+          </div>
+          <div class="pt-3">
+            <h4 class="font-headline text-cream text-sm leading-tight">John Wright</h4>
+            <p class="text-cream/40 text-xs mt-1">Head of Capital Formation</p>
+          </div>
+        </div>
+
+        <!-- Malay Bansal -->
+        <div class="reveal reveal-delay-4 team-card card-lift group">
+          <div class="aspect-[3/4] overflow-hidden bg-cream/5 img-hover">
+            <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-Headshots-A0385.jpg?w=300&h=300&ssl=1" alt="Malay Bansal" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500" loading="lazy">
+          </div>
+          <div class="pt-3">
+            <h4 class="font-headline text-cream text-sm leading-tight">Malay Bansal</h4>
+            <p class="text-cream/40 text-xs mt-1">Managing Director</p>
+          </div>
+        </div>
+
+        <!-- Ken Dickey -->
+        <div class="reveal team-card card-lift group">
+          <div class="aspect-[3/4] overflow-hidden bg-cream/5 img-hover">
+            <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-Headshots-A0088-2.jpg?w=300&h=300&ssl=1" alt="Ken Dickey" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500" loading="lazy">
+          </div>
+          <div class="pt-3">
+            <h4 class="font-headline text-cream text-sm leading-tight">Ken Dickey</h4>
+            <p class="text-cream/40 text-xs mt-1">Director, Originations</p>
+          </div>
+        </div>
+
+        <!-- Michael Fleischer -->
+        <div class="reveal reveal-delay-1 team-card card-lift group">
+          <div class="aspect-[3/4] overflow-hidden bg-cream/5 img-hover">
+            <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/MichaelF-04688A3.jpg?w=300&h=300&ssl=1" alt="Michael Fleischer" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500" loading="lazy">
+          </div>
+          <div class="pt-3">
+            <h4 class="font-headline text-cream text-sm leading-tight">Michael Fleischer</h4>
+            <p class="text-cream/40 text-xs mt-1">Managing Director</p>
+          </div>
+        </div>
+
+        <!-- Jake Stahler -->
+        <div class="reveal reveal-delay-2 team-card card-lift group">
+          <div class="aspect-[3/4] overflow-hidden bg-cream/5 img-hover">
+            <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-Headshots-A0720-min.jpg?w=300&h=300&ssl=1" alt="Jake Stahler" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500" loading="lazy">
+          </div>
+          <div class="pt-3">
+            <h4 class="font-headline text-cream text-sm leading-tight">Jake Stahler</h4>
+            <p class="text-cream/40 text-xs mt-1">Director</p>
+          </div>
+        </div>
+
+        <!-- Evan Guttman -->
+        <div class="reveal reveal-delay-3 team-card card-lift group">
+          <div class="aspect-[3/4] overflow-hidden bg-cream/5 img-hover">
+            <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-Headshots-Oct-2023-NYC-B1181-3-scaled.jpg?w=300&h=300&ssl=1" alt="Evan Guttman" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500" loading="lazy">
+          </div>
+          <div class="pt-3">
+            <h4 class="font-headline text-cream text-sm leading-tight">Evan Guttman</h4>
+            <p class="text-cream/40 text-xs mt-1">Vice President</p>
+          </div>
+        </div>
+
+        <!-- Michael McCabe -->
+        <div class="reveal reveal-delay-4 team-card card-lift group">
+          <div class="aspect-[3/4] overflow-hidden bg-cream/5 img-hover">
+            <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-Headshots-Oct-2023-NYC-B1078-scaled.jpg?w=300&h=300&ssl=1" alt="Michael McCabe" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500" loading="lazy">
+          </div>
+          <div class="pt-3">
+            <h4 class="font-headline text-cream text-sm leading-tight">Michael McCabe</h4>
+            <p class="text-cream/40 text-xs mt-1">Vice President</p>
+          </div>
+        </div>
+
+        <!-- Stephanie Sabellico -->
+        <div class="reveal team-card card-lift group">
+          <div class="aspect-[3/4] overflow-hidden bg-cream/5 img-hover">
+            <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/EVN0949-Edit-scaled.jpg?w=300&h=300&ssl=1" alt="Stephanie Sabellico" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500" loading="lazy">
+          </div>
+          <div class="pt-3">
+            <h4 class="font-headline text-cream text-sm leading-tight">Stephanie Sabellico</h4>
+            <p class="text-cream/40 text-xs mt-1">Director</p>
+          </div>
+        </div>
+
+        <!-- Barrett Graham -->
+        <div class="reveal reveal-delay-1 team-card card-lift group">
+          <div class="aspect-[3/4] overflow-hidden bg-cream/5 img-hover">
+            <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/MGM_2579-scaled.jpg?w=300&h=300&ssl=1" alt="Barrett Graham" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500" loading="lazy">
+          </div>
+          <div class="pt-3">
+            <h4 class="font-headline text-cream text-sm leading-tight">Barrett Graham</h4>
+            <p class="text-cream/40 text-xs mt-1">Vice President</p>
+          </div>
+        </div>
+
+        <!-- Brent Thurn -->
+        <div class="reveal reveal-delay-2 team-card card-lift group">
+          <div class="aspect-[3/4] overflow-hidden bg-cream/5 img-hover">
+            <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-2564-scaled.jpg?w=300&h=300&ssl=1" alt="Brent Thurn" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500" loading="lazy">
+          </div>
+          <div class="pt-3">
+            <h4 class="font-headline text-cream text-sm leading-tight">Brent Thurn</h4>
+            <p class="text-cream/40 text-xs mt-1">Vice President</p>
+          </div>
+        </div>
+
+        <!-- Daniel Vaknin -->
+        <div class="reveal reveal-delay-3 team-card card-lift group">
+          <div class="aspect-[3/4] overflow-hidden bg-cream/5 img-hover">
+            <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-1192-Edit.jpg?w=300&h=300&ssl=1" alt="Daniel Vaknin" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500" loading="lazy">
+          </div>
+          <div class="pt-3">
+            <h4 class="font-headline text-cream text-sm leading-tight">Daniel Vaknin</h4>
+            <p class="text-cream/40 text-xs mt-1">Vice President</p>
+          </div>
+        </div>
+
+        <!-- Eric Kraft -->
+        <div class="reveal reveal-delay-4 team-card card-lift group">
+          <div class="aspect-[3/4] overflow-hidden bg-cream/5 img-hover">
+            <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/eric-kraft-headshot.jpeg?w=300&h=300&ssl=1" alt="Eric Kraft" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500" loading="lazy">
+          </div>
+          <div class="pt-3">
+            <h4 class="font-headline text-cream text-sm leading-tight">Eric Kraft</h4>
+            <p class="text-cream/40 text-xs mt-1">Director</p>
+          </div>
+        </div>
+
+        <!-- Noah Moghavem -->
+        <div class="reveal team-card card-lift group">
+          <div class="aspect-[3/4] overflow-hidden bg-cream/5 img-hover">
+            <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Noah-Moghavem-scaled.jpg?w=300&h=300&ssl=1" alt="Noah Moghavem" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500" loading="lazy">
+          </div>
+          <div class="pt-3">
+            <h4 class="font-headline text-cream text-sm leading-tight">Noah Moghavem</h4>
+            <p class="text-cream/40 text-xs mt-1">Associate</p>
+          </div>
+        </div>
+
+        <!-- Will Pierce -->
+        <div class="reveal reveal-delay-1 team-card card-lift group">
+          <div class="aspect-[3/4] overflow-hidden bg-cream/5 img-hover">
+            <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/151A8204.jpg?w=300&h=300&ssl=1" alt="Will Pierce" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500" loading="lazy">
+          </div>
+          <div class="pt-3">
+            <h4 class="font-headline text-cream text-sm leading-tight">Will Pierce</h4>
+            <p class="text-cream/40 text-xs mt-1">Vice President</p>
+          </div>
+        </div>
+
+        <!-- Jeremiah Sharf -->
+        <div class="reveal reveal-delay-2 team-card card-lift group">
+          <div class="aspect-[3/4] overflow-hidden bg-cream/5 img-hover">
+            <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Jeremiah-Sharf_1-scaled.jpg?w=300&h=300&ssl=1" alt="Jeremiah Sharf" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500" loading="lazy">
+          </div>
+          <div class="pt-3">
+            <h4 class="font-headline text-cream text-sm leading-tight">Jeremiah Sharf</h4>
+            <p class="text-cream/40 text-xs mt-1">Director</p>
+          </div>
+        </div>
+
+        <!-- Katie Spillman -->
+        <div class="reveal reveal-delay-3 team-card card-lift group">
+          <div class="aspect-[3/4] overflow-hidden bg-cream/5 img-hover">
+            <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Katie-Spillman-1-scaled.jpg?w=300&h=300&ssl=1" alt="Katie Spillman" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500" loading="lazy">
+          </div>
+          <div class="pt-3">
+            <h4 class="font-headline text-cream text-sm leading-tight">Katie Spillman</h4>
+            <p class="text-cream/40 text-xs mt-1">Director</p>
+          </div>
+        </div>
+
+        <!-- Corey Altman -->
+        <div class="reveal reveal-delay-4 team-card card-lift group">
+          <div class="aspect-[3/4] overflow-hidden bg-cream/5 img-hover">
+            <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-0608-Edit-scaled.jpg?w=300&h=300&ssl=1" alt="Corey Altman" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500" loading="lazy">
+          </div>
+          <div class="pt-3">
+            <h4 class="font-headline text-cream text-sm leading-tight">Corey Altman</h4>
+            <p class="text-cream/40 text-xs mt-1">Director</p>
+          </div>
+        </div>
+
+        <!-- Daniel Antonelli -->
+        <div class="reveal team-card card-lift group">
+          <div class="aspect-[3/4] overflow-hidden bg-cream/5 img-hover">
+            <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Dan-.jpg?w=300&h=300&ssl=1" alt="Daniel Antonelli" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500" loading="lazy">
+          </div>
+          <div class="pt-3">
+            <h4 class="font-headline text-cream text-sm leading-tight">Daniel Antonelli</h4>
+            <p class="text-cream/40 text-xs mt-1">Managing Director, Head of Asset Management & Servicing</p>
+          </div>
+        </div>
+
+        <!-- Alexandria Bierstedt -->
+        <div class="reveal reveal-delay-1 team-card card-lift group">
+          <div class="aspect-[3/4] overflow-hidden bg-cream/5 img-hover">
+            <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-Headshots-Oct-2023-Miami-A1570-scaled.jpg?w=300&h=300&ssl=1" alt="Alexandria Bierstedt" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500" loading="lazy">
+          </div>
+          <div class="pt-3">
+            <h4 class="font-headline text-cream text-sm leading-tight">Alexandria Bierstedt</h4>
+            <p class="text-cream/40 text-xs mt-1">AP Specialist</p>
+          </div>
+        </div>
+
+        <!-- Noelle Bowman -->
+        <div class="reveal reveal-delay-2 team-card card-lift group">
+          <div class="aspect-[3/4] overflow-hidden bg-cream/5 img-hover">
+            <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-2987-scaled.jpg?w=300&h=300&ssl=1" alt="Noelle Bowman" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500" loading="lazy">
+          </div>
+          <div class="pt-3">
+            <h4 class="font-headline text-cream text-sm leading-tight">Noelle Bowman</h4>
+            <p class="text-cream/40 text-xs mt-1">Director of Human Resources</p>
+          </div>
+        </div>
+
+        <!-- Tess Campbell -->
+        <div class="reveal reveal-delay-3 team-card card-lift group">
+          <div class="aspect-[3/4] overflow-hidden bg-cream/5 img-hover">
+            <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-Headshots-Oct-2023-Miami-A0994_2-scaled.jpg?w=300&h=300&ssl=1" alt="Tess Campbell" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500" loading="lazy">
+          </div>
+          <div class="pt-3">
+            <h4 class="font-headline text-cream text-sm leading-tight">Tess Campbell</h4>
+            <p class="text-cream/40 text-xs mt-1">Associate</p>
+          </div>
+        </div>
+
+        <!-- Jared Carney -->
+        <div class="reveal reveal-delay-4 team-card card-lift group">
+          <div class="aspect-[3/4] overflow-hidden bg-cream/5 flex items-center justify-center">
+            <span class="font-headline text-2xl text-cream/40">JC</span>
+          </div>
+          <div class="pt-3">
+            <h4 class="font-headline text-cream text-sm leading-tight">Jared Carney</h4>
+            <p class="text-cream/40 text-xs mt-1">Senior Advisor & Chief Strategist</p>
+          </div>
+        </div>
+
+        <!-- Natalie DeLacio, CPA -->
+        <div class="reveal team-card card-lift group">
+          <div class="aspect-[3/4] overflow-hidden bg-cream/5 img-hover">
+            <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-Headshots-Oct-2023-Miami-A0667-scaled.jpg?w=300&h=300&ssl=1" alt="Natalie DeLacio, CPA" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500" loading="lazy">
+          </div>
+          <div class="pt-3">
+            <h4 class="font-headline text-cream text-sm leading-tight">Natalie DeLacio, CPA</h4>
+            <p class="text-cream/40 text-xs mt-1">VP & Assistant Controller</p>
+          </div>
+        </div>
+
+        <!-- Jorge Espinal -->
+        <div class="reveal reveal-delay-1 team-card card-lift group">
+          <div class="aspect-[3/4] overflow-hidden bg-cream/5 img-hover">
+            <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-0879-scaled.jpg?w=300&h=300&ssl=1" alt="Jorge Espinal" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500" loading="lazy">
+          </div>
+          <div class="pt-3">
+            <h4 class="font-headline text-cream text-sm leading-tight">Jorge Espinal</h4>
+            <p class="text-cream/40 text-xs mt-1">Vice President</p>
+          </div>
+        </div>
+
+        <!-- Julia Ferrier -->
+        <div class="reveal reveal-delay-2 team-card card-lift group">
+          <div class="aspect-[3/4] overflow-hidden bg-cream/5 img-hover">
+            <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-Headshots-Oct-2023-Miami-A0638-2-scaled.jpg?w=300&h=300&ssl=1" alt="Julia Ferrier" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500" loading="lazy">
+          </div>
+          <div class="pt-3">
+            <h4 class="font-headline text-cream text-sm leading-tight">Julia Ferrier</h4>
+            <p class="text-cream/40 text-xs mt-1">Vice President</p>
+          </div>
+        </div>
+
+        <!-- Raelene Vepuri -->
+        <div class="reveal reveal-delay-3 team-card card-lift group">
+          <div class="aspect-[3/4] overflow-hidden bg-cream/5 img-hover">
+            <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-Headshots-Oct-2023-Miami-A0731-scaled.jpg?w=300&h=300&ssl=1" alt="Raelene Vepuri" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500" loading="lazy">
+          </div>
+          <div class="pt-3">
+            <h4 class="font-headline text-cream text-sm leading-tight">Raelene Vepuri</h4>
+            <p class="text-cream/40 text-xs mt-1">Vice President</p>
+          </div>
+        </div>
+
+        <!-- Andre Gonzalez -->
+        <div class="reveal reveal-delay-4 team-card card-lift group">
+          <div class="aspect-[3/4] overflow-hidden bg-cream/5 img-hover">
+            <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-Headshots-Oct-2023-Miami-A0073-scaled.jpg?w=300&h=300&ssl=1" alt="Andre Gonzalez" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500" loading="lazy">
+          </div>
+          <div class="pt-3">
+            <h4 class="font-headline text-cream text-sm leading-tight">Andre Gonzalez</h4>
+            <p class="text-cream/40 text-xs mt-1">Managing Director, Capital & Partner Solutions</p>
+          </div>
+        </div>
+
+        <!-- Alvaro Guerra -->
+        <div class="reveal team-card card-lift group">
+          <div class="aspect-[3/4] overflow-hidden bg-cream/5 img-hover">
+            <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-1039-scaled.jpg?w=300&h=300&ssl=1" alt="Alvaro Guerra" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500" loading="lazy">
+          </div>
+          <div class="pt-3">
+            <h4 class="font-headline text-cream text-sm leading-tight">Alvaro Guerra</h4>
+            <p class="text-cream/40 text-xs mt-1">Director</p>
+          </div>
+        </div>
+
+        <!-- Ryan Hendriks -->
+        <div class="reveal reveal-delay-1 team-card card-lift group">
+          <div class="aspect-[3/4] overflow-hidden bg-cream/5 img-hover">
+            <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-1269-scaled.jpg?w=300&h=300&ssl=1" alt="Ryan Hendriks" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500" loading="lazy">
+          </div>
+          <div class="pt-3">
+            <h4 class="font-headline text-cream text-sm leading-tight">Ryan Hendriks</h4>
+            <p class="text-cream/40 text-xs mt-1">Vice President</p>
+          </div>
+        </div>
+
+        <!-- Axl Holmes -->
+        <div class="reveal reveal-delay-2 team-card card-lift group">
+          <div class="aspect-[3/4] overflow-hidden bg-cream/5 img-hover">
+            <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/Axl-Homes-scaled.jpg?w=300&h=300&ssl=1" alt="Axl Holmes" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500" loading="lazy">
+          </div>
+          <div class="pt-3">
+            <h4 class="font-headline text-cream text-sm leading-tight">Axl Holmes</h4>
+            <p class="text-cream/40 text-xs mt-1">Analyst</p>
+          </div>
+        </div>
+
+        <!-- Michael Kundin -->
+        <div class="reveal reveal-delay-3 team-card card-lift group">
+          <div class="aspect-[3/4] overflow-hidden bg-cream/5 img-hover">
+            <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-2750-Edit-scaled.jpg?w=300&h=300&ssl=1" alt="Michael Kundin" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500" loading="lazy">
+          </div>
+          <div class="pt-3">
+            <h4 class="font-headline text-cream text-sm leading-tight">Michael Kundin</h4>
+            <p class="text-cream/40 text-xs mt-1">Analyst</p>
+          </div>
+        </div>
+
+        <!-- Johanna Maranon -->
+        <div class="reveal reveal-delay-4 team-card card-lift group">
+          <div class="aspect-[3/4] overflow-hidden bg-cream/5 img-hover">
+            <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-0657-Edit-scaled.jpg?w=300&h=300&ssl=1" alt="Johanna Maranon" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500" loading="lazy">
+          </div>
+          <div class="pt-3">
+            <h4 class="font-headline text-cream text-sm leading-tight">Johanna Maranon</h4>
+            <p class="text-cream/40 text-xs mt-1">VP, Asset Management</p>
+          </div>
+        </div>
+
+        <!-- Richard Putnam -->
+        <div class="reveal team-card card-lift group">
+          <div class="aspect-[3/4] overflow-hidden bg-cream/5 img-hover">
+            <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/MGM_2584-scaled.jpg?w=300&h=300&ssl=1" alt="Richard Putnam" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500" loading="lazy">
+          </div>
+          <div class="pt-3">
+            <h4 class="font-headline text-cream text-sm leading-tight">Richard Putnam</h4>
+            <p class="text-cream/40 text-xs mt-1">VP, Originations</p>
+          </div>
+        </div>
+
+        <!-- Agne Rader -->
+        <div class="reveal reveal-delay-1 team-card card-lift group">
+          <div class="aspect-[3/4] overflow-hidden bg-cream/5 img-hover">
+            <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-Headshots-Oct-2023-Miami-A2125-2-scaled.jpg?w=300&h=300&ssl=1" alt="Agne Rader" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500" loading="lazy">
+          </div>
+          <div class="pt-3">
+            <h4 class="font-headline text-cream text-sm leading-tight">Agne Rader</h4>
+            <p class="text-cream/40 text-xs mt-1">Executive Assistant</p>
+          </div>
+        </div>
+
+        <!-- Martin Rivas, CPA -->
+        <div class="reveal reveal-delay-2 team-card card-lift group">
+          <div class="aspect-[3/4] overflow-hidden bg-cream/5 img-hover">
+            <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-Headshots-Oct-2023-Miami-A1141-2-2-scaled.jpg?w=300&h=300&ssl=1" alt="Martin Rivas, CPA" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500" loading="lazy">
+          </div>
+          <div class="pt-3">
+            <h4 class="font-headline text-cream text-sm leading-tight">Martin Rivas, CPA</h4>
+            <p class="text-cream/40 text-xs mt-1">Managing Director & CAO</p>
+          </div>
+        </div>
+
+        <!-- Alannah Rabich -->
+        <div class="reveal reveal-delay-3 team-card card-lift group">
+          <div class="aspect-[3/4] overflow-hidden bg-cream/5 img-hover">
+            <img src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650-0507-Edit-scaled.jpg?w=300&h=300&ssl=1" alt="Alannah Rabich" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500" loading="lazy">
+          </div>
+          <div class="pt-3">
+            <h4 class="font-headline text-cream text-sm leading-tight">Alannah Rabich</h4>
+            <p class="text-cream/40 text-xs mt-1">Vice President</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="bg-ink text-cream py-16 md:py-20">
+    <div class="max-w-[1400px] mx-auto px-6 md:px-10">
+
+      <!-- Top row -->
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8 pb-12 border-b border-cream/10">
+
+        <!-- Logo & tagline -->
+        <div class="md:col-span-4">
+          <img loading="lazy" src="https://i0.wp.com/raw.githubusercontent.com/heyitsmrshea/3650-capital/main/assets/media/3650Capital-Logo.png?w=300&h=300&ssl=1"
+               alt="3650 Capital" class="h-8 w-auto mb-4 brightness-0 invert opacity-80">
+          <p class="text-cream/40 text-sm leading-relaxed max-w-[300px]">
+            A permanent capital CRE lending platform. Bridge. Permanent. Mezzanine. In-house servicing. One lender for the full cycle.
+          </p>
+        </div>
+
+        <!-- Navigation -->
+        <div class="md:col-span-2">
+          <h4 class="label-editorial text-cream/30 mb-4">Navigation</h4>
+          <ul class="space-y-2.5">
+            <li><a href="./index.html" class="text-cream/60 text-sm hover:text-terra-light transition-colors">Home</a></li>
+            <li><a href="./firm.html" class="text-cream/60 text-sm hover:text-terra-light transition-colors">Firm</a></li>
+            <li><a href="./solutions.html" class="text-cream/60 text-sm hover:text-terra-light transition-colors">Solutions</a></li>
+            <li><a href="./transactions.html" class="text-cream/60 text-sm hover:text-terra-light transition-colors">Transactions</a></li>
+            <li><a href="./leadership.html" class="text-cream/60 text-sm hover:text-terra-light transition-colors">Leadership</a></li>
+            <li><a href="./contact.html" class="text-cream/60 text-sm hover:text-terra-light transition-colors">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Products -->
+        <div class="md:col-span-3">
+          <h4 class="label-editorial text-cream/30 mb-4">Lending</h4>
+          <ul class="space-y-2.5">
+            <li><a href="#" class="text-cream/60 text-sm hover:text-terra-light transition-colors">Bridge Loans</a></li>
+            <li><a href="#" class="text-cream/60 text-sm hover:text-terra-light transition-colors">Permanent / CMBS</a></li>
+            <li><a href="#" class="text-cream/60 text-sm hover:text-terra-light transition-colors">Mezzanine & Preferred Equity</a></li>
+            <li><a href="#" class="text-cream/60 text-sm hover:text-terra-light transition-colors">In-House Servicing</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact info -->
+        <div class="md:col-span-3">
+          <h4 class="label-editorial text-cream/30 mb-4">Headquarters</h4>
+          <address class="not-italic text-cream/60 text-sm leading-relaxed">
+            3650 Capital<br>
+            New York, NY<br>
+            <a href="mailto:info@3650capital.com" class="hover:text-terra-light transition-colors">info@3650capital.com</a>
+          </address>
+        </div>
+      </div>
+
+      <!-- Bottom row -->
+      <div class="pt-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+        <p class="text-cream/30 text-xs">&copy; 2026 3650 Capital LLC. All rights reserved.</p>
+        <div class="flex gap-6">
+          <a href="#" class="text-cream/30 text-xs hover:text-cream/60 transition-colors">Privacy Policy</a>
+          <a href="#" class="text-cream/30 text-xs hover:text-cream/60 transition-colors">Terms of Use</a>
+          <a href="#" class="text-cream/30 text-xs hover:text-cream/60 transition-colors">Disclosures</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========== SCRIPTS ========== -->
+  <script>
+    /* ---- Reduced motion check ---- */
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    /* ---- IntersectionObserver for scroll reveals ---- */
+    if (!prefersReducedMotion) {
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            // Trigger nested animations
+            entry.target.querySelectorAll('.img-reveal, .line-draw, .stagger, .text-reveal-wrap').forEach(function(child) {
+              child.classList.add('visible');
+              child.classList.add('is-visible');
+            });
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -40px 0px'
+      });
+
+      document.querySelectorAll('.reveal, .stagger, .text-reveal-wrap, .img-reveal, .line-draw, .reveal-scale, .reveal-left, .reveal-right, .quote-reveal').forEach(el => {
+        revealObserver.observe(el);
+      });
+    } else {
+      document.querySelectorAll('.reveal, .stagger, .text-reveal-wrap, .img-reveal, .line-draw, .reveal-scale, .reveal-left, .reveal-right, .quote-reveal').forEach(el => {
+        el.classList.add('visible');
+      });
+    }
+
+
+    /* ---- Counter animations ---- */
+    function animateCounter(el) {
+      const target = parseFloat(el.getAttribute('data-counter'));
+      const decimals = parseInt(el.getAttribute('data-decimals')) || 0;
+      const duration = 2000;
+      const startTime = performance.now();
+
+      if (prefersReducedMotion) {
+        el.textContent = decimals > 0 ? target.toFixed(decimals) : Math.round(target).toLocaleString();
+        return;
+      }
+
+      function update(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const current = target * eased;
+
+        if (decimals > 0) {
+          el.textContent = current.toFixed(decimals);
+        } else {
+          el.textContent = Math.round(current).toLocaleString();
+        }
+
+        if (progress < 1) {
+          requestAnimationFrame(update);
+        }
+      }
+
+      requestAnimationFrame(update);
+    }
+
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCounter(entry.target);
+          counterObserver.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.5
+    });
+
+    document.querySelectorAll('[data-counter]').forEach(el => {
+      counterObserver.observe(el);
+    });
+
+    /* ---- Navbar scroll behavior ---- */
+    const nav = document.getElementById('mainNav');
+    let lastScroll = 0;
+
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.pageYOffset;
+
+      if (currentScroll > 80) {
+        nav.classList.add('nav-scrolled');
+      } else {
+        nav.classList.remove('nav-scrolled');
+      }
+
+      lastScroll = currentScroll;
+    }, { passive: true });
+
+    /* ---- Mobile menu toggle ---- */
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuLine1 = document.getElementById('menuLine1');
+    const menuLine2 = document.getElementById('menuLine2');
+    const menuLine3 = document.getElementById('menuLine3');
+    let menuOpen = false;
+
+    mobileMenuBtn.addEventListener('click', () => {
+      menuOpen = !menuOpen;
+      mobileMenuBtn.setAttribute('aria-expanded', menuOpen);
+
+      if (menuOpen) {
+        mobileMenu.classList.remove('hidden');
+        menuLine1.style.transform = 'rotate(45deg) translate(4px, 4px)';
+        menuLine2.style.opacity = '0';
+        menuLine3.style.transform = 'rotate(-45deg) translate(2px, -2px)';
+        menuLine3.style.width = '24px';
+      } else {
+        mobileMenu.classList.add('hidden');
+        menuLine1.style.transform = 'none';
+        menuLine2.style.opacity = '1';
+        menuLine3.style.transform = 'none';
+        menuLine3.style.width = '16px';
+      }
+    });
+
+    function closeMobileMenu() {
+      menuOpen = false;
+      mobileMenuBtn.setAttribute('aria-expanded', false);
+      mobileMenu.classList.add('hidden');
+      menuLine1.style.transform = 'none';
+      menuLine2.style.opacity = '1';
+      menuLine3.style.transform = 'none';
+      menuLine3.style.width = '16px';
+    }
+
+    /* ---- Smooth scroll for anchor links ---- */
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        const targetEl = document.querySelector(targetId);
+        if (targetEl) {
+          e.preventDefault();
+          const navHeight = nav.offsetHeight;
+          const targetPos = targetEl.getBoundingClientRect().top + window.pageYOffset - navHeight - 20;
+          window.scrollTo({ top: targetPos, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
