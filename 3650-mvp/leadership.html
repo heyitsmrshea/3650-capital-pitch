@@ -144,6 +144,20 @@
       transform: translateY(-3px);
       box-shadow: 0 12px 40px rgba(26, 22, 18, 0.1);
     }
+    .team-card[data-has-bio] { cursor: pointer; }
+    .team-card[data-has-bio]::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: #b8432a;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .team-card[data-has-bio]:hover::after { opacity: 1; }
+    .team-card[data-has-bio] { position: relative; }
 
     /* Selection color */
     ::selection {
@@ -862,6 +876,22 @@
     </div>
   </section>
 
+  <!-- ========== BIO MODAL ========== -->
+  <div id="bioModal" class="fixed inset-0 z-[60] hidden" role="dialog" aria-modal="true">
+    <div class="absolute inset-0 bg-ink/80 backdrop-blur-sm" id="bioOverlay"></div>
+    <div class="absolute inset-0 flex items-center justify-center p-6">
+      <div class="bg-cream text-ink max-w-[600px] w-full max-h-[80vh] overflow-y-auto p-8 md:p-10 relative">
+        <button id="bioClose" class="absolute top-4 right-4 text-ink/40 hover:text-ink transition-colors" aria-label="Close bio">
+          <span class="material-symbols-outlined text-2xl">close</span>
+        </button>
+        <h3 id="bioName" class="font-headline text-2xl mb-1"></h3>
+        <p id="bioTitle" class="label-editorial text-terra mb-6"></p>
+        <div class="editorial-rule mb-6"></div>
+        <div id="bioText" class="text-sm text-ink/70 leading-relaxed space-y-3"></div>
+      </div>
+    </div>
+  </div>
+
   <!-- ========== FOOTER ========== -->
   <footer class="bg-ink text-cream py-16 md:py-20">
     <div class="max-w-[1400px] mx-auto px-6 md:px-10">
@@ -1073,6 +1103,60 @@
         }
       });
     });
+
+    /* ---- Team Bio Modal ---- */
+    const teamBios = {
+      'Andrew Parower': {title:'Managing Partner, Chief Credit Officer', bio:'Mr. Parower is responsible for analyzing lending opportunities and general loan-portfolio management. He brings 29 years of commercial real estate investment, capital markets, and fund management experience to 3650 Capital. Prior to 3650, Andrew was Managing Director of Marketfield Asset Management where he launched and managed a $300 million CMBS fund. Prior to Marketfield, Andrew spent five years managing $23 billion in domestic and European CMBS portfolios at AIG. Andrew holds a B.S.B.A. in Finance and Accounting from Washington University in St. Louis, and an M.B.A. from Fordham University.'},
+      'Peter LaPointe': {title:'Managing Partner, Chief Operating Officer', bio:'Mr. LaPointe has 21 years of experience in CRE loan origination and servicing, development, and distressed assets acquisitions and management. In 2013, Mr. LaPointe joined Cobb and Kennedy during the formation of Grass River Property. Previously, he served as President of LNR Archetype Financial Institution Services. Prior to LNR, Mr. LaPointe was a Managing Director at Bayview Financial leading its CRE investment, lending and loan servicing businesses. Mr. LaPointe holds a B.S. from Ithaca College and a J.D. from Roger Williams University.'},
+      'Mark Jefferis': {title:'Managing Partner, General Counsel & Chief Compliance Officer', bio:'Mr. Jefferis brings 16 years of commercial real estate investment, capital markets, and legal experience to 3650 Capital. Prior to joining 3650, Mr. Jefferis was Counsel with Sidley Austin LLP, advising banks, investment funds, and high net worth individuals in commercial real estate matters. Before Sidley, he was a Global Finance Associate at Cadwalader, Wickersham & Taft LLP. Mr. Jefferis holds a B.A. from the University of Oregon, a J.D. from the University of Oregon, and a LL.M. from New York University.'},
+      'Malay Bansal': {title:'Managing Partner, Head of Trading & Capital Markets', bio:'Mr. Bansal brings over 30 years of broad markets experience in commercial real estate, capital markets, and technology. Prior to 3650 Capital, Malay was a Senior Portfolio Manager & Head of Capital Markets for CMBS Lending at BNY Mellon Investment Management. Prior to BNYM, he was a Senior Director in the Multifamily division of Freddie Mac. Previously, as Managing Director at NewOak Capital, Malay did advisory and underwriting of real estate loan and bond portfolios. Before that, he was at Merrill Lynch for 15 years as CMBS Lead Securitization Banker. Malay holds an MBA from Rutgers University.'},
+      'Ken Dickey': {title:'Managing Partner, Head of Fixed Rate Lending', bio:'Mr. Dickey has 26 years of CRE lending and relationship management experience and leads the 3650 Capital fixed rate originations platform. Previously, he was Managing Director and led origination for the CRE lending platform at The Bank of New York Mellon. Prior to BONY, Mr. Dickey served as President of Deutsche Bank Mortgage Capital where he worked together with Kennedy and Cobb for more than 10 years. Mr. Dickey holds a B.A. in International Affairs from Lewis and Clark College.'},
+      'Michael Fleischer': {title:'Deputy CIO & Head of Real Estate Credit Solutions', bio:'Mr. Fleischer has 20 years of commercial real estate experience and leads 3650 Capital\'s Real Estate Credit Solutions. Previously, he was a Managing Director with RHRECS, a debt fund co-managed by Related Fund Management and HPS Investment Partners. Prior to Related, Mr. Fleischer was principal investor/lender with Canyon Capital and Links Capital Partners. His experience includes more than 8 years as legal counsel at Sullivan & Cromwell and Gibson, Dunn & Crutcher. Mr. Fleischer holds an MBA from Columbia Business School, a JD from Columbia Law School and a BA from Columbia College.'},
+      'Jake Stahler': {title:'Managing Director, Co-Head of Fixed Rate Lending', bio:'Mr. Stahler has over 23 years of commercial real estate experience. He is responsible for national originations and the operations of the SCF business. Over his career, he has originated over $5 billion in commercial mortgage loans throughout the United States. Mr. Stahler was an original member of the fixed rate lending team at 3650. Prior to 3650, he worked for the Bank of New York\'s capital markets lending program, Deutsche Bank, and Gramercy Capital Corp. Mr. Stahler holds a B.A. in History from Colgate University.'},
+      'Evan Guttman': {title:'Director of Technology', bio:'Evan Guttman has over two decades of experience working in IT on Wall Street. He is responsible for the technology at 3650 Capital as well as managing the firm\'s cybersecurity and data. Over his career, Mr. Guttman held the title of youngest officer of the bank at Bankers Trust, managed the technology for the trading floors at Oppenheimer and Fimat, and introduced new technology and new methods to trade on the floor of the American Stock Exchange.'},
+      'Michael McCabe': {title:'Director, Originations', bio:'Mr. McCabe is responsible for the origination, structuring, and execution of lending opportunities on all property types nationwide. He has over 12 years of experience in commercial real estate investment and mortgage lending and was part of the original 3650 fixed rate lending team launched in 2017. Prior to 3650, Mr. McCabe held CRE loan origination and underwriting roles at Building and Land Technology, Five Mile Capital, and Wells Fargo Bank. He holds a B.A. in Political Science from the College of the Holy Cross.'},
+      'Daniel Antonelli': {title:'Managing Director, Head of Asset Management & Servicing', bio:'Mr. Antonelli oversees the Miami-based Commercial Loan Servicing and Asset Management platforms for 3650 Capital and its affiliate Grass River Property. He brings 15 years of commercial real estate, loan asset management and loan servicing experience. During his tenure, he and his team have managed over $17.5 billion in commercial real estate loans across all geographies and asset types. Prior to 3650, Dan was a Senior Portfolio Manager for LNR Partners, responsible for portfolios with total assets under management in excess of $5 billion.'},
+      'Will Pierce': {title:'Managing Director', bio:'Mr. Pierce has 7 years of commercial real estate investment experience and works within the 3650 Capital Bridge and Event Driven lending platform. In 2014, he joined Grass River Property, a leading South Florida developer with approximately 2 million sq feet of real estate owned. Mr. Pierce holds a B.S. in Building Science from Auburn University and a master\'s degree in Real Estate Development + Urbanism from the University of Miami.'},
+      'Andre Gonzalez': {title:'Managing Director, Capital & Partner Solutions', bio:'Andre Gonzalez focuses on capital formation, investor relations, and strategic growth initiatives including M&A at 3650 Capital. He was previously a Director at InvestRes, a real estate private equity firm with $1.5 billion in assets under management. Andre graduated with a BA from Harvard University.'},
+      'Noelle Bowman': {title:'Director of Human Resources', bio:'Ms. Bowman oversees Human Resources for 3650 Capital and brings over 20 years\' experience in commercial real estate development, property management and operations. She has been with the firm since 2014. Prior to 3650, Noelle served as Director of Administration at a private engineering firm. Noelle obtained her B.S. in Finance from the University of Florida.'},
+      'Julia Ferrier': {title:'Vice President', bio:'Julia Ferrier is a Vice President in the Investment Management division of 3650 Capital. She has been with 3650 since 2021. She previously worked in Investment Banking at Citi on transactions in the Alternative Energy sector. Julia holds a B.S. in Applied Economics and Management from Cornell University.'},
+      'Alannah Rabich': {title:'Vice President', bio:'Alannah Rabich serves the Investor Relations department at 3650 Capital since 2021. Prior to 3650, she was a Senior Associate at Rialto Capital in the Asset and Portfolio Management of their CMBS Special Servicing division, overseeing a portfolio of more than $120 billion. Previously she was at Deloitte & Touche in New York servicing Private Equity clients. Alannah is a licensed CPA in New York. She holds a Masters and Bachelor\'s in Accounting from Florida Atlantic University.'}
+    };
+
+    const bioModal = document.getElementById('bioModal');
+    const bioOverlay = document.getElementById('bioOverlay');
+    const bioClose = document.getElementById('bioClose');
+    const bioName = document.getElementById('bioName');
+    const bioTitle = document.getElementById('bioTitle');
+    const bioText = document.getElementById('bioText');
+
+    document.querySelectorAll('.team-card').forEach(function(card) {
+      var nameEl = card.querySelector('h4');
+      if (!nameEl) return;
+      var name = nameEl.textContent.trim();
+      if (teamBios[name]) {
+        card.setAttribute('data-has-bio', '');
+        card.addEventListener('click', function() {
+          var bio = teamBios[name];
+          bioName.textContent = name;
+          bioTitle.textContent = bio.title;
+          bioText.textContent = '';
+          var p = document.createElement('p');
+          p.textContent = bio.bio;
+          bioText.appendChild(p);
+          bioModal.classList.remove('hidden');
+          document.body.style.overflow = 'hidden';
+        });
+      }
+    });
+
+    function closeBio() {
+      bioModal.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+    bioClose.addEventListener('click', closeBio);
+    bioOverlay.addEventListener('click', closeBio);
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeBio(); });
   </script>
 
 </body>
