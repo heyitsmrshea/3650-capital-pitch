@@ -159,6 +159,68 @@
     }
     .team-card[data-has-bio]:hover::after { transform: scaleX(1); }
 
+    /* Hover preview overlay */
+    .team-card .bio-preview {
+      position: absolute;
+      inset: 0;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 16px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s ease;
+    }
+    .team-card .bio-preview-bg {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(26,22,18,0.92) 0%, rgba(26,22,18,0.6) 50%, transparent 100%);
+      opacity: 0;
+      transition: opacity 0.35s ease;
+    }
+    .team-card:hover .bio-preview,
+    .team-card:hover .bio-preview-bg {
+      opacity: 1;
+    }
+    .team-card .bio-preview-content {
+      position: relative;
+      z-index: 1;
+      transform: translateY(8px);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
+      opacity: 0;
+    }
+    .team-card:hover .bio-preview-content {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    .team-card .bio-preview-stat {
+      transform: translateY(6px);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.06s, opacity 0.35s ease 0.06s;
+      opacity: 0;
+    }
+    .team-card:hover .bio-preview-stat {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    .team-card .bio-preview-cta {
+      transform: translateY(6px);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.12s, opacity 0.35s ease 0.12s;
+      opacity: 0;
+    }
+    .team-card:hover .bio-preview-cta {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    @media (max-width: 768px) {
+      .team-card .bio-preview { display: none; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .team-card .bio-preview, .team-card .bio-preview-bg,
+      .team-card .bio-preview-content, .team-card .bio-preview-stat,
+      .team-card .bio-preview-cta { transition: none !important; }
+    }
+
     /* Bio drawer */
     .bio-overlay {
       opacity: 0;
@@ -1210,8 +1272,54 @@
       var name = nameEl.textContent.trim();
       if (teamBios[name]) {
         card.setAttribute('data-has-bio', '');
+        var bio = teamBios[name];
+        var years = extractYears(bio.bio);
+
+        /* Build hover preview */
+        var preview = document.createElement('div');
+        preview.className = 'bio-preview';
+        var bg = document.createElement('div');
+        bg.className = 'bio-preview-bg';
+        preview.appendChild(bg);
+
+        var titleLine = document.createElement('div');
+        titleLine.className = 'bio-preview-content';
+        var titleSpan = document.createElement('span');
+        titleSpan.className = 'text-cream/80 text-xs leading-snug';
+        titleSpan.style.display = 'block';
+        titleSpan.textContent = bio.title;
+        titleLine.appendChild(titleSpan);
+        preview.appendChild(titleLine);
+
+        if (years) {
+          var statLine = document.createElement('div');
+          statLine.className = 'bio-preview-stat';
+          statLine.style.marginTop = '8px';
+          var statNum = document.createElement('span');
+          statNum.className = 'font-headline text-xl text-terra-light';
+          statNum.textContent = years + '+ ';
+          var statLabel = document.createElement('span');
+          statLabel.className = 'text-cream/40 text-xs';
+          statLabel.textContent = 'years experience';
+          statLine.appendChild(statNum);
+          statLine.appendChild(statLabel);
+          preview.appendChild(statLine);
+        }
+
+        var ctaLine = document.createElement('div');
+        ctaLine.className = 'bio-preview-cta';
+        ctaLine.style.marginTop = '10px';
+        var ctaSpan = document.createElement('span');
+        ctaSpan.className = 'text-terra-light text-xs font-semibold tracking-wider uppercase';
+        ctaSpan.textContent = 'Read bio \u2192';
+        ctaLine.appendChild(ctaSpan);
+        preview.appendChild(ctaLine);
+
+        card.style.position = 'relative';
+        card.appendChild(preview);
+
+        /* Click to open full drawer */
         card.addEventListener('click', function() {
-          var bio = teamBios[name];
           var img = card.querySelector('img');
           bioPhoto.src = img ? img.src : '';
           bioPhoto.alt = name;
@@ -1221,7 +1329,6 @@
           var p = document.createElement('p');
           p.textContent = bio.bio;
           bioText.appendChild(p);
-          var years = extractYears(bio.bio);
           if (years) {
             bioYears.textContent = years + '+';
             bioYearsLabel.textContent = 'Years of Experience';
