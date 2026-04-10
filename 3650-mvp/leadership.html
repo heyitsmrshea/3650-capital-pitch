@@ -144,7 +144,7 @@
       transform: translateY(-3px);
       box-shadow: 0 12px 40px rgba(26, 22, 18, 0.1);
     }
-    .team-card[data-has-bio] { cursor: pointer; }
+    .team-card[data-has-bio] { cursor: pointer; position: relative; }
     .team-card[data-has-bio]::after {
       content: '';
       position: absolute;
@@ -153,11 +153,44 @@
       right: 0;
       height: 2px;
       background: #b8432a;
-      opacity: 0;
-      transition: opacity 0.3s ease;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .team-card[data-has-bio]:hover::after { opacity: 1; }
-    .team-card[data-has-bio] { position: relative; }
+    .team-card[data-has-bio]:hover::after { transform: scaleX(1); }
+
+    /* Bio drawer */
+    .bio-overlay {
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      pointer-events: none;
+    }
+    .bio-overlay.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .bio-drawer {
+      transform: translateX(100%);
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .bio-overlay.open .bio-drawer {
+      transform: translateX(0);
+    }
+    .bio-drawer-content > * {
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+    .bio-overlay.open .bio-drawer-content > *:nth-child(1) { opacity: 1; transform: none; transition-delay: 0.2s; }
+    .bio-overlay.open .bio-drawer-content > *:nth-child(2) { opacity: 1; transform: none; transition-delay: 0.28s; }
+    .bio-overlay.open .bio-drawer-content > *:nth-child(3) { opacity: 1; transform: none; transition-delay: 0.36s; }
+    .bio-overlay.open .bio-drawer-content > *:nth-child(4) { opacity: 1; transform: none; transition-delay: 0.44s; }
+    .bio-overlay.open .bio-drawer-content > *:nth-child(5) { opacity: 1; transform: none; transition-delay: 0.52s; }
+    @media (prefers-reduced-motion: reduce) {
+      .bio-overlay, .bio-drawer, .bio-drawer-content > * { transition: none !important; }
+      .bio-overlay.open .bio-drawer-content > * { opacity: 1; transform: none; }
+      .bio-drawer { transform: none; }
+    }
 
     /* Selection color */
     ::selection {
@@ -876,18 +909,33 @@
     </div>
   </section>
 
-  <!-- ========== BIO MODAL ========== -->
-  <div id="bioModal" class="fixed inset-0 z-[60] hidden" role="dialog" aria-modal="true">
-    <div class="absolute inset-0 bg-ink/80 backdrop-blur-sm" id="bioOverlay"></div>
-    <div class="absolute inset-0 flex items-center justify-center p-6">
-      <div class="bg-cream text-ink max-w-[600px] w-full max-h-[80vh] overflow-y-auto p-8 md:p-10 relative">
-        <button id="bioClose" class="absolute top-4 right-4 text-ink/40 hover:text-ink transition-colors" aria-label="Close bio">
+  <!-- ========== BIO DRAWER ========== -->
+  <div id="bioModal" class="fixed inset-0 z-[60] bio-overlay" role="dialog" aria-modal="true">
+    <div class="absolute inset-0 bg-ink/60 backdrop-blur-sm" id="bioOverlay"></div>
+    <div class="bio-drawer absolute top-0 right-0 h-full w-full max-w-[520px] bg-cream text-ink overflow-y-auto shadow-2xl">
+      <div class="p-8 md:p-12 pt-20 md:pt-24 bio-drawer-content">
+        <button id="bioClose" class="absolute top-6 right-6 text-ink/30 hover:text-ink transition-colors" aria-label="Close bio">
           <span class="material-symbols-outlined text-2xl">close</span>
         </button>
-        <h3 id="bioName" class="font-headline text-2xl mb-1"></h3>
-        <p id="bioTitle" class="label-editorial text-terra mb-6"></p>
-        <div class="editorial-rule mb-6"></div>
-        <div id="bioText" class="text-sm text-ink/70 leading-relaxed space-y-3"></div>
+        <div>
+          <span class="label-editorial text-terra">Team Bio</span>
+        </div>
+        <div>
+          <h3 id="bioName" class="font-headline text-3xl mt-3 mb-1"></h3>
+          <p id="bioTitle" class="text-ink/50 text-sm mt-1"></p>
+        </div>
+        <div>
+          <div class="editorial-rule mt-6 mb-6"></div>
+        </div>
+        <div id="bioText" class="text-sm text-ink/70 leading-relaxed"></div>
+        <div>
+          <button onclick="closeBio()" class="mt-8 label-editorial text-terra hover:text-terra-light transition-colors cursor-pointer">
+            <span class="inline-flex items-center gap-2">
+              <span class="material-symbols-outlined text-base">arrow_back</span>
+              Back to Team
+            </span>
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -1144,14 +1192,14 @@
           var p = document.createElement('p');
           p.textContent = bio.bio;
           bioText.appendChild(p);
-          bioModal.classList.remove('hidden');
+          bioModal.classList.add('open');
           document.body.style.overflow = 'hidden';
         });
       }
     });
 
     function closeBio() {
-      bioModal.classList.add('hidden');
+      bioModal.classList.remove('open');
       document.body.style.overflow = '';
     }
     bioClose.addEventListener('click', closeBio);
